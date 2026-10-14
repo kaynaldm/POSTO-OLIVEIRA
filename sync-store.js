@@ -5,6 +5,11 @@
   const VALES_KEY = 'postoRH_vales';
   const SEED_VERSION_KEY = 'postoRH_seed_v5_oficial_completo';
 
+  // In-memory cache de alto desempenho para leitura instantânea (0ms) sem custo de JSON.parse repetido
+  let _cachedColaboradores = null;
+  let _cachedFrequencia = null;
+  let _cachedVales = null;
+
   const STATIONS = [
     { id: 'posto-oliveira-francesa', name: 'Posto Oliveira - Na Francesa', bairro: 'Francesa', address: 'Av. João Meireles, 30-136' },
     { id: 'posto-oliveira-odovaldo', name: 'Posto Oliveira - Odovaldo Novo', bairro: 'Odovaldo Novo', address: 'Estrada Odovaldo Novo' },
@@ -763,6 +768,9 @@
 
     // Reinicializar dados demonstrativos a qualquer momento
     resetDemoData: function() {
+      _cachedColaboradores = DEMO_COLABORADORES.slice();
+      _cachedFrequencia = JSON.parse(JSON.stringify(DEMO_FREQUENCIA));
+      _cachedVales = DEMO_VALES.slice();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
       localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
       localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
@@ -777,25 +785,32 @@
     // COLABORADORES
     // ==========================================
     getColaboradores: function() {
+      if (_cachedColaboradores && _cachedColaboradores.length > 0) {
+        return _cachedColaboradores;
+      }
       try {
         const data = localStorage.getItem(STORAGE_KEY);
         if (data) {
           const parsed = JSON.parse(data);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            return parsed.map(c => ({
+            _cachedColaboradores = parsed.map(c => ({
               ...c,
               status: c.status || 'Ativo'
             }));
+            return _cachedColaboradores;
           }
         }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
-        return DEMO_COLABORADORES;
+        _cachedColaboradores = DEMO_COLABORADORES.slice();
+        return _cachedColaboradores;
       } catch (e) {
         console.error('Erro ao ler colaboradores:', e);
-        return DEMO_COLABORADORES;
+        _cachedColaboradores = DEMO_COLABORADORES.slice();
+        return _cachedColaboradores;
       }
     },
     saveColaboradores: function(list) {
+      _cachedColaboradores = list;
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
         window.dispatchEvent(new CustomEvent('postoRH_sync', { detail: list }));
@@ -896,17 +911,24 @@
     // GESTÃO DE FREQUÊNCIA E APONTAMENTOS
     // ==========================================
     getAllFrequencia: function() {
+      if (_cachedFrequencia) return _cachedFrequencia;
       try {
         const raw = localStorage.getItem(FREQ_KEY);
-        if (raw) return JSON.parse(raw);
+        if (raw) {
+          _cachedFrequencia = JSON.parse(raw);
+          return _cachedFrequencia;
+        }
         localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
-        return DEMO_FREQUENCIA;
+        _cachedFrequencia = JSON.parse(JSON.stringify(DEMO_FREQUENCIA));
+        return _cachedFrequencia;
       } catch (e) {
         console.error('Erro ao ler frequência:', e);
-        return DEMO_FREQUENCIA;
+        _cachedFrequencia = JSON.parse(JSON.stringify(DEMO_FREQUENCIA));
+        return _cachedFrequencia;
       }
     },
     saveAllFrequencia: function(freqObj) {
+      _cachedFrequencia = freqObj;
       try {
         localStorage.setItem(FREQ_KEY, JSON.stringify(freqObj));
         window.dispatchEvent(new CustomEvent('postoRH_frequencia_sync', { detail: freqObj }));
@@ -1034,17 +1056,23 @@
     // GESTÃO DE VALES E ADIANTAMENTOS
     // ==========================================
     getVales: function() {
+      if (_cachedVales && _cachedVales.length > 0) return _cachedVales;
       try {
         const data = localStorage.getItem(VALES_KEY);
         if (data) {
           const parsed = JSON.parse(data);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            _cachedVales = parsed;
+            return _cachedVales;
+          }
         }
         localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
-        return DEMO_VALES;
+        _cachedVales = DEMO_VALES.slice();
+        return _cachedVales;
       } catch(e) {
         console.error('Erro ao ler vales:', e);
-        return DEMO_VALES;
+        _cachedVales = DEMO_VALES.slice();
+        return _cachedVales;
       }
     },
     getValesDoColaboradorNoMes: function(colabId, anoMes) {
@@ -1053,6 +1081,7 @@
       return vales.filter(v => v.colabId === colabId && v.dataVale && v.dataVale.startsWith(anoMes));
     },
     saveVales: function(list) {
+      _cachedVales = list;
       try {
         localStorage.setItem(VALES_KEY, JSON.stringify(list));
         window.dispatchEvent(new CustomEvent('postoRH_vales_sync', { detail: list }));
@@ -1122,12 +1151,15 @@
   // Cross-tab synchronization
   window.addEventListener('storage', function(e) {
     if (e.key === STORAGE_KEY) {
+      _cachedColaboradores = null;
       window.dispatchEvent(new CustomEvent('postoRH_sync', { detail: window.PostoStore.getColaboradores() }));
     }
     if (e.key === FREQ_KEY) {
+      _cachedFrequencia = null;
       window.dispatchEvent(new CustomEvent('postoRH_frequencia_sync', { detail: window.PostoStore.getAllFrequencia() }));
     }
     if (e.key === VALES_KEY) {
+      _cachedVales = null;
       window.dispatchEvent(new CustomEvent('postoRH_vales_sync', { detail: window.PostoStore.getVales() }));
     }
   });

@@ -284,11 +284,25 @@
             </div>
           </div>
 
-          <!-- Filtros de Posto, Mês e Busca Rápida -->
+          <!-- Filtros de Município, Posto, Mês e Busca Rápida -->
           <div class="bg-surface-container-low rounded-xl p-space-sm flex flex-wrap items-center gap-space-sm border border-slate-200">
             <div class="flex items-center gap-space-xs px-space-sm py-1">
               <span class="material-symbols-outlined text-secondary text-lg">tune</span>
               <span class="font-label-sm text-label-sm text-on-surface uppercase font-bold">Filtros:</span>
+            </div>
+
+            <!-- Município Polo -->
+            <div class="min-w-[170px]">
+              <label class="sr-only">Município Polo</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">location_city</span>
+                <select id="filter-municipio" onchange="handleMunicipioFilterChange(this.value)" class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-7 py-2 rounded-lg appearance-none shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-semibold cursor-pointer">
+                  <option value="todos" selected>Todos os Municípios</option>
+                  <option value="parintins">Parintins (AM)</option>
+                  <option value="barreirinha">Barreirinha (AM)</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-2 text-xs text-on-surface-variant pointer-events-none">expand_more</span>
+              </div>
             </div>
 
             <!-- Posto / Lotação -->
@@ -296,7 +310,7 @@
               <label class="sr-only">Posto de Combustível</label>
               <div class="relative flex items-center">
                 <span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
-                <select id="filter-posto" onchange="renderVales()" class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-7 py-2 rounded-lg appearance-none shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-semibold">
+                <select id="filter-posto" onchange="renderVales()" class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-7 py-2 rounded-lg appearance-none shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-semibold cursor-pointer">
                   <option value="todos" selected>Todos os Postos da Rede (4 Postos)</option>
                   <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
                   <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
@@ -308,10 +322,11 @@
             </div>
 
             <!-- Mês / Competência -->
-            <div class="min-w-[180px]">
+            <div class="min-w-[170px]">
+              <label class="sr-only">Competência</label>
               <div class="relative flex items-center">
                 <span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">calendar_month</span>
-                <select id="filter-mes" onchange="renderVales()" class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-7 py-2 rounded-lg appearance-none shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-semibold">
+                <select id="filter-mes" onchange="renderVales()" class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-7 py-2 rounded-lg appearance-none shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-semibold cursor-pointer">
                   <option value="2024-10" selected>Outubro / 2024</option>
                   <option value="2024-09">Setembro / 2024</option>
                   <option value="2024-11">Novembro / 2024</option>
@@ -322,7 +337,7 @@
             </div>
 
             <!-- Busca Rápida Colaborador / CPF -->
-            <div class="flex-1 min-w-[220px]">
+            <div class="flex-1 min-w-[200px]">
               <div class="relative flex items-center">
                 <span class="material-symbols-outlined absolute left-2.5 text-base text-secondary pointer-events-none">search</span>
                 <input id="filter-search" oninput="debounceRenderVales()" type="text" placeholder="Buscar colaborador ou CPF..." class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-3 py-2 rounded-lg shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-medium"/>
@@ -331,14 +346,14 @@
           </div>
         </div>
 
-        <!-- 3 KPI Cards: 100% Relacionados a Vales Pegos -->
+        <!-- 3 KPI Cards: 1º Geral de Todos | 2º Quadro | 3º Posto Selecionado -->
         <div class="px-gutter-lg py-space-md grid grid-cols-1 md:grid-cols-3 gap-4">
-          <!-- Card 1: Total de Vales Pegos no Mês -->
+          <!-- Card 1: TOTAL GERAL DE VALES (SEMPRE O GERAL DE TODOS OS POSTOS DA REDE) -->
           <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
             <div class="flex items-start justify-between">
               <div>
-                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Total de Vales Pegos</span>
-                <div class="text-xs text-secondary font-semibold mt-0.5" id="kpi-card1-subtitle">No Mês Selecionado</div>
+                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Total Geral de Vales</span>
+                <div class="text-xs text-secondary font-semibold mt-0.5" id="kpi-card1-subtitle">Todos os Postos da Rede</div>
               </div>
               <div class="w-9 h-9 rounded-lg bg-blue-50 text-secondary flex items-center justify-center">
                 <span class="material-symbols-outlined text-xl">payments</span>
@@ -348,12 +363,12 @@
               <div class="text-2xl font-black text-slate-900 tracking-tight" id="kpi-total-vales">R$ 0,00</div>
               <div class="flex items-center gap-1.5 mt-1">
                 <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-bold" id="kpi-qtd-vales">0 vales</span>
-                <span class="text-xs text-slate-500">retirados no mês</span>
+                <span class="text-xs text-slate-500" id="kpi-qtd-vales-label">em toda a rede no mês</span>
               </div>
             </div>
             <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-              <span class="text-slate-500">Posto ativo:</span>
-              <span class="font-bold text-slate-800" id="kpi-posto-label">Todos</span>
+              <span class="text-slate-500">Abrangência:</span>
+              <span class="font-bold text-blue-800" id="kpi-posto-label">Geral de Todos os Postos (4 Unidades)</span>
             </div>
           </div>
 
@@ -362,7 +377,7 @@
             <div class="flex items-start justify-between">
               <div>
                 <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Pessoas com Vale</span>
-                <div class="text-xs text-emerald-600 font-semibold mt-0.5">Pegaram adiantamento</div>
+                <div class="text-xs text-emerald-600 font-semibold mt-0.5" id="kpi-card2-subtitle">Pegaram adiantamento</div>
               </div>
               <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <span class="material-symbols-outlined text-xl">group</span>
@@ -381,28 +396,27 @@
             </div>
           </div>
 
-          <!-- Card 3: Posto Selecionado / Unidade com Vales -->
+          <!-- Card 3: Total do Posto Selecionado (APENAS O POSTO SELECIONADO) -->
           <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
             <div class="flex items-start justify-between">
               <div>
-                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Unidade com Vales</span>
-                <div class="text-xs text-indigo-600 font-semibold mt-0.5" id="kpi-card3-subtitle">Distribuição física</div>
+                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Total do Posto Selecionado</span>
+                <div class="text-xs text-indigo-600 font-semibold mt-0.5" id="kpi-card3-subtitle">Apenas Unidade Filtrada</div>
               </div>
               <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                <span class="material-symbols-outlined text-xl">store</span>
+                <span class="material-symbols-outlined text-xl">local_gas_station</span>
               </div>
             </div>
             <div class="mt-3">
-              <div class="text-2xl font-black text-slate-900 tracking-tight truncate" id="kpi-top-posto-total">R$ 0,00</div>
+              <div class="text-2xl font-black text-indigo-950 tracking-tight truncate" id="kpi-top-posto-total">R$ 0,00</div>
               <div class="flex items-center gap-1.5 mt-1">
                 <span class="text-xs bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded font-bold truncate max-w-full" id="kpi-top-posto-nome">Todos os Postos</span>
+                <span class="text-xs text-slate-500" id="kpi-posto-selecionado-qtd">16 vales</span>
               </div>
             </div>
             <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-              <span class="text-slate-500">Status no fechamento:</span>
-              <span class="font-bold text-emerald-600 flex items-center gap-1">
-                <span class="material-symbols-outlined text-xs">check_circle</span> Pronto p/ Folha
-              </span>
+              <span class="text-slate-500">Posto ativo:</span>
+              <span class="font-bold text-indigo-900 truncate" id="kpi-card3-status">Todos os Postos da Rede</span>
             </div>
           </div>
         </div>
@@ -1042,105 +1056,178 @@
       }
     }
 
-    // RENDERIZAÇÃO DA TABELA E KPIS: 100% SOBRE VALES PEGOS
+    const postosValesPorMunicipio = {
+      'todos': [
+        { val: 'todos', label: 'Todos os Postos da Rede (4 Postos)' },
+        { val: 'posto-oliveira-francesa', label: 'Posto Oliveira - Na Francesa' },
+        { val: 'posto-oliveira-odovaldo', label: 'Posto Oliveira - Odovaldo Novo' },
+        { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' },
+        { val: 'posto-equador-barreirinha', label: 'Posto Equador - Barreirinha' }
+      ],
+      'parintins': [
+        { val: 'todos', label: 'Todos os Postos de Parintins (3 Postos)' },
+        { val: 'posto-oliveira-francesa', label: 'Posto Oliveira - Na Francesa' },
+        { val: 'posto-oliveira-odovaldo', label: 'Posto Oliveira - Odovaldo Novo' },
+        { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' }
+      ],
+      'barreirinha': [
+        { val: 'todos', label: 'Todos os Postos de Barreirinha (1 Posto)' },
+        { val: 'posto-equador-barreirinha', label: 'Posto Equador - Barreirinha' }
+      ]
+    };
+
+    function handleMunicipioFilterChange(mun) {
+      const selectPosto = document.getElementById('filter-posto');
+      if (!selectPosto) return;
+
+      selectPosto.innerHTML = '';
+      const lista = postosValesPorMunicipio[mun] || postosValesPorMunicipio['todos'];
+      lista.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.val;
+        opt.textContent = item.label;
+        selectPosto.appendChild(opt);
+      });
+
+      renderVales();
+    }
+
+    // RENDERIZAÇÃO DA TABELA E KPIS: 1º GERAL DE TODOS | 3º APENAS POSTO SELECIONADO
     function renderVales() {
       if (typeof PostoStore === 'undefined') return;
 
       const allVales = PostoStore.getVales();
       const allColabs = PostoStore.getColaboradores();
 
-      // Filtros
-      const filterPosto = document.getElementById('filter-posto').value;
-      const filterMes = document.getElementById('filter-mes').value;
-      const filterSearch = (document.getElementById('filter-search').value || '').trim().toLowerCase();
+      // Filtros da Tela
+      const filterMun = document.getElementById('filter-municipio') ? document.getElementById('filter-municipio').value : 'todos';
+      const filterPosto = document.getElementById('filter-posto') ? document.getElementById('filter-posto').value : 'todos';
+      const filterMes = document.getElementById('filter-mes') ? document.getElementById('filter-mes').value : '2024-10';
+      const filterSearch = (document.getElementById('filter-search') ? document.getElementById('filter-search').value : '').trim().toLowerCase();
 
-      // Filtrar vales estritamente no mês selecionado e pelos critérios
-      let valesFiltrados = allVales.filter(v => {
-        // Filtro por Mês (ex: 2024-10)
+      // -------------------------------------------------------------------
+      // 1. KPI 1: TOTAL GERAL DE VALES (SEMPRE O GERAL DE TODOS OS POSTOS DA REDE)
+      // "esse primeiro ser o geral de todos"
+      // -------------------------------------------------------------------
+      const valesMesTodaRede = allVales.filter(v => {
         if (filterMes !== 'todos') {
-          if (!v.dataVale || !v.dataVale.startsWith(filterMes)) {
-            return false;
-          }
+          return v.dataVale && v.dataVale.startsWith(filterMes);
         }
-
-        // Filtro por Posto
-        if (filterPosto !== 'todos') {
-          if (v.posto !== filterPosto) {
-            return false;
-          }
-        }
-
-        // Filtro por Busca Rápida (Nome ou CPF)
-        if (filterSearch) {
-          const nomeMatch = (v.nome || '').toLowerCase().includes(filterSearch);
-          const cpfMatch = (v.cpf || '').replace(/\D/g, '').includes(filterSearch.replace(/\D/g, ''));
-          const matMatch = (v.matricula || '').toLowerCase().includes(filterSearch);
-          if (!nomeMatch && !cpfMatch && !matMatch) {
-            return false;
-          }
-        }
-
         return true;
       });
 
-      // Ordenar por data mais recente primeiro
-      valesFiltrados.sort((a, b) => (b.dataVale || '').localeCompare(a.dataVale || ''));
-
-      // KPIS:
-      // 1. Total em R$ dos vales pegos
-      let somaTotal = 0;
-      let maiorVale = 0;
-      const pessoasSet = new Set();
-      const volumePorPosto = {};
-
-      valesFiltrados.forEach(v => {
-        const vNum = v.valorNum || parseMoedaBR(v.valor);
-        somaTotal += vNum;
-        if (vNum > maiorVale) maiorVale = vNum;
-        if (v.colabId || v.nome) pessoasSet.add(v.colabId || v.nome);
-
-        const postoKey = v.postoLabel || PostoStore.getStationName(v.posto);
-        volumePorPosto[postoKey] = (volumePorPosto[postoKey] || 0) + vNum;
+      let somaGeralRede = 0;
+      valesMesTodaRede.forEach(v => {
+        somaGeralRede += (v.valorNum || parseMoedaBR(v.valor) || 0);
       });
+      const totalValesGeralCount = valesMesTodaRede.length;
 
-      const totalValesCount = valesFiltrados.length;
-      const totalPessoasComVale = pessoasSet.size;
-      const mediaVale = totalValesCount > 0 ? (somaTotal / totalValesCount) : 0;
-
-      // Total de colaboradores no quadro (para % de aderência)
-      let colabsQuadro = allColabs.filter(c => (c.status || 'Ativo') === 'Ativo');
-      if (filterPosto !== 'todos') {
-        colabsQuadro = colabsQuadro.filter(c => c.posto === filterPosto);
+      document.getElementById('kpi-total-vales').textContent = formatMoedaBR(somaGeralRede);
+      document.getElementById('kpi-qtd-vales').textContent = `${totalValesGeralCount} vale${totalValesGeralCount === 1 ? '' : 's'}`;
+      const kpiCard1Sub = document.getElementById('kpi-card1-subtitle');
+      if (kpiCard1Sub) {
+        kpiCard1Sub.textContent = filterMes !== 'todos' ? 'Geral de Toda a Rede no Mês' : 'Geral de Toda a Rede (Histórico)';
       }
-      const totalColabsAtivos = colabsQuadro.length;
-      const pctPessoasComVale = totalColabsAtivos > 0 ? Math.round((totalPessoasComVale / totalColabsAtivos) * 100) : 0;
+      const kpiPostoLabel = document.getElementById('kpi-posto-label');
+      if (kpiPostoLabel) {
+        kpiPostoLabel.textContent = 'Geral de Todos os Postos (4 Unidades)';
+      }
 
-      // Preenchimento dos KPIs
-      document.getElementById('kpi-total-vales').textContent = formatMoedaBR(somaTotal);
-      document.getElementById('kpi-qtd-vales').textContent = `${totalValesCount} vale${totalValesCount === 1 ? '' : 's'}`;
-      document.getElementById('kpi-posto-label').textContent = filterPosto === 'todos' ? 'Todos os Postos' : PostoStore.getStationName(filterPosto);
+      // -------------------------------------------------------------------
+      // 2. KPI 3: TOTAL DO POSTO SELECIONADO (APENAS O POSTO SELECIONADO)
+      // "e esse segundo apenas o do posto selecionado"
+      // -------------------------------------------------------------------
+      let valesDoPosto = valesMesTodaRede;
+      let nomePostoExibicao = 'Todos os Postos da Rede';
+      let isPostoEspecifico = (filterPosto !== 'todos');
+
+      if (filterPosto !== 'todos') {
+        valesDoPosto = valesMesTodaRede.filter(v => v.posto === filterPosto);
+        nomePostoExibicao = PostoStore.getStationName(filterPosto);
+      } else if (filterMun && filterMun !== 'todos') {
+        if (filterMun === 'parintins') {
+          valesDoPosto = valesMesTodaRede.filter(v => v.posto !== 'posto-equador-barreirinha');
+          nomePostoExibicao = 'Postos de Parintins (3 Postos)';
+          isPostoEspecifico = true;
+        } else if (filterMun === 'barreirinha') {
+          valesDoPosto = valesMesTodaRede.filter(v => v.posto === 'posto-equador-barreirinha');
+          nomePostoExibicao = 'Posto Equador - Barreirinha';
+          isPostoEspecifico = true;
+        }
+      }
+
+      let somaPostoSelecionado = 0;
+      valesDoPosto.forEach(v => {
+        somaPostoSelecionado += (v.valorNum || parseMoedaBR(v.valor) || 0);
+      });
+      const totalValesPostoCount = valesDoPosto.length;
+
+      document.getElementById('kpi-top-posto-total').textContent = formatMoedaBR(somaPostoSelecionado);
+      const kpiTopPostoNome = document.getElementById('kpi-top-posto-nome');
+      if (kpiTopPostoNome) {
+        kpiTopPostoNome.textContent = nomePostoExibicao;
+      }
+      const kpiCard3Sub = document.getElementById('kpi-card3-subtitle');
+      if (kpiCard3Sub) {
+        kpiCard3Sub.textContent = isPostoEspecifico ? 'Apenas Unidade Filtrada' : 'Todos os 4 Postos da Rede';
+      }
+      const kpiPostoSelQtd = document.getElementById('kpi-posto-selecionado-qtd');
+      if (kpiPostoSelQtd) {
+        if (isPostoEspecifico && somaGeralRede > 0) {
+          const pct = Math.round((somaPostoSelecionado / somaGeralRede) * 100);
+          kpiPostoSelQtd.textContent = `${totalValesPostoCount} vales (${pct}% do geral)`;
+        } else {
+          kpiPostoSelQtd.textContent = `${totalValesPostoCount} vales`;
+        }
+      }
+      const kpiCard3Status = document.getElementById('kpi-card3-status');
+      if (kpiCard3Status) {
+        kpiCard3Status.textContent = isPostoEspecifico ? nomePostoExibicao : 'Todos os Postos da Rede';
+      }
+
+      // -------------------------------------------------------------------
+      // 3. KPI 2: PESSOAS COM VALE (NO ESCOPO SELECIONADO)
+      // -------------------------------------------------------------------
+      const pessoasSet = new Set(valesDoPosto.map(v => v.colabId || v.nome));
+      const totalPessoasComVale = pessoasSet.size;
+
+      let colabsEscopo = allColabs.filter(c => (c.status || 'Ativo') === 'Ativo');
+      if (filterPosto !== 'todos') {
+        colabsEscopo = colabsEscopo.filter(c => c.posto === filterPosto);
+      } else if (filterMun && filterMun !== 'todos') {
+        if (filterMun === 'parintins') {
+          colabsEscopo = colabsEscopo.filter(c => c.posto !== 'posto-equador-barreirinha');
+        } else if (filterMun === 'barreirinha') {
+          colabsEscopo = colabsEscopo.filter(c => c.posto === 'posto-equador-barreirinha');
+        }
+      }
+      const totalColabsAtivos = colabsEscopo.length;
+      const pctPessoasComVale = totalColabsAtivos > 0 ? Math.round((totalPessoasComVale / totalColabsAtivos) * 100) : 0;
 
       document.getElementById('kpi-pessoas-com-vale').textContent = `${totalPessoasComVale} ${totalPessoasComVale === 1 ? 'Pessoa' : 'Pessoas'}`;
       document.getElementById('kpi-percent-colabs').textContent = `${pctPessoasComVale}% do quadro`;
       document.getElementById('kpi-total-colabs-quadro').textContent = `${totalColabsAtivos} Ativos`;
 
-      // Card 3: Unidade / Posto com Vales (se todos os postos, exibe "Todos os Postos")
-      const card3Subtitle = document.getElementById('kpi-card3-subtitle');
-      if (filterPosto === 'todos') {
-        document.getElementById('kpi-top-posto-total').textContent = formatMoedaBR(somaTotal);
-        document.getElementById('kpi-top-posto-nome').textContent = 'Todos os Postos';
-        if (card3Subtitle) card3Subtitle.textContent = 'Todos os 4 Postos da Rede';
-      } else {
-        const nomePosto = PostoStore.getStationName(filterPosto);
-        document.getElementById('kpi-top-posto-total').textContent = formatMoedaBR(somaTotal);
-        document.getElementById('kpi-top-posto-nome').textContent = nomePosto;
-        if (card3Subtitle) card3Subtitle.textContent = 'Posto Selecionado';
+      // -------------------------------------------------------------------
+      // 4. TABELA DE EXTRATO DE VALES
+      // -------------------------------------------------------------------
+      let valesFiltrados = valesDoPosto;
+      if (filterSearch) {
+        valesFiltrados = valesDoPosto.filter(v => {
+          const nomeMatch = (v.nome || '').toLowerCase().includes(filterSearch);
+          const cpfMatch = (v.cpf || '').replace(/\D/g, '').includes(filterSearch.replace(/\D/g, ''));
+          const matMatch = (v.matricula || '').toLowerCase().includes(filterSearch);
+          return nomeMatch || cpfMatch || matMatch;
+        });
       }
+
+      // Ordenar por data mais recente primeiro
+      valesFiltrados.sort((a, b) => (b.dataVale || '').localeCompare(a.dataVale || ''));
 
       // Badge e rodapé
       document.getElementById('badge-total-registros').textContent = `${totalPessoasComVale} pessoa${totalPessoasComVale === 1 ? '' : 's'} com vale`;
-      document.getElementById('footer-resumo-texto').textContent = `Mostrando ${totalValesCount} vale${totalValesCount === 1 ? '' : 's'} de ${totalPessoasComVale} colaborador${totalPessoasComVale === 1 ? '' : 'es'} no mês`;
-      document.getElementById('footer-total-soma').textContent = formatMoedaBR(somaTotal);
+      document.getElementById('footer-resumo-texto').textContent = `Mostrando ${valesFiltrados.length} vale${valesFiltrados.length === 1 ? '' : 's'} de ${totalPessoasComVale} colaborador${totalPessoasComVale === 1 ? '' : 'es'}`;
+      document.getElementById('footer-total-soma').textContent = formatMoedaBR(somaPostoSelecionado);
 
       // Renderizar linhas da tabela (EXCLUSIVAMENTE QUEM PEGOU VALE)
       const tbody = document.getElementById('tbody-vales');
@@ -1273,7 +1360,9 @@
     let valesDebounceTimer = null;
     function debounceRenderVales() {
       clearTimeout(valesDebounceTimer);
-      valesDebounceTimer = setTimeout(renderVales, 120);
+      valesDebounceTimer = setTimeout(() => {
+        requestAnimationFrame(renderVales);
+      }, 50);
     }
 
     // Inicialização e sincronização (idempotente)

@@ -1430,7 +1430,9 @@
   let freqSearchDebounce = null;
   function debounceRenderFrequencia() {
     clearTimeout(freqSearchDebounce);
-    freqSearchDebounce = setTimeout(renderFrequencia, 120);
+    freqSearchDebounce = setTimeout(() => {
+      requestAnimationFrame(renderFrequencia);
+    }, 50);
   }
 
   // Inicialização (idempotente)

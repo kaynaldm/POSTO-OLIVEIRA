@@ -559,17 +559,20 @@ Posto de Gasolina
 <script>
     const postosPorMunicipio = {
       'todos': [
-        { val: 'todos', label: 'Todos os postos de Parintins (4 Ativos)' },
+        { val: 'todos', label: 'Todos os postos da rede (4 Ativos)' },
         { val: 'posto-oliveira-francesa', label: 'Posto Oliveira - Na Francesa' },
         { val: 'posto-oliveira-odovaldo', label: 'Posto Oliveira - Odovaldo Novo' },
         { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' },
         { val: 'posto-equador-barreirinha', label: 'Posto Equador - Barreirinha' }
       ],
       'parintins': [
-        { val: 'todos', label: 'Todos os postos de Parintins (4 Ativos)' },
+        { val: 'todos', label: 'Todos os postos de Parintins (3 Ativos)' },
         { val: 'posto-oliveira-francesa', label: 'Posto Oliveira - Na Francesa' },
         { val: 'posto-oliveira-odovaldo', label: 'Posto Oliveira - Odovaldo Novo' },
-        { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' },
+        { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' }
+      ],
+      'barreirinha': [
+        { val: 'todos', label: 'Todos de Barreirinha (1 Ativo)' },
         { val: 'posto-equador-barreirinha', label: 'Posto Equador - Barreirinha' }
       ]
     };
@@ -894,7 +897,9 @@ Posto de Gasolina
     let searchDebounceTimer = null;
     document.getElementById('input-search').addEventListener('input', () => {
       clearTimeout(searchDebounceTimer);
-      searchDebounceTimer = setTimeout(renderColaboradores, 120);
+      searchDebounceTimer = setTimeout(() => {
+        requestAnimationFrame(renderColaboradores);
+      }, 50);
     });
 
     // Sync listener
