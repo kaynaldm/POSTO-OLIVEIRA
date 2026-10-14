@@ -1,6 +1,10 @@
 // PostoRH Central Store & Data Synchronization System
 (function() {
   const STORAGE_KEY = 'postoRH_colaboradores';
+  const FREQ_KEY = 'postoRH_frequencia';
+  const VALES_KEY = 'postoRH_vales';
+  const SEED_VERSION_KEY = 'postoRH_seed_v4_completo';
+
   const STATIONS = [
     { id: 'posto-oliveira-francesa', name: 'Posto Oliveira - Na Francesa', bairro: 'Francesa', address: 'Av. João Meireles, 30-136' },
     { id: 'posto-oliveira-odovaldo', name: 'Posto Oliveira - Odovaldo Novo', bairro: 'Odovaldo Novo', address: 'Estrada Odovaldo Novo' },
@@ -8,18 +12,728 @@
     { id: 'posto-equador-barreirinha', name: 'Posto Equador - Barreirinha', bairro: 'João Pinheiro', address: 'Rua Barreirinha, 1181-1293' }
   ];
 
+  // Base Seed: 20 Colaboradores distribuídos pelas 4 unidades de Parintins
+  const DEMO_COLABORADORES = [
+    {
+      id: 'COL-001',
+      matricula: '#0481',
+      nome: 'Valdir Antonio Silveira',
+      cpf: '182.492.018-44',
+      dataNascimento: '1988-05-14',
+      dataInicio: '2021-02-15',
+      dataAdmissao: '2021-02-15',
+      sexo: 'Masculino',
+      cargo: 'frentista_lider',
+      cargoLabel: 'Frentista Líder',
+      salario: 'R$ 2.850,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      bairro: 'Francesa',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'VA'
+    },
+    {
+      id: 'COL-002',
+      matricula: '#0482',
+      nome: 'Mariana Souza dos Santos',
+      cpf: '402.819.330-91',
+      dataNascimento: '1995-09-22',
+      dataInicio: '2022-06-01',
+      dataAdmissao: '2022-06-01',
+      sexo: 'Feminino',
+      cargo: 'operador_caixa',
+      cargoLabel: 'Operador(a) de Caixa',
+      salario: 'R$ 2.100,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      bairro: 'Francesa',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'MS'
+    },
+    {
+      id: 'COL-003',
+      matricula: '#0483',
+      nome: 'José Carlos Albuquerque',
+      cpf: '098.221.782-31',
+      dataNascimento: '1990-11-03',
+      dataInicio: '2020-03-10',
+      dataAdmissao: '2020-03-10',
+      sexo: 'Masculino',
+      cargo: 'gerente_posto',
+      cargoLabel: 'Gerente de Posto',
+      salario: 'R$ 4.500,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      bairro: 'Odovaldo Novo',
+      turno: 'Comercial (08:00 - 18:00)',
+      status: 'Ativo',
+      initials: 'JC'
+    },
+    {
+      id: 'COL-004',
+      matricula: '#0484',
+      nome: 'Raimundo Nonato Batista',
+      cpf: '551.402.119-02',
+      dataNascimento: '1984-07-19',
+      dataInicio: '2023-01-15',
+      dataAdmissao: '2023-01-15',
+      sexo: 'Masculino',
+      cargo: 'frentista',
+      cargoLabel: 'Frentista de Pista',
+      salario: 'R$ 2.200,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      bairro: 'Conjunto Sham',
+      turno: 'Turno Tarde (14:00 - 22:20)',
+      status: 'Ativo',
+      initials: 'RN'
+    },
+    {
+      id: 'COL-005',
+      matricula: '#0485',
+      nome: 'Amanda Ferreira Lima',
+      cpf: '712.903.654-18',
+      dataNascimento: '1998-12-08',
+      dataInicio: '2023-08-20',
+      dataAdmissao: '2023-08-20',
+      sexo: 'Feminino',
+      cargo: 'frentista',
+      cargoLabel: 'Frentista de Pista',
+      salario: 'R$ 2.200,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      bairro: 'João Pinheiro',
+      turno: 'Turno Noite (22:00 - 06:20)',
+      status: 'Ativo',
+      initials: 'AF'
+    },
+    {
+      id: 'COL-006',
+      matricula: '#0486',
+      nome: 'Lucas Gabriel Pinheiro',
+      cpf: '321.654.987-12',
+      dataNascimento: '1996-03-25',
+      dataInicio: '2022-11-10',
+      dataAdmissao: '2022-11-10',
+      sexo: 'Masculino',
+      cargo: 'frentista',
+      cargoLabel: 'Frentista de Pista',
+      salario: 'R$ 2.200,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      bairro: 'Francesa',
+      turno: 'Turno Tarde (14:00 - 22:20)',
+      status: 'Ativo',
+      initials: 'LP'
+    },
+    {
+      id: 'COL-007',
+      matricula: '#0487',
+      nome: 'Beatriz Cristina Ramos',
+      cpf: '456.789.123-45',
+      dataNascimento: '1999-07-14',
+      dataInicio: '2023-04-01',
+      dataAdmissao: '2023-04-01',
+      sexo: 'Feminino',
+      cargo: 'operador_caixa',
+      cargoLabel: 'Operador(a) de Caixa',
+      salario: 'R$ 2.100,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      bairro: 'Francesa',
+      turno: 'Turno Tarde (14:00 - 22:20)',
+      status: 'Ativo',
+      initials: 'BR'
+    },
+    {
+      id: 'COL-008',
+      matricula: '#0488',
+      nome: 'Marcos Vinicius Farias',
+      cpf: '654.321.789-99',
+      dataNascimento: '1992-10-30',
+      dataInicio: '2021-08-15',
+      dataAdmissao: '2021-08-15',
+      sexo: 'Masculino',
+      cargo: 'frentista',
+      cargoLabel: 'Frentista de Pista',
+      salario: 'R$ 2.200,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      bairro: 'Francesa',
+      turno: 'Turno Noite (22:00 - 06:20)',
+      status: 'Ativo',
+      initials: 'MF'
+    },
+    {
+      id: 'COL-009',
+      matricula: '#0489',
+      nome: 'Francisca Helena Prado',
+      cpf: '789.123.456-00',
+      dataNascimento: '1987-02-18',
+      dataInicio: '2020-05-20',
+      dataAdmissao: '2020-05-20',
+      sexo: 'Feminino',
+      cargo: 'frentista_lider',
+      cargoLabel: 'Frentista Líder',
+      salario: 'R$ 2.850,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      bairro: 'Odovaldo Novo',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'FP'
+    },
+    {
+      id: 'COL-010',
+      matricula: '#0490',
+      nome: 'Thiago Lima Mendonça',
+      cpf: '852.963.741-55',
+      dataNascimento: '1994-11-12',
+      dataInicio: '2023-02-10',
+      dataAdmissao: '2023-02-10',
+      sexo: 'Masculino',
+      cargo: 'frentista',
+      cargoLabel: 'Frentista de Pista',
+      salario: 'R$ 2.200,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      bairro: 'Odovaldo Novo',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'TM'
+    },
+    {
+      id: 'COL-011',
+      matricula: '#0491',
+      nome: 'Camila Rocha Barbosa',
+      cpf: '963.852.741-66',
+      dataNascimento: '2000-08-05',
+      dataInicio: '2023-09-01',
+      dataAdmissao: '2023-09-01',
+      sexo: 'Feminino',
+      cargo: 'operador_caixa',
+      cargoLabel: 'Operador(a) de Caixa',
+      salario: 'R$ 2.100,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      bairro: 'Odovaldo Novo',
+      turno: 'Turno Tarde (14:00 - 22:20)',
+      status: 'Ativo',
+      initials: 'CB'
+    },
+    {
+      id: 'COL-012',
+      matricula: '#0492',
+      nome: 'Rodrigo Otávio Melo',
+      cpf: '147.258.369-77',
+      dataNascimento: '1991-04-19',
+      dataInicio: '2022-01-20',
+      dataAdmissao: '2022-01-20',
+      sexo: 'Masculino',
+      cargo: 'frentista',
+      cargoLabel: 'Frentista de Pista',
+      salario: 'R$ 2.200,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      bairro: 'Odovaldo Novo',
+      turno: 'Turno Noite (22:00 - 06:20)',
+      status: 'Ativo',
+      initials: 'RM'
+    },
+    {
+      id: 'COL-013',
+      matricula: '#0493',
+      nome: 'Gleice Kelly Guimarães',
+      cpf: '258.369.147-88',
+      dataNascimento: '1989-12-02',
+      dataInicio: '2019-10-15',
+      dataAdmissao: '2019-10-15',
+      sexo: 'Feminino',
+      cargo: 'gerente_posto',
+      cargoLabel: 'Gerente de Posto',
+      salario: 'R$ 4.500,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      bairro: 'Conjunto Sham',
+      turno: 'Comercial (08:00 - 18:00)',
+      status: 'Ativo',
+      initials: 'GG'
+    },
+    {
+      id: 'COL-014',
+      matricula: '#0494',
+      nome: 'Anderson Silva de Oliveira',
+      cpf: '369.147.258-99',
+      dataNascimento: '1986-06-28',
+      dataInicio: '2021-07-01',
+      dataAdmissao: '2021-07-01',
+      sexo: 'Masculino',
+      cargo: 'frentista_lider',
+      cargoLabel: 'Frentista Líder',
+      salario: 'R$ 2.850,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      bairro: 'Conjunto Sham',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'AO'
+    },
+    {
+      id: 'COL-015',
+      matricula: '#0495',
+      nome: 'Larissa Danielle Cruz',
+      cpf: '159.357.486-22',
+      dataNascimento: '1997-01-17',
+      dataInicio: '2023-05-15',
+      dataAdmissao: '2023-05-15',
+      sexo: 'Feminino',
+      cargo: 'operador_caixa',
+      cargoLabel: 'Operador(a) de Caixa',
+      salario: 'R$ 2.100,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      bairro: 'Conjunto Sham',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'LC'
+    },
+    {
+      id: 'COL-016',
+      matricula: '#0496',
+      nome: 'Samuel Costa Vieira',
+      cpf: '357.951.482-33',
+      dataNascimento: '1993-09-09',
+      dataInicio: '2022-08-01',
+      dataAdmissao: '2022-08-01',
+      sexo: 'Masculino',
+      cargo: 'frentista',
+      cargoLabel: 'Frentista de Pista',
+      salario: 'R$ 2.200,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      bairro: 'Conjunto Sham',
+      turno: 'Turno Noite (22:00 - 06:20)',
+      status: 'Ativo',
+      initials: 'SV'
+    },
+    {
+      id: 'COL-017',
+      matricula: '#0497',
+      nome: 'Davi Henrique Castro',
+      cpf: '482.357.951-44',
+      dataNascimento: '1985-08-23',
+      dataInicio: '2020-02-01',
+      dataAdmissao: '2020-02-01',
+      sexo: 'Masculino',
+      cargo: 'gerente_posto',
+      cargoLabel: 'Gerente de Posto',
+      salario: 'R$ 4.500,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      bairro: 'João Pinheiro',
+      turno: 'Comercial (08:00 - 18:00)',
+      status: 'Ativo',
+      initials: 'DC'
+    },
+    {
+      id: 'COL-018',
+      matricula: '#0498',
+      nome: 'Juliana Paes Nascimento',
+      cpf: '753.159.852-55',
+      dataNascimento: '1996-12-14',
+      dataInicio: '2023-03-20',
+      dataAdmissao: '2023-03-20',
+      sexo: 'Feminino',
+      cargo: 'operador_caixa',
+      cargoLabel: 'Operador(a) de Caixa',
+      salario: 'R$ 2.100,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      bairro: 'João Pinheiro',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'JN'
+    },
+    {
+      id: 'COL-019',
+      matricula: '#0499',
+      nome: 'Paulo Roberto Brandão',
+      cpf: '852.159.753-66',
+      dataNascimento: '1990-05-07',
+      dataInicio: '2021-12-05',
+      dataAdmissao: '2021-12-05',
+      sexo: 'Masculino',
+      cargo: 'frentista_lider',
+      cargoLabel: 'Frentista Líder',
+      salario: 'R$ 2.850,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      bairro: 'João Pinheiro',
+      turno: 'Turno Tarde (14:00 - 22:20)',
+      status: 'Ativo',
+      initials: 'PB'
+    },
+    {
+      id: 'COL-020',
+      matricula: '#0500',
+      nome: 'Edilson Marinho Duarte',
+      cpf: '951.753.357-77',
+      dataNascimento: '1987-10-11',
+      dataInicio: '2022-04-10',
+      dataAdmissao: '2022-04-10',
+      sexo: 'Masculino',
+      cargo: 'frentista',
+      cargoLabel: 'Lubrificador / Serviços Gerais',
+      salario: 'R$ 2.300,00',
+      municipio: 'Parintins (AM)',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      bairro: 'João Pinheiro',
+      turno: 'Turno Manhã (06:00 - 14:20)',
+      status: 'Ativo',
+      initials: 'ED'
+    }
+  ];
+
+  // Base Seed Frequência / Faltas
+  const DEMO_FREQUENCIA = {
+    'COL-001': {
+      '2024-10-15': { status: 'falta_justificada', obs: 'Atestado odontológico cirúrgico - CRO 1842' }
+    },
+    'COL-002': {
+      '2024-10-22': { status: 'falta_injustificada', obs: 'Ausência sem aviso prévio', valorDesconto: 70.00 },
+      '2024-10-24': { status: 'falta_injustificada', obs: 'Não compareceu ao turno da manhã sem aviso prévio', valorDesconto: 70.00 }
+    },
+    'COL-004': {
+      '2024-10-08': { status: 'falta_justificada', obs: 'Acompanhamento hospitalar familiar com declaração' },
+      '2024-10-24': { status: 'falta_justificada', obs: 'Declaração de comparecimento judicial (Fórum de Parintins)' }
+    },
+    'COL-005': {
+      '2024-10-18': { status: 'falta_injustificada', obs: 'Falta sem justificativa prévia', valorDesconto: 73.33 },
+      '2024-10-24': { status: 'falta_justificada', obs: 'Comprovante de doação de sangue no Hemonúcleo de Parintins' }
+    },
+    'COL-007': {
+      '2024-10-24': { status: 'falta_justificada', obs: 'Atestado médico 24h - Dr. Roberto CRM 4921 (Gastroenterite)' }
+    },
+    'COL-008': {
+      '2024-10-11': { status: 'falta_justificada', obs: 'Atestado médico 48h - Pronto Socorro Parintins' }
+    },
+    'COL-010': {
+      '2024-10-24': { status: 'falta_injustificada', obs: 'Ausência não justificada na escala matutina', valorDesconto: 73.33 }
+    },
+    'COL-011': {
+      '2024-10-17': { status: 'falta_injustificada', obs: 'Falta no turno sem justificativa', valorDesconto: 70.00 }
+    },
+    'COL-014': {
+      '2024-10-08': { status: 'falta_justificada', obs: 'Acompanhamento de dependente em consulta médica' }
+    },
+    'COL-016': {
+      '2024-10-20': { status: 'falta_injustificada', obs: 'Sem justificativa informada', valorDesconto: 73.33 }
+    },
+    'COL-019': {
+      '2024-10-04': { status: 'falta_justificada', obs: 'Declaração de exames periódicos de saúde ocupacional' }
+    }
+  };
+
+  // Base Seed Vales e Adiantamentos (16 registros ricos em Outubro/2024)
+  const DEMO_VALES = [
+    {
+      id: 'VAL-001',
+      colabId: 'COL-001',
+      nome: 'Valdir Antonio Silveira',
+      matricula: '#0481',
+      cpf: '182.492.018-44',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-10',
+      valor: 'R$ 350,00',
+      valorNum: 350.00,
+      initials: 'VA'
+    },
+    {
+      id: 'VAL-002',
+      colabId: 'COL-002',
+      nome: 'Mariana Souza dos Santos',
+      matricula: '#0482',
+      cpf: '402.819.330-91',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-18',
+      valor: 'R$ 200,00',
+      valorNum: 200.00,
+      initials: 'MS'
+    },
+    {
+      id: 'VAL-003',
+      colabId: 'COL-003',
+      nome: 'José Carlos Albuquerque',
+      matricula: '#0483',
+      cpf: '098.221.782-31',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      turno: 'Comercial',
+      horario: '08:00 às 18:00',
+      dataVale: '2024-10-14',
+      valor: 'R$ 300,00',
+      valorNum: 300.00,
+      initials: 'JC'
+    },
+    {
+      id: 'VAL-004',
+      colabId: 'COL-004',
+      nome: 'Raimundo Nonato Batista',
+      matricula: '#0484',
+      cpf: '551.402.119-02',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      turno: 'Turno Tarde',
+      horario: '14:00 às 22:20',
+      dataVale: '2024-10-22',
+      valor: 'R$ 250,00',
+      valorNum: 250.00,
+      initials: 'RN'
+    },
+    {
+      id: 'VAL-005',
+      colabId: 'COL-005',
+      nome: 'Amanda Ferreira Lima',
+      matricula: '#0485',
+      cpf: '712.903.654-18',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      turno: 'Turno Noite',
+      horario: '22:00 às 06:20',
+      dataVale: '2024-10-12',
+      valor: 'R$ 200,00',
+      valorNum: 200.00,
+      initials: 'AF'
+    },
+    {
+      id: 'VAL-006',
+      colabId: 'COL-001',
+      nome: 'Valdir Antonio Silveira',
+      matricula: '#0481',
+      cpf: '182.492.018-44',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-24',
+      valor: 'R$ 150,00',
+      valorNum: 150.00,
+      initials: 'VA'
+    },
+    {
+      id: 'VAL-007',
+      colabId: 'COL-006',
+      nome: 'Lucas Gabriel Pinheiro',
+      matricula: '#0486',
+      cpf: '321.654.987-12',
+      posto: 'posto-oliveira-francesa',
+      postoLabel: 'Posto Oliveira - Na Francesa',
+      turno: 'Turno Tarde',
+      horario: '14:00 às 22:20',
+      dataVale: '2024-10-19',
+      valor: 'R$ 180,00',
+      valorNum: 180.00,
+      initials: 'LP'
+    },
+    {
+      id: 'VAL-008',
+      colabId: 'COL-009',
+      nome: 'Francisca Helena Prado',
+      matricula: '#0489',
+      cpf: '789.123.456-00',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-08',
+      valor: 'R$ 400,00',
+      valorNum: 400.00,
+      initials: 'FP'
+    },
+    {
+      id: 'VAL-009',
+      colabId: 'COL-009',
+      nome: 'Francisca Helena Prado',
+      matricula: '#0489',
+      cpf: '789.123.456-00',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-23',
+      valor: 'R$ 200,00',
+      valorNum: 200.00,
+      initials: 'FP'
+    },
+    {
+      id: 'VAL-010',
+      colabId: 'COL-010',
+      nome: 'Thiago Lima Mendonça',
+      matricula: '#0490',
+      cpf: '852.963.741-55',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-15',
+      valor: 'R$ 150,00',
+      valorNum: 150.00,
+      initials: 'TM'
+    },
+    {
+      id: 'VAL-011',
+      colabId: 'COL-011',
+      nome: 'Camila Rocha Barbosa',
+      matricula: '#0491',
+      cpf: '963.852.741-66',
+      posto: 'posto-oliveira-odovaldo',
+      postoLabel: 'Posto Oliveira - Odovaldo Novo',
+      turno: 'Turno Tarde',
+      horario: '14:00 às 22:20',
+      dataVale: '2024-10-17',
+      valor: 'R$ 250,00',
+      valorNum: 250.00,
+      initials: 'CB'
+    },
+    {
+      id: 'VAL-012',
+      colabId: 'COL-014',
+      nome: 'Anderson Silva de Oliveira',
+      matricula: '#0494',
+      cpf: '369.147.258-99',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-11',
+      valor: 'R$ 300,00',
+      valorNum: 300.00,
+      initials: 'AO'
+    },
+    {
+      id: 'VAL-013',
+      colabId: 'COL-016',
+      nome: 'Samuel Costa Vieira',
+      matricula: '#0496',
+      cpf: '357.951.482-33',
+      posto: 'posto-equador-sham',
+      postoLabel: 'Posto Equador - Conjunto Sham',
+      turno: 'Turno Noite',
+      horario: '22:00 às 06:20',
+      dataVale: '2024-10-20',
+      valor: 'R$ 200,00',
+      valorNum: 200.00,
+      initials: 'SV'
+    },
+    {
+      id: 'VAL-014',
+      colabId: 'COL-018',
+      nome: 'Juliana Paes Nascimento',
+      matricula: '#0498',
+      cpf: '753.159.852-55',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-16',
+      valor: 'R$ 220,00',
+      valorNum: 220.00,
+      initials: 'JN'
+    },
+    {
+      id: 'VAL-015',
+      colabId: 'COL-019',
+      nome: 'Paulo Roberto Brandão',
+      matricula: '#0499',
+      cpf: '852.159.753-66',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      turno: 'Turno Tarde',
+      horario: '14:00 às 22:20',
+      dataVale: '2024-10-21',
+      valor: 'R$ 350,00',
+      valorNum: 350.00,
+      initials: 'PB'
+    },
+    {
+      id: 'VAL-016',
+      colabId: 'COL-020',
+      nome: 'Edilson Marinho Duarte',
+      matricula: '#0500',
+      cpf: '951.753.357-77',
+      posto: 'posto-equador-barreirinha',
+      postoLabel: 'Posto Equador - Barreirinha',
+      turno: 'Turno Manhã',
+      horario: '06:00 às 14:20',
+      dataVale: '2024-10-24',
+      valor: 'R$ 150,00',
+      valorNum: 150.00,
+      initials: 'ED'
+    }
+  ];
+
+  // Auto-upgrade / seed check
+  function ensureDemonstrationData() {
+    try {
+      const currentVer = localStorage.getItem(SEED_VERSION_KEY);
+      const existingColabs = localStorage.getItem(STORAGE_KEY);
+      
+      // Se não tem dados ou a versão de demonstração é antiga, atualiza com a equipe completa
+      if (!currentVer || !existingColabs || JSON.parse(existingColabs).length < 15) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
+        localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
+        localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
+        localStorage.setItem(SEED_VERSION_KEY, 'v4_completo');
+      }
+    } catch(e) {
+      console.warn('Erro ao verificar dados de demonstração:', e);
+    }
+  }
+
+  ensureDemonstrationData();
+
   window.PostoStore = {
     getStations: function() {
       return STATIONS;
     },
     getStationName: function(id) {
       const s = STATIONS.find(x => x.id === id);
-      return s ? s.name : id;
+      return s ? s.name : (id || 'Posto');
     },
     getStationBairro: function(id) {
       const s = STATIONS.find(x => x.id === id);
       return s ? s.bairro : 'Parintins';
     },
+
+    // Controle robusto e suave de scroll do body (evita travamento de tela)
     _scrollLockCount: 0,
     lockBodyScroll: function() {
       this._scrollLockCount++;
@@ -39,6 +753,22 @@
         document.documentElement.style.overflow = '';
       }
     },
+
+    // Reinicializar dados demonstrativos a qualquer momento
+    resetDemoData: function() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
+      localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
+      localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
+      localStorage.setItem(SEED_VERSION_KEY, 'v4_completo');
+      window.dispatchEvent(new CustomEvent('postoRH_sync', { detail: DEMO_COLABORADORES }));
+      window.dispatchEvent(new CustomEvent('postoRH_frequencia_sync', { detail: DEMO_FREQUENCIA }));
+      window.dispatchEvent(new CustomEvent('postoRH_vales_sync', { detail: DEMO_VALES }));
+      return true;
+    },
+
+    // ==========================================
+    // COLABORADORES
+    // ==========================================
     getColaboradores: function() {
       try {
         const data = localStorage.getItem(STORAGE_KEY);
@@ -51,114 +781,11 @@
             }));
           }
         }
-        // Default initial seed matching the required fields
-        const initialSeed = [
-          {
-            id: 'COL-001',
-            matricula: '#0481',
-            nome: 'Valdir Antonio Silveira',
-            cpf: '182.492.018-44',
-            dataNascimento: '1988-05-14',
-            dataInicio: '2021-02-15',
-            dataAdmissao: '2021-02-15',
-            sexo: 'Masculino',
-            cargo: 'frentista_lider',
-            cargoLabel: 'Frentista Líder',
-            salario: 'R$ 2.850,00',
-            municipio: 'Parintins (AM)',
-            posto: 'posto-oliveira-francesa',
-            postoLabel: 'Posto Oliveira - Na Francesa',
-            bairro: 'Francesa',
-            turno: 'Turno Manhã (06:00 - 14:20)',
-            status: 'Ativo',
-            initials: 'VA'
-          },
-          {
-            id: 'COL-002',
-            matricula: '#0482',
-            nome: 'Mariana Souza dos Santos',
-            cpf: '402.819.330-91',
-            dataNascimento: '1995-09-22',
-            dataInicio: '2022-06-01',
-            dataAdmissao: '2022-06-01',
-            sexo: 'Feminino',
-            cargo: 'operador_caixa',
-            cargoLabel: 'Operador(a) de Caixa',
-            salario: 'R$ 2.100,00',
-            municipio: 'Parintins (AM)',
-            posto: 'posto-oliveira-francesa',
-            postoLabel: 'Posto Oliveira - Na Francesa',
-            bairro: 'Francesa',
-            turno: 'Turno Manhã (06:00 - 14:20)',
-            status: 'Ativo',
-            initials: 'MS'
-          },
-          {
-            id: 'COL-003',
-            matricula: '#0483',
-            nome: 'José Carlos Albuquerque',
-            cpf: '098.221.782-31',
-            dataNascimento: '1990-11-03',
-            dataInicio: '2020-03-10',
-            dataAdmissao: '2020-03-10',
-            sexo: 'Masculino',
-            cargo: 'gerente_posto',
-            cargoLabel: 'Gerente de Posto',
-            salario: 'R$ 4.500,00',
-            municipio: 'Parintins (AM)',
-            posto: 'posto-oliveira-odovaldo',
-            postoLabel: 'Posto Oliveira - Odovaldo Novo',
-            bairro: 'Odovaldo Novo',
-            turno: 'Comercial (08:00 - 18:00)',
-            status: 'Ativo',
-            initials: 'JC'
-          },
-          {
-            id: 'COL-004',
-            matricula: '#0484',
-            nome: 'Raimundo Nonato Batista',
-            cpf: '551.402.119-02',
-            dataNascimento: '1984-07-19',
-            dataInicio: '2023-01-15',
-            dataAdmissao: '2023-01-15',
-            sexo: 'Masculino',
-            cargo: 'frentista',
-            cargoLabel: 'Frentista de Pista',
-            salario: 'R$ 2.200,00',
-            municipio: 'Parintins (AM)',
-            posto: 'posto-equador-sham',
-            postoLabel: 'Posto Equador - Conjunto Sham',
-            bairro: 'Conjunto Sham',
-            turno: 'Turno Tarde (14:00 - 22:20)',
-            status: 'Ativo',
-            initials: 'RN'
-          },
-          {
-            id: 'COL-005',
-            matricula: '#0485',
-            nome: 'Amanda Ferreira Lima',
-            cpf: '712.903.654-18',
-            dataNascimento: '1998-12-08',
-            dataInicio: '2023-08-20',
-            dataAdmissao: '2023-08-20',
-            sexo: 'Feminino',
-            cargo: 'frentista',
-            cargoLabel: 'Frentista de Pista',
-            salario: 'R$ 2.200,00',
-            municipio: 'Parintins (AM)',
-            posto: 'posto-equador-barreirinha',
-            postoLabel: 'Posto Equador - Barreirinha',
-            bairro: 'João Pinheiro',
-            turno: 'Turno Noite (22:00 - 06:20)',
-            status: 'Ativo',
-            initials: 'AF'
-          }
-        ];
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(initialSeed));
-        return initialSeed;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
+        return DEMO_COLABORADORES;
       } catch (e) {
         console.error('Erro ao ler colaboradores:', e);
-        return [];
+        return DEMO_COLABORADORES;
       }
     },
     saveColaboradores: function(list) {
@@ -202,7 +829,7 @@
         initials: initials
       };
 
-      list.unshift(colab); // newest first
+      list.unshift(colab);
       this.saveColaboradores(list);
       return colab;
     },
@@ -216,6 +843,10 @@
       this.saveColaboradores([]);
       return [];
     },
+
+    // ==========================================
+    // FORMATAÇÃO E MÁSCARAS OTIMIZADAS
+    // ==========================================
     formatDateBR: function(dateStr) {
       if (!dateStr || dateStr === '—') return '—';
       if (dateStr.includes('/')) return dateStr;
@@ -243,51 +874,32 @@
       return 'R$ ' + num.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     },
     parseCurrency: function(value) {
-      if (typeof value === 'number') return value;
+      if (typeof value === 'number') return isNaN(value) ? 0 : value;
       if (!value) return 0;
-      let v = (value || '').replace(/\D/g, '');
+      let v = String(value).replace(/\D/g, '');
       if (!v) return 0;
       return parseInt(v, 10) / 100;
     },
     formatCurrency: function(num) {
-      const val = typeof num === 'number' ? num : 0;
+      const val = typeof num === 'number' && !isNaN(num) ? num : 0;
       return 'R$ ' + val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     },
-    // Gestão de Frequência e Apontamentos
+
+    // ==========================================
+    // GESTÃO DE FREQUÊNCIA E APONTAMENTOS
+    // ==========================================
     getAllFrequencia: function() {
-      const FREQ_KEY = 'postoRH_frequencia';
       try {
         const raw = localStorage.getItem(FREQ_KEY);
         if (raw) return JSON.parse(raw);
-        // Seed inicial demonstrativo profissional para Outubro de 2024
-        const seed = {
-          'COL-001': {
-            '2024-10-15': { status: 'falta_justificada', obs: 'Atestado médico 24h - Dr. Roberto CRM 4921' }
-          },
-          'COL-002': {
-            '2024-10-22': { status: 'falta_injustificada', obs: 'Ausência sem aviso prévio', valorDesconto: 70.00 },
-            '2024-10-24': { status: 'falta_injustificada', obs: 'Não compareceu ao turno e sem justificativa', valorDesconto: 70.00 }
-          },
-          'COL-003': {
-            '2024-10-24': { status: 'falta_justificada', obs: 'Atestado médico homologado' }
-          },
-          'COL-004': {
-            '2024-10-08': { status: 'falta_justificada', obs: 'Acompanhamento hospitalar familiar com declaração' },
-            '2024-10-24': { status: 'falta_justificada', obs: 'Declaração de comparecimento judicial' }
-          },
-          'COL-005': {
-            '2024-10-18': { status: 'falta_injustificada', obs: 'Falta sem justificativa prévia', valorDesconto: 73.33 }
-          }
-        };
-        localStorage.setItem(FREQ_KEY, JSON.stringify(seed));
-        return seed;
+        localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
+        return DEMO_FREQUENCIA;
       } catch (e) {
         console.error('Erro ao ler frequência:', e);
-        return {};
+        return DEMO_FREQUENCIA;
       }
     },
     saveAllFrequencia: function(freqObj) {
-      const FREQ_KEY = 'postoRH_frequencia';
       try {
         localStorage.setItem(FREQ_KEY, JSON.stringify(freqObj));
         window.dispatchEvent(new CustomEvent('postoRH_frequencia_sync', { detail: freqObj }));
@@ -329,7 +941,6 @@
       return sal > 0 ? (sal / 30) : 0;
     },
     getHistoricoMes: function(colabId, ano, mes) {
-      // ano = 2024, mes = 10 (1-indexed)
       const allColabs = this.getColaboradores();
       const colab = allColabs.find(c => c.id === colabId) || {};
       const valorDiaPadrao = this.calcularDescontoDia(colab.salario);
@@ -386,7 +997,6 @@
             };
           }
         } else {
-          // Dias úteis padrão considerados como presença até a data de hoje
           totalPresencas++;
           dias[d] = {
             dia: d,
@@ -412,117 +1022,22 @@
         valorDescontoTotal: somaDescontos
       };
     },
+
     // ==========================================
     // GESTÃO DE VALES E ADIANTAMENTOS
     // ==========================================
     getVales: function() {
-      const VALES_KEY = 'postoRH_vales';
       try {
-        const seedVales = [
-          {
-            id: 'VAL-001',
-            colabId: 'COL-001',
-            nome: 'Valdir Antonio Silveira',
-            matricula: '#0481',
-            cpf: '182.492.018-44',
-            posto: 'posto-oliveira-francesa',
-            postoLabel: 'Posto Oliveira - Na Francesa',
-            turno: 'Turno Manhã',
-            horario: '06:00 às 14:20',
-            dataVale: '2024-10-10',
-            valor: 'R$ 350,00',
-            valorNum: 350.00,
-            initials: 'VA'
-          },
-          {
-            id: 'VAL-002',
-            colabId: 'COL-002',
-            nome: 'Mariana Souza dos Santos',
-            matricula: '#0482',
-            cpf: '402.819.330-91',
-            posto: 'posto-oliveira-francesa',
-            postoLabel: 'Posto Oliveira - Na Francesa',
-            turno: 'Turno Manhã',
-            horario: '06:00 às 14:20',
-            dataVale: '2024-10-18',
-            valor: 'R$ 200,00',
-            valorNum: 200.00,
-            initials: 'MS'
-          },
-          {
-            id: 'VAL-003',
-            colabId: 'COL-003',
-            nome: 'José Carlos Albuquerque',
-            matricula: '#0483',
-            cpf: '098.221.782-31',
-            posto: 'posto-oliveira-odovaldo',
-            postoLabel: 'Posto Oliveira - Odovaldo Novo',
-            turno: 'Comercial',
-            horario: '08:00 às 18:00',
-            dataVale: '2024-10-14',
-            valor: 'R$ 300,00',
-            valorNum: 300.00,
-            initials: 'JC'
-          },
-          {
-            id: 'VAL-004',
-            colabId: 'COL-004',
-            nome: 'Raimundo Nonato Batista',
-            matricula: '#0484',
-            cpf: '551.402.119-02',
-            posto: 'posto-equador-sham',
-            postoLabel: 'Posto Equador - Conjunto Sham',
-            turno: 'Turno Tarde',
-            horario: '14:00 às 22:20',
-            dataVale: '2024-10-22',
-            valor: 'R$ 250,00',
-            valorNum: 250.00,
-            initials: 'RN'
-          },
-          {
-            id: 'VAL-005',
-            colabId: 'COL-005',
-            nome: 'Amanda Ferreira Lima',
-            matricula: '#0485',
-            cpf: '712.903.654-18',
-            posto: 'posto-equador-barreirinha',
-            postoLabel: 'Posto Equador - Barreirinha',
-            turno: 'Turno Noite',
-            horario: '22:00 às 06:20',
-            dataVale: '2024-10-12',
-            valor: 'R$ 200,00',
-            valorNum: 200.00,
-            initials: 'AF'
-          },
-          {
-            id: 'VAL-006',
-            colabId: 'COL-001',
-            nome: 'Valdir Antonio Silveira',
-            matricula: '#0481',
-            cpf: '182.492.018-44',
-            posto: 'posto-oliveira-francesa',
-            postoLabel: 'Posto Oliveira - Na Francesa',
-            turno: 'Turno Manhã',
-            horario: '06:00 às 14:20',
-            dataVale: '2024-10-24',
-            valor: 'R$ 150,00',
-            valorNum: 150.00,
-            initials: 'VA'
-          }
-        ];
-
         const data = localStorage.getItem(VALES_KEY);
         if (data) {
           const parsed = JSON.parse(data);
-          // Se tiver os postos completos ou for customizado pelo usuário, usa
-          if (Array.isArray(parsed) && parsed.length >= 6) return parsed;
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         }
-
-        localStorage.setItem(VALES_KEY, JSON.stringify(seedVales));
-        return seedVales;
+        localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
+        return DEMO_VALES;
       } catch(e) {
         console.error('Erro ao ler vales:', e);
-        return [];
+        return DEMO_VALES;
       }
     },
     getValesDoColaboradorNoMes: function(colabId, anoMes) {
@@ -531,7 +1046,6 @@
       return vales.filter(v => v.colabId === colabId && v.dataVale && v.dataVale.startsWith(anoMes));
     },
     saveVales: function(list) {
-      const VALES_KEY = 'postoRH_vales';
       try {
         localStorage.setItem(VALES_KEY, JSON.stringify(list));
         window.dispatchEvent(new CustomEvent('postoRH_vales_sync', { detail: list }));
@@ -603,10 +1117,10 @@
     if (e.key === STORAGE_KEY) {
       window.dispatchEvent(new CustomEvent('postoRH_sync', { detail: window.PostoStore.getColaboradores() }));
     }
-    if (e.key === 'postoRH_frequencia') {
+    if (e.key === FREQ_KEY) {
       window.dispatchEvent(new CustomEvent('postoRH_frequencia_sync', { detail: window.PostoStore.getAllFrequencia() }));
     }
-    if (e.key === 'postoRH_vales') {
+    if (e.key === VALES_KEY) {
       window.dispatchEvent(new CustomEvent('postoRH_vales_sync', { detail: window.PostoStore.getVales() }));
     }
   });
