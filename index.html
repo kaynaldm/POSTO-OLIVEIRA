@@ -87,29 +87,24 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
 
-  /* Grid dividers e separação clara das colunas para Últimos Vales Concedidos Hoje */
-  #table-ultimos-vales {
+  /* Linhas nítidas de separação de colunas e linhas da tabela */
+  .tabela-com-divisores {
     border-collapse: collapse !important;
-    width: 100% !important;
-    table-layout: fixed !important;
+    width: 100%;
+    border: 1px solid #cbd5e1 !important; /* borda externa da tabela */
   }
-  #table-ultimos-vales th,
-  #table-ultimos-vales td {
-    border-right: 1px solid #e2e8f0 !important;
-    vertical-align: middle !important;
+  .tabela-com-divisores th,
+  .tabela-com-divisores td {
+    border-right: 1px solid #e2e8f0 !important; /* linha vertical de separação */
+    border-bottom: 1px solid #e2e8f0 !important; /* linha horizontal de separação */
   }
-  #table-ultimos-vales th:last-child,
-  #table-ultimos-vales td:last-child {
+  .tabela-com-divisores th:last-child,
+  .tabela-com-divisores td:last-child {
     border-right: none !important;
   }
-  #table-ultimos-vales thead tr {
+  .tabela-com-divisores thead tr {
+    background-color: #f8fafc !important;
     border-bottom: 2px solid #cbd5e1 !important;
-  }
-  #table-ultimos-vales tbody tr {
-    border-bottom: 1px solid #e2e8f0 !important;
-  }
-  #table-ultimos-vales tbody tr:last-child {
-    border-bottom: none !important;
   }
 </style>
 
@@ -137,14 +132,7 @@
 
       <!-- Links -->
       <nav class="flex flex-col gap-1.5 px-3">
-        <a href="index.html" class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-xl shadow-sm transition-all" aria-current="page">
-          <span class="material-symbols-outlined text-xl leading-none text-secondary">dashboard</span>
-          <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Dashboard</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Indicadores e Alertas</span>
-          </div>
-        </a>
-        <a href="colaboradores.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
+        <a href="colaboradores.html" class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-xl shadow-sm transition-all" aria-current="page">
           <span class="material-symbols-outlined text-xl leading-none text-secondary">badge</span>
           <div class="flex flex-col flex-1">
             <span class="leading-none text-sm font-semibold">Colaboradores</span>
@@ -155,14 +143,14 @@
           <span class="material-symbols-outlined text-xl leading-none text-secondary">fact_check</span>
           <div class="flex flex-col flex-1">
             <span class="leading-none text-sm font-semibold">Frequência</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Turnos e Justificativas</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Faltas & Justificativas</span>
           </div>
         </a>
         <a href="financeiro-vales.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
           <span class="material-symbols-outlined text-xl leading-none text-secondary">payments</span>
           <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Financeiro & Vales</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Adiantamentos e Baixas</span>
+            <span class="leading-none text-sm font-semibold">Vales Pegos</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Extrato do Mês</span>
           </div>
         </a>
       </nav>
@@ -178,7 +166,7 @@
       </button>
 
       <!-- Nome PostoRH -->
-      <a href="index.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
+      <a href="colaboradores.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
         <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
         <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
       </a>
@@ -190,258 +178,741 @@
       <img alt="Carlos Eduardo Mendes" class="w-9 h-9 rounded-full object-cover ring-2 ring-white/40 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgcUVoUOeTzmLXpjnbnOZvoWco-abRnb0OX-VJrcbkpGxI6bmJ7NJMQz7mQ0qu8d1sMM46SvGt8z-PVfMgl_RnzV3f2y4cTDPdznec5WVFoItvg1orRc3CpVBIwws8AKgXFvlOHCsElNWk67_MSL9Qy-_q6np--pS7QzZ3kIgpSqAvWDVTQwn29b2yZrI5_SKv3n15x9AtvurZKAZJOVJdQD4wVXn3R8nzaa-eFFfQFB50tWW9RDi7bA"/>
     </div>
   </header><main class="relative pt-14 bg-surface min-h-screen"><div class="flex flex-col w-full">
-<!-- Cascading Filter Bar -->
-<div class="px-gutter-lg py-space-md bg-surface-container-lowest shadow-sm">
-<div class="flex flex-wrap items-center justify-between gap-space-md">
-<div class="flex flex-wrap items-center gap-space-xs text-on-surface">
-<div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-sm rounded-lg">
-<span class="material-symbols-outlined text-secondary text-lg leading-none">location_city</span>
+<!-- Content Canvas Area -->
+<div class="p-gutter lg:p-margin-desktop flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full">
+<!-- Control Topbar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
 <div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Município</span>
-<select class="bg-transparent font-label-lg text-label-lg font-semibold text-on-surface outline-none cursor-pointer pr-space-sm" id="select-city">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Colaboradores da Rede</h1>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button onclick="if(confirm('Recarregar os 20 colaboradores e dados de demonstração completos?')) { PostoStore.resetDemoData(); renderColaboradores(); }" class="flex items-center gap-space-xs px-3 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-300 rounded-xl transition-all font-label-md text-xs font-semibold cursor-pointer" type="button" title="Restaurar dados completos">
+<span class="material-symbols-outlined text-base text-slate-500">replay</span>
+<span class="hidden sm:inline">Restaurar Demo</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-container-lowest text-on-surface rounded-xl shadow-sm hover:bg-surface-container-low transition-all font-label-lg text-label-lg font-medium cursor-pointer" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Exportar CSV / Folha</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 bg-primary text-on-primary rounded-xl shadow-md hover:bg-on-primary-fixed transition-all font-label-lg text-label-lg font-semibold cursor-pointer" onclick="openDrawer('modal-novo')" type="button">
+<span class="material-symbols-outlined text-base">person_add</span>
+<span>+ Novo Colaborador</span>
+</button>
+</div>
+</div>
+<!-- Quick Stats Cards (KPI Strips) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1: Total de Colaboradores -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md font-semibold">Total de Colaboradores</span>
+<span class="p-2 rounded-xl bg-blue-50 text-secondary material-symbols-outlined text-lg">groups</span>
+</div>
+<div class="mt-2 flex items-baseline gap-space-sm">
+<span class="font-metric-display text-metric-display text-on-surface" id="kpi-total-ativo">0</span>
+<span class="font-label-sm text-label-sm text-secondary bg-blue-50 px-2.5 py-0.5 rounded-full font-bold" id="kpi-total-sub">0 cadastrados</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-total-detalhe">Quadro geral da rede</div>
+</div>
+<!-- Card 2: Total Investido Neles -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md font-semibold">Total Investido Neles</span>
+<span class="p-2 rounded-xl bg-emerald-50 text-emerald-600 material-symbols-outlined text-lg">payments</span>
+</div>
+<div class="mt-2 flex items-baseline gap-space-sm">
+<span class="font-metric-display text-metric-display text-emerald-700 font-bold" id="kpi-total-investido">R$ 0,00</span>
+<span class="font-label-sm text-label-sm text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full font-bold">Folha Mensal</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-investido-detalhe">Soma salarial mensal dos colaboradores</div>
+</div>
+<!-- Card 3: Posto de Gasolina Selecionado -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border-2 border-secondary/20">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md font-semibold text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">local_gas_station</span>
+Posto de Gasolina
+</span>
+<span class="font-label-sm text-label-sm text-secondary bg-blue-50 px-2.5 py-0.5 rounded-full font-bold" id="kpi-posto-badge">Todos os Postos</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold" id="kpi-posto-nome">Todos os Postos de Parintins</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm flex items-center justify-between" id="kpi-posto-detalhe">
+<span>0 colaboradores neste posto</span>
+<button type="button" onclick="document.getElementById('select-posto').focus()" class="text-xs text-secondary font-bold hover:underline cursor-pointer">Alterar Filtro ↓</button>
+</div>
+</div>
+</div>
+<!-- Filter Console (Cascading Filters Panel) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md font-semibold text-on-surface pb-space-xs">
+<span class="material-symbols-outlined text-base text-secondary">tune</span>
+<span>Filtros de Colaboradores</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-end">
+<!-- Select 1: Municipio -->
+<div class="md:col-span-4 flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">1. MUNICÍPIO POLO</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">location_city</span>
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-municipio" onchange="handleMunicipioChange(this.value)">
 <option value="todos">Todos os Municípios (AM)</option>
-<option selected value="parintins">Parintins (AM)</option>
+<option selected="" value="parintins">Parintins (AM)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Select 2: Posto / Unidade (Cascaded) -->
+<div class="md:col-span-4 flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">2. UNIDADE / POSTO DE GASOLINA</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-posto" onchange="renderColaboradores()">
+<option selected value="todos">Todos os postos de Parintins (4 Ativos)</option>
+<option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
+<option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
+<option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
+<option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Input de Busca -->
+<div class="md:col-span-4 flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">3. PESQUISA RÁPIDA</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">search</span>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm pl-9 pr-3 py-2.5 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" id="input-search" oninput="renderColaboradores()" placeholder="Nome, CPF ou cargo..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Active Filter Pill Tags -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs" id="filter-status-strip">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-medium mr-1">Filtros aplicados:</span>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg text-on-surface font-label-sm text-label-sm">
+<span>Município: <strong>Parintins (AM)</strong></span>
+</span>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg text-on-surface font-label-sm text-label-sm" id="pill-posto-ativo">
+<span>Posto: <strong>Todas as Unidades</strong></span>
+</span>
+</div>
+</div>
+<!-- Main Table Container (shadcn/Tailwind corporate surface) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse border border-slate-200 tabela-com-divisores">
+<thead>
+<tr class="bg-slate-100 text-slate-700 font-label-sm text-label-sm uppercase tracking-wider border-b-2 border-slate-300">
+<th class="py-3.5 px-4 font-bold border-r border-slate-200">Nome</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">CPF</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Data Nasc.</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Data Início</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 text-center whitespace-nowrap">Sexo</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Cargo</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 text-right whitespace-nowrap">Salário</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Posto</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Turno</th>
+<th class="py-3.5 px-4 font-bold text-center whitespace-nowrap">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 font-body-sm text-body-sm text-on-surface" id="tabela-colaboradores-body">
+<!-- As linhas são renderizadas dinamicamente pelo JavaScript com divisores verticais e horizontais -->
+</tbody>
+</table>
+</div>
+<!-- Table Footer & Pagination -->
+<div class="px-space-md py-3 bg-surface-container-lowest border-t-0 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" id="paginacao-info">
+<span>Exibindo 0 de 0 colaboradores</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center mr-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="mr-1">Linhas por página:</span>
+<select class="bg-surface-container-low text-on-surface px-1.5 py-1 rounded outline-none cursor-pointer">
+<option>10</option>
+<option>25</option>
+<option>50</option>
 </select>
 </div>
+<button class="p-1 rounded text-on-surface-variant opacity-40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-base">first_page</span>
+</button>
+<button class="p-1 rounded text-on-surface-variant opacity-40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<div class="flex items-center gap-1 font-label-md text-label-md">
+<span class="w-7 h-7 flex items-center justify-center rounded-lg bg-primary text-on-primary font-semibold">1</span>
+<button class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer" type="button">2</button>
+<button class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer" type="button">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer" type="button">10</button>
 </div>
-<span class="material-symbols-outlined text-on-surface-variant text-base opacity-40">arrow_forward</span>
-<div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-sm rounded-lg">
-<span class="material-symbols-outlined text-secondary text-lg leading-none">local_gas_station</span>
+<button class="p-1 rounded text-on-surface hover:bg-surface-container-low cursor-pointer transition-colors" type="button">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+<button class="p-1 rounded text-on-surface hover:bg-surface-container-low cursor-pointer transition-colors" type="button">
+<span class="material-symbols-outlined text-base">last_page</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- DRAWER / SLIDE-OVER: DETALHES DO COLABORADOR (DDL Preview) -->
+<div class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-opacity duration-300 opacity-0" id="drawer-preview">
+<!-- Backdrop overlay -->
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-xs transition-opacity cursor-pointer" onclick="closeDrawer('drawer-preview')"></div>
+<div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+<div class="w-screen max-w-md bg-surface-container-lowest shadow-2xl flex flex-col justify-between transform transition-transform duration-300 translate-x-full pointer-events-auto" id="drawer-content">
+<!-- Header do Drawer -->
+<div class="p-space-lg bg-surface-container-low flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold" id="drawer-avatar">
+              VA
+            </div>
 <div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Unidade Operacional</span>
-<select class="bg-transparent font-label-lg text-label-lg font-semibold text-on-surface outline-none cursor-pointer pr-space-sm" id="select-station">
-<option selected value="todos">Todos os Postos (4 Ativos)</option>
+<span class="self-start text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-surface-container-lowest text-secondary mb-1" id="drawer-status-badge">ATIVO</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight" id="drawer-nome">Valdir Antonio Silveira</h2>
+<span class="font-label-md text-label-md text-on-surface-variant" id="drawer-cargo">Frentista Líder / Pista</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer" onclick="closeDrawer('drawer-preview')" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<!-- Body com Ficha do Colaborador -->
+<div class="flex-1 overflow-y-auto p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">1. Dados Pessoais</span>
+<div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Nome Completo:</span>
+<span class="font-bold text-on-surface" id="drawer-det-nome">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">CPF:</span>
+<span class="font-mono font-bold text-on-surface" id="drawer-cpf">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Data de Nascimento:</span>
+<span class="font-medium text-on-surface" id="drawer-nascimento">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Sexo:</span>
+<span class="font-semibold text-on-surface" id="drawer-sexo">—</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">2. Vínculo & Cargo</span>
+<div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Cargo:</span>
+<span class="font-bold text-secondary text-right" id="drawer-det-cargo">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Posto de Trabalho:</span>
+<span class="font-semibold text-on-surface text-right" id="drawer-posto">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Turno de Trabalho:</span>
+<span class="font-medium text-on-surface text-right" id="drawer-turno">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Data de Início:</span>
+<span class="font-medium text-on-surface" id="drawer-admissao">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm pt-1 border-t border-slate-200">
+<span class="text-on-surface-variant font-bold">Salário Mensal:</span>
+<span class="font-mono font-bold text-emerald-700 text-base" id="drawer-salario">R$ 0,00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer do Drawer -->
+<div class="p-space-md bg-surface-container-low text-on-surface-variant flex items-center justify-between text-label-sm font-label-sm">
+<span>Ficha cadastral ativa</span>
+<button class="px-4 py-1.5 rounded-lg bg-surface-container text-on-surface font-semibold hover:bg-slate-200 transition-colors cursor-pointer" onclick="closeDrawer('drawer-preview')" type="button">Fechar</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast de Sucesso -->
+<div class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-24 opacity-0 pointer-events-none" id="toast-colab-sucesso">
+  <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-base">✓</div>
+  <div class="flex flex-col">
+    <span class="font-bold text-sm">Colaborador Salvo com Sucesso!</span>
+    <span class="text-xs text-slate-300" id="toast-colab-msg">Dados sincronizados em toda a rede PostoRH.</span>
+  </div>
+</div>
+
+<!-- MODAL: NOVO COLABORADOR -->
+<div class="fixed inset-0 z-50 overflow-y-auto hidden overscroll-contain" id="modal-novo">
+<div class="flex min-h-full items-center justify-center p-4">
+<div class="fixed inset-0 bg-on-surface/50 backdrop-blur-xs transition-opacity cursor-pointer" onclick="closeDrawer('modal-novo')"></div>
+<div class="relative w-full max-w-2xl bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col my-8">
+<!-- Topo -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between border-b border-slate-200">
+<div class="flex items-center gap-space-sm">
+<span class="p-2.5 rounded-xl bg-primary text-on-primary material-symbols-outlined text-xl">badge</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Cadastro de Novo Colaborador</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Preencha os dados do colaborador para o posto selecionado.</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1.5 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="closeDrawer('modal-novo')" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Formulário Funcional com Máscaras Automáticas -->
+<form class="p-space-lg flex flex-col gap-space-md" id="form-novo-colaborador" onsubmit="salvarNovoColaborador(event)">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- 1. Nome Completo -->
+<div class="flex flex-col gap-1 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">NOME COMPLETO *</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-nome" placeholder="Ex: Lucas Ferreira de Souza" required type="text"/>
+</div>
+<!-- 2. CPF -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">CPF *</label>
+<span class="text-[11px] text-secondary font-medium">000.000.000-00</span>
+</div>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none font-mono border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-cpf" maxlength="14" oninput="this.value = PostoStore.maskCPF(this.value)" placeholder="000.000.000-00" required type="text"/>
+</div>
+<!-- 3. Sexo -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">SEXO *</label>
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-sexo">
+<option value="Masculino">Masculino</option>
+<option value="Feminino">Feminino</option>
+<option value="Outro">Outro</option>
+</select>
+</div>
+<!-- 4. Data de Nascimento -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">DATA DE NASCIMENTO *</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-nascimento" required type="date"/>
+</div>
+<!-- 5. Data de Início (Admissão) -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">DATA DE INÍCIO *</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-inicio" required type="date"/>
+</div>
+<!-- 6. Cargo / Função -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">CARGO *</label>
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-cargo">
+<option value="frentista">Frentista de Pista</option>
+<option value="frentista_lider">Frentista Líder</option>
+<option value="caixa">Operador de Caixa</option>
+<option value="lubrificador">Técnico de Lubrificação & Óleo</option>
+<option value="gerente">Gerente Operacional de Pista</option>
+<option value="limpeza">Apoio & Conservação</option>
+</select>
+</div>
+<!-- 7. Salário -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">SALÁRIO *</label>
+<span class="text-[11px] text-emerald-600 font-medium">R$ Mensal</span>
+</div>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none font-mono font-bold text-emerald-700 border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-salario" oninput="this.value = PostoStore.maskCurrency(this.value)" placeholder="R$ 2.450,00" value="R$ 2.450,00" required type="text"/>
+</div>
+<!-- 8. Posto que ele é -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">POSTO QUE ELE É *</label>
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-posto">
 <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
 <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
 <option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
 <option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
 </select>
 </div>
+<!-- 9. Turno dele -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">TURNO DELE *</label>
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-turno">
+<option value="Turno Manhã (06:00 - 14:20)">Turno Manhã (06:00 - 14:20)</option>
+<option value="Turno Tarde (14:00 - 22:20)">Turno Tarde (14:00 - 22:20)</option>
+<option value="Turno Noite (22:00 - 06:20)">Turno Noite (22:00 - 06:20)</option>
+<option value="Intermediário / Folguista 12x36">Intermediário / Folguista 12x36</option>
+</select>
 </div>
 </div>
-<div class="flex items-center gap-space-sm">
-<button onclick="resetDashboardFilter()" class="flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-low text-on-surface rounded-lg font-label-lg text-label-lg hover:bg-surface-container-high transition-colors">
-<span class="material-symbols-outlined text-base">filter_alt_off</span>
-<span>Limpar</span>
+<!-- Rodapé do Modal -->
+<div class="flex items-center justify-end gap-space-sm pt-space-md border-t border-slate-200 mt-2">
+<button class="px-5 py-2.5 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-slate-100 font-label-lg text-label-lg transition-colors cursor-pointer" onclick="closeDrawer('modal-novo')" type="button">
+  Cancelar
 </button>
-<button onclick="syncDashboard()" class="flex items-center gap-space-xs px-space-md py-space-sm bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg shadow-sm hover:opacity-95 transition-opacity">
-<span class="material-symbols-outlined text-base">refresh</span>
-<span>Atualizar</span>
-</button>
-<button onclick="if(confirm('Deseja restaurar os dados de demonstração completos (20 colaboradores, faltas e vales)?')){ PostoStore.resetDemoData(); syncDashboard(); }" class="flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-low text-on-surface hover:bg-slate-200 rounded-lg font-label-lg text-label-lg transition-colors border border-slate-300">
-<span class="material-symbols-outlined text-base text-secondary">restart_alt</span>
-<span>Restaurar Demo</span>
+<button class="px-6 py-2.5 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg font-bold hover:bg-on-primary-fixed shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-2" type="submit">
+  <span class="material-symbols-outlined text-lg">check_circle</span>
+  <span>Salvar Colaborador</span>
 </button>
 </div>
-</div>
-</div>
-<!-- Primary Workspace Content -->
-<div class="p-gutter-lg flex flex-col gap-gutter-lg">
-<!-- Top Row KPIs -->
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter">
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
-<div class="flex items-start justify-between">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md text-on-surface-variant">Folha Salarial Base</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Quadro Geral Ativo</span>
-</div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined">payments</span>
-</div>
-</div>
-<div class="mt-space-md flex flex-col">
-<span class="font-metric-display text-metric-display text-on-surface leading-none tracking-tight" id="kpi-dash-folha">R$ 0,00</span>
-<div class="flex items-center gap-space-xs mt-space-sm">
-<span class="font-label-sm text-label-sm bg-surface-container-low text-emerald-700 px-space-xs py-0.5 rounded font-semibold flex items-center" id="kpi-dash-folha-badge">
-100% Ativo
-</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant" id="kpi-dash-folha-sub">20 colaboradores</span>
+</form>
 </div>
 </div>
 </div>
-<!-- Card 2 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
-<div class="flex items-start justify-between">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md text-on-surface-variant">Vales no Mês</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Adiantamentos Autorizados</span>
-</div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-tertiary-container">
-<span class="material-symbols-outlined">request_quote</span>
-</div>
-</div>
-<div class="mt-space-md flex flex-col">
-<span class="font-metric-display text-metric-display text-on-surface leading-none tracking-tight" id="kpi-dash-vales">R$ 0,00</span>
-<div class="flex items-center gap-space-xs mt-space-sm">
-<span class="font-label-sm text-label-sm bg-surface-container-low text-slate-600 px-space-xs py-0.5 rounded font-semibold" id="kpi-dash-vales-badge">0 Vales</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant" id="kpi-dash-vales-sub">no mês corrente</span>
-</div>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
-<div class="flex items-start justify-between">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md text-on-surface-variant">Faltas Registradas Hoje</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Controle de Escala (24 Out)</span>
-</div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-red-600">
-<span class="material-symbols-outlined">event_busy</span>
-</div>
-</div>
-<div class="mt-space-md flex flex-col">
-<div class="flex items-baseline gap-space-xs">
-<span class="font-metric-display text-metric-display text-on-surface leading-none tracking-tight" id="kpi-dash-faltas">0</span>
-<span class="font-label-lg text-label-lg text-on-surface font-semibold">Ausências</span>
-</div>
-<div class="flex items-center gap-space-xs mt-space-sm">
-<span class="font-label-sm text-label-sm bg-red-50 text-red-700 px-space-xs py-0.5 rounded font-semibold" id="kpi-dash-faltas-badge">2 com Desconto</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant" id="kpi-dash-faltas-sub">3 justificadas</span>
-</div>
-</div>
-</div>
-<!-- Card 4 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between border border-transparent hover:border-surface-container transition-all">
-<div class="flex items-start justify-between">
-<div class="flex flex-col">
-<div class="flex items-center gap-1.5">
-<span class="relative flex h-2 w-2">
-  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-</span>
-<span class="font-label-md text-label-md font-semibold text-on-surface">Pessoas em Trabalho</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Equipe em Turno Agora</span>
-</div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined">engineering</span>
-</div>
-</div>
-<div class="mt-space-md flex flex-col">
-<div class="flex items-baseline gap-space-xs">
-<span class="font-metric-display text-metric-display text-on-surface leading-none tracking-tight" id="kpi-dash-pessoas">0</span>
-<span class="font-label-lg text-label-lg text-on-surface font-semibold">em atividade</span>
-</div>
-<div class="flex items-center gap-space-xs mt-space-sm">
-<span class="font-label-sm text-label-sm bg-surface-container-low text-secondary font-semibold px-space-xs py-0.5 rounded flex items-center gap-1">
-<span class="material-symbols-outlined text-xs">local_gas_station</span> 4 Postos (Parintins)
-</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant" id="kpi-dash-pessoas-sub">Aguardando escala</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Main Two-Column Operational Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg">
-<!-- Left Column (60%) -->
-<div class="lg:col-span-7 flex flex-col gap-gutter-lg">
 
-<!-- Latest Advances / Vales Table -->
-<div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col">
-  <div class="px-6 py-4 flex items-center justify-between border-b border-slate-200/80 bg-gradient-to-r from-slate-50 via-white to-blue-50/20">
-    <div>
-      <div class="flex items-center gap-2">
-        <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
-        <h2 class="text-base font-bold text-slate-900 tracking-tight">Últimos Vales Concedidos Hoje</h2>
-      </div>
-      <p class="text-xs text-slate-500 mt-0.5">Lançamentos de adiantamentos autorizados pela gerência de pista</p>
-    </div>
-    <span id="badge-vales-count" class="text-xs bg-slate-100 text-slate-600 border border-slate-200 px-3 py-1 rounded-full font-bold">0 Registros</span>
-  </div>
-  <div class="overflow-x-auto w-full">
-    <table class="w-full text-left table-fixed border-collapse" id="table-ultimos-vales">
-      <colgroup>
-        <col class="w-[36%]">
-        <col class="w-[30%]">
-        <col class="w-[16%]">
-        <col class="w-[10%]">
-        <col class="w-[8%]">
-      </colgroup>
-      <thead>
-        <tr class="bg-slate-50 text-slate-700 text-xs font-bold uppercase tracking-wider">
-          <th class="py-3 px-4 text-left">
-            <div class="flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-sm text-blue-600">badge</span>
-              <span>Colaborador</span>
-            </div>
-          </th>
-          <th class="py-3 px-4 text-left">
-            <div class="flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-sm text-blue-600">local_gas_station</span>
-              <span>Posto / Lotação</span>
-            </div>
-          </th>
-          <th class="py-3 px-4 text-center">
-            <div class="flex items-center justify-center gap-1.5">
-              <span class="material-symbols-outlined text-sm text-blue-600">payments</span>
-              <span>Valor</span>
-            </div>
-          </th>
-          <th class="py-3 px-4 text-center">
-            <div class="flex items-center justify-center gap-1.5">
-              <span class="material-symbols-outlined text-sm text-blue-600">schedule</span>
-              <span>Horário</span>
-            </div>
-          </th>
-          <th class="py-3 px-4 text-center">
-            <span>Ação</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="text-xs text-slate-800">
-        <tr>
-          <td colspan="5" class="py-12 px-4 text-center">
-            <div class="flex flex-col items-center justify-center gap-2 py-4">
-              <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-1">
-                <span class="material-symbols-outlined text-2xl">receipt_long</span>
+<script>
+    const postosPorMunicipio = {
+      'todos': [
+        { val: 'todos', label: 'Todos os postos de Parintins (4 Ativos)' },
+        { val: 'posto-oliveira-francesa', label: 'Posto Oliveira - Na Francesa' },
+        { val: 'posto-oliveira-odovaldo', label: 'Posto Oliveira - Odovaldo Novo' },
+        { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' },
+        { val: 'posto-equador-barreirinha', label: 'Posto Equador - Barreirinha' }
+      ],
+      'parintins': [
+        { val: 'todos', label: 'Todos os postos de Parintins (4 Ativos)' },
+        { val: 'posto-oliveira-francesa', label: 'Posto Oliveira - Na Francesa' },
+        { val: 'posto-oliveira-odovaldo', label: 'Posto Oliveira - Odovaldo Novo' },
+        { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' },
+        { val: 'posto-equador-barreirinha', label: 'Posto Equador - Barreirinha' }
+      ]
+    };
+
+    function handleMunicipioChange(municipio) {
+      const selectPosto = document.getElementById('select-posto');
+      selectPosto.innerHTML = '';
+      
+      const lista = postosPorMunicipio[municipio] || postosPorMunicipio['todos'];
+      lista.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.val;
+        opt.textContent = item.label;
+        selectPosto.appendChild(opt);
+      });
+      renderColaboradores();
+    }
+
+    function resetFilters() {
+      document.getElementById('select-municipio').value = 'parintins';
+      handleMunicipioChange('parintins');
+      document.getElementById('input-search').value = '';
+      document.getElementById('select-posto').value = 'todos';
+      renderColaboradores();
+    }
+
+    // Modal and Drawer Control
+    function previewColaborador(id) {
+      const all = PostoStore.getColaboradores();
+      const c = all.find(x => x.id === id);
+      if (!c) return;
+
+      document.getElementById('drawer-nome').textContent = c.nome;
+      document.getElementById('drawer-cargo').textContent = c.cargoLabel || c.cargo;
+      document.getElementById('drawer-det-nome').textContent = c.nome;
+      document.getElementById('drawer-cpf').textContent = c.cpf;
+      document.getElementById('drawer-nascimento').textContent = PostoStore.formatDateBR(c.dataNascimento) || '—';
+      document.getElementById('drawer-admissao').textContent = PostoStore.formatDateBR(c.dataInicio || c.dataAdmissao) || '—';
+      document.getElementById('drawer-sexo').textContent = c.sexo || 'Masculino';
+      document.getElementById('drawer-det-cargo').textContent = c.cargoLabel || c.cargo;
+      document.getElementById('drawer-salario').textContent = c.salario || 'R$ 0,00';
+      document.getElementById('drawer-posto').textContent = c.postoLabel;
+      document.getElementById('drawer-turno').textContent = c.turno || 'Turno Manhã';
+      
+      document.getElementById('drawer-avatar').textContent = c.initials || 'CO';
+
+      openDrawer('drawer-preview');
+    }
+
+    function openDrawer(id) {
+      if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+        PostoStore.lockBodyScroll();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+      const el = document.getElementById(id);
+      if (id === 'drawer-preview') {
+        el.classList.remove('pointer-events-none', 'opacity-0');
+        el.classList.add('pointer-events-auto', 'opacity-100');
+        const content = document.getElementById('drawer-content');
+        content.classList.remove('translate-x-full');
+        content.classList.add('translate-x-0');
+      } else {
+        el.classList.remove('hidden');
+        if (id === 'modal-novo') {
+          // Set default dates
+          const dt = document.getElementById('novo-inicio');
+          if (dt && !dt.value) dt.value = new Date().toISOString().split('T')[0];
+          
+          // Preselect current filter station if not 'todos'
+          const currentPosto = document.getElementById('select-posto').value;
+          if (currentPosto && currentPosto !== 'todos') {
+            const novoPosto = document.getElementById('novo-posto');
+            if (novoPosto) novoPosto.value = currentPosto;
+          }
+        }
+      }
+    }
+
+    function closeDrawer(id) {
+      if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+        PostoStore.unlockBodyScroll();
+      } else {
+        document.body.style.overflow = '';
+      }
+      const el = document.getElementById(id);
+      if (id === 'drawer-preview') {
+        const content = document.getElementById('drawer-content');
+        content.classList.remove('translate-x-0');
+        content.classList.add('translate-x-full');
+        setTimeout(() => {
+          el.classList.remove('pointer-events-auto', 'opacity-100');
+          el.classList.add('pointer-events-none', 'opacity-0');
+        }, 200);
+      } else {
+        el.classList.add('hidden');
+      }
+    }
+
+    // Dynamic Render & Store Integration
+    function renderColaboradores() {
+      const all = PostoStore.getColaboradores();
+      const selectPostoEl = document.getElementById('select-posto');
+      const selectPosto = selectPostoEl.value;
+      const search = (document.getElementById('input-search').value || '').toLowerCase().trim();
+
+      // Filter list by selected posto and quick search
+      let filtered = all.filter(c => {
+        if (selectPosto !== 'todos' && c.posto !== selectPosto) return false;
+        if (search) {
+          const matchName = (c.nome || '').toLowerCase().includes(search);
+          const matchCpf = (c.cpf || '').includes(search);
+          const matchCargo = (c.cargoLabel || c.cargo || '').toLowerCase().includes(search);
+          const matchPosto = (c.postoLabel || '').toLowerCase().includes(search);
+          if (!matchName && !matchCpf && !matchCargo && !matchPosto) return false;
+        }
+        return true;
+      });
+
+      // Compute stats
+      const totalColabs = filtered.length;
+      const totalInvestido = filtered.reduce((acc, c) => acc + PostoStore.parseCurrency(c.salario), 0);
+
+      // 1. Update KPI Card: Total de Colaboradores
+      document.getElementById('kpi-total-ativo').textContent = totalColabs;
+      document.getElementById('kpi-total-sub').textContent = totalColabs === 1 ? '1 Colaborador' : `${totalColabs} Colaboradores`;
+      document.getElementById('kpi-total-detalhe').textContent = selectPosto === 'todos' 
+        ? `Quadro total da rede (${all.length} cadastrados)`
+        : `Neste posto selecionado (${all.length} no total da rede)`;
+
+      // 2. Update KPI Card: Total Investido Neles
+      document.getElementById('kpi-total-investido').textContent = `R$ ${totalInvestido.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('kpi-investido-detalhe').textContent = totalColabs > 0
+        ? `Média de R$ ${(totalInvestido / totalColabs).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} por colaborador`
+        : 'Soma salarial mensal dos colaboradores';
+
+      // 3. Update KPI Card: Posto de Gasolina
+      const postoOption = selectPostoEl.options[selectPostoEl.selectedIndex];
+      const postoNomeText = postoOption ? postoOption.text : 'Todos os Postos';
+      document.getElementById('kpi-posto-nome').textContent = postoNomeText;
+      document.getElementById('kpi-posto-badge').textContent = selectPosto === 'todos' ? 'Todos os Postos' : 'Posto Filtrado';
+      document.getElementById('kpi-posto-detalhe').innerHTML = selectPosto === 'todos'
+        ? `<span>Visualizando todos os 4 postos da rede</span>`
+        : `<span><strong>${totalColabs}</strong> ${totalColabs === 1 ? 'colaborador alocado' : 'colaboradores alocados'} neste posto</span>`;
+
+      // Update active filter pill
+      document.getElementById('pill-posto-ativo').innerHTML = `<span>Posto: <strong>${postoNomeText}</strong></span>`;
+
+      // Render Table
+      const tbody = document.getElementById('tabela-colaboradores-body');
+      tbody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="10" class="py-16 px-6 text-center">
+              <div class="flex flex-col items-center justify-center gap-3">
+                <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shadow-xs">
+                  <span class="material-symbols-outlined text-3xl">badge</span>
+                </div>
+                <div class="flex flex-col">
+                  <h4 class="text-base font-bold text-slate-800">Nenhum colaborador encontrado</h4>
+                  <p class="text-xs text-slate-500 max-w-md mt-1">
+                    ${all.length === 0 
+                      ? 'Nenhum colaborador cadastrado ainda. Clique no botão abaixo para adicionar o primeiro.' 
+                      : 'Nenhum colaborador encontrado para o posto ou filtro pesquisado.'}
+                  </p>
+                </div>
+                <button onclick="openDrawer('modal-novo')" class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow transition-all cursor-pointer">
+                  <span class="material-symbols-outlined text-base">person_add</span>
+                  <span>+ Cadastrar Novo Colaborador</span>
+                </button>
               </div>
-              <span class="text-sm font-bold text-slate-700">Nenhum vale emitido hoje</span>
-              <span class="text-xs text-slate-400 max-w-sm">Os lançamentos de adiantamentos dos postos de Parintins serão exibidos aqui em tempo real.</span>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs">
-    <span id="footer-vales-count" class="text-slate-500 font-medium">Exibindo 0 registros</span>
-    <a class="text-blue-600 font-bold hover:text-blue-800 flex items-center gap-1.5 transition-colors" href="financeiro-vales.html">
-      <span>Acessar Extrato Geral de Vales</span>
-      <span class="material-symbols-outlined text-sm">arrow_forward</span>
-    </a>
-  </div>
-</div>
-</div>
-<!-- Right Column (40%) -->
-<div class="lg:col-span-5 flex flex-col gap-gutter-lg">
-<!-- Critical Absences & Justifications -->
-<div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-space-lg flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<div class="flex flex-col">
-<div class="flex items-center gap-2">
-  <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
-  <h2 class="font-headline-sm text-headline-sm text-on-surface">Faltas & Justificativas do Dia</h2>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ocorrências pendentes de conferência pelo RH</span>
-</div>
-<span id="badge-faltas-count" class="text-xs bg-slate-100 text-slate-600 border border-slate-200 px-3 py-1 rounded-full font-bold">0 Registros</span>
-</div>
-<div id="container-faltas-lista" class="flex flex-col gap-space-md">
-  <div class="p-8 bg-slate-50/80 rounded-xl border border-slate-200/80 flex flex-col items-center justify-center text-center gap-2 py-12">
-    <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1 border border-emerald-100">
-      <span class="material-symbols-outlined text-2xl">verified_user</span>
-    </div>
-    <span class="text-sm font-bold text-slate-800">Nenhuma ocorrência registrada</span>
-    <span class="text-xs text-slate-500 max-w-xs">100% dos colaboradores dos postos de Parintins estão em conformidade de escala hoje.</span>
-  </div>
-</div>
-</div>
-</div>
+            </td>
+          </tr>
+        `;
+        const pag = document.getElementById('paginacao-info');
+        if (pag) pag.innerHTML = `<span>Exibindo <strong>0</strong> de <strong>${all.length}</strong> colaboradores cadastrados</span>`;
+        return;
+      }
 
-</div>
-</div>
-</div>
+      const pag = document.getElementById('paginacao-info');
+      if (pag) pag.innerHTML = `<span>Exibindo <strong>1 – ${filtered.length}</strong> de <strong>${all.length}</strong> colaboradores cadastrados</span>`;
+
+      let rowsHtml = '';
+      filtered.forEach(c => {
+        const sexoBadge = c.sexo === 'Feminino'
+          ? `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 border border-pink-200">Feminino</span>`
+          : `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">${c.sexo || 'Masculino'}</span>`;
+
+        rowsHtml += `
+          <tr class="hover:bg-blue-50/40 transition-colors group border-b border-slate-200">
+            <!-- 1. Nome -->
+            <td class="py-3.5 px-4 border-r border-slate-200">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-xs">
+                  ${c.initials || 'CO'}
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <button class="text-left font-label-lg text-label-lg font-bold text-slate-900 hover:text-blue-600 truncate cursor-pointer" onclick="previewColaborador('${c.id}')" type="button">
+                    ${c.nome}
+                  </button>
+                  <span class="text-slate-500 font-label-sm text-label-sm">${c.matricula}</span>
+                </div>
+              </div>
+            </td>
+            <!-- 2. CPF -->
+            <td class="py-3.5 px-4 font-label-md text-label-md font-mono font-bold text-slate-800 whitespace-nowrap border-r border-slate-200">
+              ${c.cpf}
+            </td>
+            <!-- 3. Data de Nascimento -->
+            <td class="py-3.5 px-4 font-label-md text-label-md text-slate-700 font-medium whitespace-nowrap border-r border-slate-200">
+              ${PostoStore.formatDateBR(c.dataNascimento) || '—'}
+            </td>
+            <!-- 4. Data de Início -->
+            <td class="py-3.5 px-4 font-label-md text-label-md text-slate-700 font-medium whitespace-nowrap border-r border-slate-200">
+              ${PostoStore.formatDateBR(c.dataInicio || c.dataAdmissao) || '—'}
+            </td>
+            <!-- 5. Sexo -->
+            <td class="py-3.5 px-4 text-center whitespace-nowrap border-r border-slate-200">
+              ${sexoBadge}
+            </td>
+            <!-- 6. Cargo -->
+            <td class="py-3.5 px-4 font-label-md text-label-md font-semibold text-blue-700 whitespace-nowrap border-r border-slate-200">
+              ${c.cargoLabel || c.cargo}
+            </td>
+            <!-- 7. Salário -->
+            <td class="py-3.5 px-4 text-right font-label-md text-label-md font-mono font-bold text-emerald-700 whitespace-nowrap border-r border-slate-200">
+              ${c.salario || 'R$ 0,00'}
+            </td>
+            <!-- 8. Posto que ele é -->
+            <td class="py-3.5 px-4 border-r border-slate-200">
+              <div class="flex flex-col min-w-[190px]">
+                <span class="font-label-md text-label-md font-semibold text-slate-900">${c.postoLabel}</span>
+                <span class="text-slate-500 text-xs">${c.bairro || 'Parintins (AM)'}</span>
+              </div>
+            </td>
+            <!-- 9. Turno dele -->
+            <td class="py-3.5 px-4 font-label-sm text-label-sm text-slate-600 whitespace-nowrap border-r border-slate-200">
+              ${c.turno || 'Turno Manhã'}
+            </td>
+            <!-- 10. Ações -->
+            <td class="py-3.5 px-4 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-1.5">
+                <button class="p-1.5 rounded-lg hover:bg-blue-50 text-slate-500 hover:text-blue-600 transition-colors cursor-pointer" onclick="previewColaborador('${c.id}')" title="Visualizar Ficha" type="button">
+                  <span class="material-symbols-outlined text-base">visibility</span>
+                </button>
+                <button class="p-1.5 rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-600 transition-colors cursor-pointer" onclick="removerColaborador('${c.id}', '${c.nome.replace(/'/g, "\\'")}')" title="Excluir Colaborador" type="button">
+                  <span class="material-symbols-outlined text-base">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = rowsHtml;
+    }
+
+    function salvarNovoColaborador(event) {
+      event.preventDefault();
+      const nome = document.getElementById('novo-nome').value.trim();
+      const cpf = document.getElementById('novo-cpf').value.trim();
+      const sexo = document.getElementById('novo-sexo').value;
+      const dataNascimento = document.getElementById('novo-nascimento').value;
+      const dataInicio = document.getElementById('novo-inicio').value;
+      const cargoSelect = document.getElementById('novo-cargo');
+      const cargo = cargoSelect.value;
+      const cargoLabel = cargoSelect.options[cargoSelect.selectedIndex].text;
+      const salario = document.getElementById('novo-salario').value.trim();
+      const posto = document.getElementById('novo-posto').value;
+      const turno = document.getElementById('novo-turno').value;
+
+      if (!nome) {
+        alert('Por favor, informe o nome completo do colaborador.');
+        return;
+      }
+      if (cpf.length < 14) {
+        alert('Por favor, informe um CPF válido completo (11 dígitos).');
+        return;
+      }
+
+      const colab = PostoStore.addColaborador({
+        nome: nome,
+        cpf: cpf,
+        sexo: sexo,
+        dataNascimento: dataNascimento,
+        dataInicio: dataInicio,
+        cargo: cargo,
+        cargoLabel: cargoLabel,
+        salario: salario,
+        posto: posto,
+        turno: turno,
+        status: 'Ativo'
+      });
+
+      closeDrawer('modal-novo');
+      document.getElementById('form-novo-colaborador').reset();
+      renderColaboradores();
+
+      // Show toast
+      const toast = document.getElementById('toast-colab-sucesso');
+      const toastMsg = document.getElementById('toast-colab-msg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = `${colab.nome} cadastrado com sucesso no ${colab.postoLabel}.`;
+        toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        }, 4000);
+      }
+    }
+
+    function removerColaborador(id, nome) {
+      if (confirm(`Deseja realmente remover o colaborador ${nome}?`)) {
+        PostoStore.deleteColaborador(id);
+        renderColaboradores();
+      }
+    }
+
+    // Dynamic Filter Listeners com Debounce
+    document.getElementById('select-posto').addEventListener('change', renderColaboradores);
+    
+    let searchDebounceTimer = null;
+    document.getElementById('input-search').addEventListener('input', () => {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(renderColaboradores, 120);
+    });
+
+    // Sync listener
+    window.addEventListener('postoRH_sync', renderColaboradores);
+
+    // Initial render on load (idempotente)
+    let hasColabInit = false;
+    function initColaboradores() {
+      if (hasColabInit) return;
+      hasColabInit = true;
+      renderColaboradores();
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initColaboradores);
+    } else {
+      initColaboradores();
+    }
+  </script>
 </div></main></div>
 <script id="drawer-script">
   function openSidebar() {
@@ -452,7 +923,11 @@
       drawer.classList.add('translate-x-0');
       backdrop.classList.remove('opacity-0', 'pointer-events-none');
       backdrop.classList.add('opacity-100', 'pointer-events-auto');
-      document.body.style.overflow = 'hidden';
+      if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+        PostoStore.lockBodyScroll();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
     }
   }
 
@@ -464,7 +939,11 @@
       drawer.classList.add('-translate-x-full');
       backdrop.classList.remove('opacity-100', 'pointer-events-auto');
       backdrop.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
+      if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+        PostoStore.unlockBodyScroll();
+      } else {
+        document.body.style.overflow = '';
+      }
     }
   }
 
@@ -478,225 +957,12 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSidebar();
+    if (e.key === 'Escape') {
+      closeSidebar();
+      closeDrawer('modal-novo');
+      closeDrawer('drawer-preview');
+    }
   });
-
-  // Cross-System Synchronization for Dashboard
-  let hasDashInit = false;
-  function syncDashboard() {
-    if (typeof PostoStore === 'undefined') return;
-
-    const stationSelect = document.getElementById('select-station');
-    const stationFilter = stationSelect ? stationSelect.value : 'todos';
-
-    // 1. Colaboradores
-    const allColabs = PostoStore.getColaboradores();
-    const colabs = (stationFilter === 'todos') ? allColabs : allColabs.filter(c => c.posto === stationFilter);
-    const activeColabs = colabs.filter(c => c.status === 'Ativo');
-
-    // KPI 1: Folha Salarial Base
-    const folhaTotal = activeColabs.reduce((acc, c) => acc + PostoStore.parseCurrency(c.salario), 0);
-    const kpiFolha = document.getElementById('kpi-dash-folha');
-    const kpiFolhaSub = document.getElementById('kpi-dash-folha-sub');
-    if (kpiFolha) kpiFolha.textContent = PostoStore.formatCurrency(folhaTotal);
-    if (kpiFolhaSub) kpiFolhaSub.textContent = `${activeColabs.length} colaboradores ativos`;
-
-    // 2. Vales
-    const allVales = PostoStore.getVales();
-    const vales = (stationFilter === 'todos') ? allVales : allVales.filter(v => v.posto === stationFilter);
-    const valesTotal = vales.reduce((acc, v) => acc + (v.valorNum || PostoStore.parseCurrency(v.valor)), 0);
-    const kpiVales = document.getElementById('kpi-dash-vales');
-    const kpiValesBadge = document.getElementById('kpi-dash-vales-badge');
-    if (kpiVales) kpiVales.textContent = PostoStore.formatCurrency(valesTotal);
-    if (kpiValesBadge) kpiValesBadge.textContent = `${vales.length} Vales`;
-
-    // 3. Faltas / Frequência de Hoje (2024-10-24 ou data ativa de demonstração)
-    const allFreq = PostoStore.getAllFrequencia();
-    const todayKey = '2024-10-24';
-    const faltasHoje = [];
-    
-    for (const c of activeColabs) {
-      if (allFreq[c.id] && allFreq[c.id][todayKey]) {
-        const rec = allFreq[c.id][todayKey];
-        if (rec.status === 'falta_injustificada' || rec.status === 'falta_justificada') {
-          faltasHoje.push({
-            colab: c,
-            status: rec.status,
-            obs: rec.obs || (rec.status === 'falta_justificada' ? 'Justificada com comprovante' : 'Ausência sem aviso'),
-            valorDesconto: rec.valorDesconto || 0
-          });
-        }
-      }
-    }
-
-    const totalFaltas = faltasHoje.length;
-    const faltasInjust = faltasHoje.filter(f => f.status === 'falta_injustificada').length;
-    const faltasJust = faltasHoje.filter(f => f.status === 'falta_justificada').length;
-
-    const kpiFaltas = document.getElementById('kpi-dash-faltas');
-    const kpiFaltasBadge = document.getElementById('kpi-dash-faltas-badge');
-    const kpiFaltasSub = document.getElementById('kpi-dash-faltas-sub');
-    if (kpiFaltas) kpiFaltas.textContent = String(totalFaltas);
-    if (kpiFaltasBadge) kpiFaltasBadge.textContent = `${faltasInjust} com Desconto`;
-    if (kpiFaltasSub) kpiFaltasSub.textContent = `${faltasJust} justificadas`;
-
-    // KPI 4: Pessoas em Trabalho
-    const pessoasTrabalho = Math.max(0, activeColabs.length - totalFaltas);
-    const kpiPessoas = document.getElementById('kpi-dash-pessoas');
-    const kpiPessoasSub = document.getElementById('kpi-dash-pessoas-sub');
-    if (kpiPessoas) kpiPessoas.textContent = String(pessoasTrabalho);
-    if (kpiPessoasSub) kpiPessoasSub.textContent = `${pessoasTrabalho} de ${activeColabs.length} em escala`;
-
-    // Table: Últimos Vales Concedidos
-    const valesTableBody = document.querySelector('#table-ultimos-vales tbody');
-    const badgeValesCount = document.getElementById('badge-vales-count');
-    const footerValesCount = document.getElementById('footer-vales-count');
-    if (badgeValesCount) badgeValesCount.textContent = `${vales.length} Registros`;
-
-    if (valesTableBody) {
-      if (vales.length === 0) {
-        valesTableBody.innerHTML = `
-          <tr>
-            <td colspan="5" class="py-12 px-4 text-center">
-              <div class="flex flex-col items-center justify-center gap-2 py-4">
-                <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-1">
-                  <span class="material-symbols-outlined text-2xl">receipt_long</span>
-                </div>
-                <span class="text-sm font-bold text-slate-700">Nenhum vale emitido</span>
-                <span class="text-xs text-slate-400 max-w-sm">Nenhum adiantamento registrado para os filtros selecionados.</span>
-              </div>
-            </td>
-          </tr>`;
-        if (footerValesCount) footerValesCount.textContent = 'Exibindo 0 registros';
-      } else {
-        const displayVales = vales.slice(0, 5);
-        if (footerValesCount) footerValesCount.textContent = `Exibindo ${displayVales.length} de ${vales.length} registros`;
-        
-        let vHtml = '';
-        displayVales.forEach(v => {
-          const initials = v.initials || 'CO';
-          const valorFmt = PostoStore.formatCurrency(v.valorNum || PostoStore.parseCurrency(v.valor));
-          const dataFmt = v.dataVale ? v.dataVale.split('-').reverse().slice(0, 2).join('/') : '24/10';
-          vHtml += `
-            <tr class="hover:bg-slate-50/70 transition-colors">
-              <td class="py-3 px-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-800 font-bold text-xs flex items-center justify-center shrink-0">
-                    ${initials}
-                  </div>
-                  <div class="flex flex-col min-w-0">
-                    <span class="font-bold text-slate-800 truncate">${v.nome}</span>
-                    <span class="text-[11px] text-slate-500">${v.matricula || ''} • ${v.turno || 'Turno Pista'}</span>
-                  </div>
-                </div>
-              </td>
-              <td class="py-3 px-4">
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-700">
-                  ${v.postoLabel || PostoStore.getStationName(v.posto)}
-                </span>
-              </td>
-              <td class="py-3 px-4 text-center">
-                <span class="font-bold text-blue-700 font-mono text-sm">${valorFmt}</span>
-              </td>
-              <td class="py-3 px-4 text-center text-slate-600 font-mono text-xs">
-                <div>${dataFmt}</div>
-                <div class="text-[10px] text-slate-400">${v.horario ? v.horario.split('às')[0].trim() : '09:30'}</div>
-              </td>
-              <td class="py-3 px-4 text-center">
-                <a href="financeiro-vales.html" title="Visualizar no Financeiro" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors">
-                  <span class="material-symbols-outlined text-base">visibility</span>
-                </a>
-              </td>
-            </tr>
-          `;
-        });
-        valesTableBody.innerHTML = vHtml;
-      }
-    }
-
-    // Container: Faltas & Justificativas do Dia
-    const faltasContainer = document.getElementById('container-faltas-lista');
-    const badgeFaltasCount = document.getElementById('badge-faltas-count');
-    if (badgeFaltasCount) badgeFaltasCount.textContent = `${faltasHoje.length} Registros`;
-
-    if (faltasContainer) {
-      if (faltasHoje.length === 0) {
-        faltasContainer.innerHTML = `
-          <div class="p-8 bg-slate-50/80 rounded-xl border border-slate-200/80 flex flex-col items-center justify-center text-center gap-2 py-12">
-            <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1 border border-emerald-100">
-              <span class="material-symbols-outlined text-2xl">verified_user</span>
-            </div>
-            <span class="text-sm font-bold text-slate-800">100% de Presença Hoje</span>
-            <span class="text-xs text-slate-500 max-w-xs">Nenhuma ausência pendente de conferência para este filtro.</span>
-          </div>
-        `;
-      } else {
-        let fHtml = '';
-        faltasHoje.forEach(f => {
-          const isInjust = f.status === 'falta_injustificada';
-          const badgeClass = isInjust 
-            ? 'bg-red-50 text-red-700 border-red-200' 
-            : 'bg-blue-50 text-blue-700 border-blue-200';
-          const badgeText = isInjust ? 'FALTA INJUSTIFICADA' : 'ATESTADO / JUSTIFICADA';
-          const badgeIcon = isInjust ? 'cancel' : 'assignment_turned_in';
-          const descInfo = isInjust
-            ? `<span class="text-xs font-bold text-red-600">Desconto previsto: -${PostoStore.formatCurrency(f.valorDesconto)}</span>`
-            : `<span class="text-xs font-semibold text-emerald-700 flex items-center gap-1"><span class="material-symbols-outlined text-xs">check_circle</span> Sem desconto em folha</span>`;
-
-          fHtml += `
-            <div class="p-4 rounded-xl border ${isInjust ? 'border-red-200 bg-red-50/20' : 'border-slate-200 bg-slate-50/50'} flex flex-col gap-2 hover:shadow-xs transition-shadow">
-              <div class="flex items-start justify-between gap-2">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-7 h-7 rounded-full ${isInjust ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'} font-bold text-xs flex items-center justify-center shrink-0">
-                    ${f.colab.initials || 'CO'}
-                  </div>
-                  <div>
-                    <h4 class="text-sm font-bold text-slate-900 leading-tight">${f.colab.nome}</h4>
-                    <span class="text-[11px] text-slate-500">${f.colab.matricula} • ${f.colab.cargoLabel || f.colab.cargo}</span>
-                  </div>
-                </div>
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${badgeClass}">
-                  <span class="material-symbols-outlined text-xs">${badgeIcon}</span>
-                  ${badgeText}
-                </span>
-              </div>
-              <div class="text-xs text-slate-600 bg-white/80 p-2.5 rounded-lg border border-slate-200/60 flex flex-col gap-1">
-                <div class="flex items-center justify-between">
-                  <span class="font-semibold text-slate-700">${f.colab.postoLabel || PostoStore.getStationName(f.colab.posto)}</span>
-                  ${descInfo}
-                </div>
-                <p class="text-slate-600 text-xs italic mt-0.5">"${f.obs}"</p>
-              </div>
-            </div>
-          `;
-        });
-        faltasContainer.innerHTML = fHtml;
-      }
-    }
-  }
-
-  function resetDashboardFilter() {
-    const stationSelect = document.getElementById('select-station');
-    if (stationSelect) stationSelect.value = 'todos';
-    syncDashboard();
-  }
-
-  function initDashboard() {
-    if (hasDashInit) return;
-    hasDashInit = true;
-
-    const stationSelect = document.getElementById('select-station');
-    if (stationSelect) {
-      stationSelect.addEventListener('change', syncDashboard);
-    }
-    syncDashboard();
-  }
-
-  document.addEventListener('DOMContentLoaded', initDashboard);
-  window.addEventListener('postoRH_sync', syncDashboard);
-  window.addEventListener('postoRH_vales_sync', syncDashboard);
-  window.addEventListener('postoRH_frequencia_sync', syncDashboard);
-  if (document.readyState !== 'loading') initDashboard();
 </script>
 
 </body></html>

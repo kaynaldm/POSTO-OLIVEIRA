@@ -8,7 +8,6 @@ const PUBLIC_DIR = __dirname;
 // Explicit static references so @vercel/nft traces and bundles every file into the Lambda package
 const KNOWN_FILES = {
   '/index.html': { path: path.join(__dirname, 'index.html'), type: 'text/html; charset=utf-8' },
-  '/dashboard.html': { path: path.join(__dirname, 'dashboard.html'), type: 'text/html; charset=utf-8' },
   '/colaboradores.html': { path: path.join(__dirname, 'colaboradores.html'), type: 'text/html; charset=utf-8' },
   '/frequencia.html': { path: path.join(__dirname, 'frequencia.html'), type: 'text/html; charset=utf-8' },
   '/financeiro-vales.html': { path: path.join(__dirname, 'financeiro-vales.html'), type: 'text/html; charset=utf-8' },
@@ -31,11 +30,13 @@ for (const [route, info] of Object.entries(KNOWN_FILES)) {
   }
 }
 
-// Aliases for clean URLs
+// Aliases for clean URLs (o sistema agora inicia direto em Colaboradores)
 const ROUTE_ALIASES = {
-  '/': '/index.html',
-  '/index': '/index.html',
-  '/dashboard': '/dashboard.html',
+  '/': '/colaboradores.html',
+  '/index': '/colaboradores.html',
+  '/index.html': '/colaboradores.html',
+  '/dashboard': '/colaboradores.html',
+  '/dashboard.html': '/colaboradores.html',
   '/colaboradores': '/colaboradores.html',
   '/frequencia': '/frequencia.html',
   '/financeiro-vales': '/financeiro-vales.html',
