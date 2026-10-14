@@ -238,10 +238,16 @@
 <span class="material-symbols-outlined text-base text-secondary">tune</span>
 <span>Filtros Operacionais em Cascata</span>
 </div>
+<div class="flex items-center gap-space-sm">
 <button class="text-on-surface-variant hover:text-secondary font-label-sm text-label-sm flex items-center gap-1 transition-colors cursor-pointer" onclick="resetFilters()" type="button">
 <span class="material-symbols-outlined text-xs">restart_alt</span>
 <span>Redefinir Filtros</span>
 </button>
+<button class="text-on-surface-variant hover:text-error font-label-sm text-label-sm flex items-center gap-1 transition-colors cursor-pointer" onclick="if(confirm('Deseja zerar todos os colaboradores para iniciar seu cadastro real?')){ PostoStore.clearAll(); }" title="Zerar lista para iniciar cadastro limpo" type="button">
+<span class="material-symbols-outlined text-xs">delete_sweep</span>
+<span>Zerar Cadastros</span>
+</button>
+</div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-end">
 <!-- Select 1: Municipio -->

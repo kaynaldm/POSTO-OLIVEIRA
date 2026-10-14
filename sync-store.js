@@ -77,6 +77,10 @@
       this.saveColaboradores(list);
       return list;
     },
+    clearAll: function() {
+      this.saveColaboradores([]);
+      return [];
+    },
     formatDateBR: function(dateStr) {
       if (!dateStr || dateStr === '—') return '—';
       if (dateStr.includes('/')) return dateStr;
