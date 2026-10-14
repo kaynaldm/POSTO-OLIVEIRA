@@ -1,0 +1,19 @@
+{
+  "name": "posto-gasolina-rh",
+  "version": "1.0.0",
+  "description": "PostoRH - Sistema de Gestão Operacional, Frequência e Vales",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "organize": "node organize.js"
+  },
+  "keywords": [
+    "postorh",
+    "dashboard",
+    "operacional",
+    "rh"
+  ],
+  "author": "",
+  "license": "ISC"
+}

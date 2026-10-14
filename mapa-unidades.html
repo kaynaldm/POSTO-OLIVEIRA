@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script>
+<script src="sync-store.js"></script>
+<script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary-fixed-variant":"#653e00","tertiary-fixed":"#ffddb8","on-primary-container":"#7c839b","tertiary-fixed-dim":"#ffb95f","surface-bright":"#f8f9ff","primary-container":"#131b2e","surface-variant":"#d3e4fe","on-tertiary-container":"#b87500","secondary-fixed-dim":"#b4c5ff","secondary-fixed":"#dbe1ff","on-secondary-container":"#fefcff","surface-container-high":"#dce9ff","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","surface-container-lowest":"#ffffff","on-surface":"#0b1c30","on-secondary-fixed":"#00174b","surface-container-low":"#eff4ff","on-tertiary":"#ffffff","outline":"#76777d","on-primary-fixed-variant":"#3f465c","on-surface-variant":"#45464d","primary":"#000000","tertiary":"#000000","secondary":"#0051d5","background":"#f8f9ff","tertiary-container":"#2a1700","on-primary":"#ffffff","error":"#ba1a1a","secondary-container":"#316bf3","surface-dim":"#cbdbf5","on-secondary":"#ffffff","on-error-container":"#93000a","primary-fixed":"#dae2fd","error-container":"#ffdad6","on-primary-fixed":"#131b2e","primary-fixed-dim":"#bec6e0","surface":"#f8f9ff","on-tertiary-fixed":"#2a1700","outline-variant":"#c6c6cd","surface-container-highest":"#d3e4fe","surface-container":"#e5eeff","inverse-primary":"#bec6e0","inverse-surface":"#213145","on-secondary-fixed-variant":"#003ea8","surface-tint":"#565e74"},"borderRadius":{"sm":"0.375rem","DEFAULT":"0.625rem","md":"0.75rem","lg":"1rem","xl":"1.25rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","gutter":"1.5rem","gutter-lg":"2rem","space-lg":"1.5rem","margin":"1.5rem","space-xl":"2rem","margin-desktop":"2rem","margin-mobile":"1rem","space-xs":"0.25rem","gutter-sm":"1rem","space-md":"1rem"},"fontFamily":{"label-md":["Geist"],"headline-sm":["Geist"],"body-lg":["Geist"],"headline-lg":["Geist"],"metric-display":["Geist"],"body-sm":["Geist"],"label-lg":["Geist"],"body-md":["Geist"],"label-sm":["Geist"],"headline-xl":["Geist"],"headline-md":["Geist"]},"fontSize":{"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"metric-display":["28px",{"lineHeight":"32px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"-0.005em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}]}}}}</script>
+
+
+
+
+<style id="custom-rounded-theme">
+  /* THEME: ULTRA PROFISSIONAL, BORDAS ARREDONDADAS E CORES HARMONIOSAS */
+  :root {
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+  }
+
+  .rounded-sm { border-radius: var(--radius-sm) !important; }
+  .rounded { border-radius: var(--radius-sm) !important; }
+  .rounded-md { border-radius: var(--radius-md) !important; }
+  .rounded-lg { border-radius: var(--radius-lg) !important; }
+  .rounded-xl { border-radius: var(--radius-xl) !important; }
+  .rounded-2xl { border-radius: var(--radius-2xl) !important; }
+  .rounded-full { border-radius: var(--radius-full) !important; }
+
+  /* Elementos arredondados automáticos */
+  button:not(.rounded-full) {
+    border-radius: var(--radius-md) !important;
+  }
+  input, select, textarea {
+    border-radius: var(--radius-md) !important;
+  }
+
+  /* Cards e painéis suaves */
+  .bg-surface-container-lowest,
+  .bg-white {
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
+  }
+
+  /* Tabelas com cantos 100% arredondados */
+  table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+  .overflow-x-auto {
+    border-radius: var(--radius-xl) !important;
+    overflow: hidden !important;
+  }
+  thead th:first-child {
+    border-top-left-radius: var(--radius-xl) !important;
+  }
+  thead th:last-child {
+    border-top-right-radius: var(--radius-xl) !important;
+  }
+  tbody tr:last-child td:first-child {
+    border-bottom-left-radius: var(--radius-xl) !important;
+  }
+  tbody tr:last-child td:last-child {
+    border-bottom-right-radius: var(--radius-xl) !important;
+  }
+
+  /* Status Pills arredondadas */
+  .status-badge {
+    border-radius: 9999px !important;
+    font-weight: 700 !important;
+    padding: 0.35rem 0.85rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.375rem !important;
+    font-size: 0.75rem !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+</style>
+
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><!-- Backdrop Overlay -->
+  <div id="sidebar-backdrop" onclick="closeSidebar()" class="fixed inset-0 bg-primary-container/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <!-- Off-Canvas Drawer (Abre por cima do sistema, sem mexer no layout) -->
+  <aside id="sidebar-drawer" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
+    <div class="flex flex-col">
+      <!-- Drawer Header -->
+      <div class="h-16 px-5 flex items-center justify-between border-b border-surface-container-low">
+        <a href="index.html" class="flex items-center gap-3">
+          <img alt="PostoRH Logo" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqLPJyzwGtdcyPQSu3MVYjOFUDTFWVLfzYcFyxNWAtT5vrvQbPhy1oEDGHT5309xE1DNA1HvsuWEY3Jyik6sWT_kvqnHVDCBoM5npDqrIrskq1owlrcG7Mrk1cSO26RtCwtU9UGFXHKBnWOlbeIZxMeBZWoyg0YFCcaNX_aKg3NgPz10i_DQbeN9X72tcrVe6pQSNjeBd1GZt3IpSXqlIElS0_guswZp8XCqBLnV5kWwDiMjazghnTpg"/>
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">PostoRH</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Rede Operacional</span>
+          </div>
+        </a>
+        <button onclick="closeSidebar()" title="Fechar Menu" type="button" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer flex items-center justify-center">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <!-- Modules Section -->
+      <div class="px-5 pt-4 pb-2">
+        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Módulos do Sistema</span>
+      </div>
+
+      <!-- Links -->
+      <nav class="flex flex-col gap-1.5 px-3">
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
+          <span class="material-symbols-outlined text-xl leading-none text-secondary">dashboard</span>
+          <div class="flex flex-col flex-1">
+            <span class="leading-none text-sm font-semibold">Dashboard</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Indicadores e Alertas</span>
+          </div>
+        </a>
+        <a href="colaboradores.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
+          <span class="material-symbols-outlined text-xl leading-none text-secondary">badge</span>
+          <div class="flex flex-col flex-1">
+            <span class="leading-none text-sm font-semibold">Colaboradores</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Cadastro e Quadro</span>
+          </div>
+        </a>
+        <a href="frequencia.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
+          <span class="material-symbols-outlined text-xl leading-none text-secondary">fact_check</span>
+          <div class="flex flex-col flex-1">
+            <span class="leading-none text-sm font-semibold">Frequência</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Turnos e Justificativas</span>
+          </div>
+        </a>
+        <a href="financeiro-vales.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
+          <span class="material-symbols-outlined text-xl leading-none text-secondary">payments</span>
+          <div class="flex flex-col flex-1">
+            <span class="leading-none text-sm font-semibold">Financeiro & Vales</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Adiantamentos e Baixas</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <div id="main-layout" class="w-full min-h-screen">
+  <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-secondary text-on-secondary shadow-md z-40 flex items-center justify-between px-4 sm:px-gutter-lg">
+    <div class="flex items-center gap-3">
+      <!-- Botão Hambúrguer (3 pauzinhos) -->
+      <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-all flex items-center justify-center cursor-pointer">
+        <span class="material-symbols-outlined text-2xl leading-none">menu</span>
+      </button>
+
+      <!-- Nome PostoRH -->
+      <a href="index.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
+        <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
+        <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
+      </a>
+    </div>
+
+    <!-- Usuário e Perfil -->
+    <div class="flex items-center gap-3">
+      <span class="font-label-lg text-label-lg font-semibold text-white hidden sm:inline">Carlos Eduardo Mendes</span>
+      <img alt="Carlos Eduardo Mendes" class="w-9 h-9 rounded-full object-cover ring-2 ring-white/40 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgcUVoUOeTzmLXpjnbnOZvoWco-abRnb0OX-VJrcbkpGxI6bmJ7NJMQz7mQ0qu8d1sMM46SvGt8z-PVfMgl_RnzV3f2y4cTDPdznec5WVFoItvg1orRc3CpVBIwws8AKgXFvlOHCsElNWk67_MSL9Qy-_q6np--pS7QzZ3kIgpSqAvWDVTQwn29b2yZrI5_SKv3n15x9AtvurZKAZJOVJdQD4wVXn3R8nzaa-eFFfQFB50tWW9RDi7bA"/>
+    </div>
+  </header><main class="relative pt-14 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-gutter-lg py-space-md bg-surface-container-lowest shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">local_gas_station</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Rede Operacional • Mapa Georreferenciado</span>
+<span class="px-space-xs py-0.5 rounded-lg bg-surface-container-high text-secondary font-label-sm text-label-sm uppercase">4 Unidades Ativas</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Monitoramento de escala, efetivo em pista e contingência de postos por município</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-xl">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+<span id="kpi-mapa-escala" class="font-label-sm text-label-sm text-on-surface font-semibold">0 Colaboradores em Escala</span>
+</div>
+<button class="flex items-center gap-space-xs bg-primary hover:bg-on-surface text-on-primary px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" id="btnOpenNewUnitModal">
+<span class="material-symbols-outlined text-base">add_location_alt</span>
+<span>+ Cadastrar Nova Unidade</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row h-[calc(100vh-8.5rem)] relative overflow-hidden">
+<!-- LEFT PANEL: Unidades & Filtros (35%) -->
+<aside class="w-full lg:w-[35%] flex flex-col bg-surface-container-lowest z-20 shadow-md lg:shadow-[2px_0_12px_rgba(0,0,0,0.04)] h-full overflow-hidden">
+<!-- Top Filters Header -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col gap-space-sm shadow-sm">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-lg pointer-events-none">search</span>
+<input class="w-full pl-10 pr-space-md py-space-sm bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-xl outline-none transition-all placeholder:text-on-surface-variant focus:bg-surface-container-lowest focus:shadow-sm" id="searchInput" placeholder="Buscar unidade, bairro ou CEP..." type="text"/>
+<button class="hidden absolute right-space-sm text-on-surface-variant hover:text-on-surface" id="clearSearchBtn">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<!-- City Pill Filter Tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1">
+<button class="city-filter-btn px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-semibold transition-all bg-primary text-on-primary" data-city="todos">
+            Todos (4)
+          </button>
+<button class="city-filter-btn px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-medium transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high" data-city="parintins">
+            Parintins (4)
+          </button>
+</div>
+</div>
+<!-- Quick Metrics Ribbon -->
+<div class="grid grid-cols-3 gap-2 px-space-md py-space-xs bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Presença Média</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">100%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Postos Ativos</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">4 de 4</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Faltas Registradas</span>
+<span class="font-headline-sm text-headline-sm text-emerald-600 font-bold">0 colab.</span>
+</div>
+</div>
+<!-- Units List -->
+<div class="flex-1 overflow-y-auto p-space-md flex flex-col gap-space-sm" id="unitsContainer">
+<!-- Unit Card 1 (Active/Selected) -->
+<div class="unit-card group relative p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md cursor-pointer transition-all bg-gradient-to-r from-surface-container-low to-surface-container-lowest" data-city="parintins" data-unit-id="1">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">local_gas_station</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-secondary transition-colors">Posto Oliveira - Na Francesa</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Av. João Meireles, 30-136 • Francesa, Parintins - AM</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-lg bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold uppercase tracking-wider">Ativo</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">badge</span>
+<span id="unit-colab-count-1" class="font-semibold">0</span> Colaboradores
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm font-bold text-secondary bg-surface-container-low px-space-xs py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">check_circle</span> Pronto p/ Escala
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="font-mono text-xs opacity-70">Parintins • AM</span>
+<span class="text-secondary font-semibold group-hover:underline flex items-center gap-0.5">
+Focar no Mapa <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Unit Card 2 -->
+<div class="unit-card group relative p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md cursor-pointer transition-all" data-city="parintins" data-unit-id="2">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">local_gas_station</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-secondary transition-colors">Posto Oliveira - Odovaldo Novo</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Estrada Odovaldo Novo • Parintins - AM</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-lg bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold uppercase tracking-wider">Ativo</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">badge</span>
+<span id="unit-colab-count-2" class="font-semibold">0</span> Colaboradores
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm font-bold text-secondary bg-surface-container-low px-space-xs py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">check_circle</span> Pronto p/ Escala
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="font-mono text-xs opacity-70">Parintins • AM</span>
+<span class="text-on-surface-variant group-hover:text-secondary font-semibold flex items-center gap-0.5">
+Focar no Mapa <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Unit Card 3 -->
+<div class="unit-card group relative p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md cursor-pointer transition-all" data-city="parintins" data-unit-id="3">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">local_gas_station</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-secondary transition-colors">Posto Equador - Conjunto Sham</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rua Souza Filho, 142-282 • Sham, Parintins - AM</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-lg bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold uppercase tracking-wider">Ativo</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">badge</span>
+<span id="unit-colab-count-3" class="font-semibold">0</span> Colaboradores
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm font-bold text-secondary bg-surface-container-low px-space-xs py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">check_circle</span> Pronto p/ Escala
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="font-mono text-xs opacity-70">Parintins • AM</span>
+<span class="text-on-surface-variant group-hover:text-secondary font-semibold flex items-center gap-0.5">
+Focar no Mapa <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Unit Card 4 -->
+<div class="unit-card group relative p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md cursor-pointer transition-all" data-city="parintins" data-unit-id="4">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">local_gas_station</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-secondary transition-colors">Posto Equador - Barreirinha</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rua Barreirinha, 1181-1293 • João Pinheiro, Parintins - AM</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-lg bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold uppercase tracking-wider">Ativo</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">badge</span>
+<span id="unit-colab-count-4" class="font-semibold">0</span> Colaboradores
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm font-bold text-secondary bg-surface-container-low px-space-xs py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">check_circle</span> Pronto p/ Escala
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="font-mono text-xs opacity-70">Parintins • AM</span>
+<span class="text-on-surface-variant group-hover:text-secondary font-semibold flex items-center gap-0.5">
+Focar no Mapa <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Footer Quick Status -->
+<div class="p-space-sm bg-surface-container-low flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Última sincronização de ponto: Há 4 min</span>
+<span class="font-semibold text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> API Conectada
+        </span>
+</div>
+</aside>
+<!-- RIGHT AREA: Interactive Map Canvas (65%) -->
+<main class="w-full lg:w-[65%] h-full relative overflow-hidden bg-surface-container-low select-none">
+<!-- Cartographic Realistic Simulated Canvas Layer -->
+<div class="absolute inset-0 w-full h-full bg-[#f1f5f9] overflow-hidden transition-all duration-300" id="mapViewport">
+<!-- Cartographic Grid / Vector Roads & River Background Representation -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="120" id="gridPattern" patternunits="userSpaceOnUse" width="120">
+<path d="M 120 0 L 0 0 0 120" fill="none" stroke="#cbd5e1" stroke-dasharray="4,4" stroke-width="0.75"></path>
+</pattern>
+</defs>
+<rect fill="url(#gridPattern)" height="100%" width="100%"></rect>
+<!-- Abstract Arterial Highway Lines -->
+<path d="M -100 280 C 200 240, 500 480, 1200 420" fill="none" stroke="#ffffff" stroke-width="12"></path>
+<path d="M -100 280 C 200 240, 500 480, 1200 420" fill="none" stroke="#e2e8f0" stroke-width="8"></path>
+<path d="M 400 -50 C 450 300, 320 600, 600 1100" fill="none" stroke="#ffffff" stroke-width="16"></path>
+<path d="M 400 -50 C 450 300, 320 600, 600 1100" fill="none" stroke="#e2e8f0" stroke-width="10"></path>
+<!-- River / Coast Representation -->
+<path d="M 0 650 Q 350 620 550 780 T 1100 850" fill="none" opacity="0.8" stroke="#dbeafe" stroke-width="32"></path>
+<path d="M 0 650 Q 350 620 550 780 T 1100 850" fill="none" opacity="0.6" stroke="#93c5fd" stroke-width="6"></path>
+</svg>
+<!-- District & Road Labels for Realistic Cartography -->
+<div class="absolute top-12 left-1/4 font-label-sm text-label-sm font-bold text-on-surface-variant/40 tracking-widest uppercase pointer-events-none">Rio Amazonas / Orla Francesa</div>
+<div class="absolute bottom-24 right-1/4 font-label-sm text-label-sm font-bold text-on-surface-variant/40 tracking-widest uppercase pointer-events-none">Estrada Odovaldo Novo</div>
+<div class="absolute top-1/3 right-1/3 font-label-sm text-label-sm font-bold text-on-surface-variant/30 tracking-widest uppercase pointer-events-none">Parintins • Ilha Tupinambarana (AM)</div>
+<!-- MARKER 1: Posto Oliveira - Na Francesa (Active / Selected) -->
+<div class="marker-element absolute top-[38%] left-[42%] -translate-x-1/2 -translate-y-full cursor-pointer z-30 transition-transform hover:scale-110" id="marker1">
+<div class="relative flex flex-col items-center">
+<!-- Pulsing ring on active -->
+<span class="absolute -bottom-1 w-6 h-6 rounded-full bg-secondary/30 animate-ping"></span>
+<!-- Pin Badge Container -->
+<div class="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-primary text-on-primary shadow-xl ring-2 ring-secondary">
+<span class="material-symbols-outlined text-sm text-secondary" style="font-variation-settings: 'FILL' 1;">local_gas_station</span>
+<span id="marker-colab-count-1" class="font-label-sm text-label-sm font-bold text-on-primary">0 colab.</span>
+</div>
+<!-- Pin Tip triangle -->
+<div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-primary -mt-0.5"></div>
+<div class="w-2.5 h-1 rounded-full bg-primary/40 blur-[1px] mt-0.5"></div>
+</div>
+</div>
+<!-- POPUP: Open at Marker 1 ('Posto Oliveira - Na Francesa') -->
+<div class="absolute top-[38%] left-[42%] -translate-x-1/2 -translate-y-[calc(100%+60px)] w-84 sm:w-96 bg-surface-container-lowest rounded-xl shadow-2xl z-40 p-space-md animate-in fade-in zoom-in-95 duration-200" id="activePopup">
+<!-- Popup Header -->
+<div class="flex items-start justify-between gap-space-sm pb-space-xs border-b border-surface-container">
+<div class="flex items-start gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-secondary/15 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">local_gas_station</span>
+</div>
+<div class="flex flex-col">
+<span id="popup-unit-name" class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Posto Oliveira - Na Francesa</span>
+<span id="popup-unit-address" class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span> Av. João Meireles, 30-136 - Francesa, Parintins - AM
+</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-container-low transition-colors" id="closePopupBtn">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<!-- Geolocation Tags -->
+<div class="mt-space-sm bg-surface-container-low px-space-sm py-1 rounded-lg flex items-center justify-between font-mono text-xs text-on-surface-variant">
+<span>Parintins</span>
+<span class="opacity-30">|</span>
+<span>Amazonas - AM</span>
+<button class="hover:text-secondary flex items-center ml-1" title="Copiar Local">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+<!-- Operational & HR Metrics Box -->
+<div class="mt-space-sm grid grid-cols-2 gap-space-xs">
+<div class="p-space-xs px-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Equipe em Quadro</span>
+<span id="popup-unit-colabs" class="font-headline-sm text-headline-sm text-on-surface font-bold mt-0.5">0 Colaboradores</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-80">Aguardando escala</span>
+</div>
+<div class="p-space-xs px-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Vales Solicitados Hoje</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold mt-0.5">R$ 0,00</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-80">0 adiantamentos</span>
+</div>
+</div>
+<!-- Presença / Faltas Alert Banner -->
+<div class="mt-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container flex items-center justify-between font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-medium">Status Operacional: 100% Ativo</span>
+</div>
+<span class="text-on-surface-variant font-bold">0 Faltas</span>
+</div>
+<!-- Action Buttons -->
+<div class="mt-space-md grid grid-cols-2 gap-space-xs">
+<a class="flex items-center justify-center gap-1 bg-primary hover:bg-on-surface text-on-primary py-2 px-space-xs rounded-xl font-label-sm text-label-sm font-semibold transition-all shadow-sm text-center" href="colaboradores.html">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>Ver Quadro do Posto</span>
+</a>
+<a id="popup-unit-maps" class="flex items-center justify-center gap-1 bg-surface-container hover:bg-surface-container-high text-on-surface py-2 px-space-xs rounded-xl font-label-sm text-label-sm font-semibold transition-all text-center" href="https://share.google/6FmEZ4N0yM1wyBWJ9" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-sm text-secondary">open_in_new</span>
+<span>Abrir no Google Maps</span>
+</a>
+</div>
+<!-- Popup Bottom Arrow -->
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-surface-container-lowest rotate-45 shadow-sm"></div>
+</div>
+<!-- MARKER 2: Posto Oliveira - Odovaldo Novo -->
+<div class="marker-element absolute top-[28%] left-[34%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 transition-transform hover:scale-110" id="marker2">
+<div class="relative flex flex-col items-center">
+<div class="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface shadow-md hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">local_gas_station</span>
+<span id="marker-colab-count-2" class="font-label-sm text-label-sm font-semibold">0 colab.</span>
+</div>
+<div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-surface-container-lowest -mt-0.5"></div>
+<div class="w-2.5 h-1 rounded-full bg-on-surface/20 blur-[1px] mt-0.5"></div>
+</div>
+</div>
+<!-- MARKER 3: Posto Equador - Conjunto Sham -->
+<div class="marker-element absolute top-[34%] left-[62%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 transition-transform hover:scale-110" id="marker3">
+<div class="relative flex flex-col items-center">
+<div class="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface shadow-md hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">local_gas_station</span>
+<span id="marker-colab-count-3" class="font-label-sm text-label-sm font-semibold">0 colab.</span>
+</div>
+<div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-surface-container-lowest -mt-0.5"></div>
+<div class="w-2.5 h-1 rounded-full bg-on-surface/20 blur-[1px] mt-0.5"></div>
+</div>
+</div>
+<!-- MARKER 4: Posto Equador - Barreirinha -->
+<div class="marker-element absolute top-[76%] left-[78%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 transition-transform hover:scale-110" id="marker4">
+<div class="relative flex flex-col items-center">
+<div class="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface shadow-md hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">local_gas_station</span>
+<span id="marker-colab-count-4" class="font-label-sm text-label-sm font-semibold">0 colab.</span>
+</div>
+<div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-surface-container-lowest -mt-0.5"></div>
+<div class="w-2.5 h-1 rounded-full bg-on-surface/20 blur-[1px] mt-0.5"></div>
+</div>
+</div>
+</div>
+<!-- MAP CONTROLS: Top-Right Layer Switcher & Recentering -->
+<div class="absolute top-space-md right-space-md flex flex-col gap-space-xs z-30">
+<!-- Layer Mode Segmented Switcher -->
+<div class="flex items-center bg-surface-container-lowest p-1 rounded-xl shadow-lg backdrop-blur-md">
+<button class="px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-semibold bg-primary text-on-primary transition-all" id="btnViewStreets">
+            Mapa Ruas
+          </button>
+<button class="px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all" id="btnViewSatellite">
+            Satélite
+          </button>
+<button class="px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1" id="btnViewHeatmap">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Frequência
+          </button>
+</div>
+<!-- Action Quick-Button: Recentralizar -->
+<button class="flex items-center justify-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container-low text-on-surface p-space-sm rounded-xl shadow-md transition-all font-label-sm text-label-sm font-semibold self-end" id="btnRecenter">
+<span class="material-symbols-outlined text-lg text-secondary">my_location</span>
+<span>Recentralizar Rede</span>
+</button>
+</div>
+<!-- MAP CONTROLS: Bottom-Right Zoom Buttons -->
+<div class="absolute bottom-space-lg right-space-md flex flex-col bg-surface-container-lowest rounded-xl shadow-lg overflow-hidden z-30">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-low text-on-surface transition-colors active:scale-95" id="btnZoomIn" title="Aproximar Zoom">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+<div class="w-full h-px bg-surface-container"></div>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-low text-on-surface transition-colors active:scale-95" id="btnZoomOut" title="Afastar Zoom">
+<span class="material-symbols-outlined text-lg">remove</span>
+</button>
+</div>
+<!-- MAP LEGEND: Bottom-Left Scale / Sub-legend -->
+<div class="absolute bottom-space-md left-space-md bg-surface-container-lowest/90 backdrop-blur-md px-space-md py-space-xs rounded-xl shadow-md z-30 flex items-center gap-space-md font-label-sm text-label-sm text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary flex items-center justify-center text-[8px] text-on-primary font-bold">18</span>
+<span>Efetivo Ativo</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span>Unidade em Foco</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono text-xs">
+<span>Escala 1 : 25.000</span>
+</div>
+</div>
+</main>
+</div>
+<!-- MODAL: Cadastro de Nova Unidade (Hidden by default) -->
+<div class="fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm flex items-center justify-center p-space-md hidden transition-opacity duration-200" id="newUnitModal">
+<div class="w-full max-w-xl bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-150">
+<!-- Modal Header -->
+<div class="px-space-xl py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-secondary/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl">add_business</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Cadastrar Nova Unidade</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vincule um novo posto de combustível ao controle de RH</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-container transition-colors" id="btnCloseModal">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<!-- Modal Form -->
+<form class="p-space-xl flex flex-col gap-space-md" id="newUnitForm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm font-semibold text-on-surface">Nome da Unidade / Bandeira</label>
+<input class="px-space-md py-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-container-lowest focus:shadow-sm" placeholder="Ex: Posto Campinas Anhanguera Prime" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm font-semibold text-on-surface">Município</label>
+<select class="px-space-md py-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-container-lowest focus:shadow-sm" required="">
+<option value="São Paulo">São Paulo, SP</option>
+<option value="Campinas">Campinas, SP</option>
+<option value="Santos">Santos, SP</option>
+<option value="Guarulhos">Guarulhos, SP</option>
+<option value="Sorocaba">Sorocaba, SP</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm font-semibold text-on-surface">Bairro</label>
+<input class="px-space-md py-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-container-lowest focus:shadow-sm" placeholder="Ex: Nova Campinas" required="" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm font-semibold text-on-surface">Logradouro / Endereço Completo</label>
+<input class="px-space-md py-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-container-lowest focus:shadow-sm" placeholder="Ex: Av. José de Souza Campos, 1200" required="" type="text"/>
+</div>
+<!-- Coordinates Box with Auto-Detect -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">pin_drop</span>
+              Geolocalização (Lat / Long)
+            </span>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-semibold flex items-center gap-0.5" id="btnAutoGeo" type="button">
+<span class="material-symbols-outlined text-xs">gps_fixed</span> Buscar pelo CEP
+            </button>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Latitude</span>
+<input class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-mono text-xs outline-none" placeholder="-23.561684" required="" type="text" value="-22.890520"/>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Longitude</span>
+<input class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-mono text-xs outline-none" placeholder="-46.687219" required="" type="text" value="-47.054321"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm font-semibold text-on-surface">Efetivo Estimado (Frentistas/Caixas)</label>
+<input class="px-space-md py-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none" min="1" type="number" value="12"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm font-semibold text-on-surface">Status Operacional</label>
+<select class="px-space-md py-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none">
+<option value="Ativo">Ativo e Em Operação</option>
+<option value="Implantacao">Fase de Implantação</option>
+<option value="Manutencao">Reforma / Manutenção</option>
+</select>
+</div>
+</div>
+<!-- Modal Footer Actions -->
+<div class="mt-space-sm flex items-center justify-end gap-space-sm pt-space-md border-t border-surface-container">
+<button class="px-space-md py-space-sm rounded-xl font-label-lg text-label-lg font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors" id="btnCancelModal" type="button">
+            Cancelar
+          </button>
+<button class="px-space-xl py-space-sm rounded-xl font-label-lg text-label-lg font-semibold bg-primary hover:bg-on-surface text-on-primary shadow-sm transition-all flex items-center gap-1" type="submit">
+<span class="material-symbols-outlined text-sm">check</span>
+<span>Salvar Posto na Rede</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+  // DOM Elements
+  const cityFilterBtns = document.querySelectorAll('.city-filter-btn');
+  const unitCards = document.querySelectorAll('.unit-card');
+  const searchInput = document.getElementById('searchInput');
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  const activePopup = document.getElementById('activePopup');
+  const closePopupBtn = document.getElementById('closePopupBtn');
+  const btnRecenter = document.getElementById('btnRecenter');
+  const btnZoomIn = document.getElementById('btnZoomIn');
+  const btnZoomOut = document.getElementById('btnZoomOut');
+  const mapViewport = document.getElementById('mapViewport');
+
+  // Modal Elements
+  const btnOpenNewUnitModal = document.getElementById('btnOpenNewUnitModal');
+  const newUnitModal = document.getElementById('newUnitModal');
+  const btnCloseModal = document.getElementById('btnCloseModal');
+  const btnCancelModal = document.getElementById('btnCancelModal');
+  const newUnitForm = document.getElementById('newUnitForm');
+
+  // City Tab Filters
+  cityFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      cityFilterBtns.forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary');
+        b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+      });
+      btn.classList.add('bg-primary', 'text-on-primary');
+      btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+
+      const selectedCity = btn.getAttribute('data-city');
+      filterCards(selectedCity, searchInput.value.toLowerCase());
+    });
+  });
+
+  // Search Filter
+  searchInput.addEventListener('input', (e) => {
+    const val = e.target.value.toLowerCase().trim();
+    clearSearchBtn.classList.toggle('hidden', val.length === 0);
+    const activeCityBtn = document.querySelector('.city-filter-btn.bg-primary');
+    const selectedCity = activeCityBtn ? activeCityBtn.getAttribute('data-city') : 'todos';
+    filterCards(selectedCity, val);
+  });
+
+  clearSearchBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    clearSearchBtn.classList.add('hidden');
+    const activeCityBtn = document.querySelector('.city-filter-btn.bg-primary');
+    filterCards(activeCityBtn ? activeCityBtn.getAttribute('data-city') : 'todos', '');
+  });
+
+  function filterCards(city, query) {
+    unitCards.forEach(card => {
+      const cardCity = card.getAttribute('data-city');
+      const text = card.innerText.toLowerCase();
+      const matchesCity = city === 'todos' || cardCity === city;
+      const matchesQuery = query === '' || text.includes(query);
+
+      if (matchesCity && matchesQuery) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  const STATIONS_INFO = {
+    '1': {
+      name: 'Posto Oliveira - Na Francesa',
+      address: 'Av. João Meireles, 30-136 • Francesa, Parintins - AM',
+      mapsUrl: 'https://share.google/6FmEZ4N0yM1wyBWJ9',
+      top: '38%',
+      left: '42%'
+    },
+    '2': {
+      name: 'Posto Oliveira - Odovaldo Novo',
+      address: 'Estrada Odovaldo Novo • Parintins - AM',
+      mapsUrl: 'https://share.google/tCX5zk6Fq9u9c9iPx',
+      top: '28%',
+      left: '34%'
+    },
+    '3': {
+      name: 'Posto Equador - Conjunto Sham',
+      address: 'Rua Souza Filho, 142-282 • Sham, Parintins - AM',
+      mapsUrl: 'https://share.google/TnS8bTCKjQVXS8nR9',
+      top: '34%',
+      left: '62%'
+    },
+    '4': {
+      name: 'Posto Equador - Barreirinha',
+      address: 'Rua Barreirinha, 1181-1293 • João Pinheiro, Parintins - AM',
+      mapsUrl: 'https://share.google/iOqPd83FYTclfm2Dk',
+      top: '76%',
+      left: '78%'
+    }
+  };
+
+  function showStationPopup(unitId) {
+    const info = STATIONS_INFO[unitId] || STATIONS_INFO['1'];
+    const colabs = window.PostoStore ? PostoStore.getColaboradores() : [];
+    const keyword = info.name.split('-')[1]?.trim().toLowerCase() || '';
+    const count = colabs.filter(c => c.status !== 'DESLIGADO' && (c.stationId === unitId || (c.station && keyword && c.station.toLowerCase().includes(keyword)))).length;
+
+    const popupName = document.getElementById('popup-unit-name');
+    const popupAddress = document.getElementById('popup-unit-address');
+    const popupColabs = document.getElementById('popup-unit-colabs');
+    const popupMaps = document.getElementById('popup-unit-maps');
+
+    if (popupName) popupName.textContent = info.name;
+    if (popupAddress) popupAddress.innerHTML = `<span class="material-symbols-outlined text-xs">location_on</span> ${info.address}`;
+    if (popupColabs) popupColabs.textContent = `${count} Colaborador${count === 1 ? '' : 'es'}`;
+    if (popupMaps) popupMaps.href = info.mapsUrl;
+
+    if (activePopup) {
+      activePopup.style.top = info.top;
+      activePopup.style.left = info.left;
+      activePopup.classList.remove('hidden');
+    }
+  }
+
+  function syncMapaUnidades() {
+    if (!window.PostoStore) return;
+    const colabs = PostoStore.getColaboradores();
+    const activeColabs = colabs.filter(c => c.status !== 'DESLIGADO');
+
+    // Update Top Scale Badge
+    const kpiEscala = document.getElementById('kpi-mapa-escala');
+    if (kpiEscala) {
+      kpiEscala.textContent = `${activeColabs.length} Colaborador${activeColabs.length === 1 ? '' : 'es'} em Escala`;
+    }
+
+    // Counts per station
+    ['1', '2', '3', '4'].forEach(id => {
+      const stationInfo = STATIONS_INFO[id];
+      const keyword = stationInfo ? stationInfo.name.split('-')[1]?.trim().toLowerCase() : '';
+      const count = activeColabs.filter(c => c.stationId === id || (c.station && keyword && c.station.toLowerCase().includes(keyword))).length;
+
+      const cardCount = document.getElementById(`unit-colab-count-${id}`);
+      if (cardCount) cardCount.textContent = count;
+
+      const markerCount = document.getElementById(`marker-colab-count-${id}`);
+      if (markerCount) markerCount.textContent = `${count} colab.`;
+    });
+  }
+
+  // Unit Card Click -> Highlight & Center Map Marker
+  unitCards.forEach(card => {
+    card.addEventListener('click', () => {
+      unitCards.forEach(c => c.classList.remove('bg-gradient-to-r', 'from-surface-container-low', 'to-surface-container-lowest'));
+      card.classList.add('bg-gradient-to-r', 'from-surface-container-low', 'to-surface-container-lowest');
+      const unitId = card.getAttribute('data-unit-id') || '1';
+      showStationPopup(unitId);
+      
+      // Animate subtle focus shift
+      mapViewport.classList.add('scale-105');
+      setTimeout(() => {
+        mapViewport.classList.remove('scale-105');
+      }, 300);
+    });
+  });
+
+  // Popup Close
+  closePopupBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    activePopup.classList.add('hidden');
+  });
+
+  // Markers Click
+  ['1', '2', '3', '4'].forEach(id => {
+    const marker = document.getElementById(`marker${id}`);
+    if (marker) {
+      marker.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showStationPopup(id);
+      });
+    }
+  });
+
+  // Listen for realtime sync across tabs/pages
+  window.addEventListener('postoRH_sync', syncMapaUnidades);
+  window.addEventListener('storage', syncMapaUnidades);
+  syncMapaUnidades();
+
+  // Recentering Button
+  btnRecenter.addEventListener('click', () => {
+    showStationPopup('1');
+    mapViewport.style.transform = 'scale(1) translate(0px, 0px)';
+  });
+
+  // Zoom Simulation
+  let zoomLevel = 1;
+  btnZoomIn.addEventListener('click', () => {
+    zoomLevel = Math.min(zoomLevel + 0.15, 1.45);
+    mapViewport.style.transform = `scale(${zoomLevel})`;
+  });
+
+  btnZoomOut.addEventListener('click', () => {
+    zoomLevel = Math.max(zoomLevel - 0.15, 0.85);
+    mapViewport.style.transform = `scale(${zoomLevel})`;
+  });
+
+  // Modal Open / Close Logic
+  function openModal() {
+    newUnitModal.classList.remove('hidden');
+  }
+  function closeModal() {
+    newUnitModal.classList.add('hidden');
+  }
+
+  btnOpenNewUnitModal.addEventListener('click', openModal);
+  btnCloseModal.addEventListener('click', closeModal);
+  btnCancelModal.addEventListener('click', closeModal);
+
+  newUnitModal.addEventListener('click', (e) => {
+    if (e.target === newUnitModal) closeModal();
+  });
+
+  newUnitForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Nova Unidade cadastrada com sucesso! Integração do quadro de funcionários ativa.');
+    closeModal();
+  });
+
+  // Satellite view toggle simulation
+  const btnViewStreets = document.getElementById('btnViewStreets');
+  const btnViewSatellite = document.getElementById('btnViewSatellite');
+  const btnViewHeatmap = document.getElementById('btnViewHeatmap');
+
+  btnViewSatellite.addEventListener('click', () => {
+    btnViewSatellite.className = 'px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-semibold bg-primary text-on-primary transition-all';
+    btnViewStreets.className = 'px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all';
+    mapViewport.style.backgroundColor = '#1e293b';
+  });
+
+  btnViewStreets.addEventListener('click', () => {
+    btnViewStreets.className = 'px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-semibold bg-primary text-on-primary transition-all';
+    btnViewSatellite.className = 'px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all';
+    mapViewport.style.backgroundColor = '#f1f5f9';
+  });
+</script></main></div>
+<script id="drawer-script">
+  function openSidebar() {
+    const drawer = document.getElementById('sidebar-drawer');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    if (drawer && backdrop) {
+      drawer.classList.remove('-translate-x-full');
+      drawer.classList.add('translate-x-0');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeSidebar() {
+    const drawer = document.getElementById('sidebar-drawer');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    if (drawer && backdrop) {
+      drawer.classList.remove('translate-x-0');
+      drawer.classList.add('-translate-x-full');
+      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function toggleSidebar() {
+    const drawer = document.getElementById('sidebar-drawer');
+    if (drawer && drawer.classList.contains('translate-x-0')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSidebar();
+  });
+</script>
+
+</body></html>
