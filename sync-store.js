@@ -3,7 +3,7 @@
   const STORAGE_KEY = 'postoRH_colaboradores';
   const FREQ_KEY = 'postoRH_frequencia';
   const VALES_KEY = 'postoRH_vales';
-  const SEED_VERSION_KEY = 'postoRH_seed_v4_completo';
+  const SEED_VERSION_KEY = 'postoRH_seed_v5_oficial_completo';
 
   const STATIONS = [
     { id: 'posto-oliveira-francesa', name: 'Posto Oliveira - Na Francesa', bairro: 'Francesa', address: 'Av. João Meireles, 30-136' },
@@ -705,13 +705,20 @@
     try {
       const currentVer = localStorage.getItem(SEED_VERSION_KEY);
       const existingColabs = localStorage.getItem(STORAGE_KEY);
+      let colabsCount = 0;
+      if (existingColabs) {
+        try {
+          const parsed = JSON.parse(existingColabs);
+          if (Array.isArray(parsed)) colabsCount = parsed.length;
+        } catch(e) {}
+      }
       
-      // Se não tem dados ou a versão de demonstração é antiga, atualiza com a equipe completa
-      if (!currentVer || !existingColabs || JSON.parse(existingColabs).length < 15) {
+      // Se não tem dados, ou a versão de demonstração é antiga (< v5), ou tem menos de 20 colaboradores, atualiza com a equipe completa
+      if (currentVer !== 'v5_completo' || colabsCount < 20) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
         localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
         localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
-        localStorage.setItem(SEED_VERSION_KEY, 'v4_completo');
+        localStorage.setItem(SEED_VERSION_KEY, 'v5_completo');
       }
     } catch(e) {
       console.warn('Erro ao verificar dados de demonstração:', e);
@@ -759,7 +766,7 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
       localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
       localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
-      localStorage.setItem(SEED_VERSION_KEY, 'v4_completo');
+      localStorage.setItem(SEED_VERSION_KEY, 'v5_completo');
       window.dispatchEvent(new CustomEvent('postoRH_sync', { detail: DEMO_COLABORADORES }));
       window.dispatchEvent(new CustomEvent('postoRH_frequencia_sync', { detail: DEMO_FREQUENCIA }));
       window.dispatchEvent(new CustomEvent('postoRH_vales_sync', { detail: DEMO_VALES }));
