@@ -36,6 +36,15 @@
     border-radius: var(--radius-md) !important;
   }
 
+  /* Drawer lateral perfeitamente alinhado às bordas esquerdas */
+  #sidebar-drawer {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+
   /* Cards e painéis suaves */
   .bg-surface-container-lowest,
   .bg-white {
@@ -83,16 +92,13 @@
   <div id="sidebar-backdrop" onclick="closeSidebar()" class="fixed inset-0 bg-primary-container/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
     <!-- Off-Canvas Drawer (Abre por cima do sistema, sem mexer no layout) -->
-  <aside id="sidebar-drawer" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
+  <aside id="sidebar-drawer" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left: none !important; border-top: none !important; border-bottom: none !important;" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
     <div class="flex flex-col">
       <!-- Drawer Header -->
       <div class="h-16 px-5 flex items-center justify-between border-b border-surface-container-low">
-        <a href="index.html" class="flex items-center gap-3">
-          <img alt="PostoRH Logo" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqLPJyzwGtdcyPQSu3MVYjOFUDTFWVLfzYcFyxNWAtT5vrvQbPhy1oEDGHT5309xE1DNA1HvsuWEY3Jyik6sWT_kvqnHVDCBoM5npDqrIrskq1owlrcG7Mrk1cSO26RtCwtU9UGFXHKBnWOlbeIZxMeBZWoyg0YFCcaNX_aKg3NgPz10i_DQbeN9X72tcrVe6pQSNjeBd1GZt3IpSXqlIElS0_guswZp8XCqBLnV5kWwDiMjazghnTpg"/>
-          <div class="flex flex-col">
-            <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">PostoRH</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Rede Operacional</span>
-          </div>
+        <a href="index.html" class="flex flex-col select-none">
+          <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold leading-none">PostoRH</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1 font-semibold">Rede Operacional</span>
         </a>
         <button onclick="closeSidebar()" title="Fechar Menu" type="button" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer flex items-center justify-center">
           <span class="material-symbols-outlined text-2xl">close</span>

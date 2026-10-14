@@ -4,11 +4,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script src="sync-store.js"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary-fixed-variant":"#653e00","tertiary-fixed":"#ffddb8","on-primary-container":"#7c839b","tertiary-fixed-dim":"#ffb95f","surface-bright":"#f8f9ff","primary-container":"#131b2e","surface-variant":"#d3e4fe","on-tertiary-container":"#b87500","secondary-fixed-dim":"#b4c5ff","secondary-fixed":"#dbe1ff","on-secondary-container":"#fefcff","surface-container-high":"#dce9ff","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","surface-container-lowest":"#ffffff","on-surface":"#0b1c30","on-secondary-fixed":"#00174b","surface-container-low":"#eff4ff","on-tertiary":"#ffffff","outline":"#76777d","on-primary-fixed-variant":"#3f465c","on-surface-variant":"#45464d","primary":"#000000","tertiary":"#000000","secondary":"#0051d5","background":"#f8f9ff","tertiary-container":"#2a1700","on-primary":"#ffffff","error":"#ba1a1a","secondary-container":"#316bf3","surface-dim":"#cbdbf5","on-secondary":"#ffffff","on-error-container":"#93000a","primary-fixed":"#dae2fd","error-container":"#ffdad6","on-primary-fixed":"#131b2e","primary-fixed-dim":"#bec6e0","surface":"#f8f9ff","on-tertiary-fixed":"#2a1700","outline-variant":"#c6c6cd","surface-container-highest":"#d3e4fe","surface-container":"#e5eeff","inverse-primary":"#bec6e0","inverse-surface":"#213145","on-secondary-fixed-variant":"#003ea8","surface-tint":"#565e74"},"borderRadius":{"sm":"0.375rem","DEFAULT":"0.625rem","md":"0.75rem","lg":"1rem","xl":"1.25rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","gutter":"1.5rem","gutter-lg":"2rem","space-lg":"1.5rem","margin":"1.5rem","space-xl":"2rem","margin-desktop":"2rem","margin-mobile":"1rem","space-xs":"0.25rem","gutter-sm":"1rem","space-md":"1rem"},"fontFamily":{"label-md":["Geist"],"headline-sm":["Geist"],"body-lg":["Geist"],"headline-lg":["Geist"],"metric-display":["Geist"],"body-sm":["Geist"],"label-lg":["Geist"],"body-md":["Geist"],"label-sm":["Geist"],"headline-xl":["Geist"],"headline-md":["Geist"]},"fontSize":{"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"metric-display":["28px",{"lineHeight":"32px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"-0.005em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}]}}}}</script>
 
-
-
-
 <style id="custom-rounded-theme">
-  /* THEME: ULTRA PROFISSIONAL, BORDAS ARREDONDADAS E CORES HARMONIOSAS */
   :root {
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -26,7 +22,6 @@
   .rounded-2xl { border-radius: var(--radius-2xl) !important; }
   .rounded-full { border-radius: var(--radius-full) !important; }
 
-  /* Elementos arredondados automáticos */
   button:not(.rounded-full) {
     border-radius: var(--radius-md) !important;
   }
@@ -34,7 +29,14 @@
     border-radius: var(--radius-md) !important;
   }
 
-  /* Cards e painéis suaves */
+  #sidebar-drawer {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+
   .bg-surface-container-lowest,
   .bg-white {
     border-radius: var(--radius-xl);
@@ -42,55 +44,38 @@
     box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
   }
 
-  /* Tabelas com cantos 100% arredondados */
-  table {
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
+  /* Linhas nítidas de separação de colunas e linhas da tabela */
+  .tabela-com-divisores {
+    border-collapse: collapse !important;
+    width: 100%;
+    border: 1px solid #cbd5e1 !important;
   }
-  .overflow-x-auto {
-    border-radius: var(--radius-xl) !important;
-    overflow: hidden !important;
+  .tabela-com-divisores th,
+  .tabela-com-divisores td {
+    border-right: 1px solid #e2e8f0 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
   }
-  thead th:first-child {
-    border-top-left-radius: var(--radius-xl) !important;
+  .tabela-com-divisores th:last-child,
+  .tabela-com-divisores td:last-child {
+    border-right: none !important;
   }
-  thead th:last-child {
-    border-top-right-radius: var(--radius-xl) !important;
-  }
-  tbody tr:last-child td:first-child {
-    border-bottom-left-radius: var(--radius-xl) !important;
-  }
-  tbody tr:last-child td:last-child {
-    border-bottom-right-radius: var(--radius-xl) !important;
-  }
-
-  /* Status Pills arredondadas */
-  .status-badge {
-    border-radius: 9999px !important;
-    font-weight: 700 !important;
-    padding: 0.35rem 0.85rem !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0.375rem !important;
-    font-size: 0.75rem !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  .tabela-com-divisores thead tr {
+    background-color: #f8fafc !important;
+    border-bottom: 2px solid #cbd5e1 !important;
   }
 </style>
 
 </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><!-- Backdrop Overlay -->
   <div id="sidebar-backdrop" onclick="closeSidebar()" class="fixed inset-0 bg-primary-container/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-    <!-- Off-Canvas Drawer (Abre por cima do sistema, sem mexer no layout) -->
-  <aside id="sidebar-drawer" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
+  <!-- Off-Canvas Drawer -->
+  <aside id="sidebar-drawer" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left: none !important; border-top: none !important; border-bottom: none !important;" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
     <div class="flex flex-col">
       <!-- Drawer Header -->
       <div class="h-16 px-5 flex items-center justify-between border-b border-surface-container-low">
-        <a href="index.html" class="flex items-center gap-3">
-          <img alt="PostoRH Logo" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqLPJyzwGtdcyPQSu3MVYjOFUDTFWVLfzYcFyxNWAtT5vrvQbPhy1oEDGHT5309xE1DNA1HvsuWEY3Jyik6sWT_kvqnHVDCBoM5npDqrIrskq1owlrcG7Mrk1cSO26RtCwtU9UGFXHKBnWOlbeIZxMeBZWoyg0YFCcaNX_aKg3NgPz10i_DQbeN9X72tcrVe6pQSNjeBd1GZt3IpSXqlIElS0_guswZp8XCqBLnV5kWwDiMjazghnTpg"/>
-          <div class="flex flex-col">
-            <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">PostoRH</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Rede Operacional</span>
-          </div>
+        <a href="index.html" class="flex flex-col select-none">
+          <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold leading-none">PostoRH</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1 font-semibold">Rede Operacional</span>
         </a>
         <button onclick="closeSidebar()" title="Fechar Menu" type="button" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer flex items-center justify-center">
           <span class="material-symbols-outlined text-2xl">close</span>
@@ -104,13 +89,6 @@
 
       <!-- Links -->
       <nav class="flex flex-col gap-1.5 px-3">
-        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
-          <span class="material-symbols-outlined text-xl leading-none text-secondary">dashboard</span>
-          <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Dashboard</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Indicadores e Alertas</span>
-          </div>
-        </a>
         <a href="colaboradores.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
           <span class="material-symbols-outlined text-xl leading-none text-secondary">badge</span>
           <div class="flex flex-col flex-1">
@@ -122,14 +100,14 @@
           <span class="material-symbols-outlined text-xl leading-none text-secondary">fact_check</span>
           <div class="flex flex-col flex-1">
             <span class="leading-none text-sm font-semibold">Frequência</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Turnos e Justificativas</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Faltas & Justificativas</span>
           </div>
         </a>
         <a href="financeiro-vales.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
           <span class="material-symbols-outlined text-xl leading-none text-secondary">payments</span>
           <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Financeiro & Vales</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Adiantamentos e Baixas</span>
+            <span class="leading-none text-sm font-semibold">Vales Pegos</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Extrato do Mês</span>
           </div>
         </a>
       </nav>
@@ -139,691 +117,495 @@
   <div id="main-layout" class="w-full min-h-screen">
   <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-secondary text-on-secondary shadow-md z-40 flex items-center justify-between px-4 sm:px-gutter-lg">
     <div class="flex items-center gap-3">
-      <!-- Botão Hambúrguer (3 pauzinhos) -->
       <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-all flex items-center justify-center cursor-pointer">
         <span class="material-symbols-outlined text-2xl leading-none">menu</span>
       </button>
 
-      <!-- Nome PostoRH -->
-      <a href="index.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
+      <a href="colaboradores.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
         <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
         <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
       </a>
     </div>
 
-    <!-- Usuário e Perfil -->
     <div class="flex items-center gap-3">
       <span class="font-label-lg text-label-lg font-semibold text-white hidden sm:inline">Carlos Eduardo Mendes</span>
       <img alt="Carlos Eduardo Mendes" class="w-9 h-9 rounded-full object-cover ring-2 ring-white/40 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgcUVoUOeTzmLXpjnbnOZvoWco-abRnb0OX-VJrcbkpGxI6bmJ7NJMQz7mQ0qu8d1sMM46SvGt8z-PVfMgl_RnzV3f2y4cTDPdznec5WVFoItvg1orRc3CpVBIwws8AKgXFvlOHCsElNWk67_MSL9Qy-_q6np--pS7QzZ3kIgpSqAvWDVTQwn29b2yZrI5_SKv3n15x9AtvurZKAZJOVJdQD4wVXn3R8nzaa-eFFfQFB50tWW9RDi7bA"/>
     </div>
-  </header><main class="relative pt-14 bg-surface min-h-screen"><div class="flex flex-col w-full">
-<!-- Interactive script placed cleanly at top of module -->
-<script>
-    function setStatus(rowId, status) {
-      const presBtn = document.getElementById('btn-pres-' + rowId);
-      const faltaBtn = document.getElementById('btn-falta-' + rowId);
-      const rowEl = document.getElementById('row-' + rowId);
-      const obsContainer = document.getElementById('obs-box-' + rowId);
-      const obsBadge = document.getElementById('obs-badge-' + rowId);
-      const inputEl = document.getElementById('input-obs-' + rowId);
+  </header>
 
-      if (status === 'falta') {
-        presBtn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors";
-        faltaBtn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-error text-on-error shadow-sm transition-all";
-        rowEl.className = "group bg-error-container/20 hover:bg-error-container/30 transition-colors";
-        obsBadge.classList.remove('hidden');
-        inputEl.setAttribute('required', 'true');
-        inputEl.focus();
-      } else {
-        presBtn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-secondary text-on-secondary shadow-sm transition-all";
-        faltaBtn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors";
-        rowEl.className = "group hover:bg-surface-container-low/50 transition-colors";
-        obsBadge.classList.add('hidden');
-        inputEl.removeAttribute('required');
-      }
-    }
+  <main class="relative pt-14 bg-surface min-h-screen">
+    <div class="flex flex-col w-full">
+      <div class="p-gutter lg:p-margin-desktop flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full">
 
-    function triggerModal(show) {
-      const modal = document.getElementById('confirmation-modal');
-      if (show) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      } else {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-    }
-  </script>
-<!-- Module Header & Cascade Filter Bar -->
-<div class="px-gutter lg:px-gutter-lg pt-space-lg pb-space-md flex flex-col gap-space-md">
-<!-- Top Action Breadcrumb & Quick Day Switcher -->
-<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
-<div>
-<div class="flex items-center gap-space-xs text-secondary font-label-sm uppercase tracking-widest font-semibold">
-<span class="material-symbols-outlined text-sm leading-none" style="font-variation-settings: 'FILL' 1;">timer</span>
-<span>Folha Operacional & Frequência</span>
-</div>
-<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight mt-0.5">Apontamento Diário de Pistas</h1>
-</div>
-<!-- Date selector with Quick Toggles -->
-<div class="flex items-center gap-space-sm bg-surface-container-lowest p-1.5 rounded-xl shadow-sm self-start lg:self-auto">
-<div class="flex items-center bg-surface-container-low rounded-lg p-0.5">
-<button class="px-3 py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors">Ontem</button>
-<button class="px-3 py-1.5 font-label-sm text-label-sm bg-secondary text-on-secondary rounded-lg font-bold shadow-sm transition-all">Hoje, 24 Out</button>
-<button class="px-3 py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors">Amanhã</button>
-</div>
-<div class="h-6 w-px bg-surface-container"></div>
-<div class="flex items-center gap-1.5 px-3 py-1.5 text-on-surface font-label-md text-label-md">
-<span class="material-symbols-outlined text-base text-secondary">calendar_today</span>
-<span class="font-semibold">Quinta-feira, 24 de Outubro de 2024</span>
-</div>
-</div>
-</div>
-<!-- Cascade Filter & Unit Operational Bar -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
-<!-- Cascade Selectors -->
-<div class="flex flex-wrap md:flex-nowrap items-center gap-space-sm flex-1">
-<!-- City Selector -->
-<div class="flex flex-col min-w-[170px] w-full md:w-auto">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Município / Polo</span>
-<div class="relative flex items-center bg-surface-container-low rounded-lg">
-<span class="material-symbols-outlined text-base text-secondary absolute left-2.5 pointer-events-none">location_city</span>
-<select class="w-full bg-transparent font-label-md text-label-md text-on-surface pl-8 pr-8 py-2 rounded-lg outline-none appearance-none cursor-pointer font-medium">
-<option value="todos">Todos os Municípios (AM)</option>
-<option selected value="parintins">Parintins (AM)</option>
-</select>
-<span class="material-symbols-outlined text-sm text-on-surface-variant absolute right-2.5 pointer-events-none">expand_more</span>
-</div>
-</div>
-<span class="text-on-surface-variant/40 hidden md:inline">/</span>
-<!-- Fuel Station Branch Selector -->
-<div class="flex flex-col min-w-[280px] w-full md:w-auto flex-1">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Unidade Operacional (Posto)</span>
-<div class="relative flex items-center bg-surface-container-low rounded-lg">
-<span class="material-symbols-outlined text-base text-secondary absolute left-2.5 pointer-events-none">local_gas_station</span>
-<select class="w-full bg-transparent font-label-md text-label-md text-on-surface pl-8 pr-8 py-2 rounded-lg outline-none appearance-none cursor-pointer font-semibold">
-<option selected="">Todos os Postos de Parintins (4 Ativos)</option>
-<option>Posto Oliveira - Na Francesa • Av. João Meireles</option>
-<option>Posto Oliveira - Odovaldo Novo • Estrada Odovaldo Novo</option>
-<option>Posto Equador - Conjunto Sham • Rua Souza Filho</option>
-<option>Posto Equador - Barreirinha • Rua Barreirinha</option>
-</select>
-<span class="material-symbols-outlined text-sm text-on-surface-variant absolute right-2.5 pointer-events-none">expand_more</span>
-</div>
-</div>
-<!-- Shift Filter -->
-<div class="flex flex-col min-w-[150px] w-full md:w-auto">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Turno de Escala</span>
-<div class="relative flex items-center bg-surface-container-low rounded-lg">
-<span class="material-symbols-outlined text-base text-secondary absolute left-2.5 pointer-events-none">wb_sunny</span>
-<select class="w-full bg-transparent font-label-md text-label-md text-on-surface pl-8 pr-8 py-2 rounded-lg outline-none appearance-none cursor-pointer font-medium">
-<option selected="">Turno 01 (06h - 14h)</option>
-<option>Turno 02 (14h - 22h)</option>
-<option>Turno 03 (22h - 06h)</option>
-<option>Todos os Turnos</option>
-</select>
-<span class="material-symbols-outlined text-sm text-on-surface-variant absolute right-2.5 pointer-events-none">expand_more</span>
-</div>
-</div>
-</div>
-<!-- Action: Submit & Finalize Roster -->
-<div class="flex items-center gap-space-sm shrink-0">
-<button class="flex items-center gap-space-xs bg-primary text-on-primary px-space-md py-2.5 rounded-xl font-label-lg text-label-lg shadow-sm hover:bg-inverse-surface transition-all" onclick="triggerModal(true)">
-<span class="material-symbols-outlined text-lg text-tertiary-fixed">verified</span>
-<span>Salvar e Fechar Apontamento</span>
-</button>
-</div>
-</div>
-<!-- Live Roster Mini-Dashboard Ribbon -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
-<!-- Total Escalados -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Efetivo Escalado</span>
-<div class="flex items-baseline gap-space-xs mt-1">
-<span class="font-metric-display text-metric-display text-on-surface" id="kpi-freq-total">0</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">colaboradores</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant font-medium mt-1" id="kpi-freq-sub">Aguardando escala</span>
-</div>
-<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-2xl">groups</span>
-</div>
-</div>
-<!-- Presenças Confirmadas -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Presenças no Posto</span>
-<div class="flex items-baseline gap-space-xs mt-1">
-<span class="font-metric-display text-metric-display text-on-surface" id="kpi-freq-presencas">0</span>
-<span class="font-label-sm text-label-sm font-semibold text-secondary">100%</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Escala pronta para apontamento</span>
-</div>
-<div class="w-12 h-12 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-</div>
-</div>
-<!-- Faltas Críticas -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-emerald-600 font-semibold flex items-center gap-1">
-<span>Faltas do Dia</span>
-</span>
-<div class="flex items-baseline gap-space-xs mt-1">
-<span class="font-metric-display text-metric-display text-on-surface">0</span>
-<span class="font-label-sm text-label-sm text-emerald-600 font-medium">Nenhuma Falta</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">100% em conformidade</span>
-</div>
-<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-emerald-600">
-<span class="material-symbols-outlined text-2xl">how_to_reg</span>
-</div>
-</div>
-<!-- Status de Validação Gerencial -->
-<div class="bg-primary-container p-space-md rounded-xl shadow-sm flex items-center justify-between text-on-primary">
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold">Trava Regulatória</span>
-<span class="font-headline-sm text-headline-sm mt-1 text-surface-lowest">Regra de Falta 100%</span>
-<span class="font-body-sm text-body-sm text-on-primary-container mt-1">Observação e anexo auditados</span>
-</div>
-<div class="w-12 h-12 rounded-xl bg-surface-container-lowest/10 flex items-center justify-center text-tertiary-fixed">
-<span class="material-symbols-outlined text-2xl">gavel</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Main Roster Table and Side Context Section -->
-<div class="px-gutter lg:px-gutter-lg pb-space-xl grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
-<!-- Table Container (Col 9 on XL) -->
-<div class="xl:col-span-9 flex flex-col gap-space-md">
-<!-- Table Filter Toolbar -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-sm">
-<div class="flex items-center gap-space-sm w-full md:w-auto">
-<div class="relative w-full md:w-72">
-<span class="material-symbols-outlined absolute left-3 top-2.5 text-base text-on-surface-variant pointer-events-none">filter_alt</span>
-<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm pl-9 pr-3 py-2 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" placeholder="Filtrar por nome, CPF ou bomba..." type="text"/>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0" id="freq-mostrando-txt">Mostrando <strong>0</strong> de 0 frentistas</span>
-</div>
-<div class="flex items-center gap-space-xs self-end md:self-auto">
-<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">Ação em Lote:</span>
-<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm flex items-center gap-1 transition-colors">
-<span class="material-symbols-outlined text-sm text-secondary">done_all</span>
-<span>Marcar Todos Presentes</span>
-</button>
-</div>
-</div>
-<!-- Main Operational Table -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low/70">
-<th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Colaborador & Função</th>
-<th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">CPF / Matrícula</th>
-<th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Horário Previsto</th>
-<th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold text-center">Apontamento</th>
-<th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Justificativa / Motivo</th>
-<th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold text-center">Comprovante</th>
-<th class="py-3 px-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold text-right">Registro</th>
-</tr>
-<tbody class="divide-y divide-surface-container-low" id="tabela-frequencia-body">
-<!-- ROW 1: PRESENT -->
-<tr class="group hover:bg-surface-container-low/50 transition-colors" id="row-1">
-<td class="py-3.5 px-space-md">
-<div class="flex items-center gap-space-sm">
-<img class="w-9 h-9 rounded-full object-cover" data-alt="Close up portrait photo of Brazilian male gas station attendant in uniform smiling confidently at daylight fuel pump station" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPzSkhenMPooy6yXt2YbOxG323nJ2vTE8295oDbT_ZAmeshctcmniLyFOVJiVGdWp9zIAB8s2eIirPVsCGNiWYmH3ONGLmksWGV8QPfVVIGvXzI7DEv4oGVrCWrAG6iBG8u0MgKlxcsS6P3K6tnS03zzO5l4hXZa0Qjmk7WKZ874ubOo65xB3jUEn2NCrcJLzKzvI5myFAsagpbxCGOajzS9dbbNzkrwzCcuWPKdRrVQ_NGUFvNFV_Sg"/>
-<div class="flex flex-col">
-<span class="font-label-lg text-label-lg font-semibold text-on-surface">Marcos Vinicius Rezende</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Frentista Líder • Ilha 01 / Gasolina Aditivada</span>
-</div>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex flex-col">
-<span class="font-body-sm text-body-sm text-on-surface font-mono">341.***.892-04</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">MAT #0842</span>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface font-medium">
-<span class="material-symbols-outlined text-sm text-secondary">schedule</span>
-                    06:00 - 14:20
-                  </span>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex items-center justify-center gap-1 bg-surface-container-low p-1 rounded-lg">
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-secondary text-on-secondary shadow-sm transition-all" id="btn-pres-1" onclick="setStatus(1, 'presenca')">
-<span class="material-symbols-outlined text-sm">check</span>
-<span>Presença</span>
-</button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" id="btn-falta-1" onclick="setStatus(1, 'falta')">
-<span class="material-symbols-outlined text-sm">close</span>
-<span>Falta</span>
-</button>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="relative flex items-center" id="obs-box-1">
-<span class="hidden absolute -top-2 left-2 bg-error text-on-error font-label-sm text-label-sm px-1.5 rounded uppercase font-bold tracking-wider" id="obs-badge-1">Obrigatório</span>
-<input class="w-full bg-surface-container-low/60 text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm px-3 py-1.5 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" id="input-obs-1" placeholder="Sem ocorrências registradas" type="text"/>
-</div>
-</td>
-<td class="py-3.5 px-space-md text-center">
-<button class="text-on-surface-variant hover:text-secondary p-1.5 rounded-lg hover:bg-surface-container-low transition-colors" title="Anexar Comprovante ou Justificativa">
-<span class="material-symbols-outlined text-lg">attach_file</span>
-</button>
-</td>
-<td class="py-3.5 px-space-md text-right font-mono font-body-sm text-body-sm text-on-surface-variant">
-<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded text-secondary font-semibold">
-                    05:54 Catraca
-                  </span>
-</td>
-</tr>
-<!-- ROW 2: CRITICAL ABSENCE (FALTA COM JUSTIFICATIVA OBRIGATÓRIA REGISTRADA) -->
-<tr class="bg-error-container/20 hover:bg-error-container/30 transition-colors" id="row-2">
-<td class="py-3.5 px-space-md">
-<div class="flex items-center gap-space-sm">
-<img class="w-9 h-9 rounded-full object-cover" data-alt="Portrait photo of a young female Brazilian worker with hair tied in dark blue service cap and polo uniform standing inside gas station office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBln8ADU-a4tRaSeXibrmLzj_WfEvC4nAz8xsf4uZHIto3_qi_9b9poOfyR61BKRqatmU1A__4YGuXpO-fuZRws2HgcjqFfwMUcyITbwwriAG5Lf7hmZFFDumDErpbP9ytTgkAdQ9Hcp-Hwa9712LviNLgl8-tHCHhAPpnY42HSak1C5aXAYY5yWuQfIR0PHT23FMxN7YovnCk1V-SXYgjNhrDZG-7IzTCIYq_Pr7R-nicotIRQ_jG-zQ"/>
-<div class="flex flex-col">
-<div class="flex items-center gap-1.5">
-<span class="font-label-lg text-label-lg font-semibold text-on-surface">Luciana Prado Batista</span>
-<span class="bg-error text-on-error font-label-sm text-label-sm px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Ausente</span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Operadora de Caixa & Loja de Conveniência</span>
-</div>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex flex-col">
-<span class="font-body-sm text-body-sm text-on-surface font-mono">419.***.608-55</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">MAT #1092</span>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface font-medium">
-<span class="material-symbols-outlined text-sm text-error">schedule</span>
-                    06:00 - 14:20
-                  </span>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex items-center justify-center gap-1 bg-surface-container-low p-1 rounded-lg">
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" id="btn-pres-2" onclick="setStatus(2, 'presenca')">
-<span class="material-symbols-outlined text-sm">check</span>
-<span>Presença</span>
-</button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-error text-on-error shadow-sm transition-all" id="btn-falta-2" onclick="setStatus(2, 'falta')">
-<span class="material-symbols-outlined text-sm">close</span>
-<span>Falta</span>
-</button>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex flex-col gap-1">
-<div class="relative flex items-center" id="obs-box-2">
-<span class="absolute -top-2 left-2 bg-error text-on-error font-label-sm text-label-sm px-1.5 rounded uppercase font-bold tracking-wider" id="obs-badge-2">Obrigatório</span>
-<input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-3 py-1.5 rounded-lg outline-none font-medium shadow-sm transition-all" id="input-obs-2" required="" type="text" value="Atestado médico de 2 dias entregue via WhatsApp às 07:15 - CID J06"/>
-</div>
-<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-xs text-secondary">verified_user</span>
-<span class="bg-surface-container-low text-secondary font-semibold px-1.5 py-0.5 rounded">Justificativa Aprovada por Admin 1</span>
-</div>
-</div>
-</td>
-<td class="py-3.5 px-space-md text-center">
-<div class="inline-flex items-center gap-1 bg-secondary-fixed/50 text-secondary px-2 py-1 rounded-lg font-label-sm text-label-sm font-medium cursor-pointer hover:bg-secondary-fixed transition-colors">
-<span class="material-symbols-outlined text-base">picture_as_pdf</span>
-<span>atestado_luciana.pdf</span>
-</div>
-</td>
-<td class="py-3.5 px-space-md text-right font-mono font-body-sm text-body-sm">
-<span class="inline-flex items-center gap-1 bg-error-container text-on-error-container px-2 py-0.5 rounded font-semibold">
-                    07:18 Manual
-                  </span>
-</td>
-</tr>
-<!-- ROW 3: PRESENT -->
-<tr class="group hover:bg-surface-container-low/50 transition-colors" id="row-3">
-<td class="py-3.5 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center font-headline-sm text-headline-sm text-secondary font-bold">
-                      RO
-                    </div>
-<div class="flex flex-col">
-<span class="font-label-lg text-label-lg font-semibold text-on-surface">Rodrigo Otávio Santos</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Frentista • Ilha 02 / Diesel S10</span>
-</div>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex flex-col">
-<span class="font-body-sm text-body-sm text-on-surface font-mono">285.***.112-90</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">MAT #0914</span>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface font-medium">
-<span class="material-symbols-outlined text-sm text-secondary">schedule</span>
-                    06:00 - 14:20
-                  </span>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex items-center justify-center gap-1 bg-surface-container-low p-1 rounded-lg">
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-secondary text-on-secondary shadow-sm transition-all" id="btn-pres-3" onclick="setStatus(3, 'presenca')">
-<span class="material-symbols-outlined text-sm">check</span>
-<span>Presença</span>
-</button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" id="btn-falta-3" onclick="setStatus(3, 'falta')">
-<span class="material-symbols-outlined text-sm">close</span>
-<span>Falta</span>
-</button>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="relative flex items-center" id="obs-box-3">
-<span class="hidden absolute -top-2 left-2 bg-error text-on-error font-label-sm text-label-sm px-1.5 rounded uppercase font-bold tracking-wider" id="obs-badge-3">Obrigatório</span>
-<input class="w-full bg-surface-container-low/60 text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm px-3 py-1.5 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" id="input-obs-3" placeholder="Sem ocorrências registradas" type="text"/>
-</div>
-</td>
-<td class="py-3.5 px-space-md text-center">
-<button class="text-on-surface-variant hover:text-secondary p-1.5 rounded-lg hover:bg-surface-container-low transition-colors" title="Anexar Comprovante ou Justificativa">
-<span class="material-symbols-outlined text-lg">attach_file</span>
-</button>
-</td>
-<td class="py-3.5 px-space-md text-right font-mono font-body-sm text-body-sm text-on-surface-variant">
-<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded text-secondary font-semibold">
-                    05:58 Biometria
-                  </span>
-</td>
-</tr>
-<!-- ROW 4: PRESENT -->
-<tr class="group hover:bg-surface-container-low/50 transition-colors" id="row-4">
-<td class="py-3.5 px-space-md">
-<div class="flex items-center gap-space-sm">
-<img class="w-9 h-9 rounded-full object-cover" data-alt="Portrait photography of an experienced Brazilian gas station lubrication specialist mechanic wearing blue technical overall inside the oil change service bay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcv2wTWg8Gv1nXCApnTtxl4CMfFM6FrIG9OB0WdZN-kHdW94F_s25BQm388g-f8k_CZbBE7PRlR6-yPJt2-E2JHKQBVYhXmFY0D8Zq7HmBTsxSHTQi5lWzib2XgVZpf_z3BZLY13asuTEJq2zZMp1Ba4UjnbBJ5TbisW5caEKhL2OrF66za-ZRwU_N5yw8q-FTRhNVVJuWksJVEKDlmMQl_rraemSRlD26IJvuyt75Ok4xuuQOLKBtjQ"/>
-<div class="flex flex-col">
-<span class="font-label-lg text-label-lg font-semibold text-on-surface">Cleber Santana Lima</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Lubrificador & Troca de Óleo Especializada</span>
-</div>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex flex-col">
-<span class="font-body-sm text-body-sm text-on-surface font-mono">198.***.430-17</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">MAT #0733</span>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface font-medium">
-<span class="material-symbols-outlined text-sm text-secondary">schedule</span>
-                    06:00 - 14:20
-                  </span>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex items-center justify-center gap-1 bg-surface-container-low p-1 rounded-lg">
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-secondary text-on-secondary shadow-sm transition-all" id="btn-pres-4" onclick="setStatus(4, 'presenca')">
-<span class="material-symbols-outlined text-sm">check</span>
-<span>Presença</span>
-</button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" id="btn-falta-4" onclick="setStatus(4, 'falta')">
-<span class="material-symbols-outlined text-sm">close</span>
-<span>Falta</span>
-</button>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="relative flex items-center" id="obs-box-4">
-<span class="hidden absolute -top-2 left-2 bg-error text-on-error font-label-sm text-label-sm px-1.5 rounded uppercase font-bold tracking-wider" id="obs-badge-4">Obrigatório</span>
-<input class="w-full bg-surface-container-low/60 text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm px-3 py-1.5 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" id="input-obs-4" placeholder="Sem ocorrências registradas" type="text"/>
-</div>
-</td>
-<td class="py-3.5 px-space-md text-center">
-<button class="text-on-surface-variant hover:text-secondary p-1.5 rounded-lg hover:bg-surface-container-low transition-colors" title="Anexar Comprovante ou Justificativa">
-<span class="material-symbols-outlined text-lg">attach_file</span>
-</button>
-</td>
-<td class="py-3.5 px-space-md text-right font-mono font-body-sm text-body-sm text-on-surface-variant">
-<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded text-secondary font-semibold">
-                    06:01 Catraca
-                  </span>
-</td>
-</tr>
-<!-- ROW 5: PRESENT -->
-<tr class="group hover:bg-surface-container-low/50 transition-colors" id="row-5">
-<td class="py-3.5 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-headline-sm text-on-surface font-bold">
-                      AM
-                    </div>
-<div class="flex flex-col">
-<span class="font-label-lg text-label-lg font-semibold text-on-surface">Alexandre de Morais Filho</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Frentista • Ilha 03 / Etanol Comum</span>
-</div>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex flex-col">
-<span class="font-body-sm text-body-sm text-on-surface font-mono">502.***.744-88</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">MAT #1240</span>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface font-medium">
-<span class="material-symbols-outlined text-sm text-secondary">schedule</span>
-                    06:00 - 14:20
-                  </span>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="flex items-center justify-center gap-1 bg-surface-container-low p-1 rounded-lg">
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-secondary text-on-secondary shadow-sm transition-all" id="btn-pres-5" onclick="setStatus(5, 'presenca')">
-<span class="material-symbols-outlined text-sm">check</span>
-<span>Presença</span>
-</button>
-<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" id="btn-falta-5" onclick="setStatus(5, 'falta')">
-<span class="material-symbols-outlined text-sm">close</span>
-<span>Falta</span>
-</button>
-</div>
-</td>
-<td class="py-3.5 px-space-md">
-<div class="relative flex items-center" id="obs-box-5">
-<span class="hidden absolute -top-2 left-2 bg-error text-on-error font-label-sm text-label-sm px-1.5 rounded uppercase font-bold tracking-wider" id="obs-badge-5">Obrigatório</span>
-<input class="w-full bg-surface-container-low/60 text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm px-3 py-1.5 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" id="input-obs-5" placeholder="Sem ocorrências registradas" type="text"/>
-</div>
-</td>
-<td class="py-3.5 px-space-md text-center">
-<button class="text-on-surface-variant hover:text-secondary p-1.5 rounded-lg hover:bg-surface-container-low transition-colors" title="Anexar Comprovante ou Justificativa">
-<span class="material-symbols-outlined text-lg">attach_file</span>
-</button>
-</td>
-<td class="py-3.5 px-space-md text-right font-mono font-body-sm text-body-sm text-on-surface-variant">
-<span class="inline-flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded text-secondary font-semibold">
-                    05:51 Biometria
-                  </span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Table Pagination & Fast audit footer -->
-<div class="p-space-md bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
-<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-base text-secondary">sync_saved_locally</span>
-<span>Alterações de status são sincronizadas automaticamente em memória segura.</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<button class="px-3 py-1 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">Anterior</button>
-<span class="font-label-sm text-label-sm px-2 font-semibold text-on-surface">Página 1 de 4</span>
-<button class="px-3 py-1 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm font-label-sm text-label-sm hover:bg-surface-container-low transition-colors">Próxima</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Side Operational Panel: Closing Roster & Monthly Metrics (Col 3 on XL) -->
-<div class="xl:col-span-3 flex flex-col gap-space-md">
-<!-- Closing Status Alert Card -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Protocolo de Fechamento</span>
-<span class="bg-surface-container-high text-secondary px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Turno 01</span>
-</div>
-<div class="flex flex-col gap-1 mt-1">
-<span class="font-headline-sm text-headline-sm text-on-surface">Apontamento Pendente de Assinatura</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-            Todos os 18 colaboradores foram triados. A única falta (Luciana Prado) contém justificativa médica preenchida e atestado anexado.
-          </p>
-</div>
-<!-- Progress of verification -->
-<div class="flex flex-col gap-1.5 mt-2 bg-surface-container-low p-2.5 rounded-lg">
-<div class="flex justify-between font-label-sm text-label-sm">
-<span class="text-on-surface-variant">Conferência de Justificativas</span>
-<span class="font-bold text-secondary">100% Concluído</span>
-</div>
-<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
-<div class="bg-secondary h-2 rounded-full w-full"></div>
-</div>
-</div>
-<!-- Super Admin Checklist Indicator -->
-<div class="flex flex-col gap-2 pt-2">
-<div class="flex items-center gap-2 text-on-surface font-body-sm text-body-sm">
-<span class="material-symbols-outlined text-base text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<span>Carlos Mendes (Super Admin 1) em sessão</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
-<span class="material-symbols-outlined text-base text-on-surface-variant">radio_button_unchecked</span>
-<span>Aguardando chancela de fechamento diário</span>
-</div>
-</div>
-<button class="w-full mt-2 py-2.5 bg-secondary text-on-secondary rounded-xl font-label-md text-label-md font-semibold hover:bg-secondary-container transition-all flex items-center justify-center gap-1.5 shadow-sm" onclick="triggerModal(true)">
-<span class="material-symbols-outlined text-base">lock</span>
-<span>Finalizar e Travar Apontamento</span>
-</button>
-</div>
-<!-- Monthly Absence Stats & Zero Tolerance Policy -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Métricas do Mês (Outubro)</span>
-<span class="material-symbols-outlined text-lg text-secondary">analytics</span>
-</div>
-<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-on-surface-variant">Faltas Não Justificadas</span>
-<span class="font-headline-lg text-headline-lg font-bold text-on-surface">0</span>
-</div>
-<span class="bg-surface-container-highest text-on-surface font-label-sm text-label-sm px-2 py-1 rounded-lg font-semibold">
-            Meta: Zero Tolerância
-          </span>
-</div>
-<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-on-surface-variant">Faltas com Atestado Válido</span>
-<span class="font-headline-lg text-headline-lg font-bold text-secondary">3</span>
-</div>
-<span class="text-secondary font-label-sm text-label-sm font-semibold">
-            Taxa de Absenteísmo: 0.8%
-          </span>
-</div>
-<!-- Inline SVG Visualization: Weekly Trend -->
-<div class="flex flex-col gap-1.5 pt-1">
-<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Assiduidade por Dia da Semana (Posto Alvorada)</span>
-<div class="h-20 w-full flex items-end justify-between gap-1 pt-3">
-<div class="flex-1 flex flex-col items-center gap-1">
-<div class="w-full bg-secondary rounded-t h-14"></div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Seg</span>
-</div>
-<div class="flex-1 flex flex-col items-center gap-1">
-<div class="w-full bg-secondary rounded-t h-16"></div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Ter</span>
-</div>
-<div class="flex-1 flex flex-col items-center gap-1">
-<div class="w-full bg-secondary rounded-t h-16"></div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Qua</span>
-</div>
-<div class="flex-1 flex flex-col items-center gap-1">
-<div class="w-full bg-secondary-container rounded-t h-14"></div>
-<span class="font-label-sm text-label-sm font-bold text-on-surface">Qui</span>
-</div>
-<div class="flex-1 flex flex-col items-center gap-1">
-<div class="w-full bg-surface-container-high rounded-t h-12"></div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Sex</span>
-</div>
-<div class="flex-1 flex flex-col items-center gap-1">
-<div class="w-full bg-surface-container-high rounded-t h-10"></div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Sáb</span>
-</div>
-<div class="flex-1 flex flex-col items-center gap-1">
-<div class="w-full bg-surface-container-high rounded-t h-8"></div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Dom</span>
-</div>
-</div>
-</div>
-<!-- Compliance alert memo -->
-<div class="mt-2 p-3 bg-primary-container rounded-xl text-on-primary flex items-start gap-2.5">
-<span class="material-symbols-outlined text-tertiary-fixed text-lg shrink-0 mt-0.5">policy</span>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm font-bold text-tertiary-fixed">Diretriz Operacional PostoRH</span>
-<span class="font-body-sm text-body-sm text-on-primary-container leading-tight mt-0.5">
-              Faltas sem CID ou sem protocolo de atendimento impedem o fechamento da folha no módulo financeiro.
+        <!-- Top Title Bar & Date Controller -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+          <div class="flex flex-col">
+            <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Frequência de Faltas</h1>
+            <span class="text-xs text-on-surface-variant font-medium mt-0.5">Gestão de faltas com justificativa e sem justificativa (desconto em folha)</span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Botão Apontar Falta -->
+            <button onclick="abrirModalNovaFalta()" type="button" class="px-4 py-2 bg-secondary text-white font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-blue-700 transition-all flex items-center gap-1.5 cursor-pointer">
+              <span class="material-symbols-outlined text-base">person_off</span>
+              <span>+ Apontar Falta</span>
+            </button>
+
+            <!-- Date selector with Quick Toggles -->
+            <div class="flex items-center gap-space-sm bg-surface-container-lowest p-1.5 rounded-xl shadow-sm border border-slate-200">
+              <div class="flex items-center bg-surface-container-low rounded-lg p-0.5">
+                <button onclick="selecionarDataRelativa(-1)" id="btn-dia-ontem" class="px-3 py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors cursor-pointer">Ontem</button>
+                <button onclick="selecionarDataRelativa(0)" id="btn-dia-hoje" class="px-3 py-1.5 font-label-sm text-label-sm bg-secondary text-on-secondary rounded-lg font-bold shadow-sm transition-all cursor-pointer">Hoje, 24 Out</button>
+                <button onclick="selecionarDataRelativa(1)" id="btn-dia-amanha" class="px-3 py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors cursor-pointer">Amanhã</button>
+              </div>
+              <div class="h-6 w-px bg-surface-container"></div>
+              <div class="flex items-center gap-1.5 px-3 py-1.5 text-on-surface font-label-md text-label-md">
+                <span class="material-symbols-outlined text-base text-secondary">calendar_today</span>
+                <span class="font-bold" id="label-data-atual">24 de Outubro de 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Cards: 100% Relacionados a Faltas (Justificadas e Sem Justificativa) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+          <!-- Card 1: Total de Faltas no Dia -->
+          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border border-slate-200">
+            <div class="flex items-center justify-between text-on-surface-variant">
+              <span class="font-label-md text-label-md font-semibold text-slate-800">Total de Faltas</span>
+              <span class="p-2 rounded-xl bg-slate-100 text-slate-700 material-symbols-outlined text-lg">event_busy</span>
+            </div>
+            <div class="mt-2 flex items-baseline gap-space-xs">
+              <span class="font-metric-display text-metric-display text-slate-900 font-bold" id="kpi-freq-total-faltas">0</span>
+              <span class="font-label-sm text-label-sm text-slate-500 font-medium">ausências no dia</span>
+            </div>
+            <div class="mt-2 text-slate-500 font-body-sm text-body-sm" id="kpi-freq-sub">No posto selecionado</div>
+          </div>
+
+          <!-- Card 2: Faltas Justificadas (Obs Registrada) -->
+          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border border-slate-200">
+            <div class="flex items-center justify-between text-on-surface-variant">
+              <span class="font-label-md text-label-md font-semibold text-blue-900">Faltas Justificadas</span>
+              <span class="p-2 rounded-xl bg-blue-50 text-blue-700 material-symbols-outlined text-lg">assignment_turned_in</span>
+            </div>
+            <div class="mt-2 flex items-baseline gap-space-xs">
+              <span class="font-metric-display text-metric-display text-blue-700 font-bold" id="kpi-freq-justificadas">0</span>
+              <span class="font-label-sm text-label-sm text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-bold">Com Obs / Atestado</span>
+            </div>
+            <div class="mt-2 text-blue-600 font-body-sm text-body-sm font-medium">Sem desconto na folha (Abonadas)</div>
+          </div>
+
+          <!-- Card 3: Faltas Não Justificadas (Desconto em Folha) -->
+          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border-2 border-red-200">
+            <div class="flex items-center justify-between text-error">
+              <span class="font-label-md text-label-md font-bold flex items-center gap-1 text-red-700">
+                <span class="material-symbols-outlined text-lg">warning</span>
+                Faltas sem Justificativa
+              </span>
+              <span class="p-2 rounded-xl bg-red-50 text-red-600 material-symbols-outlined text-lg">person_cancel</span>
+            </div>
+            <div class="mt-2 flex items-baseline gap-space-xs">
+              <span class="font-metric-display text-metric-display text-red-700 font-bold" id="kpi-freq-injustificadas">0</span>
+              <span class="font-label-sm text-label-sm text-red-700 bg-red-50 px-2 py-0.5 rounded-full font-bold">Gera Desconto</span>
+            </div>
+            <div class="mt-2 text-red-700 font-body-sm text-body-sm font-semibold">Gera desconto no pagamento</div>
+          </div>
+
+          <!-- Card 4: Total a Descontar em Folha -->
+          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border border-red-200 bg-gradient-to-br from-white to-red-50/30">
+            <div class="flex items-center justify-between text-red-800">
+              <span class="font-label-md text-label-md font-bold">Desconto no Pagamento</span>
+              <span class="p-2 rounded-xl bg-red-100 text-red-700 material-symbols-outlined text-lg">payments</span>
+            </div>
+            <div class="mt-2 flex items-baseline gap-space-xs">
+              <span class="font-metric-display text-metric-display text-red-700 font-black" id="kpi-freq-desconto-total">R$ 0,00</span>
+              <span class="text-xs font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded-full" id="kpi-freq-desconto-badge">no mês</span>
+            </div>
+            <div class="mt-2 text-slate-600 font-body-sm text-body-sm flex items-center justify-between" id="kpi-freq-desconto-sub">
+              <span>Nesta data: <strong class="text-slate-900" id="kpi-freq-desconto-dia">R$ 0,00</strong></span>
+              <span class="text-xs bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Fechamento Mês</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Console (Filtro por Posto de Gasolina, Turno, Tipo de Falta e Busca) -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md border border-slate-200">
+          <div class="flex items-center justify-between pb-space-xs">
+            <div class="flex items-center gap-space-xs font-label-md text-label-md font-semibold text-on-surface">
+              <span class="material-symbols-outlined text-base text-secondary">tune</span>
+              <span>Filtros do Extrato de Faltas</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-end">
+            <!-- 1. Posto de Gasolina -->
+            <div class="md:col-span-4 flex flex-col gap-1.5">
+              <label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">1. UNIDADE / POSTO DE GASOLINA</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
+                <select onchange="renderFrequencia()" class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none font-semibold" id="select-posto-freq">
+                  <option selected value="todos">Todos os postos de Parintins (4 Ativos)</option>
+                  <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
+                  <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
+                  <option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
+                  <option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
+              </div>
+            </div>
+
+            <!-- 2. Turno -->
+            <div class="md:col-span-2 flex flex-col gap-1.5">
+              <label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">2. TURNO</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">schedule</span>
+                <select onchange="renderFrequencia()" class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none font-semibold" id="select-turno-freq">
+                  <option selected value="todos">Todos os Turnos</option>
+                  <option value="Manhã">Turno Manhã</option>
+                  <option value="Tarde">Turno Tarde</option>
+                  <option value="Noite">Turno Noite</option>
+                  <option value="Comercial">Comercial</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
+              </div>
+            </div>
+
+            <!-- 3. Tipo de Falta -->
+            <div class="md:col-span-3 flex flex-col gap-1.5">
+              <label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">3. TIPO DE FALTA</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">filter_list</span>
+                <select onchange="renderFrequencia()" class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none font-semibold" id="select-tipo-falta-freq">
+                  <option selected value="todos">Todas as Faltas (Justificadas & Injustificadas)</option>
+                  <option value="falta_justificada">Apenas Faltas Justificadas</option>
+                  <option value="falta_injustificada">Apenas Faltas sem Justificativa</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
+              </div>
+            </div>
+
+            <!-- 4. Busca -->
+            <div class="md:col-span-3 flex flex-col gap-1.5">
+              <label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">4. PESQUISA RÁPIDA</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">search</span>
+                <input oninput="renderFrequencia()" class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm pl-9 pr-3 py-2.5 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all font-medium" id="input-search-freq" placeholder="Nome, CPF ou cargo..." type="text"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Operational Table with Separation Lines -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col border border-slate-200">
+          <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-red-600 text-xl">event_busy</span>
+              <span class="text-sm font-bold text-slate-900">Extrato de Pessoas com Falta</span>
+              <span class="text-xs bg-red-100 text-red-800 font-bold px-2.5 py-0.5 rounded-full" id="badge-total-faltas-tabela">0 pessoas com falta</span>
+            </div>
+            <span class="text-xs text-slate-500 font-medium">
+              * Mostrando exclusivamente colaboradores que faltaram (com justificativa ou sem justificativa)
             </span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse border border-slate-200 tabela-com-divisores">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 font-label-sm text-label-sm uppercase tracking-wider border-b-2 border-slate-300">
+                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[24%]">Pessoa que Faltou</th>
+                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[18%]">Cargo & Posto</th>
+                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[12%]">Turno</th>
+                  <th class="py-3 px-4 font-bold border-r border-slate-200 text-center w-[16%]">Tipo de Falta</th>
+                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[16%]">Justificativa (Obs)</th>
+                  <th class="py-3 px-4 font-bold border-r border-slate-200 text-center w-[14%]">Desconto no Pagamento</th>
+                  <th class="py-3 px-4 font-bold text-center whitespace-nowrap">Histórico</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 font-body-sm text-body-sm text-on-surface" id="tabela-frequencia-body">
+                <!-- Renderizado dinamicamente via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Footer -->
+          <div class="p-space-md bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-sm border-t border-slate-200">
+            <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-base text-secondary">verified_user</span>
+              <span>Você pode alterar livremente o valor do desconto das faltas injustificadas na tabela ou nos detalhes.</span>
+            </div>
+            <div class="font-label-sm text-label-sm font-semibold text-slate-600" id="freq-info-contagem">
+              Exibindo 0 colaboradores
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
 </div>
+
+<!-- ========================================== -->
+<!-- MODAL DO CALENDÁRIO DE FALTAS DO COLABORADOR -->
+<!-- ========================================== -->
+<div id="modal-calendario" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 hidden overscroll-contain">
+  <div class="bg-surface-container-lowest w-full max-w-3xl rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200 border border-slate-200 max-h-[92vh]">
+    
+    <!-- Header do Modal com Dados do Colaborador -->
+    <div class="px-6 py-5 bg-slate-900 text-white flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shrink-0" id="cal-colab-iniciais">
+          CO
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <h3 class="font-headline-sm text-headline-sm font-bold text-white" id="cal-colab-nome">Nome do Colaborador</h3>
+            <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded font-mono" id="cal-colab-mat">#0480</span>
+          </div>
+          <span class="text-xs text-slate-300 mt-0.5" id="cal-colab-detalhes">Cargo • Posto Oliveira</span>
+        </div>
+      </div>
+      <button onclick="fecharCalendarioModal()" type="button" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+
+    <!-- Informações Contratuais Rápidas -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-6 py-3 bg-slate-100 border-b border-slate-200 text-xs">
+      <div>
+        <span class="text-slate-500 block">CPF:</span>
+        <strong class="text-slate-800 font-mono" id="cal-colab-cpf">000.000.000-00</strong>
+      </div>
+      <div>
+        <span class="text-slate-500 block">Salário Base:</span>
+        <strong class="text-emerald-700 font-bold" id="cal-colab-salario">R$ 0,00</strong>
+      </div>
+      <div>
+        <span class="text-slate-500 block">Valor do Dia de Trabalho:</span>
+        <strong class="text-slate-800 font-mono font-bold" id="cal-colab-valordia">R$ 0,00</strong>
+      </div>
+      <div>
+        <span class="text-slate-500 block">Turno Contratual:</span>
+        <strong class="text-slate-800" id="cal-colab-turno">Turno Manhã</strong>
+      </div>
+    </div>
+
+    <!-- Calendário Mensal -->
+    <div class="p-6 overflow-y-auto flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-xl text-secondary">calendar_month</span>
+          <h4 class="font-bold text-base text-slate-800" id="cal-titulo-mes">Outubro de 2024 • Grade de Frequência</h4>
+        </div>
+        <!-- Legenda -->
+        <div class="flex items-center gap-3 text-xs">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> Presença</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-500"></span> Justificada (Obs)</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-red-500"></span> Desconto em Folha</span>
+        </div>
+      </div>
+
+      <!-- Grade dos Dias da Semana -->
+      <div class="grid grid-cols-7 gap-1.5 text-center text-xs font-bold text-slate-500 uppercase tracking-wider py-1 border-b border-slate-200">
+        <div>Dom</div>
+        <div>Seg</div>
+        <div>Ter</div>
+        <div>Qua</div>
+        <div>Qui</div>
+        <div>Sex</div>
+        <div>Sáb</div>
+      </div>
+
+      <!-- Grade dos Dias do Mês (1 a 31) -->
+      <div class="grid grid-cols-7 gap-1.5" id="grid-calendario-dias">
+        <!-- Renderizado dinamicamente -->
+      </div>
+
+      <!-- Resumo do Mês e Impacto na Folha -->
+      <div class="mt-2 p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+            <span class="text-xs text-slate-500 block">Presenças no Mês</span>
+            <strong class="text-base text-emerald-700" id="cal-resumo-presencas">0 dias</strong>
+          </div>
+          <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+            <span class="text-xs text-slate-500 block">Faltas Justificadas</span>
+            <strong class="text-base text-blue-700" id="cal-resumo-justificadas">0 dias (R$ 0,00)</strong>
+          </div>
+          <div class="bg-white p-2.5 rounded-lg border border-red-200 bg-red-50/50">
+            <span class="text-xs text-red-600 block font-semibold">Faltas sem Justificativa</span>
+            <strong class="text-base text-red-700" id="cal-resumo-injustificadas">0 dias</strong>
+          </div>
+        </div>
+
+        <!-- Box de Alerta de Desconto em Folha -->
+        <div id="cal-box-aviso-desconto" class="p-3.5 rounded-xl bg-red-50 border-2 border-red-300 flex items-center justify-between text-red-900">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-2xl text-red-600">error</span>
+            <div class="flex flex-col">
+              <span class="font-bold text-sm">Desconto na Folha Final do Mês (no pagamento dele):</span>
+              <span class="text-xs text-red-700" id="cal-texto-explicacao-desconto">Nenhuma falta injustificada registrada.</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-red-600 font-medium block">Total a Descontar:</span>
+            <strong class="text-lg font-mono font-bold text-red-700" id="cal-valor-desconto-final">R$ 0,00</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Rodapé do Modal -->
+    <div class="px-6 py-4 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
+      <span class="text-xs text-slate-500 flex items-center gap-1">
+        <span class="material-symbols-outlined text-sm">touch_app</span>
+        Clique em qualquer dia do calendário para alternar o apontamento ou alterar o valor do desconto.
+      </span>
+      <button onclick="fecharCalendarioModal()" type="button" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all cursor-pointer">
+        Fechar Calendário
+      </button>
+    </div>
+
+  </div>
 </div>
-</div>
-</div>
-</div>
-<!-- Interactive Confirmation Dialog / Modal (Level 3 Elevation) -->
-<div class="hidden fixed inset-0 z-50 items-center justify-center bg-inverse-surface/60 backdrop-blur-sm p-4" id="confirmation-modal">
-<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-lg shadow-2xl flex flex-col gap-space-md animate-in fade-in zoom-in duration-200">
-<div class="flex items-center justify-between pb-space-xs">
-<div class="flex items-center gap-2 text-on-surface">
-<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-xl">fact_check</span>
-</div>
-<div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Fechar Apontamento do Dia</h3>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Unidade 04 - Posto Alvorada • 24 de Outubro</span>
-</div>
-</div>
-<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" onclick="triggerModal(false)">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-2">
-<div class="flex justify-between font-body-sm text-body-sm">
-<span class="text-on-surface-variant">Total de Funcionários Escalados:</span>
-<strong class="text-on-surface">18 Colaboradores</strong>
-</div>
-<div class="flex justify-between font-body-sm text-body-sm">
-<span class="text-on-surface-variant">Presenças Registradas:</span>
-<strong class="text-secondary">17 Frentistas / Caixas</strong>
-</div>
-<div class="flex justify-between font-body-sm text-body-sm">
-<span class="text-on-surface-variant">Faltas Auditadas:</span>
-<strong class="text-error">01 Ausência (Justificada com Atestado)</strong>
-</div>
-<div class="h-px bg-surface-container my-1"></div>
-<div class="flex items-center gap-2 text-on-surface font-label-md text-label-md">
-<span class="material-symbols-outlined text-base text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
-<span>Regra de Observação 100% cumprida para ausências.</span>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface font-semibold">Assinatura Digital do Administrador Responsável:</label>
-<input class="w-full bg-surface-container-low text-on-surface-variant font-mono text-body-sm px-3 py-2 rounded-lg outline-none" readonly="" type="text" value="Carlos Eduardo Mendes (Super Admin 1/2)"/>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Ao confirmar, os dados serão congelados e transmitidos ao módulo de Vales & Folha.</span>
-</div>
-<div class="flex items-center justify-end gap-space-sm pt-space-xs">
-<button class="px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors" onclick="triggerModal(false)">
-          Cancelar e Revisar
+
+<!-- ========================================== -->
+<!-- MODAL RÁPIDO PARA REGISTRAR OBS DA FALTA   -->
+<!-- ========================================== -->
+<div id="modal-editar-obs" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 hidden overscroll-contain">
+  <div class="bg-surface-container-lowest w-full max-w-md rounded-2xl shadow-2xl flex flex-col p-6 animate-in fade-in zoom-in duration-200 border border-slate-200">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+      <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+        <span class="material-symbols-outlined text-secondary">edit_note</span>
+        <span>Justificativa & Desconto da Falta</span>
+      </h3>
+      <button onclick="fecharModalObs()" type="button" class="text-slate-400 hover:text-slate-700 cursor-pointer">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <form onsubmit="salvarObsFalta(event)" class="flex flex-col gap-4 mt-4">
+      <input type="hidden" id="obs-colab-id" />
+      <input type="hidden" id="obs-data-ref" />
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Colaborador:</label>
+        <span class="text-sm font-semibold text-slate-900" id="obs-colab-nome">Nome</span>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Tipo de Apontamento:</label>
+        <select id="obs-tipo-select" class="w-full bg-slate-100 text-slate-800 font-semibold text-sm px-3 py-2.5 rounded-lg border border-slate-300 outline-none focus:ring-2 focus:ring-secondary cursor-pointer">
+          <option value="falta_justificada">Falta Justificada (Com comprovante / Sem desconto em folha)</option>
+          <option value="falta_injustificada">Falta NÃO Justificada (Gera desconto no pagamento do mês)</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Observação / Motivo (Obs):</label>
+        <textarea id="obs-texto-input" rows="3" placeholder="Ex: Atestado médico Dr. Silva CRM 8912, problemas pessoais, ausência sem aviso prévio..." class="w-full bg-slate-100 text-slate-800 text-sm p-3 rounded-lg border border-slate-300 outline-none focus:ring-2 focus:ring-secondary resize-none"></textarea>
+      </div>
+
+      <!-- Campo para Mudar o Valor do Desconto -->
+      <div id="obs-campo-valor-container" class="hidden flex flex-col gap-1.5 p-3 rounded-xl bg-red-50 border border-red-200">
+        <label class="block text-xs font-bold text-red-900">Mudar Valor a Descontar no Pagamento:</label>
+        <div class="relative flex items-center">
+          <span class="absolute left-3 text-sm font-bold text-red-600">R$</span>
+          <input type="text" id="obs-valor-input" placeholder="0,00" class="w-full bg-white text-red-800 font-bold font-mono text-sm pl-10 pr-3 py-2 rounded-lg border border-red-300 outline-none focus:ring-2 focus:ring-red-400" />
+        </div>
+        <div class="flex items-center justify-between text-[11px] text-red-700 mt-0.5">
+          <span>Valor padrão (Salário / 30): <strong id="obs-valor-sugestao">R$ 0,00</strong></span>
+          <button type="button" onclick="aplicarValorPadraoObs()" class="text-red-800 font-bold hover:underline cursor-pointer">Restaurar Padrão</button>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
+        <button type="button" onclick="fecharModalObs()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer">
+          Cancelar
         </button>
-<button class="px-5 py-2.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md font-semibold hover:bg-inverse-surface shadow-sm transition-all flex items-center gap-1.5" onclick="triggerModal(false); alert('Apontamento de Pistas homologado e salvo com sucesso!');">
-<span class="material-symbols-outlined text-base text-tertiary-fixed">lock</span>
-<span>Confirmar e Travar Grade</span>
-</button>
+        <button type="submit" class="px-5 py-2 rounded-lg text-xs font-bold bg-secondary hover:bg-blue-700 text-white shadow-sm transition-all cursor-pointer">
+          Salvar Apontamento
+        </button>
+<!-- ========================================== -->
+<!-- MODAL DE APONTAR NOVA FALTA -->
+<!-- ========================================== -->
+<div id="modal-nova-falta" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 hidden overscroll-contain">
+  <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200">
+    <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center shadow-sm">
+          <span class="material-symbols-outlined text-xl">person_off</span>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Apontar Falta</h3>
+          <span class="text-xs text-slate-500">Registrar ausência com justificativa ou sem justificativa</span>
+        </div>
+      </div>
+      <button onclick="fecharModalNovaFalta()" type="button" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg cursor-pointer">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+
+    <form onsubmit="salvarNovaFalta(event)" class="p-6 flex flex-col gap-4">
+      <!-- Colaborador -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-bold uppercase text-slate-700">Selecione o Colaborador *</label>
+        <select id="modal-falta-colab" onchange="atualizarInfoModalNovaFalta()" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary">
+          <!-- Preenchido via JavaScript -->
+        </select>
+      </div>
+
+      <!-- Data da Falta -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-bold uppercase text-slate-700">Data da Falta *</label>
+        <input type="date" id="modal-falta-data" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary" />
+      </div>
+
+      <!-- Tipo de Falta -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-bold uppercase text-slate-700">Tipo de Falta *</label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="flex items-center gap-2.5 p-3 rounded-xl border border-blue-300 bg-blue-50/60 cursor-pointer hover:bg-blue-50 transition-colors">
+            <input type="radio" name="modal-tipo-falta-radio" value="falta_justificada" checked onchange="toggleModalTipoFalta()" class="w-4 h-4 text-blue-600 cursor-pointer" />
+            <div class="flex flex-col">
+              <span class="text-xs font-bold text-blue-900">Justificada</span>
+              <span class="text-[11px] text-blue-700">Com atestado • Isento</span>
+            </div>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl border border-red-300 bg-red-50/60 cursor-pointer hover:bg-red-50 transition-colors">
+            <input type="radio" name="modal-tipo-falta-radio" value="falta_injustificada" onchange="toggleModalTipoFalta()" class="w-4 h-4 text-red-600 cursor-pointer" />
+            <div class="flex flex-col">
+              <span class="text-xs font-bold text-red-900">Injustificada</span>
+              <span class="text-[11px] text-red-700">Gera desconto em folha</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Justificativa (Obs) -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-bold uppercase text-slate-700" id="modal-falta-obs-label">Motivo / Justificativa (Obs) *</label>
+        <textarea id="modal-falta-obs" rows="2" placeholder="Descreva o motivo (ex: Atestado médico 24h, consulta médica, ausência sem aviso)..." class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary resize-none"></textarea>
+      </div>
+
+      <!-- Valor do Desconto (Aparece se for Injustificada) -->
+      <div id="modal-falta-desconto-container" class="hidden flex flex-col gap-1.5 p-3 rounded-xl bg-red-50 border border-red-200">
+        <label class="text-xs font-bold text-red-900">Valor a Descontar no Pagamento (R$):</label>
+        <div class="relative flex items-center">
+          <span class="absolute left-3 text-sm font-bold text-red-600">R$</span>
+          <input type="text" id="modal-falta-valor-desconto" placeholder="0,00" class="w-full bg-white text-red-800 font-bold font-mono text-sm pl-9 pr-3 py-2 rounded-lg border border-red-300 outline-none focus:ring-2 focus:ring-red-400" />
+        </div>
+        <span class="text-[11px] text-red-700" id="modal-falta-valor-sugestao">Valor padrão sugerido: R$ 0,00 (Salário / 30)</span>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 flex items-center justify-end gap-2">
+        <button type="button" onclick="fecharModalNovaFalta()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl cursor-pointer">Cancelar</button>
+        <button type="submit" class="px-5 py-2 text-xs font-bold bg-secondary text-white rounded-xl shadow hover:bg-blue-700 cursor-pointer">Salvar Falta</button>
+      </div>
+    </form>
+  </div>
 </div>
-</div>
-</div>
-</div></main></div>
+
 <script id="drawer-script">
   function openSidebar() {
     const drawer = document.getElementById('sidebar-drawer');
@@ -833,7 +615,11 @@
       drawer.classList.add('translate-x-0');
       backdrop.classList.remove('opacity-0', 'pointer-events-none');
       backdrop.classList.add('opacity-100', 'pointer-events-auto');
-      document.body.style.overflow = 'hidden';
+      if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+        PostoStore.lockBodyScroll();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
     }
   }
 
@@ -845,7 +631,11 @@
       drawer.classList.add('-translate-x-full');
       backdrop.classList.remove('opacity-100', 'pointer-events-auto');
       backdrop.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
+      if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+        PostoStore.unlockBodyScroll();
+      } else {
+        document.body.style.overflow = '';
+      }
     }
   }
 
@@ -859,90 +649,673 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSidebar();
+    if (e.key === 'Escape') {
+      closeSidebar();
+      fecharCalendarioModal();
+      fecharModalObs();
+      fecharModalNovaFalta();
+    }
   });
 
-  // Cross-System Synchronization for Frequency
-  function syncFrequencia() {
+  // ==========================================
+  // FREQUENCY & APPOINTMENT ENGINE
+  // ==========================================
+  let dataAtualAtiva = '2024-10-24'; // Data de trabalho ativa
+
+  function formatarDataLabel(dateStr) {
+    const parts = dateStr.split('-');
+    if (parts.length === 3) {
+      const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+      const dia = parseInt(parts[2], 10);
+      const mes = meses[parseInt(parts[1], 10) - 1];
+      const ano = parts[0];
+      return `${dia} de ${mes} de ${ano}`;
+    }
+    return dateStr;
+  }
+
+  function selecionarDataRelativa(diffDias) {
+    const baseDate = new Date(2024, 9, 24); // 24 de Outubro de 2024
+    baseDate.setDate(baseDate.getDate() + diffDias);
+    const ano = baseDate.getFullYear();
+    const mes = String(baseDate.getMonth() + 1).padStart(2, '0');
+    const dia = String(baseDate.getDate()).padStart(2, '0');
+    dataAtualAtiva = `${ano}-${mes}-${dia}`;
+
+    // Atualiza botões
+    const btnOntem = document.getElementById('btn-dia-ontem');
+    const btnHoje = document.getElementById('btn-dia-hoje');
+    const btnAmanha = document.getElementById('btn-dia-amanha');
+
+    [btnOntem, btnHoje, btnAmanha].forEach(b => {
+      b.className = 'px-3 py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors cursor-pointer';
+    });
+
+    if (diffDias === -1) {
+      btnOntem.className = 'px-3 py-1.5 font-label-sm text-label-sm bg-secondary text-on-secondary rounded-lg font-bold shadow-sm transition-all cursor-pointer';
+    } else if (diffDias === 0) {
+      btnHoje.className = 'px-3 py-1.5 font-label-sm text-label-sm bg-secondary text-on-secondary rounded-lg font-bold shadow-sm transition-all cursor-pointer';
+    } else {
+      btnAmanha.className = 'px-3 py-1.5 font-label-sm text-label-sm bg-secondary text-on-secondary rounded-lg font-bold shadow-sm transition-all cursor-pointer';
+    }
+
+    document.getElementById('label-data-atual').textContent = formatarDataLabel(dataAtualAtiva);
+    renderFrequencia();
+  }
+
+  function renderFrequencia() {
     if (typeof PostoStore === 'undefined') return;
-    const colabs = PostoStore.getColaboradores().filter(c => c.status === 'Ativo');
 
-    const kpiTotal = document.getElementById('kpi-freq-total');
-    const kpiSub = document.getElementById('kpi-freq-sub');
-    const kpiPres = document.getElementById('kpi-freq-presencas');
-    const txtMostrando = document.getElementById('freq-mostrando-txt');
+    const allColabs = PostoStore.getColaboradores();
+    const selectPosto = document.getElementById('select-posto-freq').value;
+    const selectTurno = document.getElementById('select-turno-freq').value;
+    const selectTipoFalta = document.getElementById('select-tipo-falta-freq') ? document.getElementById('select-tipo-falta-freq').value : 'todos';
+    const search = (document.getElementById('input-search-freq').value || '').toLowerCase().trim();
 
-    if (kpiTotal) kpiTotal.textContent = colabs.length;
-    if (kpiSub) kpiSub.textContent = colabs.length > 0 ? `${colabs.length} em escala ativa` : 'Aguardando escala';
-    if (kpiPres) kpiPres.textContent = colabs.length;
-    if (txtMostrando) txtMostrando.innerHTML = `Mostrando <strong>${colabs.length}</strong> de <strong>${colabs.length}</strong> colaboradores`;
+    // Filtra colaboradores: no módulo de faltas, mostramos EXCLUSIVAMENTE quem faltou
+    const colabsComFalta = allColabs.filter(c => {
+      if (selectPosto !== 'todos' && c.posto !== selectPosto) return false;
+      if (selectTurno !== 'todos' && !(c.turno || '').toLowerCase().includes(selectTurno.toLowerCase())) return false;
+      if (search) {
+        const matchName = (c.nome || '').toLowerCase().includes(search);
+        const matchCpf = (c.cpf || '').includes(search);
+        const matchCargo = (c.cargoLabel || c.cargo || '').toLowerCase().includes(search);
+        if (!matchName && !matchCpf && !matchCargo) return false;
+      }
+
+      const statusObj = PostoStore.getStatusDia(c.id, dataAtualAtiva);
+      const st = statusObj.status;
+      // Aceita apenas faltas
+      if (st !== 'falta_justificada' && st !== 'falta_injustificada') return false;
+
+      // Filtro por tipo de falta
+      if (selectTipoFalta !== 'todos' && st !== selectTipoFalta) return false;
+
+      return true;
+    });
+
+    // Contadores para KPIs baseados no dia
+    let totalJustificadas = 0;
+    let totalInjustificadas = 0;
+    const [anoAtivoStr, mesAtivoStr, diaAtivoStr] = dataAtualAtiva.split('-');
+    const anoAtivo = parseInt(anoAtivoStr, 10);
+    const mesAtivo = parseInt(mesAtivoStr, 10);
+    const diaAtivo = parseInt(diaAtivoStr, 10);
+
+    let totalJustificadas = 0;
+    let totalInjustificadas = 0;
+    let totalDescontoDia = 0;
+    let totalDescontoMesPessoasComFalta = 0;
+
+    allColabs.forEach(c => {
+      if (selectPosto !== 'todos' && c.posto !== selectPosto) return;
+      const statusObj = PostoStore.getStatusDia(c.id, dataAtualAtiva);
+      const st = statusObj.status;
+      const valorDiaPadrao = PostoStore.calcularDescontoDia(c.salario);
+      const valorDesconto = (statusObj.valorDesconto !== undefined && statusObj.valorDesconto !== null) 
+        ? statusObj.valorDesconto 
+        : valorDiaPadrao;
+
+      if (st === 'falta_justificada') {
+        totalJustificadas++;
+      } else if (st === 'falta_injustificada') {
+        totalInjustificadas++;
+        totalDescontoDia += valorDesconto;
+      }
+    });
+
+    // Calcular o desconto total acumulado no mês das pessoas com falta
+    colabsComFalta.forEach(c => {
+      const hist = PostoStore.getHistoricoMes(c.id, anoAtivo, mesAtivo);
+      totalDescontoMesPessoasComFalta += hist.valorDescontoTotal;
+    });
+
+    const totalFaltas = totalJustificadas + totalInjustificadas;
 
     const tbody = document.getElementById('tabela-frequencia-body');
-    if (tbody) {
-      if (colabs.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="7" class="py-14 text-center">
-              <div class="flex flex-col items-center justify-center gap-2">
-                <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-1">
-                  <span class="material-symbols-outlined text-2xl">event_busy</span>
-                </div>
-                <h4 class="font-bold text-slate-800 text-sm">Nenhum colaborador escalado para hoje</h4>
-                <p class="text-xs text-slate-500 max-w-sm">Cadastre colaboradores no módulo de Colaboradores para gerar o apontamento diário de pistas em Parintins.</p>
+    tbody.innerHTML = '';
+
+    if (colabsComFalta.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" class="py-16 text-center bg-white">
+            <div class="flex flex-col items-center justify-center gap-2">
+              <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined text-2xl">verified</span>
               </div>
-            </td>
-          </tr>
-        `;
-      } else {
-        tbody.innerHTML = '';
-        colabs.forEach(c => {
-          const tr = document.createElement('tr');
-          tr.className = 'group hover:bg-surface-container-low/50 transition-colors';
-          tr.innerHTML = `
-            <td class="py-3.5 px-space-md">
-              <div class="flex items-center gap-space-sm">
-                <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
-                  ${c.initials || 'CO'}
-                </div>
-                <div class="flex flex-col">
-                  <span class="font-label-lg text-label-lg font-bold text-on-surface">${c.nome}</span>
-                  <span class="font-body-sm text-body-sm text-on-surface-variant">${c.cargoLabel} • ${c.postoLabel}</span>
-                </div>
-              </div>
-            </td>
-            <td class="py-3.5 px-space-md font-mono text-sm font-semibold text-slate-800">
-              ${c.cpf}
-            </td>
-            <td class="py-3.5 px-space-md font-body-sm text-body-sm text-on-surface">
-              <span class="inline-flex items-center gap-1 font-medium">
-                <span class="material-symbols-outlined text-sm text-secondary">schedule</span>
-                ${c.turno || '06:00 - 14:20'}
-              </span>
-            </td>
-            <td class="py-3.5 px-space-md text-center">
-              <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-full text-xs font-bold">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Presente
-              </span>
-            </td>
-            <td class="py-3.5 px-space-md text-xs text-slate-500">
-              Sem ocorrências
-            </td>
-            <td class="py-3.5 px-space-md text-center">
-              <span class="material-symbols-outlined text-sm text-slate-400">check_circle</span>
-            </td>
-            <td class="py-3.5 px-space-md text-right font-mono text-xs text-secondary font-semibold">
-              Ponto Eletrônico
-            </td>
+              <h4 class="font-bold text-slate-800 text-sm">Nenhuma falta registrada nesta data (${formatarDataLabel(dataAtualAtiva)})</h4>
+              <p class="text-xs text-slate-500 max-w-md">Todos os colaboradores compareceram normalmente ou não há faltas registradas com os filtros atuais. Clique em <b>+ Apontar Falta</b> para lançar uma ausência.</p>
+            </div>
+          </td>
+        </tr>
+      `;
+    } else {
+      colabsComFalta.forEach(c => {
+        const statusObj = PostoStore.getStatusDia(c.id, dataAtualAtiva);
+        const status = statusObj.status;
+        const obs = statusObj.obs || '';
+        const valorDiaPadrao = PostoStore.calcularDescontoDia(c.salario);
+        const valorDesconto = (statusObj.valorDesconto !== undefined && statusObj.valorDesconto !== null) 
+          ? statusObj.valorDesconto 
+          : valorDiaPadrao;
+
+        const hist = PostoStore.getHistoricoMes(c.id, anoAtivo, mesAtivo);
+
+        // Contar a ordem desta falta no mês (1ª, 2ª, 3ª, 4ª...)
+        let numInjustificadaAteHoje = 0;
+        let numJustificadaAteHoje = 0;
+        for (let d = 1; d <= diaAtivo; d++) {
+          const rec = hist.dias[d];
+          if (rec) {
+            if (rec.status === 'falta_injustificada') numInjustificadaAteHoje++;
+            else if (rec.status === 'falta_justificada') numJustificadaAteHoje++;
+          }
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = status === 'falta_injustificada' 
+          ? 'bg-red-50/40 hover:bg-red-50/70 transition-colors group border-b border-slate-200'
+          : 'bg-blue-50/30 hover:bg-blue-50/60 transition-colors group border-b border-slate-200';
+
+        // Badge Tipo de Falta (se for mais de uma, numera: 1ª, 2ª, 3ª, 4ª...)
+        let tipoFaltaBadge = '';
+        if (status === 'falta_justificada') {
+          const labelJust = `${numJustificadaAteHoje}ª Justificada`;
+          tipoFaltaBadge = `
+            <div class="flex flex-col items-center justify-center">
+              <button onclick="alterarStatus('${c.id}', 'falta_injustificada')" type="button" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 hover:bg-blue-200 text-blue-900 border border-blue-300 transition-colors cursor-pointer shadow-2xs" title="Clique para alternar para Injustificada">
+                <span class="material-symbols-outlined text-sm text-blue-700">assignment_turned_in</span>
+                <span>${labelJust}</span>
+              </button>
+              ${hist.totalFaltasJustificadas > 1 ? `<span class="text-[10px] text-blue-700 font-bold mt-0.5">${hist.totalFaltasJustificadas} justificadas no mês</span>` : ''}
+            </div>
           `;
-          tbody.appendChild(tr);
-        });
-      }
+        } else {
+          const labelInjust = `${numInjustificadaAteHoje}ª Injustificada`;
+          tipoFaltaBadge = `
+            <div class="flex flex-col items-center justify-center">
+              <button onclick="alterarStatus('${c.id}', 'falta_justificada')" type="button" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-100 hover:bg-red-200 text-red-900 border border-red-300 transition-colors cursor-pointer shadow-2xs" title="Clique para alternar para Justificada">
+                <span class="material-symbols-outlined text-sm text-red-600">warning</span>
+                <span>${labelInjust}</span>
+              </button>
+              ${hist.totalFaltasInjustificadas > 1 ? `<span class="text-[10px] text-red-700 font-bold mt-0.5">${hist.totalFaltasInjustificadas} faltas no mês</span>` : ''}
+            </div>
+          `;
+        }
+
+        // Impacto em Folha / Desconto
+        let impactoHtml = '';
+        if (status === 'falta_justificada') {
+          impactoHtml = `
+            <div class="flex flex-col items-center">
+              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">
+                <span class="material-symbols-outlined text-xs">verified</span> Isento (Abonada)
+              </span>
+              <span class="text-[10px] text-blue-600 mt-0.5 font-medium">Sem desconto na folha</span>
+            </div>
+          `;
+        } else {
+          impactoHtml = `
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-[10px] uppercase font-bold text-red-700 bg-red-100 border border-red-200 px-2 py-0.5 rounded flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">payments</span> Desconto em Folha
+              </span>
+              <div class="flex items-center gap-1">
+                <span class="text-xs font-bold text-red-700">- R$</span>
+                <input type="text" 
+                  value="${valorDesconto.toFixed(2).replace('.', ',')}" 
+                  onchange="alterarValorDescontoInline('${c.id}', this.value)" 
+                  class="w-20 text-center text-xs font-mono font-bold text-red-800 bg-white border border-red-300 rounded px-1.5 py-0.5 shadow-2xs focus:ring-2 focus:ring-red-400 outline-none cursor-text" 
+                  title="Valor do desconto no dia (${diaAtivo}/${mesAtivo})" />
+                <button onclick="abrirModalObs('${c.id}', '${c.nome.replace(/'/g, "\\'")}', '${status}', '${obs.replace(/'/g, "\\'")}', ${valorDesconto})" title="Editar detalhes do desconto" class="p-1 hover:bg-red-100 rounded text-red-700 cursor-pointer">
+                  <span class="material-symbols-outlined text-xs">edit</span>
+                </button>
+              </div>
+              <div class="text-[11px] font-bold text-red-800 bg-red-100/90 border border-red-200 px-2 py-0.5 rounded mt-0.5 whitespace-nowrap" title="Total que será descontado no fechamento da folha do mês de ${c.nome}">
+                Total no Mês: <strong>${PostoStore.formatCurrency(hist.valorDescontoTotal)}</strong> (${hist.totalFaltasInjustificadas} falta${hist.totalFaltasInjustificadas > 1 ? 's' : ''})
+              </div>
+            </div>
+          `;
+        }
+
+        // Justificativa / Obs
+        let obsHtml = `
+          <div class="flex items-center justify-between gap-1.5">
+            <span class="text-xs text-slate-700 truncate font-medium" title="${obs || (status === 'falta_justificada' ? 'Atestado / Justificada' : 'Sem justificativa')}">
+              ${obs ? `<strong>Obs:</strong> ${obs}` : (status === 'falta_justificada' ? '<span class="text-blue-700 italic">Comprovante homologado</span>' : '<span class="text-red-500 font-semibold italic">Sem justificativa</span>')}
+            </span>
+            <button onclick="abrirModalObs('${c.id}', '${c.nome.replace(/'/g, "\\'")}', '${status}', '${obs.replace(/'/g, "\\'")}', ${valorDesconto})" class="p-1 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0" title="Editar Observação / Justificativa">
+              <span class="material-symbols-outlined text-base">edit</span>
+            </button>
+          </div>
+        `;
+
+        tr.innerHTML = `
+          <!-- 1. Pessoa que Faltou -->
+          <td class="py-3 px-4 border-r border-slate-200">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                ${c.initials || 'CO'}
+              </div>
+              <div class="flex flex-col min-w-0">
+                <button onclick="abrirCalendarioColaborador('${c.id}')" type="button" class="text-left font-bold text-sm text-slate-900 hover:text-secondary hover:underline cursor-pointer truncate flex items-center gap-1.5" title="Abrir Calendário de Faltas">
+                  <span>${c.nome}</span>
+                  <span class="material-symbols-outlined text-xs text-secondary opacity-70">calendar_month</span>
+                </button>
+                <div class="flex items-center gap-1 text-[11px] text-slate-500 font-medium mt-0.5">
+                  <span class="font-mono">${c.cpf}</span>
+                  <span>•</span>
+                  <span>${c.matricula}</span>
+                </div>
+              </div>
+            </div>
+          </td>
+
+          <!-- 2. Cargo & Posto -->
+          <td class="py-3 px-4 border-r border-slate-200">
+            <div class="flex flex-col">
+              <span class="font-bold text-slate-800 text-xs">${c.cargoLabel || c.cargo}</span>
+              <span class="text-slate-500 text-xs">${c.postoLabel}</span>
+              <span class="text-[11px] font-mono text-emerald-700 font-semibold mt-0.5">Base: ${c.salario}</span>
+            </div>
+          </td>
+
+          <!-- 3. Turno -->
+          <td class="py-3 px-4 font-label-sm text-label-sm text-slate-600 border-r border-slate-200">
+            ${c.turno ? c.turno.replace(' (06:00 - 14:20)', '').replace(' (14:00 - 22:20)', '').replace(' (22:00 - 06:20)', '') : 'Manhã'}
+          </td>
+
+          <!-- 4. Tipo de Falta (Justificada vs Injustificada) -->
+          <td class="py-3 px-3 text-center border-r border-slate-200">
+            ${tipoFaltaBadge}
+          </td>
+
+          <!-- 5. Observação / Justificativa (Obs) -->
+          <td class="py-3 px-4 border-r border-slate-200">
+            ${obsHtml}
+          </td>
+
+          <!-- 6. Desconto no Pagamento -->
+          <td class="py-3 px-4 text-center border-r border-slate-200">
+            ${impactoHtml}
+          </td>
+
+          <!-- 7. Histórico / Calendário & Ação Cancelar -->
+          <td class="py-3 px-4 text-center whitespace-nowrap">
+            <div class="flex items-center justify-center gap-2">
+              <button onclick="abrirCalendarioColaborador('${c.id}')" type="button" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs transition-colors cursor-pointer border border-blue-200 shadow-2xs" title="Abrir Calendário de Faltas">
+                <span class="material-symbols-outlined text-sm">calendar_month</span>
+                <span>Calendário</span>
+              </button>
+              <button onclick="removerFalta('${c.id}')" type="button" class="p-1.5 text-slate-400 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors cursor-pointer" title="Remover falta / Marcar como presente">
+                <span class="material-symbols-outlined text-base">check_circle</span>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Atualiza KPIs 100% de Faltas
+    document.getElementById('kpi-freq-total-faltas').textContent = `${totalFaltas}`;
+    document.getElementById('kpi-freq-sub').textContent = selectPosto === 'todos' 
+      ? `Na rede toda (${allColabs.length} cadastrados)` 
+      : 'Neste posto selecionado';
+
+    document.getElementById('kpi-freq-justificadas').textContent = `${totalJustificadas}`;
+    document.getElementById('kpi-freq-injustificadas').textContent = `${totalInjustificadas}`;
+
+    // Card 4: As contas batem 100% com o calendário e a tabela
+    const totalDescontoExibir = totalDescontoMesPessoasComFalta > 0 ? totalDescontoMesPessoasComFalta : totalDescontoDia;
+    document.getElementById('kpi-freq-desconto-total').textContent = PostoStore.formatCurrency(totalDescontoExibir);
+    const subDescEl = document.getElementById('kpi-freq-desconto-sub');
+    if (subDescEl) {
+      subDescEl.innerHTML = `
+        <span>Nesta data: <strong class="text-slate-900">${PostoStore.formatCurrency(totalDescontoDia)}</strong></span>
+        <span class="text-xs bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Total Folha Mês: ${PostoStore.formatCurrency(totalDescontoExibir)}</span>
+      `;
+    }
+
+    const badgeTabela = document.getElementById('badge-total-faltas-tabela');
+    if (badgeTabela) badgeTabela.textContent = `${colabsComFalta.length} pessoa${colabsComFalta.length === 1 ? '' : 's'} com falta`;
+
+    document.getElementById('freq-info-contagem').textContent = `Exibindo ${colabsComFalta.length} pessoa${colabsComFalta.length === 1 ? '' : 's'} com falta na data ${formatarDataLabel(dataAtualAtiva)}`;
+  }
+
+  function alterarStatus(colabId, novoStatus) {
+    const current = PostoStore.getStatusDia(colabId, dataAtualAtiva);
+    PostoStore.setStatusDia(colabId, dataAtualAtiva, novoStatus, current.obs || '', current.valorDesconto);
+    renderFrequencia();
+  }
+
+  function alterarValorDescontoInline(colabId, novoValorStr) {
+    const current = PostoStore.getStatusDia(colabId, dataAtualAtiva);
+    const novoValor = PostoStore.parseCurrency(novoValorStr);
+    PostoStore.setStatusDia(colabId, dataAtualAtiva, 'falta_injustificada', current.obs || '', novoValor);
+    renderFrequencia();
+  }
+
+  function removerFalta(colabId) {
+    if (confirm('Deseja retirar a falta deste colaborador e registrá-lo como presente nesta data?')) {
+      PostoStore.setStatusDia(colabId, dataAtualAtiva, 'presente', '', 0);
+      renderFrequencia();
     }
   }
 
-  document.addEventListener('DOMContentLoaded', syncFrequencia);
-  window.addEventListener('postoRH_sync', syncFrequencia);
-  if (document.readyState !== 'loading') syncFrequencia();
+  // ==========================================
+  // MODAL APONTAR NOVA FALTA
+  // ==========================================
+  function abrirModalNovaFalta() {
+    const select = document.getElementById('modal-falta-colab');
+    const allColabs = PostoStore.getColaboradores().filter(c => c.status === 'Ativo');
+    select.innerHTML = '<option value="">Selecione o colaborador...</option>';
+    allColabs.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = `${c.nome} (${c.postoLabel || PostoStore.getStationName(c.posto)})`;
+      select.appendChild(opt);
+    });
+
+    document.getElementById('modal-falta-data').value = dataAtualAtiva;
+    document.getElementById('modal-falta-obs').value = '';
+
+    // Selecionar Justificada por padrão
+    const radios = document.getElementsByName('modal-tipo-falta-radio');
+    if (radios.length > 0) radios[0].checked = true;
+    toggleModalTipoFalta();
+
+    if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+      PostoStore.lockBodyScroll();
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+    document.getElementById('modal-nova-falta').classList.remove('hidden');
+  }
+
+  function fecharModalNovaFalta() {
+    if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+      PostoStore.unlockBodyScroll();
+    } else {
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal-nova-falta').classList.add('hidden');
+  }
+
+  function toggleModalTipoFalta() {
+    const radios = document.getElementsByName('modal-tipo-falta-radio');
+    let tipo = 'falta_justificada';
+    for (const r of radios) {
+      if (r.checked) { tipo = r.value; break; }
+    }
+
+    const descBox = document.getElementById('modal-falta-desconto-container');
+    const obsLabel = document.getElementById('modal-falta-obs-label');
+
+    if (tipo === 'falta_injustificada') {
+      descBox.classList.remove('hidden');
+      obsLabel.textContent = 'Motivo da Ausência (Obs) *';
+      atualizarInfoModalNovaFalta();
+    } else {
+      descBox.classList.add('hidden');
+      obsLabel.textContent = 'Justificativa / Motivo da Falta (Obs) *';
+    }
+  }
+
+  function atualizarInfoModalNovaFalta() {
+    const colabId = document.getElementById('modal-falta-colab').value;
+    if (!colabId) return;
+    const colab = PostoStore.getColaboradores().find(c => c.id === colabId);
+    if (!colab) return;
+
+    const valorDia = PostoStore.calcularDescontoDia(colab.salario);
+    document.getElementById('modal-falta-valor-desconto').value = valorDia.toFixed(2).replace('.', ',');
+    document.getElementById('modal-falta-valor-sugestao').textContent = `Valor padrão sugerido: ${PostoStore.formatCurrency(valorDia)} (Salário / 30)`;
+  }
+
+  function salvarNovaFalta(e) {
+    e.preventDefault();
+    const colabId = document.getElementById('modal-falta-colab').value;
+    const dataFalta = document.getElementById('modal-falta-data').value;
+    const obs = document.getElementById('modal-falta-obs').value.trim();
+
+    if (!colabId) {
+      alert('Selecione um colaborador!');
+      return;
+    }
+    if (!dataFalta) {
+      alert('Selecione uma data!');
+      return;
+    }
+
+    const radios = document.getElementsByName('modal-tipo-falta-radio');
+    let tipo = 'falta_justificada';
+    for (const r of radios) {
+      if (r.checked) { tipo = r.value; break; }
+    }
+
+    let valorDesconto = null;
+    if (tipo === 'falta_injustificada') {
+      const vStr = document.getElementById('modal-falta-valor-desconto').value;
+      valorDesconto = PostoStore.parseCurrency(vStr);
+    }
+
+    PostoStore.setStatusDia(colabId, dataFalta, tipo, obs, valorDesconto);
+    fecharModalNovaFalta();
+    renderFrequencia();
+  }
+
+  // ==========================================
+  // MODAL OBS / JUSTIFICATIVA DA FALTA
+  // ==========================================
+  let colabEmEdicaoObs = null;
+
+  function abrirModalObs(colabId, colabNome, tipoAtual, obsAtual, valorDescontoAtual) {
+    colabEmEdicaoObs = PostoStore.getColaboradores().find(c => c.id === colabId);
+    document.getElementById('obs-colab-id').value = colabId;
+    document.getElementById('obs-data-ref').value = dataAtualAtiva;
+    document.getElementById('obs-colab-nome').textContent = colabNome;
+    document.getElementById('obs-tipo-select').value = tipoAtual === 'falta_injustificada' ? 'falta_injustificada' : 'falta_justificada';
+    document.getElementById('obs-texto-input').value = obsAtual || '';
+
+    // Sugestão e valor do desconto
+    if (colabEmEdicaoObs) {
+      const valDia = PostoStore.calcularDescontoDia(colabEmEdicaoObs.salario);
+      document.getElementById('obs-valor-sugestao').textContent = PostoStore.formatCurrency(valDia);
+      const valFinal = (valorDescontoAtual !== undefined && valorDescontoAtual !== null && valorDescontoAtual > 0)
+        ? valorDescontoAtual
+        : valDia;
+      document.getElementById('obs-valor-input').value = valFinal.toFixed(2).replace('.', ',');
+    }
+
+    atualizarAvisoDescontoModal();
+    if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+      PostoStore.lockBodyScroll();
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+    document.getElementById('modal-editar-obs').classList.remove('hidden');
+    document.getElementById('obs-texto-input').focus();
+  }
+
+  function aplicarValorPadraoObs() {
+    if (colabEmEdicaoObs) {
+      const valDia = PostoStore.calcularDescontoDia(colabEmEdicaoObs.salario);
+      document.getElementById('obs-valor-input').value = valDia.toFixed(2).replace('.', ',');
+    }
+  }
+
+  function atualizarAvisoDescontoModal() {
+    const tipo = document.getElementById('obs-tipo-select').value;
+    const box = document.getElementById('obs-campo-valor-container');
+    if (tipo === 'falta_injustificada') {
+      box.classList.remove('hidden');
+    } else {
+      box.classList.add('hidden');
+    }
+  }
+  document.getElementById('obs-tipo-select').addEventListener('change', atualizarAvisoDescontoModal);
+
+  function fecharModalObs() {
+    if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+      PostoStore.unlockBodyScroll();
+    } else {
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal-editar-obs').classList.add('hidden');
+  }
+
+  function salvarObsFalta(e) {
+    e.preventDefault();
+    const colabId = document.getElementById('obs-colab-id').value;
+    const dateStr = document.getElementById('obs-data-ref').value || dataAtualAtiva;
+    const tipo = document.getElementById('obs-tipo-select').value;
+    const obs = document.getElementById('obs-texto-input').value.trim();
+    const valorDigitado = document.getElementById('obs-valor-input').value;
+
+    const valorDesconto = tipo === 'falta_injustificada' 
+      ? PostoStore.parseCurrency(valorDigitado) 
+      : 0;
+
+    PostoStore.setStatusDia(colabId, dateStr, tipo, obs, valorDesconto);
+    fecharModalObs();
+    renderFrequencia();
+
+    // Se o modal de calendário estiver aberto, atualiza ele também
+    if (!document.getElementById('modal-calendario').classList.contains('hidden')) {
+      abrirCalendarioColaborador(colabId);
+    }
+  }
+
+  // ==========================================
+  // MODAL DO CALENDÁRIO MENSAL DO COLABORADOR
+  // ==========================================
+  let colabCalendarioAtivoId = null;
+
+  function abrirCalendarioColaborador(colabId) {
+    colabCalendarioAtivoId = colabId;
+    const colab = PostoStore.getColaboradores().find(c => c.id === colabId);
+    if (!colab) return;
+
+    // Preenche cabeçalho
+    document.getElementById('cal-colab-iniciais').textContent = colab.initials || 'CO';
+    document.getElementById('cal-colab-nome').textContent = colab.nome;
+    document.getElementById('cal-colab-mat').textContent = colab.matricula;
+    document.getElementById('cal-colab-detalhes').textContent = `${colab.cargoLabel || colab.cargo} • ${colab.postoLabel}`;
+    document.getElementById('cal-colab-cpf').textContent = colab.cpf;
+    document.getElementById('cal-colab-salario').textContent = colab.salario;
+    document.getElementById('cal-colab-valordia').textContent = PostoStore.formatCurrency(PostoStore.calcularDescontoDia(colab.salario));
+    document.getElementById('cal-colab-turno').textContent = colab.turno;
+
+    // Obtém histórico de Outubro/2024
+    const hist = PostoStore.getHistoricoMes(colabId, 2024, 10);
+
+    // Monta Grade do Calendário
+    // 01 de Outubro de 2024 caiu em uma Terça-feira (índice 2, onde Dom=0, Seg=1, Ter=2)
+    const primeiroDiaSemana = new Date(2024, 9, 1).getDay(); // Terça = 2
+    const grid = document.getElementById('grid-calendario-dias');
+    grid.innerHTML = '';
+
+    // Células vazias até o primeiro dia da semana
+    for (let i = 0; i < primeiroDiaSemana; i++) {
+      const emptyDiv = document.createElement('div');
+      emptyDiv.className = 'h-16 rounded-xl bg-slate-50 border border-transparent opacity-30';
+      grid.appendChild(emptyDiv);
+    }
+
+    let countInjCal = 0;
+    let countJustCal = 0;
+    // Dias de 1 a 31
+    for (let d = 1; d <= hist.daysInMonth; d++) {
+      const diaObj = hist.dias[d];
+      const diaDiv = document.createElement('div');
+      diaDiv.className = 'h-16 p-1.5 rounded-xl border flex flex-col justify-between transition-all cursor-pointer relative group text-left';
+
+      if (diaObj.status === 'falta_injustificada') {
+        countInjCal++;
+        diaDiv.className += ' bg-red-50 border-red-300 hover:border-red-500 shadow-xs';
+        diaDiv.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-xs text-red-700">${d}</span>
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[9px] font-bold text-red-700 bg-red-100 px-1 py-0.2 rounded truncate" title="Falta Não Justificada">${countInjCal}ª Injustificada</span>
+            <span class="text-[10px] font-mono font-bold text-red-700 truncate">- ${PostoStore.formatCurrency(diaObj.valorDesconto)}</span>
+          </div>
+        `;
+      } else if (diaObj.status === 'falta_justificada') {
+        countJustCal++;
+        diaDiv.className += ' bg-blue-50 border-blue-300 hover:border-blue-500 shadow-xs';
+        diaDiv.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-xs text-blue-700">${d}</span>
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[9px] font-bold text-blue-700 bg-blue-100 px-1 py-0.2 rounded truncate" title="Falta Justificada (Atestado/Comprovante)">${countJustCal}ª Justificada</span>
+            <span class="text-[9px] text-blue-600 truncate" title="${diaObj.obs}">${diaObj.obs || 'Comprovante'}</span>
+          </div>
+        `;
+      } else {
+        diaDiv.className += ' bg-white border-slate-200 hover:border-emerald-400 hover:bg-emerald-50/30';
+        diaDiv.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-xs text-slate-700">${d}</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          </div>
+          <span class="text-[10px] font-medium text-emerald-700">Presente</span>
+        `;
+      }
+
+      // Ao clicar em qualquer dia do calendário, abre o modal de edição para esse dia!
+      diaDiv.onclick = () => {
+        const dateStr = `2024-10-${String(d).padStart(2, '0')}`;
+        abrirModalObs(colabId, colab.nome, diaObj.status, diaObj.obs, diaObj.valorDesconto);
+        document.getElementById('obs-data-ref').value = dateStr;
+      };
+
+      grid.appendChild(diaDiv);
+    }
+
+    // Preenche resumo
+    document.getElementById('cal-resumo-presencas').textContent = `${hist.totalPresencas} dias`;
+    document.getElementById('cal-resumo-justificadas').textContent = `${hist.totalFaltasJustificadas} dias (Sem Desconto)`;
+    document.getElementById('cal-resumo-injustificadas').textContent = `${hist.totalFaltasInjustificadas} dias com desconto`;
+    document.getElementById('cal-valor-desconto-final').textContent = PostoStore.formatCurrency(hist.valorDescontoTotal);
+
+    if (hist.totalFaltasInjustificadas > 0) {
+      document.getElementById('cal-texto-explicacao-desconto').textContent = `${hist.totalFaltasInjustificadas} falta(s) sem justificativa registrada neste mês (${hist.totalFaltasInjustificadas} x ${PostoStore.formatCurrency(hist.valorDia)}/dia). O valor será debitado no fechamento da folha.`;
+      document.getElementById('cal-box-aviso-desconto').className = 'p-3.5 rounded-xl bg-red-50 border-2 border-red-300 flex items-center justify-between text-red-900';
+    } else {
+      document.getElementById('cal-texto-explicacao-desconto').textContent = 'Nenhuma falta injustificada neste mês. Sem débitos adicionais no pagamento.';
+      document.getElementById('cal-box-aviso-desconto').className = 'p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between text-emerald-900';
+    }
+
+    if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+      PostoStore.lockBodyScroll();
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+    document.getElementById('modal-calendario').classList.remove('hidden');
+  }
+
+  function fecharCalendarioModal() {
+    if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+      PostoStore.unlockBodyScroll();
+    } else {
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal-calendario').classList.add('hidden');
+  }
+
+  // Inicialização
+  document.addEventListener('DOMContentLoaded', () => {
+    renderFrequencia();
+  });
+  window.addEventListener('postoRH_sync', renderFrequencia);
+  window.addEventListener('postoRH_frequencia_sync', renderFrequencia);
+  if (document.readyState !== 'loading') renderFrequencia();
 </script>
 
 </body></html>

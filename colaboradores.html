@@ -34,6 +34,15 @@
     border-radius: var(--radius-md) !important;
   }
 
+  /* Drawer lateral perfeitamente alinhado às bordas esquerdas */
+  #sidebar-drawer {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+
   /* Cards e painéis suaves */
   .bg-surface-container-lowest,
   .bg-white {
@@ -75,22 +84,39 @@
     font-size: 0.75rem !important;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
+
+  /* Linhas nítidas de separação de colunas e linhas da tabela */
+  .tabela-com-divisores {
+    border-collapse: collapse !important;
+    width: 100%;
+    border: 1px solid #cbd5e1 !important; /* borda externa da tabela */
+  }
+  .tabela-com-divisores th,
+  .tabela-com-divisores td {
+    border-right: 1px solid #e2e8f0 !important; /* linha vertical de separação */
+    border-bottom: 1px solid #e2e8f0 !important; /* linha horizontal de separação */
+  }
+  .tabela-com-divisores th:last-child,
+  .tabela-com-divisores td:last-child {
+    border-right: none !important;
+  }
+  .tabela-com-divisores thead tr {
+    background-color: #f8fafc !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+  }
 </style>
 
 </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><!-- Backdrop Overlay -->
   <div id="sidebar-backdrop" onclick="closeSidebar()" class="fixed inset-0 bg-primary-container/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
     <!-- Off-Canvas Drawer (Abre por cima do sistema, sem mexer no layout) -->
-  <aside id="sidebar-drawer" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
+  <aside id="sidebar-drawer" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left: none !important; border-top: none !important; border-bottom: none !important;" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
     <div class="flex flex-col">
       <!-- Drawer Header -->
       <div class="h-16 px-5 flex items-center justify-between border-b border-surface-container-low">
-        <a href="index.html" class="flex items-center gap-3">
-          <img alt="PostoRH Logo" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqLPJyzwGtdcyPQSu3MVYjOFUDTFWVLfzYcFyxNWAtT5vrvQbPhy1oEDGHT5309xE1DNA1HvsuWEY3Jyik6sWT_kvqnHVDCBoM5npDqrIrskq1owlrcG7Mrk1cSO26RtCwtU9UGFXHKBnWOlbeIZxMeBZWoyg0YFCcaNX_aKg3NgPz10i_DQbeN9X72tcrVe6pQSNjeBd1GZt3IpSXqlIElS0_guswZp8XCqBLnV5kWwDiMjazghnTpg"/>
-          <div class="flex flex-col">
-            <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">PostoRH</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Rede Operacional</span>
-          </div>
+        <a href="index.html" class="flex flex-col select-none">
+          <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold leading-none">PostoRH</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1 font-semibold">Rede Operacional</span>
         </a>
         <button onclick="closeSidebar()" title="Fechar Menu" type="button" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer flex items-center justify-center">
           <span class="material-symbols-outlined text-2xl">close</span>
@@ -104,13 +130,6 @@
 
       <!-- Links -->
       <nav class="flex flex-col gap-1.5 px-3">
-        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
-          <span class="material-symbols-outlined text-xl leading-none text-secondary">dashboard</span>
-          <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Dashboard</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Indicadores e Alertas</span>
-          </div>
-        </a>
         <a href="colaboradores.html" class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-xl shadow-sm transition-all" aria-current="page">
           <span class="material-symbols-outlined text-xl leading-none text-secondary">badge</span>
           <div class="flex flex-col flex-1">
@@ -122,14 +141,14 @@
           <span class="material-symbols-outlined text-xl leading-none text-secondary">fact_check</span>
           <div class="flex flex-col flex-1">
             <span class="leading-none text-sm font-semibold">Frequência</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Turnos e Justificativas</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Faltas & Justificativas</span>
           </div>
         </a>
         <a href="financeiro-vales.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
           <span class="material-symbols-outlined text-xl leading-none text-secondary">payments</span>
           <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Financeiro & Vales</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Adiantamentos e Baixas</span>
+            <span class="leading-none text-sm font-semibold">Vales Pegos</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Extrato do Mês</span>
           </div>
         </a>
       </nav>
@@ -145,7 +164,7 @@
       </button>
 
       <!-- Nome PostoRH -->
-      <a href="index.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
+      <a href="colaboradores.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
         <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
         <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
       </a>
@@ -159,18 +178,10 @@
   </header><main class="relative pt-14 bg-surface min-h-screen"><div class="flex flex-col w-full">
 <!-- Content Canvas Area -->
 <div class="p-gutter lg:p-margin-desktop flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full">
-<!-- Breadcrumb & Control Topbar -->
+<!-- Control Topbar -->
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
 <div class="flex flex-col">
-<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">
-<span>Operações</span>
-<span class="material-symbols-outlined text-xs">chevron_right</span>
-<span>Gestão de Recursos Humanos</span>
-<span class="material-symbols-outlined text-xs">chevron_right</span>
-<span class="text-secondary font-semibold">Quadro Geral</span>
-</div>
 <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Colaboradores da Rede</h1>
-<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Gestão cadastral, lotação por posto e histórico contratual dos colaboradores de pista e loja.</p>
 </div>
 <!-- Action Buttons -->
 <div class="flex items-center gap-space-sm self-start md:self-auto">
@@ -185,77 +196,62 @@
 </div>
 </div>
 <!-- Quick Stats Cards (KPI Strips) -->
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1: Total de Colaboradores -->
 <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
 <div class="flex items-center justify-between text-on-surface-variant">
-<span class="font-label-md text-label-md">Total Efetivo Ativo</span>
-<span class="p-1.5 rounded-lg bg-surface-container-low text-secondary material-symbols-outlined text-base">group</span>
+<span class="font-label-md text-label-md font-semibold">Total de Colaboradores</span>
+<span class="p-2 rounded-xl bg-blue-50 text-secondary material-symbols-outlined text-lg">groups</span>
 </div>
 <div class="mt-2 flex items-baseline gap-space-sm">
 <span class="font-metric-display text-metric-display text-on-surface" id="kpi-total-ativo">0</span>
-<span class="font-label-sm text-label-sm text-secondary bg-surface-container-low px-2 py-0.5 rounded-full font-medium" id="kpi-total-presenca">100% presença</span>
+<span class="font-label-sm text-label-sm text-secondary bg-blue-50 px-2.5 py-0.5 rounded-full font-bold" id="kpi-total-sub">0 cadastrados</span>
 </div>
-<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-total-unidades">Distribuídos em 4 postos de Parintins</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-total-detalhe">Quadro geral da rede</div>
 </div>
+<!-- Card 2: Total Investido Neles -->
 <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
 <div class="flex items-center justify-between text-on-surface-variant">
-<span class="font-label-md text-label-md">Frentistas em Turno</span>
-<span class="p-1.5 rounded-lg bg-surface-container-low text-secondary material-symbols-outlined text-base">local_gas_station</span>
+<span class="font-label-md text-label-md font-semibold">Total Investido Neles</span>
+<span class="p-2 rounded-xl bg-emerald-50 text-emerald-600 material-symbols-outlined text-lg">payments</span>
 </div>
 <div class="mt-2 flex items-baseline gap-space-sm">
-<span class="font-metric-display text-metric-display text-on-surface" id="kpi-frentistas">0</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-full" id="kpi-frentistas-turno">Turnos 1, 2 e 3</span>
+<span class="font-metric-display text-metric-display text-emerald-700 font-bold" id="kpi-total-investido">R$ 0,00</span>
+<span class="font-label-sm text-label-sm text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full font-bold">Folha Mensal</span>
 </div>
-<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-frentistas-sub">0 lubrificadores / lavagem</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-investido-detalhe">Soma salarial mensal dos colaboradores</div>
 </div>
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<!-- Card 3: Posto de Gasolina Selecionado -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border-2 border-secondary/20">
 <div class="flex items-center justify-between text-on-surface-variant">
-<span class="font-label-md text-label-md">Total Adiantamentos / Vales</span>
-<span class="p-1.5 rounded-lg bg-surface-container-low text-on-tertiary-container material-symbols-outlined text-base">payments</span>
+<span class="font-label-md text-label-md font-semibold text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">local_gas_station</span>
+Posto de Gasolina
+</span>
+<span class="font-label-sm text-label-sm text-secondary bg-blue-50 px-2.5 py-0.5 rounded-full font-bold" id="kpi-posto-badge">Todos os Postos</span>
 </div>
-<div class="mt-2 flex items-baseline gap-space-sm">
-<span class="font-metric-display text-metric-display text-on-surface" id="kpi-vales-total">R$ 0,00</span>
-<span class="font-label-sm text-label-sm text-on-tertiary-container bg-tertiary-fixed px-2 py-0.5 rounded-full font-medium" id="kpi-vales-autorizados">0 autorizados</span>
+<div class="mt-2">
+<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold" id="kpi-posto-nome">Todos os Postos de Parintins</span>
 </div>
-<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">Folha de Parintins (AM)</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm flex items-center justify-between" id="kpi-posto-detalhe">
+<span>0 colaboradores neste posto</span>
+<button type="button" onclick="document.getElementById('select-posto').focus()" class="text-xs text-secondary font-bold hover:underline cursor-pointer">Alterar Filtro ↓</button>
 </div>
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
-<div class="flex items-center justify-between text-on-surface-variant">
-<span class="font-label-md text-label-md">Histórico Desligados</span>
-<span class="p-1.5 rounded-lg bg-surface-container-low text-error material-symbols-outlined text-base">person_off</span>
-</div>
-<div class="mt-2 flex items-baseline gap-space-sm">
-<span class="font-metric-display text-metric-display text-on-surface" id="kpi-desligados">0</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-full">Ano 2024</span>
-</div>
-<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">0 rescisões registradas</div>
 </div>
 </div>
 <!-- Filter Console (Cascading Filters Panel) -->
 <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md">
-<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-xs">
-<div class="flex items-center gap-space-xs font-label-md text-label-md font-semibold text-on-surface">
+<div class="flex items-center gap-space-xs font-label-md text-label-md font-semibold text-on-surface pb-space-xs">
 <span class="material-symbols-outlined text-base text-secondary">tune</span>
-<span>Filtros Operacionais em Cascata</span>
-</div>
-<div class="flex items-center gap-space-sm">
-<button class="text-on-surface-variant hover:text-secondary font-label-sm text-label-sm flex items-center gap-1 transition-colors cursor-pointer" onclick="resetFilters()" type="button">
-<span class="material-symbols-outlined text-xs">restart_alt</span>
-<span>Redefinir Filtros</span>
-</button>
-<button class="text-on-surface-variant hover:text-error font-label-sm text-label-sm flex items-center gap-1 transition-colors cursor-pointer" onclick="if(confirm('Deseja zerar todos os colaboradores para iniciar seu cadastro real?')){ PostoStore.clearAll(); }" title="Zerar lista para iniciar cadastro limpo" type="button">
-<span class="material-symbols-outlined text-xs">delete_sweep</span>
-<span>Zerar Cadastros</span>
-</button>
-</div>
+<span>Filtros de Colaboradores</span>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-end">
 <!-- Select 1: Municipio -->
-<div class="md:col-span-3 flex flex-col gap-1.5">
+<div class="md:col-span-4 flex flex-col gap-1.5">
 <label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">1. MUNICÍPIO POLO</label>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">location_city</span>
-<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-municipio" onchange="handleMunicipioChange(this.value)">
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-municipio" onchange="handleMunicipioChange(this.value)">
 <option value="todos">Todos os Municípios (AM)</option>
 <option selected="" value="parintins">Parintins (AM)</option>
 </select>
@@ -263,11 +259,11 @@
 </div>
 </div>
 <!-- Select 2: Posto / Unidade (Cascaded) -->
-<div class="md:col-span-3 flex flex-col gap-1.5">
-<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">2. UNIDADE / POSTO DE LOTAÇÃO</label>
+<div class="md:col-span-4 flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">2. UNIDADE / POSTO DE GASOLINA</label>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
-<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-posto">
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-posto" onchange="renderColaboradores()">
 <option selected value="todos">Todos os postos de Parintins (4 Ativos)</option>
 <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
 <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
@@ -278,23 +274,12 @@
 </div>
 </div>
 <!-- Input de Busca -->
-<div class="md:col-span-3 flex flex-col gap-1.5">
+<div class="md:col-span-4 flex flex-col gap-1.5">
 <label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">3. PESQUISA RÁPIDA</label>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">search</span>
-<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm pl-9 pr-3 py-2 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" id="input-search" placeholder="Nome, CPF ou cargo..." type="text"/>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm pl-9 pr-3 py-2.5 rounded-lg outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" id="input-search" oninput="renderColaboradores()" placeholder="Nome, CPF ou cargo..." type="text"/>
 </div>
-</div>
-<!-- Toggle Switch: Desligados -->
-<div class="md:col-span-3 flex items-center justify-between bg-surface-container-low px-space-md py-2 rounded-lg">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Apenas Desligados</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-0.5">Exibir rescisões</span>
-</div>
-<label class="relative inline-flex items-center cursor-pointer">
-<input class="sr-only peer" id="toggle-desligados" onchange="handleToggleDesligados(this.checked)" type="checkbox"/>
-<div class="w-10 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
-</label>
 </div>
 </div>
 <!-- Active Filter Pill Tags -->
@@ -306,406 +291,28 @@
 <span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg text-on-surface font-label-sm text-label-sm" id="pill-posto-ativo">
 <span>Posto: <strong>Todas as Unidades</strong></span>
 </span>
-<span class="hidden inline-flex items-center gap-1 bg-error-container text-on-error-container px-2 py-0.5 rounded-lg font-label-sm text-label-sm font-semibold animate-pulse" id="badge-desligados-info">
-<span class="material-symbols-outlined text-xs">filter_list</span>
-<span>Modo Rescisões & Desligamentos Ativo</span>
-</span>
 </div>
 </div>
 <!-- Main Table Container (shadcn/Tailwind corporate surface) -->
 <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
 <div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
+<table class="w-full text-left border-collapse border border-slate-200 tabela-com-divisores">
 <thead>
-<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
-<th class="py-3 px-space-md font-semibold">Colaborador / Função</th>
-<th class="py-3 px-space-md font-semibold">CPF Cadastrado</th>
-<th class="py-3 px-space-md font-semibold">Unidade & Polo</th>
-<th class="py-3 px-space-md font-semibold">Data Admissão</th>
-<th class="py-3 px-space-md font-semibold">Desligamento</th>
-<th class="py-3 px-space-md font-semibold text-right">Vales / Adiantamento</th>
-<th class="py-3 px-space-md font-semibold text-center">Status</th>
-<th class="py-3 px-space-md font-semibold text-center">Ações</th>
+<tr class="bg-slate-100 text-slate-700 font-label-sm text-label-sm uppercase tracking-wider border-b-2 border-slate-300">
+<th class="py-3.5 px-4 font-bold border-r border-slate-200">Nome</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">CPF</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Data Nasc.</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Data Início</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 text-center whitespace-nowrap">Sexo</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Cargo</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 text-right whitespace-nowrap">Salário</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Posto</th>
+<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Turno</th>
+<th class="py-3.5 px-4 font-bold text-center whitespace-nowrap">Ações</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-on-surface" id="tabela-colaboradores-body">
-<!-- Row 1: Valdir Antonio (Ativo) -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-bold shrink-0">
-                    VA
-                  </div>
-<div class="flex flex-col min-w-0">
-<button class="text-left font-label-lg text-label-lg font-semibold text-on-surface hover:text-secondary truncate cursor-pointer" onclick="previewColaborador('001', 'Valdir Antonio Silveira', '182.492.018-44', 'Frentista Líder / Pista', 'Posto Alvorada - Bairro Pinheiros', 'São Paulo', '15/02/2021', '-', 'R$ 450,00', 'Ativo')" type="button">
-                      Valdir Antonio Silveira
-                    </button>
-<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-<span class="text-secondary font-medium">Frentista Líder</span>
-<span>•</span>
-<span>Mat. #0482</span>
-</div>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md font-mono text-on-surface">
-                182.492.018-44
-              </td>
-<td class="py-3 px-space-md">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md font-medium text-on-surface">Posto Alvorada</span>
-<div class="flex items-center gap-1 mt-0.5">
-<span class="bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.2 rounded font-semibold uppercase">São Paulo</span>
-<span class="text-on-surface-variant text-xs">Pinheiros</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface">
-                15/02/2021
-              </td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface-variant">
-                —
-              </td>
-<td class="py-3 px-space-md text-right font-label-md text-label-md font-mono">
-<span class="font-semibold text-on-surface">R$ 450,00</span>
-<span class="block text-[11px] text-on-surface-variant">2 vales emitidos</span>
-</td>
-<td class="py-3 px-space-md text-center">
-<span class="inline-flex items-center gap-1 bg-surface-container-lowest text-secondary px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase shadow-xs">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  ATIVO
-                </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="previewColaborador('001', 'Valdir Antonio Silveira', '182.492.018-44', 'Frentista Líder / Pista', 'Posto Alvorada - Bairro Pinheiros', 'São Paulo', '15/02/2021', '-', 'R$ 450,00', 'Ativo')" title="Visualizar Ficha" type="button">
-<span class="material-symbols-outlined text-base">visibility</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" title="Histórico de Vales" type="button">
-<span class="material-symbols-outlined text-base">payments</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" title="Espelho de Frequência" type="button">
-<span class="material-symbols-outlined text-base">fact_check</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" title="Opções" type="button">
-<span class="material-symbols-outlined text-base">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 2: Mariana Costa (Ativo - Caixa) -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-bold shrink-0">
-                    MC
-                  </div>
-<div class="flex flex-col min-w-0">
-<button class="text-left font-label-lg text-label-lg font-semibold text-on-surface hover:text-secondary truncate cursor-pointer" onclick="previewColaborador('002', 'Mariana Ramos Costa', '241.903.112-89', 'Operadora de Caixa de Pista', 'Posto Bandeirantes - Lapa', 'São Paulo', '10/08/2022', '-', 'R$ 200,00', 'Ativo')" type="button">
-                      Mariana Ramos Costa
-                    </button>
-<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-<span class="text-on-surface font-medium">Caixa de Loja & Pista</span>
-<span>•</span>
-<span>Mat. #0512</span>
-</div>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md font-mono text-on-surface">
-                241.903.112-89
-              </td>
-<td class="py-3 px-space-md">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md font-medium text-on-surface">Posto Bandeirantes</span>
-<div class="flex items-center gap-1 mt-0.5">
-<span class="bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.2 rounded font-semibold uppercase">São Paulo</span>
-<span class="text-on-surface-variant text-xs">Lapa</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface">
-                10/08/2022
-              </td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface-variant">
-                —
-              </td>
-<td class="py-3 px-space-md text-right font-label-md text-label-md font-mono">
-<span class="font-semibold text-on-surface">R$ 200,00</span>
-<span class="block text-[11px] text-on-surface-variant">1 vale pendente</span>
-</td>
-<td class="py-3 px-space-md text-center">
-<span class="inline-flex items-center gap-1 bg-surface-container-lowest text-secondary px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase shadow-xs">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  ATIVO
-                </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="previewColaborador('002', 'Mariana Ramos Costa', '241.903.112-89', 'Operadora de Caixa de Pista', 'Posto Bandeirantes - Lapa', 'São Paulo', '10/08/2022', '-', 'R$ 200,00', 'Ativo')" type="button">
-<span class="material-symbols-outlined text-base">visibility</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">payments</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">fact_check</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 3: Robson Tadeu (Gerente) -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-label-md text-label-md font-bold shrink-0">
-                    RT
-                  </div>
-<div class="flex flex-col min-w-0">
-<button class="text-left font-label-lg text-label-lg font-semibold text-on-surface hover:text-secondary truncate cursor-pointer" onclick="previewColaborador('003', 'Robson Tadeu Nogueira', '092.331.849-01', 'Gerente Operacional de Pista', 'Posto Radial Express - Tatuapé', 'São Paulo', '01/03/2019', '-', 'R$ 0,00', 'Ativo')" type="button">
-                      Robson Tadeu Nogueira
-                    </button>
-<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-<span class="text-on-surface font-semibold">Gerente de Pista</span>
-<span>•</span>
-<span>Mat. #0114</span>
-</div>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md font-mono text-on-surface">
-                092.331.849-01
-              </td>
-<td class="py-3 px-space-md">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md font-medium text-on-surface">Posto Radial Express</span>
-<div class="flex items-center gap-1 mt-0.5">
-<span class="bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.2 rounded font-semibold uppercase">São Paulo</span>
-<span class="text-on-surface-variant text-xs">Tatuapé</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface">
-                01/03/2019
-              </td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface-variant">
-                —
-              </td>
-<td class="py-3 px-space-md text-right font-label-md text-label-md font-mono">
-<span class="text-on-surface-variant">R$ 0,00</span>
-<span class="block text-[11px] text-on-surface-variant">Sem adiantamento</span>
-</td>
-<td class="py-3 px-space-md text-center">
-<span class="inline-flex items-center gap-1 bg-surface-container-lowest text-secondary px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase shadow-xs">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  ATIVO
-                </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="previewColaborador('003', 'Robson Tadeu Nogueira', '092.331.849-01', 'Gerente Operacional de Pista', 'Posto Radial Express - Tatuapé', 'São Paulo', '01/03/2019', '-', 'R$ 0,00', 'Ativo')" type="button">
-<span class="material-symbols-outlined text-base">visibility</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">payments</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">fact_check</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 4: Joana Darque (Lubrificadora) -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-bold shrink-0">
-                    JD
-                  </div>
-<div class="flex flex-col min-w-0">
-<button class="text-left font-label-lg text-label-lg font-semibold text-on-surface hover:text-secondary truncate cursor-pointer" onclick="previewColaborador('004', 'Joana Darque Batista', '319.822.408-55', 'Técnica de Lubrificação & Troca', 'Posto Morumbi Sul - Giovanni Gronchi', 'São Paulo', '04/11/2023', '-', 'R$ 600,00', 'Ativo')" type="button">
-                      Joana Darque Batista
-                    </button>
-<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-<span class="text-on-surface font-medium">Lubrificadora & Troca</span>
-<span>•</span>
-<span>Mat. #0609</span>
-</div>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md font-mono text-on-surface">
-                319.822.408-55
-              </td>
-<td class="py-3 px-space-md">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md font-medium text-on-surface">Posto Morumbi Sul</span>
-<div class="flex items-center gap-1 mt-0.5">
-<span class="bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.2 rounded font-semibold uppercase">São Paulo</span>
-<span class="text-on-surface-variant text-xs">Morumbi</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface">
-                04/11/2023
-              </td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface-variant">
-                —
-              </td>
-<td class="py-3 px-space-md text-right font-label-md text-label-md font-mono">
-<span class="font-semibold text-on-surface">R$ 600,00</span>
-<span class="block text-[11px] text-on-surface-variant">Adiantamento de Quinzena</span>
-</td>
-<td class="py-3 px-space-md text-center">
-<span class="inline-flex items-center gap-1 bg-surface-container-lowest text-secondary px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase shadow-xs">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  ATIVO
-                </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="previewColaborador('004', 'Joana Darque Batista', '319.822.408-55', 'Técnica de Lubrificação & Troca', 'Posto Morumbi Sul - Giovanni Gronchi', 'São Paulo', '04/11/2023', '-', 'R$ 600,00', 'Ativo')" type="button">
-<span class="material-symbols-outlined text-base">visibility</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">payments</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">fact_check</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 5: Carlos Eduardo Farias (DESLIGADO) -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group bg-surface-container-low/30">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-label-md font-bold shrink-0">
-                    CF
-                  </div>
-<div class="flex flex-col min-w-0">
-<button class="text-left font-label-lg text-label-lg font-semibold text-on-surface line-through opacity-75 hover:opacity-100 hover:text-error truncate cursor-pointer" onclick="previewColaborador('005', 'Carlos Eduardo Farias', '482.019.827-10', 'Frentista de Pista', 'Posto Alvorada - Bairro Pinheiros', 'São Paulo', '12/01/2022', '30/09/2024', 'R$ 0,00', 'Desligado')" type="button">
-                      Carlos Eduardo Farias
-                    </button>
-<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-<span>Frentista de Pista</span>
-<span>•</span>
-<span class="text-error font-medium">Rescisão Concluída</span>
-</div>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md font-mono text-on-surface-variant">
-                482.019.827-10
-              </td>
-<td class="py-3 px-space-md">
-<div class="flex flex-col opacity-80">
-<span class="font-label-md text-label-md font-medium text-on-surface">Posto Alvorada</span>
-<div class="flex items-center gap-1 mt-0.5">
-<span class="bg-surface-container text-on-surface-variant text-[10px] px-1.5 py-0.2 rounded font-semibold uppercase">São Paulo</span>
-<span class="text-on-surface-variant text-xs">Pinheiros</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface-variant">
-                12/01/2022
-              </td>
-<td class="py-3 px-space-md font-label-md text-label-md font-semibold text-error">
-                30/09/2024
-              </td>
-<td class="py-3 px-space-md text-right font-label-md text-label-md font-mono text-on-surface-variant">
-                R$ 0,00
-              </td>
-<td class="py-3 px-space-md text-center">
-<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase">
-<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
-                  DESLIGADO
-                </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="previewColaborador('005', 'Carlos Eduardo Farias', '482.019.827-10', 'Frentista de Pista', 'Posto Alvorada - Bairro Pinheiros', 'São Paulo', '12/01/2022', '30/09/2024', 'R$ 0,00', 'Desligado')" type="button">
-<span class="material-symbols-outlined text-base">visibility</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" title="Histórico Arquivado" type="button">
-<span class="material-symbols-outlined text-base">inventory_2</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 6: Elaine Rocha (Apoio / Limpeza) -->
-<tr class="hover:bg-surface-container-low/60 transition-colors group">
-<td class="py-3 px-space-md">
-<div class="flex items-center gap-space-sm">
-<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-bold shrink-0">
-                    ER
-                  </div>
-<div class="flex flex-col min-w-0">
-<button class="text-left font-label-lg text-label-lg font-semibold text-on-surface hover:text-secondary truncate cursor-pointer" onclick="previewColaborador('006', 'Elaine de Souza Rocha', '512.981.334-21', 'Auxiliar de Limpeza e Apoio Pista', 'Posto Bandeirantes - Lapa', 'São Paulo', '03/05/2023', '-', 'R$ 150,00', 'Ativo')" type="button">
-                      Elaine de Souza Rocha
-                    </button>
-<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-<span class="text-on-surface font-medium">Apoio Geral & Limpeza</span>
-<span>•</span>
-<span>Mat. #0588</span>
-</div>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md font-mono text-on-surface">
-                512.981.334-21
-              </td>
-<td class="py-3 px-space-md">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md font-medium text-on-surface">Posto Bandeirantes</span>
-<div class="flex items-center gap-1 mt-0.5">
-<span class="bg-surface-container-high text-on-surface-variant text-[10px] px-1.5 py-0.2 rounded font-semibold uppercase">São Paulo</span>
-<span class="text-on-surface-variant text-xs">Lapa</span>
-</div>
-</div>
-</td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface">
-                03/05/2023
-              </td>
-<td class="py-3 px-space-md font-label-md text-label-md text-on-surface-variant">
-                —
-              </td>
-<td class="py-3 px-space-md text-right font-label-md text-label-md font-mono">
-<span class="font-semibold text-on-surface">R$ 150,00</span>
-<span class="block text-[11px] text-on-surface-variant">Vale Farmácia</span>
-</td>
-<td class="py-3 px-space-md text-center">
-<span class="inline-flex items-center gap-1 bg-surface-container-lowest text-secondary px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase shadow-xs">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  ATIVO
-                </span>
-</td>
-<td class="py-3 px-space-md text-center">
-<div class="flex items-center justify-center gap-1">
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="previewColaborador('006', 'Elaine de Souza Rocha', '512.981.334-21', 'Auxiliar de Limpeza e Apoio Pista', 'Posto Bandeirantes - Lapa', 'São Paulo', '03/05/2023', '-', 'R$ 150,00', 'Ativo')" type="button">
-<span class="material-symbols-outlined text-base">visibility</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">payments</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">fact_check</span>
-</button>
-<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
+<tbody class="divide-y divide-slate-200 font-body-sm text-body-sm text-on-surface" id="tabela-colaboradores-body">
+<!-- As linhas são renderizadas dinamicamente pelo JavaScript com divisores verticais e horizontais -->
 </tbody>
 </table>
 </div>
@@ -768,75 +375,59 @@
 <span class="material-symbols-outlined text-lg">close</span>
 </button>
 </div>
-<!-- Body com Especificação Técnica DDL (Tabela 'funcionarios') -->
-<div class="flex-1 overflow-y-auto p-space-lg flex flex-col gap-space-lg">
+<!-- Body com Ficha do Colaborador -->
+<div class="flex-1 overflow-y-auto p-space-lg flex flex-col gap-space-md">
 <div class="flex flex-col gap-1">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">1. Identificação Cadastral</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">1. Dados Pessoais</span>
 <div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col gap-space-sm">
 <div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">CPF Formatado:</span>
-<span class="font-mono font-semibold text-on-surface" id="drawer-cpf">182.492.018-44</span>
+<span class="text-on-surface-variant">Nome Completo:</span>
+<span class="font-bold text-on-surface" id="drawer-det-nome">—</span>
 </div>
 <div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Matrícula Interna:</span>
-<span class="font-mono text-on-surface font-medium" id="drawer-matricula">#0482</span>
+<span class="text-on-surface-variant">CPF:</span>
+<span class="font-mono font-bold text-on-surface" id="drawer-cpf">—</span>
 </div>
 <div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Residência / Bairro:</span>
-<span class="text-on-surface font-medium">Jardim das Flores • São Paulo</span>
-</div>
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">2. Lotação & Contrato</span>
-<div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col gap-space-sm">
-<div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Posto Vinculado:</span>
-<span class="text-on-surface font-semibold text-right" id="drawer-posto">Posto Alvorada</span>
+<span class="text-on-surface-variant">Data de Nascimento:</span>
+<span class="font-medium text-on-surface" id="drawer-nascimento">—</span>
 </div>
 <div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Município Polo:</span>
-<span class="text-on-surface font-medium" id="drawer-polo">São Paulo</span>
-</div>
-<div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Data de Admissão:</span>
-<span class="text-on-surface font-medium" id="drawer-admissao">15/02/2021</span>
-</div>
-<div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Data de Desligamento:</span>
-<span class="text-on-surface-variant font-medium" id="drawer-desligamento">—</span>
+<span class="text-on-surface-variant">Sexo:</span>
+<span class="font-semibold text-on-surface" id="drawer-sexo">—</span>
 </div>
 </div>
 </div>
 <div class="flex flex-col gap-1">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">3. Vales & Histórico Financeiro</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">2. Vínculo & Cargo</span>
 <div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col gap-space-sm">
 <div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Vales Ativos no Mês:</span>
-<span class="font-mono font-bold text-secondary" id="drawer-vales">R$ 450,00</span>
+<span class="text-on-surface-variant">Cargo:</span>
+<span class="font-bold text-secondary text-right" id="drawer-det-cargo">—</span>
 </div>
 <div class="flex justify-between items-center text-body-sm">
-<span class="text-on-surface-variant">Status da Folha:</span>
-<span class="text-on-surface font-medium">Desconto programado dia 05</span>
+<span class="text-on-surface-variant">Posto de Trabalho:</span>
+<span class="font-semibold text-on-surface text-right" id="drawer-posto">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Turno de Trabalho:</span>
+<span class="font-medium text-on-surface text-right" id="drawer-turno">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Data de Início:</span>
+<span class="font-medium text-on-surface" id="drawer-admissao">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm pt-1 border-t border-slate-200">
+<span class="text-on-surface-variant font-bold">Salário Mensal:</span>
+<span class="font-mono font-bold text-emerald-700 text-base" id="drawer-salario">R$ 0,00</span>
 </div>
 </div>
-</div>
-<!-- Ações Rápidas no Drawer -->
-<div class="flex flex-col gap-space-xs pt-space-xs">
-<button class="w-full flex items-center justify-center gap-space-xs py-2 px-space-md bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg font-semibold hover:bg-secondary/90 transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">edit</span>
-<span>Editar Cadastro Completo</span>
-</button>
-<button class="w-full flex items-center justify-center gap-space-xs py-2 px-space-md bg-surface-container text-on-surface rounded-lg font-label-lg text-label-lg font-medium hover:bg-surface-container-high transition-colors cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">receipt_long</span>
-<span>Lançar Adiantamento / Vale</span>
-</button>
 </div>
 </div>
 <!-- Footer do Drawer -->
 <div class="p-space-md bg-surface-container-low text-on-surface-variant flex items-center justify-between text-label-sm font-label-sm">
-<span>Última atualização: Hoje às 08:32</span>
-<button class="text-secondary font-semibold hover:underline cursor-pointer" onclick="closeDrawer('drawer-preview')" type="button">Fechar</button>
+<span>Ficha cadastral ativa</span>
+<button class="px-4 py-1.5 rounded-lg bg-surface-container text-on-surface font-semibold hover:bg-slate-200 transition-colors cursor-pointer" onclick="closeDrawer('drawer-preview')" type="button">Fechar</button>
 </div>
 </div>
 </div>
@@ -851,7 +442,7 @@
 </div>
 
 <!-- MODAL: NOVO COLABORADOR -->
-<div class="fixed inset-0 z-50 overflow-y-auto hidden" id="modal-novo">
+<div class="fixed inset-0 z-50 overflow-y-auto hidden overscroll-contain" id="modal-novo">
 <div class="flex min-h-full items-center justify-center p-4">
 <div class="fixed inset-0 bg-on-surface/50 backdrop-blur-xs transition-opacity cursor-pointer" onclick="closeDrawer('modal-novo')"></div>
 <div class="relative w-full max-w-2xl bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col my-8">
@@ -861,7 +452,7 @@
 <span class="p-2.5 rounded-xl bg-primary text-on-primary material-symbols-outlined text-xl">badge</span>
 <div>
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Cadastro de Novo Colaborador</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Preencha os dados de contratação e alocação do posto em Parintins (AM).</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Preencha os dados do colaborador para o posto selecionado.</p>
 </div>
 </div>
 <button class="text-on-surface-variant hover:text-on-surface p-1.5 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="closeDrawer('modal-novo')" type="button">
@@ -871,22 +462,41 @@
 <!-- Formulário Funcional com Máscaras Automáticas -->
 <form class="p-space-lg flex flex-col gap-space-md" id="form-novo-colaborador" onsubmit="salvarNovoColaborador(event)">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
-<!-- Nome Completo -->
+<!-- 1. Nome Completo -->
 <div class="flex flex-col gap-1 md:col-span-2">
 <label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">NOME COMPLETO *</label>
-<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-nome" placeholder="Ex: Lucas Ferreira de Souza" required="" type="text"/>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-nome" placeholder="Ex: Lucas Ferreira de Souza" required type="text"/>
 </div>
-<!-- CPF com máscara automática -->
+<!-- 2. CPF -->
 <div class="flex flex-col gap-1">
 <div class="flex items-center justify-between">
-<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">CPF (AUTO-PONTUAÇÃO) *</label>
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">CPF *</label>
 <span class="text-[11px] text-secondary font-medium">000.000.000-00</span>
 </div>
-<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none font-mono border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-cpf" maxlength="14" oninput="this.value = PostoStore.maskCPF(this.value)" placeholder="Digite apenas os números..." required="" type="text"/>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none font-mono border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-cpf" maxlength="14" oninput="this.value = PostoStore.maskCPF(this.value)" placeholder="000.000.000-00" required type="text"/>
 </div>
-<!-- Cargo / Função Operacional -->
+<!-- 3. Sexo -->
 <div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">CARGO / FUNÇÃO *</label>
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">SEXO *</label>
+<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-sexo">
+<option value="Masculino">Masculino</option>
+<option value="Feminino">Feminino</option>
+<option value="Outro">Outro</option>
+</select>
+</div>
+<!-- 4. Data de Nascimento -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">DATA DE NASCIMENTO *</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-nascimento" required type="date"/>
+</div>
+<!-- 5. Data de Início (Admissão) -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">DATA DE INÍCIO *</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-inicio" required type="date"/>
+</div>
+<!-- 6. Cargo / Função -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">CARGO *</label>
 <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-cargo">
 <option value="frentista">Frentista de Pista</option>
 <option value="frentista_lider">Frentista Líder</option>
@@ -896,16 +506,17 @@
 <option value="limpeza">Apoio & Conservação</option>
 </select>
 </div>
-<!-- Município Polo (Parintins AM) -->
+<!-- 7. Salário -->
 <div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">MUNICÍPIO POLO *</label>
-<select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-municipio">
-<option value="parintins">Parintins (AM)</option>
-</select>
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">SALÁRIO *</label>
+<span class="text-[11px] text-emerald-600 font-medium">R$ Mensal</span>
 </div>
-<!-- Unidade de Lotação (Posto Real) -->
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none font-mono font-bold text-emerald-700 border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all" id="novo-salario" oninput="this.value = PostoStore.maskCurrency(this.value)" placeholder="R$ 2.450,00" value="R$ 2.450,00" required type="text"/>
+</div>
+<!-- 8. Posto que ele é -->
 <div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">POSTO DE TRABALHO *</label>
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">POSTO QUE ELE É *</label>
 <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-posto">
 <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
 <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
@@ -913,19 +524,14 @@
 <option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
 </select>
 </div>
-<!-- Data de Admissão -->
+<!-- 9. Turno dele -->
 <div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">DATA DE ADMISSÃO *</label>
-<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-admissao" required="" type="date"/>
-</div>
-<!-- Turno de Trabalho -->
-<div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">ESCALA / TURNO *</label>
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">TURNO DELE *</label>
 <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-space-md py-2.5 rounded-xl outline-none border border-slate-200 focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20 transition-all cursor-pointer" id="novo-turno">
-<option>Turno Manhã (06:00 - 14:20)</option>
-<option>Turno Tarde (14:00 - 22:20)</option>
-<option>Turno Noite (22:00 - 06:20)</option>
-<option>Intermediário / Folguista 12x36</option>
+<option value="Turno Manhã (06:00 - 14:20)">Turno Manhã (06:00 - 14:20)</option>
+<option value="Turno Tarde (14:00 - 22:20)">Turno Tarde (14:00 - 22:20)</option>
+<option value="Turno Noite (22:00 - 06:20)">Turno Noite (22:00 - 06:20)</option>
+<option value="Intermediário / Folguista 12x36">Intermediário / Folguista 12x36</option>
 </select>
 </div>
 </div>
@@ -936,7 +542,7 @@
 </button>
 <button class="px-6 py-2.5 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg font-bold hover:bg-on-primary-fixed shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-2" type="submit">
   <span class="material-symbols-outlined text-lg">check_circle</span>
-  <span>Salvar e Ativar Colaborador</span>
+  <span>Salvar Colaborador</span>
 </button>
 </div>
 </form>
@@ -976,54 +582,43 @@
       renderColaboradores();
     }
 
-    function handleToggleDesligados(checked) {
-      const infoBadge = document.getElementById('badge-desligados-info');
-      if (checked) {
-        infoBadge.classList.remove('hidden');
-      } else {
-        infoBadge.classList.add('hidden');
-      }
-      renderColaboradores();
-    }
-
     function resetFilters() {
       document.getElementById('select-municipio').value = 'parintins';
       handleMunicipioChange('parintins');
       document.getElementById('input-search').value = '';
-      const toggle = document.getElementById('toggle-desligados');
-      toggle.checked = false;
-      handleToggleDesligados(false);
+      document.getElementById('select-posto').value = 'todos';
       renderColaboradores();
     }
 
     // Modal and Drawer Control
-    function previewColaborador(id, nome, cpf, cargo, posto, polo, admissao, desligamento, vales, status) {
-      document.getElementById('drawer-nome').textContent = nome;
-      document.getElementById('drawer-cargo').textContent = cargo;
-      document.getElementById('drawer-cpf').textContent = cpf;
-      document.getElementById('drawer-posto').textContent = posto;
-      document.getElementById('drawer-polo').textContent = polo;
-      document.getElementById('drawer-admissao').textContent = admissao;
-      document.getElementById('drawer-desligamento').textContent = desligamento;
-      document.getElementById('drawer-vales').textContent = vales;
-      
-      const parts = (nome || '').trim().split(' ');
-      const initials = (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase();
-      document.getElementById('drawer-avatar').textContent = initials;
+    function previewColaborador(id) {
+      const all = PostoStore.getColaboradores();
+      const c = all.find(x => x.id === id);
+      if (!c) return;
 
-      const badge = document.getElementById('drawer-status-badge');
-      if (status && status.toLowerCase().includes('desligado')) {
-        badge.textContent = 'DESLIGADO';
-        badge.className = 'self-start text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-surface-container text-outline mb-1';
-      } else {
-        badge.textContent = 'ATIVO';
-        badge.className = 'self-start text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-surface-container-lowest text-secondary mb-1';
-      }
+      document.getElementById('drawer-nome').textContent = c.nome;
+      document.getElementById('drawer-cargo').textContent = c.cargoLabel || c.cargo;
+      document.getElementById('drawer-det-nome').textContent = c.nome;
+      document.getElementById('drawer-cpf').textContent = c.cpf;
+      document.getElementById('drawer-nascimento').textContent = PostoStore.formatDateBR(c.dataNascimento) || '—';
+      document.getElementById('drawer-admissao').textContent = PostoStore.formatDateBR(c.dataInicio || c.dataAdmissao) || '—';
+      document.getElementById('drawer-sexo').textContent = c.sexo || 'Masculino';
+      document.getElementById('drawer-det-cargo').textContent = c.cargoLabel || c.cargo;
+      document.getElementById('drawer-salario').textContent = c.salario || 'R$ 0,00';
+      document.getElementById('drawer-posto').textContent = c.postoLabel;
+      document.getElementById('drawer-turno').textContent = c.turno || 'Turno Manhã';
+      
+      document.getElementById('drawer-avatar').textContent = c.initials || 'CO';
 
       openDrawer('drawer-preview');
     }
 
     function openDrawer(id) {
+      if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+        PostoStore.lockBodyScroll();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
       const el = document.getElementById(id);
       if (id === 'drawer-preview') {
         el.classList.remove('pointer-events-none', 'opacity-0');
@@ -1034,14 +629,26 @@
       } else {
         el.classList.remove('hidden');
         if (id === 'modal-novo') {
-          // Set default date to today
-          const dt = document.getElementById('novo-admissao');
+          // Set default dates
+          const dt = document.getElementById('novo-inicio');
           if (dt && !dt.value) dt.value = new Date().toISOString().split('T')[0];
+          
+          // Preselect current filter station if not 'todos'
+          const currentPosto = document.getElementById('select-posto').value;
+          if (currentPosto && currentPosto !== 'todos') {
+            const novoPosto = document.getElementById('novo-posto');
+            if (novoPosto) novoPosto.value = currentPosto;
+          }
         }
       }
     }
 
     function closeDrawer(id) {
+      if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+        PostoStore.unlockBodyScroll();
+      } else {
+        document.body.style.overflow = '';
+      }
       const el = document.getElementById(id);
       if (id === 'drawer-preview') {
         const content = document.getElementById('drawer-content');
@@ -1059,135 +666,150 @@
     // Dynamic Render & Store Integration
     function renderColaboradores() {
       const all = PostoStore.getColaboradores();
-      const selectPosto = document.getElementById('select-posto').value;
+      const selectPostoEl = document.getElementById('select-posto');
+      const selectPosto = selectPostoEl.value;
       const search = (document.getElementById('input-search').value || '').toLowerCase().trim();
-      const apenasDesligados = document.getElementById('toggle-desligados').checked;
 
-      // Update KPIs
-      const ativos = all.filter(c => c.status === 'Ativo');
-      const desligados = all.filter(c => c.status !== 'Ativo');
-      const frentistas = ativos.filter(c => (c.cargoLabel || '').toLowerCase().includes('frentista'));
-      const lubrificadores = ativos.filter(c => (c.cargoLabel || '').toLowerCase().includes('lubrific'));
-      
-      const totalVales = all.reduce((acc, c) => acc + (c.valesTotal || 0), 0);
-      const totalValesQtd = all.reduce((acc, c) => acc + (c.valesQtd || 0), 0);
-
-      document.getElementById('kpi-total-ativo').textContent = ativos.length;
-      document.getElementById('kpi-total-presenca').textContent = ativos.length > 0 ? '100% presença' : '0% presença';
-      
-      // Distinct stations with staff
-      const postosComGente = new Set(ativos.map(c => c.posto)).size;
-      document.getElementById('kpi-total-unidades').textContent = ativos.length > 0
-        ? `Distribuídos em ${postosComGente} de 4 postos ativos`
-        : 'Distribuídos em 0 unidades ativas';
-
-      document.getElementById('kpi-frentistas').textContent = frentistas.length;
-      document.getElementById('kpi-frentistas-sub').textContent = `${lubrificadores.length} lubrificadores / apoio`;
-
-      document.getElementById('kpi-vales-total').textContent = `R$ ${totalVales.toFixed(2).replace('.', ',')}`;
-      document.getElementById('kpi-vales-autorizados').textContent = `${totalValesQtd} autorizados`;
-
-      document.getElementById('kpi-desligados').textContent = desligados.length;
-
-      // Filter list
+      // Filter list by selected posto and quick search
       let filtered = all.filter(c => {
-        if (apenasDesligados && c.status === 'Ativo') return false;
-        if (!apenasDesligados && c.status !== 'Ativo') return false;
         if (selectPosto !== 'todos' && c.posto !== selectPosto) return false;
         if (search) {
           const matchName = (c.nome || '').toLowerCase().includes(search);
           const matchCpf = (c.cpf || '').includes(search);
-          const matchCargo = (c.cargoLabel || '').toLowerCase().includes(search);
+          const matchCargo = (c.cargoLabel || c.cargo || '').toLowerCase().includes(search);
           const matchPosto = (c.postoLabel || '').toLowerCase().includes(search);
           if (!matchName && !matchCpf && !matchCargo && !matchPosto) return false;
         }
         return true;
       });
 
+      // Compute stats
+      const totalColabs = filtered.length;
+      const totalInvestido = filtered.reduce((acc, c) => acc + PostoStore.parseCurrency(c.salario), 0);
+
+      // 1. Update KPI Card: Total de Colaboradores
+      document.getElementById('kpi-total-ativo').textContent = totalColabs;
+      document.getElementById('kpi-total-sub').textContent = totalColabs === 1 ? '1 Colaborador' : `${totalColabs} Colaboradores`;
+      document.getElementById('kpi-total-detalhe').textContent = selectPosto === 'todos' 
+        ? `Quadro total da rede (${all.length} cadastrados)`
+        : `Neste posto selecionado (${all.length} no total da rede)`;
+
+      // 2. Update KPI Card: Total Investido Neles
+      document.getElementById('kpi-total-investido').textContent = `R$ ${totalInvestido.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      document.getElementById('kpi-investido-detalhe').textContent = totalColabs > 0
+        ? `Média de R$ ${(totalInvestido / totalColabs).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} por colaborador`
+        : 'Soma salarial mensal dos colaboradores';
+
+      // 3. Update KPI Card: Posto de Gasolina
+      const postoOption = selectPostoEl.options[selectPostoEl.selectedIndex];
+      const postoNomeText = postoOption ? postoOption.text : 'Todos os Postos';
+      document.getElementById('kpi-posto-nome').textContent = postoNomeText;
+      document.getElementById('kpi-posto-badge').textContent = selectPosto === 'todos' ? 'Todos os Postos' : 'Posto Filtrado';
+      document.getElementById('kpi-posto-detalhe').innerHTML = selectPosto === 'todos'
+        ? `<span>Visualizando todos os 4 postos da rede</span>`
+        : `<span><strong>${totalColabs}</strong> ${totalColabs === 1 ? 'colaborador alocado' : 'colaboradores alocados'} neste posto</span>`;
+
+      // Update active filter pill
+      document.getElementById('pill-posto-ativo').innerHTML = `<span>Posto: <strong>${postoNomeText}</strong></span>`;
+
+      // Render Table
       const tbody = document.getElementById('tabela-colaboradores-body');
       tbody.innerHTML = '';
 
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="8" class="py-16 px-6 text-center">
+            <td colspan="10" class="py-16 px-6 text-center">
               <div class="flex flex-col items-center justify-center gap-3">
                 <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shadow-xs">
                   <span class="material-symbols-outlined text-3xl">badge</span>
                 </div>
                 <div class="flex flex-col">
-                  <h4 class="text-base font-bold text-slate-800">Nenhum colaborador cadastrado</h4>
-                  <p class="text-xs text-slate-500 max-w-md mt-1">O quadro de pessoal de Parintins está zerado. Clique no botão abaixo para cadastrar o primeiro frentista ou operador real.</p>
+                  <h4 class="text-base font-bold text-slate-800">Nenhum colaborador encontrado</h4>
+                  <p class="text-xs text-slate-500 max-w-md mt-1">
+                    ${all.length === 0 
+                      ? 'Nenhum colaborador cadastrado ainda. Clique no botão abaixo para adicionar o primeiro.' 
+                      : 'Nenhum colaborador encontrado para o posto ou filtro pesquisado.'}
+                  </p>
                 </div>
                 <button onclick="openDrawer('modal-novo')" class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow transition-all cursor-pointer">
                   <span class="material-symbols-outlined text-base">person_add</span>
-                  <span>+ Cadastrar Primeiro Colaborador</span>
+                  <span>+ Cadastrar Novo Colaborador</span>
                 </button>
               </div>
             </td>
           </tr>
         `;
-        document.getElementById('paginacao-info').innerHTML = `<span>Exibindo <strong>0</strong> de <strong>${all.length}</strong> colaboradores cadastrados</span>`;
+        const pag = document.getElementById('paginacao-info');
+        if (pag) pag.innerHTML = `<span>Exibindo <strong>0</strong> de <strong>${all.length}</strong> colaboradores cadastrados</span>`;
         return;
       }
 
-      document.getElementById('paginacao-info').innerHTML = `<span>Exibindo <strong>1 – ${filtered.length}</strong> de <strong>${all.length}</strong> colaboradores (${ativos.length} ativos, ${desligados.length} desligados)</span>`;
+      const pag = document.getElementById('paginacao-info');
+      if (pag) pag.innerHTML = `<span>Exibindo <strong>1 – ${filtered.length}</strong> de <strong>${all.length}</strong> colaboradores cadastrados</span>`;
 
       filtered.forEach(c => {
         const tr = document.createElement('tr');
-        tr.className = 'hover:bg-surface-container-low/60 transition-colors group';
-        
-        const isDesligado = c.status !== 'Ativo';
-        const statusBadge = isDesligado 
-          ? `<span class="inline-flex items-center gap-1 bg-surface-container text-outline px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span>DESLIGADO</span>`
-          : `<span class="inline-flex items-center gap-1 bg-blue-50 text-blue-700 border border-blue-200/80 px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>ATIVO</span>`;
+        tr.className = 'hover:bg-blue-50/40 transition-colors group border-b border-slate-200';
+
+        const sexoBadge = c.sexo === 'Feminino'
+          ? `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 border border-pink-200">Feminino</span>`
+          : `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">${c.sexo || 'Masculino'}</span>`;
 
         tr.innerHTML = `
-          <td class="py-3 px-space-md">
-            <div class="flex items-center gap-space-sm">
-              <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-2xs">
+          <!-- 1. Nome -->
+          <td class="py-3.5 px-4 border-r border-slate-200">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-xs">
                 ${c.initials || 'CO'}
               </div>
               <div class="flex flex-col min-w-0">
-                <button class="text-left font-label-lg text-label-lg font-bold text-on-surface hover:text-secondary truncate cursor-pointer" onclick="previewColaborador('${c.id}', '${c.nome.replace(/'/g, "\\'")}', '${c.cpf}', '${c.cargoLabel}', '${c.postoLabel}', 'Parintins (AM)', '${PostoStore.formatDateBR(c.dataAdmissao)}', '${c.desligamento}', 'R$ ${(c.valesTotal || 0).toFixed(2).replace('.', ',')}', '${c.status}')" type="button">
+                <button class="text-left font-label-lg text-label-lg font-bold text-slate-900 hover:text-blue-600 truncate cursor-pointer" onclick="previewColaborador('${c.id}')" type="button">
                   ${c.nome}
                 </button>
-                <div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
-                  <span class="text-secondary font-semibold">${c.cargoLabel}</span>
-                  <span>•</span>
-                  <span>${c.matricula}</span>
-                </div>
+                <span class="text-slate-500 font-label-sm text-label-sm">${c.matricula}</span>
               </div>
             </div>
           </td>
-          <td class="py-3 px-space-md font-label-md text-label-md font-mono font-bold text-slate-800">
+          <!-- 2. CPF -->
+          <td class="py-3.5 px-4 font-label-md text-label-md font-mono font-bold text-slate-800 whitespace-nowrap border-r border-slate-200">
             ${c.cpf}
           </td>
-          <td class="py-3 px-space-md">
-            <div class="flex flex-col">
-              <span class="font-label-md text-label-md font-semibold text-on-surface">${c.postoLabel}</span>
-              <div class="flex items-center gap-1 mt-0.5">
-                <span class="bg-blue-50 text-blue-700 text-[10px] px-1.5 py-0.5 rounded font-bold uppercase border border-blue-200/60">Parintins</span>
-                <span class="text-on-surface-variant text-xs">${c.bairro}</span>
-              </div>
+          <!-- 3. Data de Nascimento -->
+          <td class="py-3.5 px-4 font-label-md text-label-md text-slate-700 font-medium whitespace-nowrap border-r border-slate-200">
+            ${PostoStore.formatDateBR(c.dataNascimento) || '—'}
+          </td>
+          <!-- 4. Data de Início -->
+          <td class="py-3.5 px-4 font-label-md text-label-md text-slate-700 font-medium whitespace-nowrap border-r border-slate-200">
+            ${PostoStore.formatDateBR(c.dataInicio || c.dataAdmissao) || '—'}
+          </td>
+          <!-- 5. Sexo -->
+          <td class="py-3.5 px-4 text-center whitespace-nowrap border-r border-slate-200">
+            ${sexoBadge}
+          </td>
+          <!-- 6. Cargo -->
+          <td class="py-3.5 px-4 font-label-md text-label-md font-semibold text-blue-700 whitespace-nowrap border-r border-slate-200">
+            ${c.cargoLabel || c.cargo}
+          </td>
+          <!-- 7. Salário -->
+          <td class="py-3.5 px-4 text-right font-label-md text-label-md font-mono font-bold text-emerald-700 whitespace-nowrap border-r border-slate-200">
+            ${c.salario || 'R$ 0,00'}
+          </td>
+          <!-- 8. Posto que ele é -->
+          <td class="py-3.5 px-4 border-r border-slate-200">
+            <div class="flex flex-col min-w-[190px]">
+              <span class="font-label-md text-label-md font-semibold text-slate-900">${c.postoLabel}</span>
+              <span class="text-slate-500 text-xs">${c.bairro || 'Parintins (AM)'}</span>
             </div>
           </td>
-          <td class="py-3 px-space-md font-label-md text-label-md text-on-surface font-medium">
-            ${PostoStore.formatDateBR(c.dataAdmissao)}
+          <!-- 9. Turno dele -->
+          <td class="py-3.5 px-4 font-label-sm text-label-sm text-slate-600 whitespace-nowrap border-r border-slate-200">
+            ${c.turno || 'Turno Manhã'}
           </td>
-          <td class="py-3 px-space-md font-label-md text-label-md ${isDesligado ? 'text-error font-bold font-mono' : 'text-on-surface-variant'}">
-            ${c.desligamento}
-          </td>
-          <td class="py-3 px-space-md text-right font-label-md text-label-md font-mono">
-            <span class="font-bold text-on-surface">R$ ${(c.valesTotal || 0).toFixed(2).replace('.', ',')}</span>
-            <span class="block text-[11px] text-on-surface-variant">${c.valesQtd || 0} vales emitidos</span>
-          </td>
-          <td class="py-3 px-space-md text-center">
-            ${statusBadge}
-          </td>
-          <td class="py-3 px-space-md text-center">
-            <div class="flex items-center justify-center gap-1">
-              <button class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 hover:text-blue-600 transition-colors cursor-pointer" onclick="previewColaborador('${c.id}', '${c.nome.replace(/'/g, "\\'")}', '${c.cpf}', '${c.cargoLabel}', '${c.postoLabel}', 'Parintins (AM)', '${PostoStore.formatDateBR(c.dataAdmissao)}', '${c.desligamento}', 'R$ ${(c.valesTotal || 0).toFixed(2).replace('.', ',')}', '${c.status}')" title="Visualizar Ficha" type="button">
+          <!-- 10. Ações -->
+          <td class="py-3.5 px-4 text-center whitespace-nowrap">
+            <div class="flex items-center justify-center gap-1.5">
+              <button class="p-1.5 rounded-lg hover:bg-blue-50 text-slate-500 hover:text-blue-600 transition-colors cursor-pointer" onclick="previewColaborador('${c.id}')" title="Visualizar Ficha" type="button">
                 <span class="material-symbols-outlined text-base">visibility</span>
               </button>
               <button class="p-1.5 rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-600 transition-colors cursor-pointer" onclick="removerColaborador('${c.id}', '${c.nome.replace(/'/g, "\\'")}')" title="Excluir Colaborador" type="button">
@@ -1204,11 +826,14 @@
       event.preventDefault();
       const nome = document.getElementById('novo-nome').value.trim();
       const cpf = document.getElementById('novo-cpf').value.trim();
+      const sexo = document.getElementById('novo-sexo').value;
+      const dataNascimento = document.getElementById('novo-nascimento').value;
+      const dataInicio = document.getElementById('novo-inicio').value;
       const cargoSelect = document.getElementById('novo-cargo');
       const cargo = cargoSelect.value;
       const cargoLabel = cargoSelect.options[cargoSelect.selectedIndex].text;
+      const salario = document.getElementById('novo-salario').value.trim();
       const posto = document.getElementById('novo-posto').value;
-      const admissao = document.getElementById('novo-admissao').value;
       const turno = document.getElementById('novo-turno').value;
 
       if (!nome) {
@@ -1223,10 +848,13 @@
       const colab = PostoStore.addColaborador({
         nome: nome,
         cpf: cpf,
+        sexo: sexo,
+        dataNascimento: dataNascimento,
+        dataInicio: dataInicio,
         cargo: cargo,
         cargoLabel: cargoLabel,
+        salario: salario,
         posto: posto,
-        dataAdmissao: admissao,
         turno: turno,
         status: 'Ativo'
       });
@@ -1239,7 +867,7 @@
       const toast = document.getElementById('toast-colab-sucesso');
       const toastMsg = document.getElementById('toast-colab-msg');
       if (toast && toastMsg) {
-        toastMsg.textContent = `${colab.nome} foi ativado no ${colab.postoLabel}.`;
+        toastMsg.textContent = `${colab.nome} cadastrado com sucesso no ${colab.postoLabel}.`;
         toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
         setTimeout(() => {
           toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
@@ -1280,7 +908,11 @@
       drawer.classList.add('translate-x-0');
       backdrop.classList.remove('opacity-0', 'pointer-events-none');
       backdrop.classList.add('opacity-100', 'pointer-events-auto');
-      document.body.style.overflow = 'hidden';
+      if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+        PostoStore.lockBodyScroll();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
     }
   }
 
@@ -1292,7 +924,11 @@
       drawer.classList.add('-translate-x-full');
       backdrop.classList.remove('opacity-100', 'pointer-events-auto');
       backdrop.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
+      if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+        PostoStore.unlockBodyScroll();
+      } else {
+        document.body.style.overflow = '';
+      }
     }
   }
 
@@ -1306,7 +942,11 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSidebar();
+    if (e.key === 'Escape') {
+      closeSidebar();
+      closeDrawer('modal-novo');
+      closeDrawer('drawer-preview');
+    }
   });
 </script>
 

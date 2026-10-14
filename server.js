@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
 
   let safePath = decodeURI(req.url.split('?')[0]);
   if (safePath === '/' || safePath === '') {
-    safePath = '/index.html';
+    safePath = '/colaboradores.html';
   }
 
   // Prevent directory traversal

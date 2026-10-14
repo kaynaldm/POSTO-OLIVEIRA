@@ -1,110 +1,205 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_dashboard" name="shell-type"/>
+  <title>PostoRH - Extrato de Vales Pegos</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+  
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
 
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script src="sync-store.js"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary-fixed-variant":"#653e00","tertiary-fixed":"#ffddb8","on-primary-container":"#7c839b","tertiary-fixed-dim":"#ffb95f","surface-bright":"#f8f9ff","primary-container":"#131b2e","surface-variant":"#d3e4fe","on-tertiary-container":"#b87500","secondary-fixed-dim":"#b4c5ff","secondary-fixed":"#dbe1ff","on-secondary-container":"#fefcff","surface-container-high":"#dce9ff","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","surface-container-lowest":"#ffffff","on-surface":"#0b1c30","on-secondary-fixed":"#00174b","surface-container-low":"#eff4ff","on-tertiary":"#ffffff","outline":"#76777d","on-primary-fixed-variant":"#3f465c","on-surface-variant":"#45464d","primary":"#000000","tertiary":"#000000","secondary":"#0051d5","background":"#f8f9ff","tertiary-container":"#2a1700","on-primary":"#ffffff","error":"#ba1a1a","secondary-container":"#316bf3","surface-dim":"#cbdbf5","on-secondary":"#ffffff","on-error-container":"#93000a","primary-fixed":"#dae2fd","error-container":"#ffdad6","on-primary-fixed":"#131b2e","primary-fixed-dim":"#bec6e0","surface":"#f8f9ff","on-tertiary-fixed":"#2a1700","outline-variant":"#c6c6cd","surface-container-highest":"#d3e4fe","surface-container":"#e5eeff","inverse-primary":"#bec6e0","inverse-surface":"#213145","on-secondary-fixed-variant":"#003ea8","surface-tint":"#565e74"},"borderRadius":{"sm":"0.375rem","DEFAULT":"0.625rem","md":"0.75rem","lg":"1rem","xl":"1.25rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","gutter":"1.5rem","gutter-lg":"2rem","space-lg":"1.5rem","margin":"1.5rem","space-xl":"2rem","margin-desktop":"2rem","margin-mobile":"1rem","space-xs":"0.25rem","gutter-sm":"1rem","space-md":"1rem"},"fontFamily":{"label-md":["Geist"],"headline-sm":["Geist"],"body-lg":["Geist"],"headline-lg":["Geist"],"metric-display":["Geist"],"body-sm":["Geist"],"label-lg":["Geist"],"body-md":["Geist"],"label-sm":["Geist"],"headline-xl":["Geist"],"headline-md":["Geist"]},"fontSize":{"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"metric-display":["28px",{"lineHeight":"32px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"-0.005em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="sync-store.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      "darkMode": "class",
+      "theme": {
+        "extend": {
+          "colors": {
+            "on-tertiary-fixed-variant": "#653e00",
+            "tertiary-fixed": "#ffddb8",
+            "on-primary-container": "#7c839b",
+            "tertiary-fixed-dim": "#ffb95f",
+            "surface-bright": "#f8f9ff",
+            "primary-container": "#131b2e",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-container": "#b87500",
+            "secondary-fixed-dim": "#b4c5ff",
+            "secondary-fixed": "#dbe1ff",
+            "on-secondary-container": "#fefcff",
+            "surface-container-high": "#dce9ff",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#eaf1ff",
+            "on-background": "#0b1c30",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#0b1c30",
+            "on-secondary-fixed": "#00174b",
+            "surface-container-low": "#eff4ff",
+            "on-tertiary": "#ffffff",
+            "outline": "#76777d",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-surface-variant": "#45464d",
+            "primary": "#000000",
+            "tertiary": "#000000",
+            "secondary": "#0051d5",
+            "background": "#f8f9ff",
+            "tertiary-container": "#2a1700",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "secondary-container": "#316bf3",
+            "surface-dim": "#cbdbf5",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#dae2fd",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#131b2e",
+            "primary-fixed-dim": "#bec6e0",
+            "surface": "#f8f9ff",
+            "on-tertiary-fixed": "#2a1700",
+            "outline-variant": "#c6c6cd",
+            "surface-container-highest": "#d3e4fe",
+            "surface-container": "#e5eeff",
+            "inverse-primary": "#bec6e0",
+            "inverse-surface": "#213145",
+            "on-secondary-fixed-variant": "#003ea8",
+            "surface-tint": "#565e74"
+          },
+          "borderRadius": {
+            "sm": "0.375rem",
+            "DEFAULT": "0.625rem",
+            "md": "0.75rem",
+            "lg": "1rem",
+            "xl": "1.25rem",
+            "2xl": "1.5rem",
+            "3xl": "2rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "gutter-lg": "2rem",
+            "space-lg": "1.5rem",
+            "margin": "1.5rem",
+            "space-xl": "2rem",
+            "margin-desktop": "2rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Geist"],
+            "headline-sm": ["Geist"],
+            "body-lg": ["Geist"],
+            "headline-lg": ["Geist"],
+            "metric-display": ["Geist"],
+            "body-sm": ["Geist"],
+            "label-lg": ["Geist"],
+            "body-md": ["Geist"],
+            "label-sm": ["Geist"],
+            "headline-xl": ["Geist"],
+            "headline-md": ["Geist"]
+          }
+        }
+      }
+    };
+  </script>
 
+  <style id="custom-rounded-theme">
+    :root {
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-2xl: 24px;
+      --radius-full: 9999px;
+    }
 
+    .rounded-sm { border-radius: var(--radius-sm) !important; }
+    .rounded { border-radius: var(--radius-sm) !important; }
+    .rounded-md { border-radius: var(--radius-md) !important; }
+    .rounded-lg { border-radius: var(--radius-lg) !important; }
+    .rounded-xl { border-radius: var(--radius-xl) !important; }
+    .rounded-2xl { border-radius: var(--radius-2xl) !important; }
+    .rounded-full { border-radius: var(--radius-full) !important; }
 
+    button:not(.rounded-full) {
+      border-radius: var(--radius-md) !important;
+    }
+    input, select, textarea {
+      border-radius: var(--radius-md) !important;
+    }
 
-<style id="custom-rounded-theme">
-  /* THEME: ULTRA PROFISSIONAL, BORDAS ARREDONDADAS E CORES HARMONIOSAS */
-  :root {
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-2xl: 24px;
-    --radius-full: 9999px;
-  }
+    #sidebar-drawer {
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      border-left: none !important;
+      border-top: none !important;
+      border-bottom: none !important;
+    }
 
-  .rounded-sm { border-radius: var(--radius-sm) !important; }
-  .rounded { border-radius: var(--radius-sm) !important; }
-  .rounded-md { border-radius: var(--radius-md) !important; }
-  .rounded-lg { border-radius: var(--radius-lg) !important; }
-  .rounded-xl { border-radius: var(--radius-xl) !important; }
-  .rounded-2xl { border-radius: var(--radius-2xl) !important; }
-  .rounded-full { border-radius: var(--radius-full) !important; }
+    .bg-surface-container-lowest,
+    .bg-white {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
+    }
 
-  /* Elementos arredondados automáticos */
-  button:not(.rounded-full) {
-    border-radius: var(--radius-md) !important;
-  }
-  input, select, textarea {
-    border-radius: var(--radius-md) !important;
-  }
+    /* Linhas nítidas de separação de colunas e linhas da tabela */
+    .tabela-com-divisores {
+      border-collapse: collapse !important;
+      width: 100%;
+      border: 1px solid #cbd5e1 !important;
+    }
+    .tabela-com-divisores th,
+    .tabela-com-divisores td {
+      border-right: 1px solid #e2e8f0 !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .tabela-com-divisores th:last-child,
+    .tabela-com-divisores td:last-child {
+      border-right: none !important;
+    }
+    .tabela-com-divisores tbody tr:last-child td {
+      border-bottom: none !important;
+    }
 
-  /* Cards e painéis suaves */
-  .bg-surface-container-lowest,
-  .bg-white {
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(226, 232, 240, 0.9);
-    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
-  }
+    .status-badge {
+      border-radius: 9999px !important;
+      font-weight: 700 !important;
+      padding: 0.35rem 0.85rem !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.375rem !important;
+      font-size: 0.75rem !important;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
 
-  /* Tabelas com cantos 100% arredondados */
-  table {
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
-  }
-  .overflow-x-auto {
-    border-radius: var(--radius-xl) !important;
-    overflow: hidden !important;
-  }
-  thead th:first-child {
-    border-top-left-radius: var(--radius-xl) !important;
-  }
-  thead th:last-child {
-    border-top-right-radius: var(--radius-xl) !important;
-  }
-  tbody tr:last-child td:first-child {
-    border-bottom-left-radius: var(--radius-xl) !important;
-  }
-  tbody tr:last-child td:last-child {
-    border-bottom-right-radius: var(--radius-xl) !important;
-  }
-
-  /* Grid reto profissional com divisórias verticais entre colunas */
-  #table-vales th,
-  #table-vales td {
-    border-right: 1px solid #e2e8f0 !important;
-    border-bottom: 1px solid #e2e8f0 !important;
-  }
-  #table-vales th:last-child,
-  #table-vales td:last-child {
-    border-right: none !important;
-  }
-  #table-vales tbody tr:last-child td {
-    border-bottom: none !important;
-  }
-
-  /* Status Pills arredondadas */
-  .status-badge {
-    border-radius: 9999px !important;
-    font-weight: 700 !important;
-    padding: 0.35rem 0.85rem !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0.375rem !important;
-    font-size: 0.75rem !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  }
-</style>
-
-</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><!-- Backdrop Overlay -->
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+  <!-- Backdrop Overlay -->
   <div id="sidebar-backdrop" onclick="closeSidebar()" class="fixed inset-0 bg-primary-container/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-    <!-- Off-Canvas Drawer (Abre por cima do sistema, sem mexer no layout) -->
+  <!-- Off-Canvas Drawer -->
   <aside id="sidebar-drawer" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-surface-container-lowest z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full select-none">
     <div class="flex flex-col">
       <!-- Drawer Header -->
       <div class="h-16 px-5 flex items-center justify-between border-b border-surface-container-low">
-        <a href="index.html" class="flex items-center gap-3">
-          <img alt="PostoRH Logo" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqLPJyzwGtdcyPQSu3MVYjOFUDTFWVLfzYcFyxNWAtT5vrvQbPhy1oEDGHT5309xE1DNA1HvsuWEY3Jyik6sWT_kvqnHVDCBoM5npDqrIrskq1owlrcG7Mrk1cSO26RtCwtU9UGFXHKBnWOlbeIZxMeBZWoyg0YFCcaNX_aKg3NgPz10i_DQbeN9X72tcrVe6pQSNjeBd1GZt3IpSXqlIElS0_guswZp8XCqBLnV5kWwDiMjazghnTpg"/>
-          <div class="flex flex-col">
-            <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">PostoRH</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Rede Operacional</span>
-          </div>
+        <a href="colaboradores.html" class="flex flex-col select-none">
+          <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold leading-none">PostoRH</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1 font-semibold">Rede Operacional</span>
         </a>
         <button onclick="closeSidebar()" title="Fechar Menu" type="button" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer flex items-center justify-center">
           <span class="material-symbols-outlined text-2xl">close</span>
@@ -118,13 +213,6 @@
 
       <!-- Links -->
       <nav class="flex flex-col gap-1.5 px-3">
-        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
-          <span class="material-symbols-outlined text-xl leading-none text-secondary">dashboard</span>
-          <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Dashboard</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Indicadores e Alertas</span>
-          </div>
-        </a>
         <a href="colaboradores.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-label-lg text-label-lg hover:bg-surface-container hover:text-on-surface transition-colors">
           <span class="material-symbols-outlined text-xl leading-none text-secondary">badge</span>
           <div class="flex flex-col flex-1">
@@ -136,537 +224,931 @@
           <span class="material-symbols-outlined text-xl leading-none text-secondary">fact_check</span>
           <div class="flex flex-col flex-1">
             <span class="leading-none text-sm font-semibold">Frequência</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Turnos e Justificativas</span>
+            <span class="text-xs opacity-70 mt-1 leading-none">Faltas & Justificativas</span>
           </div>
         </a>
         <a href="financeiro-vales.html" class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-semibold rounded-xl shadow-sm transition-all" aria-current="page">
-          <span class="material-symbols-outlined text-xl leading-none text-secondary">payments</span>
+          <span class="material-symbols-outlined text-xl leading-none text-white">payments</span>
           <div class="flex flex-col flex-1">
-            <span class="leading-none text-sm font-semibold">Financeiro & Vales</span>
-            <span class="text-xs opacity-70 mt-1 leading-none">Adiantamentos e Baixas</span>
+            <span class="leading-none text-sm font-semibold">Vales Pegos</span>
+            <span class="text-xs opacity-85 mt-1 leading-none">Lançamentos no Mês</span>
           </div>
         </a>
       </nav>
     </div>
   </aside>
 
+  <!-- Main Content Layout -->
   <div id="main-layout" class="w-full min-h-screen">
-  <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-secondary text-on-secondary shadow-md z-40 flex items-center justify-between px-4 sm:px-gutter-lg">
-    <div class="flex items-center gap-3">
-      <!-- Botão Hambúrguer (3 pauzinhos) -->
-      <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-all flex items-center justify-center cursor-pointer">
-        <span class="material-symbols-outlined text-2xl leading-none">menu</span>
-      </button>
-
-      <!-- Nome PostoRH -->
-      <a href="index.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
-        <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
-        <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
-      </a>
-    </div>
-
-    <!-- Usuário e Perfil -->
-    <div class="flex items-center gap-3">
-      <span class="font-label-lg text-label-lg font-semibold text-white hidden sm:inline">Carlos Eduardo Mendes</span>
-      <img alt="Carlos Eduardo Mendes" class="w-9 h-9 rounded-full object-cover ring-2 ring-white/40 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgcUVoUOeTzmLXpjnbnOZvoWco-abRnb0OX-VJrcbkpGxI6bmJ7NJMQz7mQ0qu8d1sMM46SvGt8z-PVfMgl_RnzV3f2y4cTDPdznec5WVFoItvg1orRc3CpVBIwws8AKgXFvlOHCsElNWk67_MSL9Qy-_q6np--pS7QzZ3kIgpSqAvWDVTQwn29b2yZrI5_SKv3n15x9AtvurZKAZJOVJdQD4wVXn3R8nzaa-eFFfQFB50tWW9RDi7bA"/>
-    </div>
-  </header><main class="relative pt-14 bg-surface min-h-screen"><div class="flex flex-col w-full">
-<!-- Top Action & Operational Cascading Filter Bar -->
-<div class="px-gutter-lg py-space-md bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
-<div class="flex flex-wrap items-center justify-between gap-space-md">
-<div class="flex flex-col">
-<div class="flex items-center gap-space-xs">
-<span class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wider">Módulo Operacional</span>
-<span class="text-on-surface-variant font-label-sm text-label-sm">•</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Competência: Outubro / 2024</span>
-</div>
-<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-0.5">Gestão Financeira de Pessoal & Controle de Vales</h1>
-</div>
-
-</div>
-<!-- Cascading Filter Strip (Município -> Posto -> Colaborador) -->
-<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-wrap items-center gap-space-sm">
-<div class="flex items-center gap-space-xs px-space-sm py-1">
-<span class="material-symbols-outlined text-secondary text-lg">tune</span>
-<span class="font-label-sm text-label-sm text-on-surface uppercase font-bold">Filtros em Cascata:</span>
-</div>
-<div class="flex-1 min-w-[160px] max-w-xs">
-<label class="sr-only">Município</label>
-<div class="relative flex items-center">
-<span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">location_city</span>
-<select class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-6 py-1.5 rounded-lg appearance-none shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary" id="filter-city">
-<option value="todos">Todos os Municípios (AM)</option>
-<option selected value="parintins">Parintins (AM)</option>
-</select>
-<span class="material-symbols-outlined absolute right-2 text-xs text-on-surface-variant pointer-events-none">expand_more</span>
-</div>
-</div>
-<div class="flex-1 min-w-[200px] max-w-sm">
-<label class="sr-only">Posto / Lotação</label>
-<div class="relative flex items-center">
-<span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
-<select class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-6 py-1.5 rounded-lg appearance-none shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary" id="filter-station">
-<option selected value="todos">Todas as Unidades (Rede PostoRH - 4 Postos)</option>
-<option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
-<option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
-<option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
-<option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
-</select>
-<span class="material-symbols-outlined absolute right-2 text-xs text-on-surface-variant pointer-events-none">expand_more</span>
-</div>
-</div>
-<div class="flex-1 min-w-[220px]">
-<label class="sr-only">Colaborador</label>
-<div class="relative flex items-center">
-<span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">person_search</span>
-<select class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-6 py-1.5 rounded-lg appearance-none shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary" id="filter-collab">
-<option selected value="todos">Todos os Colaboradores do Quadro (0)</option>
-</select>
-<span class="material-symbols-outlined absolute right-2 text-xs text-on-surface-variant pointer-events-none">expand_more</span>
-</div>
-</div>
-
-</div>
-</div>
-<div class="px-gutter-lg py-space-lg grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
-<div class="flex items-start justify-between">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md text-on-surface font-bold">Vales Liberados no Mês</span>
-<span class="font-label-sm text-label-sm text-secondary font-semibold mt-0.5">Visão Geral da Rede</span>
-</div>
-<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-xl">payments</span>
-</div>
-</div>
-<div class="mt-space-md">
-<div class="font-metric-display text-metric-display text-on-surface leading-tight">R$ 0,00</div>
-<div class="flex items-center gap-space-xs mt-space-xs">
-<span class="font-label-sm text-label-sm bg-surface-container-low text-slate-600 px-space-xs py-0.5 rounded font-bold">0 Vales</span>
-</div>
-</div>
-<div class="mt-space-md pt-space-xs bg-surface-container-low/60 rounded-lg p-2 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
-<span class="text-on-surface-variant flex items-center gap-1.5 font-medium">
-<span class="material-symbols-outlined text-base text-secondary">local_gas_station</span> Abrangência:
-</span>
-<span class="font-bold text-secondary bg-surface-container-lowest px-2 py-0.5 rounded shadow-xs border border-surface-container">Todos os Postos (4 Ativos)</span>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
-<div class="flex items-start justify-between">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md text-on-surface font-bold">Faltas no Mês</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Controle de Pessoas na Escala</span>
-</div>
-<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-emerald-600">
-<span class="material-symbols-outlined text-xl">how_to_reg</span>
-</div>
-</div>
-<div class="mt-space-md">
-<div class="font-metric-display text-metric-display text-on-surface leading-tight">0 Faltas</div>
-<div class="flex items-center gap-space-xs mt-space-xs">
-<span class="font-label-sm text-label-sm bg-surface-container-low text-secondary px-space-xs py-0.5 rounded font-bold">0 Justificadas</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">0 a descontar</span>
-</div>
-</div>
-<div class="mt-space-md pt-space-xs bg-surface-container-low/60 rounded-lg p-2 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
-<span class="text-on-surface-variant flex items-center gap-1.5 font-medium">
-<span class="material-symbols-outlined text-base text-emerald-600">calendar_today</span> No Mês de Outubro:
-</span>
-<span class="font-bold text-emerald-700 bg-surface-container-lowest px-2 py-0.5 rounded shadow-xs border border-surface-container" id="kpi-vales-colabs">0 Colaboradores</span>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
-<div class="flex items-start justify-between">
-<div class="flex flex-col">
-<span class="font-label-md text-label-md text-on-surface-variant font-medium">A Descontar na Folha</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Fechamento Mensal</span>
-</div>
-<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface">
-<span class="material-symbols-outlined text-xl">pending_actions</span>
-</div>
-</div>
-<div class="mt-space-md">
-<div class="font-metric-display text-metric-display text-on-surface leading-tight">R$ 0,00</div>
-<div class="flex items-center gap-space-xs mt-space-xs">
-<span class="font-label-sm text-label-sm bg-surface-container-low text-slate-600 font-bold px-space-xs py-0.5 rounded uppercase">0 Lançamentos Pendentes</span>
-</div>
-</div>
-<div class="mt-space-md pt-space-xs bg-surface-container-low/40 rounded-lg p-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-<span>Auditoria Fiscal Automática</span>
-<span class="font-semibold text-secondary flex items-center gap-1">
-<span class="material-symbols-outlined text-xs">check_circle</span> 100% Validado
-        </span>
-</div>
-</div>
-</div>
-<!-- Operational Work Area (Tabs + Interactive Tables + Floating Slide-Over) -->
-<div class="px-gutter-lg pb-space-xl flex flex-col gap-space-md">
-<!-- Tab Controls & Quick Status Filter -->
-<div class="bg-white rounded-2xl p-2.5 shadow-sm border border-slate-200/90 flex flex-wrap items-center justify-between gap-3">
-    <div class="flex items-center gap-2" id="tab-nav">
-      <button class="px-4 py-2 rounded-xl text-sm font-bold bg-blue-50 text-blue-700 border border-blue-200/80 shadow-2xs flex items-center gap-2 cursor-pointer" id="tab-btn-vales">
-        <span class="material-symbols-outlined text-lg">receipt_long</span>
-        <span>Extrato Geral de Vales</span>
-        <span class="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
-      </button>
-    </div>
-    <div class="flex items-center gap-2">
-      <div class="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 gap-2">
-        <span class="material-symbols-outlined text-base text-slate-400">filter_list</span>
-        <span class="text-xs text-slate-500 font-medium">Status Folha:</span>
-        <select class="bg-transparent text-xs text-slate-800 font-bold focus:outline-none cursor-pointer">
-          <option>Todos os Status</option>
-          <option>Pendente de Desconto</option>
-          <option>Descontado em Folha</option>
-          <option>Compensado em Caixa</option>
-        </select>
-      </div>
-      <button class="p-2 bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-xl transition-colors cursor-pointer" title="Atualizar dados em tempo real">
-        <span class="material-symbols-outlined text-lg leading-none">sync</span>
-      </button>
-    </div>
-  </div>
-<!-- TAB 1: EXTRATO GERAL DE VALES (TABLE CONTENT) -->
-  <div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col" id="content-vales">
-    <div class="px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 bg-gradient-to-r from-slate-50 via-white to-blue-50/30 border-b border-slate-200/80">
-      <div class="flex items-center gap-3 shrink-0">
-        <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
-        <span class="text-base font-bold text-slate-900 tracking-tight">Registros de Vales & Adiantamentos Salariais</span>
-        <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-0.5 rounded-full font-bold">Turnos 1, 2 e 3</span>
+    <!-- Top Header Bar -->
+    <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-secondary text-on-secondary shadow-md z-40 flex items-center justify-between px-4 sm:px-gutter-lg">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-all flex items-center justify-center cursor-pointer">
+          <span class="material-symbols-outlined text-2xl leading-none">menu</span>
+        </button>
+        <a href="colaboradores.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
+          <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
+          <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
+        </a>
       </div>
 
-      <!-- Filtro de Busca Rápida (conforme solicitado pelo usuário) -->
-      <div class="flex-1 max-w-sm mx-2">
-        <div class="relative w-full">
-          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-blue-600 text-lg">filter_alt</span>
-          <input type="text" placeholder="Filtro rápido (colaborador, posto, etc)..." class="w-full pl-9 pr-3.5 py-1.5 bg-slate-50/90 hover:bg-white focus:bg-white border border-slate-300 focus:border-blue-600 rounded-xl text-xs font-bold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all shadow-2xs">
+      <div class="flex items-center gap-3">
+        <span class="font-label-lg text-label-lg font-semibold text-white hidden sm:inline">Carlos Eduardo Mendes</span>
+        <div class="w-9 h-9 rounded-full bg-white/20 text-white font-bold flex items-center justify-center ring-2 ring-white/40 shadow-sm text-sm">
+          CE
         </div>
       </div>
+    </header>
 
-      <div class="flex items-center gap-2 shrink-0">
-        <span class="text-xs font-semibold text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-200">Mostrando 0 de 0 lançamentos</span>
-      </div>
-    </div>
-    <div class="overflow-x-auto w-full">
-      <table class="w-full text-left font-body-md text-body-md table-fixed" id="table-vales">
-        <colgroup>
-          <col class="w-[18%]">
-          <col class="w-[32%]">
-          <col class="w-[26%]">
-          <col class="w-[11%]">
-          <col class="w-[13%]">
-        </colgroup>
-        <thead>
-          <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-wider divide-x divide-slate-200">
-            <th class="py-3.5 px-6 text-left">
-              <div class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-sm text-slate-400">schedule</span>
-                <span>Data / Horário</span>
-              </div>
-            </th>
-            <th class="py-3.5 px-6 text-left">
-              <div class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-sm text-slate-400">badge</span>
-                <span>Colaborador</span>
-              </div>
-            </th>
-            <th class="py-3.5 px-6 text-left">
-              <div class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-sm text-slate-400">store</span>
-                <span>Posto / Lotação</span>
-              </div>
-            </th>
-            <th class="py-3.5 px-6 text-center">
-              <div class="flex items-center justify-center gap-1.5">
-                <span class="material-symbols-outlined text-sm text-slate-400">payments</span>
-                <span>Valor Vale</span>
-              </div>
-            </th>
-            <th class="py-3.5 px-6 text-center">
-              <div class="flex items-center justify-center gap-1.5">
-                <span class="material-symbols-outlined text-sm text-slate-400">tune</span>
-                <span>Ações Operacionais</span>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-200 text-slate-800">
-          <tr>
-            <td colspan="5" class="py-16 px-6 text-center">
-              <div class="flex flex-col items-center justify-center gap-2 py-4">
-                <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-1">
-                  <span class="material-symbols-outlined text-3xl">receipt_long</span>
-                </div>
-                <span class="text-base font-bold text-slate-800">Nenhum vale ou adiantamento lançado</span>
-                <span class="text-xs text-slate-500 max-w-sm">Os lançamentos de vales efetuados para os colaboradores dos postos de Parintins aparecerão listados aqui.</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Table Footer / Pagination -->
-    <div class="px-6 py-3.5 bg-slate-50/80 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
-      <div class="flex items-center gap-3 text-xs text-slate-600 font-semibold">
-        <span>Linhas por página:</span>
-        <select class="bg-white text-slate-800 border border-slate-200 px-2.5 py-1 rounded-xl shadow-2xs font-bold">
-          <option>10</option>
-          <option>25</option>
-          <option>50</option>
-        </select>
-        <span>Página 0 de 0</span>
-      </div>
-      <div class="flex items-center gap-1.5 text-xs text-slate-400 font-semibold">
-        <span>Sem registros a exibir</span>
-      </div>
-    </div>
-  </div>
-  </div>
-
-</div>
-<!-- SLIDE-OVER / MODAL LATERAL FLUTUANTE: 'Emissão Rápida de Vale' -->
-<div class="fixed inset-0 z-50 flex justify-end bg-primary-container/40 backdrop-blur-sm transition-opacity duration-200 hidden" id="modal-vale">
-<div class="w-full max-w-lg bg-surface-container-lowest h-full shadow-2xl flex flex-col justify-between overflow-y-auto">
-<div>
-<!-- Modal Header -->
-<div class="p-space-md bg-surface-container-low flex items-center justify-between">
-<div class="flex items-center gap-space-sm">
-<div class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
-<span class="material-symbols-outlined text-lg">receipt_long</span>
-</div>
-<div class="flex flex-col">
-<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Emissão de Vale / Adiantamento</h3>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Lançamento oficial registrado em auditoria</span>
-</div>
-</div>
-<button class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" id="modal-close-btn">
-<span class="material-symbols-outlined text-xl">close</span>
-</button>
-</div>
-<!-- Form Content -->
-<form class="p-space-md flex flex-col gap-space-md" id="form-vale">
-<!-- Quick Colaborador Search / Selector -->
-<div class="flex flex-col gap-space-xs">
-<label class="font-label-md text-label-md text-on-surface font-semibold">Colaborador Beneficiário *</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-2.5 text-base text-on-surface-variant">person</span>
-<input class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md pl-9 pr-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="input-collab-search" placeholder="Digite nome ou matrícula (ex: Marcos...)" type="text" value="Marcos Vinicius da Silva"/>
-</div>
-</div>
-<!-- Dynamic Live Salary & Advance Ceiling Card -->
-<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold">Diagnóstico Salarial do Frentista</span>
-<span class="font-label-sm text-label-sm bg-surface-container-lowest text-secondary px-2 py-0.5 rounded font-bold">Pista Noturna</span>
-</div>
-<div class="grid grid-cols-2 gap-2 mt-1">
-<div>
-<div class="font-label-sm text-label-sm text-on-surface-variant">Salário Base Mensal:</div>
-<div class="font-label-lg text-label-lg font-bold text-on-surface">R$ 2.450,00</div>
-</div>
-<div>
-<div class="font-label-sm text-label-sm text-on-surface-variant">Teto Permitido (40%):</div>
-<div class="font-label-lg text-label-lg font-bold text-on-surface">R$ 980,00</div>
-</div>
-</div>
-<div class="pt-2">
-<div class="flex justify-between items-center text-xs font-label-sm mb-1">
-<span class="text-on-surface-variant">Total Adiantado no Mês: <b class="text-on-surface">R$ 350,00</b></span>
-<span class="text-secondary font-bold">Disponível: R$ 630,00</span>
-</div>
-<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
-<div class="bg-secondary h-full rounded-full transition-all duration-300" id="progress-bar-saldo" style="width: 35.7%;"></div>
-</div>
-</div>
-</div>
-<!-- Input Valor do Vale & Data -->
-<div class="grid grid-cols-2 gap-space-sm">
-<div class="flex flex-col gap-space-xs">
-<label class="font-label-md text-label-md text-on-surface font-semibold">Valor do Vale (R$) *</label>
-<div class="relative">
-<span class="absolute left-3 top-2 text-on-surface-variant font-bold text-sm">R$</span>
-<input class="w-full bg-surface-container-low text-on-surface font-mono font-bold text-body-md pl-9 pr-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="input-valor-vale" max="630" min="20" type="number" value="250.00"/>
-</div>
-</div>
-<div class="flex flex-col gap-space-xs">
-<label class="font-label-md text-label-md text-on-surface font-semibold">Data da Retirada *</label>
-<input class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" type="date" value="2024-10-24"/>
-</div>
-</div>
-<!-- Calculated Remaining Advance Balance Display -->
-<div class="bg-surface-bright rounded-lg p-space-sm flex items-center justify-between">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-secondary text-base">calculate</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Saldo Restante pós Emissão:</span>
-</div>
-<div class="font-mono font-bold text-secondary text-sm" id="lbl-saldo-restante">
-              R$ 380,00
+    <main class="relative pt-14 bg-surface min-h-screen">
+      <div class="flex flex-col w-full">
+        <!-- Header & Filter Bar -->
+        <div class="px-gutter-lg py-space-md bg-surface-container-lowest shadow-sm flex flex-col gap-space-md border-b border-slate-200/80">
+          <div class="flex flex-wrap items-center justify-between gap-space-md">
+            <div class="flex flex-col">
+              <span class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wider">Módulo 100% Vales</span>
+              <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-0.5">Gestão de Vales Pegos no Mês</h1>
             </div>
-</div>
-<!-- Motivo / Categoria -->
-<div class="flex flex-col gap-space-xs">
-<label class="font-label-md text-label-md text-on-surface font-semibold">Motivo do Adiantamento</label>
-<select class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
-<option>Emergência Familiar / Pessoal</option>
-<option>Deslocamento & Vale Transporte Adicional</option>
-<option>Despesas Médicas / Farmácia</option>
-<option>Outros (Justificado em ata)</option>
-</select>
-</div>
-</form>
-</div>
-<!-- Modal Footer -->
-<div class="p-space-md bg-surface-container-low flex items-center justify-end gap-space-sm">
-<button class="px-space-md py-2 text-on-surface font-label-lg text-label-lg hover:bg-surface-container-high rounded-lg transition-colors" id="modal-cancel-btn" type="button">
-          Cancelar
+
+            <!-- Botão Lançar Vale -->
+            <button onclick="abrirModalNovoVale()" type="button" class="px-5 py-2.5 bg-secondary text-white font-bold text-sm rounded-xl shadow hover:bg-blue-700 transition-all flex items-center gap-2 cursor-pointer">
+              <span class="material-symbols-outlined text-xl">add_card</span>
+              <span>+ Lançar Vale</span>
+            </button>
+          </div>
+
+          <!-- Filtros de Posto, Mês e Busca Rápida -->
+          <div class="bg-surface-container-low rounded-xl p-space-sm flex flex-wrap items-center gap-space-sm border border-slate-200">
+            <div class="flex items-center gap-space-xs px-space-sm py-1">
+              <span class="material-symbols-outlined text-secondary text-lg">tune</span>
+              <span class="font-label-sm text-label-sm text-on-surface uppercase font-bold">Filtros:</span>
+            </div>
+
+            <!-- Posto / Lotação -->
+            <div class="flex-1 min-w-[240px] max-w-md">
+              <label class="sr-only">Posto de Combustível</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
+                <select id="filter-posto" onchange="renderVales()" class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-7 py-2 rounded-lg appearance-none shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-semibold">
+                  <option value="todos" selected>Todos os Postos da Rede (4 Postos)</option>
+                  <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
+                  <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
+                  <option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
+                  <option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-2 text-xs text-on-surface-variant pointer-events-none">expand_more</span>
+              </div>
+            </div>
+
+            <!-- Mês / Competência -->
+            <div class="min-w-[180px]">
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-2.5 text-base text-on-surface-variant pointer-events-none">calendar_month</span>
+                <select id="filter-mes" onchange="renderVales()" class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-7 py-2 rounded-lg appearance-none shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-semibold">
+                  <option value="2024-10" selected>Outubro / 2024</option>
+                  <option value="2024-09">Setembro / 2024</option>
+                  <option value="2024-11">Novembro / 2024</option>
+                  <option value="todos">Todos os Períodos</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-2 text-xs text-on-surface-variant pointer-events-none">expand_more</span>
+              </div>
+            </div>
+
+            <!-- Busca Rápida Colaborador / CPF -->
+            <div class="flex-1 min-w-[220px]">
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-2.5 text-base text-secondary pointer-events-none">search</span>
+                <input id="filter-search" oninput="renderVales()" type="text" placeholder="Buscar colaborador ou CPF..." class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-8 pr-3 py-2 rounded-lg shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary font-medium"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 KPI Cards: 100% Relacionados a Vales Pegos -->
+        <div class="px-gutter-lg py-space-md grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Card 1: Total de Vales Pegos no Mês -->
+          <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Total de Vales Pegos</span>
+                <div class="text-xs text-secondary font-semibold mt-0.5" id="kpi-card1-subtitle">No Mês Selecionado</div>
+              </div>
+              <div class="w-9 h-9 rounded-lg bg-blue-50 text-secondary flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">payments</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="text-2xl font-black text-slate-900 tracking-tight" id="kpi-total-vales">R$ 0,00</div>
+              <div class="flex items-center gap-1.5 mt-1">
+                <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-bold" id="kpi-qtd-vales">0 vales</span>
+                <span class="text-xs text-slate-500">retirados no mês</span>
+              </div>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-slate-500">Posto ativo:</span>
+              <span class="font-bold text-slate-800" id="kpi-posto-label">Todos</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Colaboradores com Vale -->
+          <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Pessoas com Vale</span>
+                <div class="text-xs text-emerald-600 font-semibold mt-0.5">Pegaram adiantamento</div>
+              </div>
+              <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">group</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="text-2xl font-black text-slate-900 tracking-tight" id="kpi-pessoas-com-vale">0 Pessoas</div>
+              <div class="flex items-center gap-1.5 mt-1">
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold" id="kpi-percent-colabs">0% do quadro</span>
+                <span class="text-xs text-slate-500">com vale pego</span>
+              </div>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-slate-500">Total do quadro:</span>
+              <span class="font-bold text-slate-800" id="kpi-total-colabs-quadro">0 Ativos</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Posto Selecionado / Unidade com Vales -->
+          <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Unidade com Vales</span>
+                <div class="text-xs text-indigo-600 font-semibold mt-0.5" id="kpi-card3-subtitle">Distribuição física</div>
+              </div>
+              <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">store</span>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="text-2xl font-black text-slate-900 tracking-tight truncate" id="kpi-top-posto-total">R$ 0,00</div>
+              <div class="flex items-center gap-1.5 mt-1">
+                <span class="text-xs bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded font-bold truncate max-w-full" id="kpi-top-posto-nome">Todos os Postos</span>
+              </div>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-slate-500">Status no fechamento:</span>
+              <span class="font-bold text-emerald-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">check_circle</span> Pronto p/ Folha
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela Proporcional de Vales Pegos com Linhas de Separação -->
+        <div class="px-gutter-lg pb-space-xl flex flex-col gap-3">
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+            <!-- Cabeçalho da Tabela -->
+            <div class="px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 bg-slate-50 border-b border-slate-200">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-xl">receipt_long</span>
+                <span class="text-base font-bold text-slate-900">Extrato de Vales Pegos no Mês</span>
+                <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-0.5 rounded-full" id="badge-total-registros">0 pessoas</span>
+              </div>
+              <div class="text-xs text-slate-500 font-medium">
+                * Somente pessoas que pegaram vale no mês estão listadas abaixo.
+              </div>
+            </div>
+
+            <!-- Tabela com bordas nítidas de separação verticais e horizontais -->
+            <div class="overflow-x-auto w-full">
+              <table class="tabela-com-divisores table-fixed w-full text-left" id="table-vales">
+                <colgroup>
+                  <!-- Colaborador: 28% -->
+                  <col class="w-[28%]"/>
+                  <!-- Posto: 24% -->
+                  <col class="w-[24%]"/>
+                  <!-- Turno & Horário: 22% -->
+                  <col class="w-[22%]"/>
+                  <!-- Dia que Pegou: 12% -->
+                  <col class="w-[12%]"/>
+                  <!-- Quanto Pegou: 14% -->
+                  <col class="w-[14%]"/>
+                </colgroup>
+                <thead>
+                  <tr class="bg-slate-100/90 text-slate-700 text-xs font-bold uppercase tracking-wider">
+                    <th class="py-3 px-4 text-left">
+                      <div class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm text-slate-500">person</span>
+                        <span>Pessoa / Colaborador</span>
+                      </div>
+                    </th>
+                    <th class="py-3 px-4 text-left">
+                      <div class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm text-slate-500">local_gas_station</span>
+                        <span>Posto dela</span>
+                      </div>
+                    </th>
+                    <th class="py-3 px-4 text-left">
+                      <div class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm text-slate-500">schedule</span>
+                        <span>Turno & Horário de Atuação</span>
+                      </div>
+                    </th>
+                    <th class="py-3 px-4 text-center">
+                      <div class="flex items-center justify-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm text-slate-500">calendar_today</span>
+                        <span>Dia que Pegou</span>
+                      </div>
+                    </th>
+                    <th class="py-3 px-4 text-right">
+                      <div class="flex items-center justify-end gap-1.5">
+                        <span class="material-symbols-outlined text-sm text-slate-500">payments</span>
+                        <span>Quanto Pegou</span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-vales" class="divide-y divide-slate-200 text-slate-800 text-sm font-medium">
+                  <!-- Carregado dinamicamente via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Rodapé da Tabela com Resumo -->
+            <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-slate-600">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-slate-400 text-base">info</span>
+                <span id="footer-resumo-texto">Mostrando 0 vales pegos no mês</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span>Total Geral Selecionado:</span>
+                <span class="text-sm font-black text-secondary bg-blue-50 px-3 py-1 rounded-lg border border-blue-200" id="footer-total-soma">R$ 0,00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: Lançar / Editar Vale -->
+  <div id="modal-lancar-vale" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs hidden p-4 overscroll-contain">
+    <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-lg overflow-hidden flex flex-col">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm">
+            <span class="material-symbols-outlined text-xl">payments</span>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900" id="modal-titulo">Lançar Vale Pego</h3>
+            <span class="text-xs text-slate-500">Registrar adiantamento para colaborador no mês</span>
+          </div>
+        </div>
+        <button onclick="fecharModalVale()" type="button" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 rounded-lg transition-colors cursor-pointer">
+          <span class="material-symbols-outlined text-xl">close</span>
         </button>
-<button class="px-space-lg py-2 bg-secondary text-on-secondary font-label-lg text-label-lg font-semibold rounded-lg shadow hover:bg-secondary-container transition-all flex items-center gap-2" id="modal-submit-btn" type="button">
-<span class="material-symbols-outlined text-lg">check_circle</span>
-<span>Confirmar e Emitir Vale</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Toast Notification Feedback (Hidden initially) -->
-<div class="fixed bottom-6 right-6 z-50 bg-primary-container text-on-secondary-container px-space-md py-3 rounded-xl shadow-xl flex items-center gap-space-sm transition-all duration-300 transform translate-y-24 opacity-0 pointer-events-none" id="toast-success">
-<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
-<span class="material-symbols-outlined text-base font-bold">done</span>
-</div>
-<div class="flex flex-col">
-<span class="font-label-md text-label-md font-bold">Vale Emitido com Sucesso!</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant text-on-primary-container">Recibo #VAL-2024-8842 enviado ao frentista via WhatsApp & Caixa.</span>
-</div>
-</div>
-</div>
-<script>
-  // Tab Controls
-  const tabVales = document.getElementById('tab-btn-vales');
-  const contentVales = document.getElementById('content-vales');
+      </div>
 
-  // Modal Slide-Over Logic
-  const btnOpenVale = document.getElementById('btn-open-vale');
-  const modalVale = document.getElementById('modal-vale');
-  const modalCloseBtn = document.getElementById('modal-close-btn');
-  const modalCancelBtn = document.getElementById('modal-cancel-btn');
-  const modalSubmitBtn = document.getElementById('modal-submit-btn');
-  const inputValorVale = document.getElementById('input-valor-vale');
-  const lblSaldoRestante = document.getElementById('lbl-saldo-restante');
-  const progressBarSaldo = document.getElementById('progress-bar-saldo');
-  const toastSuccess = document.getElementById('toast-success');
+      <!-- Modal Body -->
+      <form id="form-lancar-vale" onsubmit="salvarVale(event)" class="p-6 flex flex-col gap-4">
+        <input type="hidden" id="modal-vale-id" value=""/>
 
-  function openModal() {
-    modalVale.classList.remove('hidden');
-  }
+        <!-- Colaborador -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold uppercase text-slate-600">Selecione o Colaborador *</label>
+          <div class="relative">
+            <select id="modal-select-colab" onchange="atualizarInfoColabModal()" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary">
+              <option value="">Selecione um colaborador do quadro...</option>
+            </select>
+          </div>
+        </div>
 
-  function closeModal() {
-    modalVale.classList.add('hidden');
-  }
+        <!-- Card de Informações Automáticas do Colaborador (Posto, Turno, Horário) -->
+        <div id="modal-colab-preview" class="bg-blue-50/60 border border-blue-200/80 rounded-xl p-3.5 flex flex-col gap-2.5">
+          <div class="flex items-center justify-between">
+            <div class="text-xs font-bold uppercase tracking-wider text-blue-900 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm text-blue-600">badge</span>
+              <span>Dados de Atuação do Colaborador</span>
+            </div>
+            <span id="modal-badge-vales-status" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700">Selecione uma pessoa</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div>
+              <span class="text-slate-500 block">Posto:</span>
+              <span class="font-bold text-slate-800 block truncate" id="modal-preview-posto">—</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Turno & Horário:</span>
+              <span class="font-bold text-slate-800 block" id="modal-preview-turno">—</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">CPF:</span>
+              <span class="font-bold text-slate-800 block" id="modal-preview-cpf">—</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Matrícula:</span>
+              <span class="font-bold text-slate-800 block" id="modal-preview-matricula">—</span>
+            </div>
+          </div>
+          <!-- Alerta e Especificação Informativa de Vales no Mês -->
+          <div id="modal-alerta-vales-mes" class="hidden pt-2 border-t border-slate-200 text-xs">
+            <!-- Injetado dinamicamente -->
+          </div>
+        </div>
 
-  if (btnOpenVale) btnOpenVale.addEventListener('click', openModal);
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-  if (modalCancelBtn) modalCancelBtn.addEventListener('click', closeModal);
+        <!-- Quanto Pegou (Valor em R$) e Dia que Pegou (Data) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-bold uppercase text-slate-600">Quanto Pegou (R$) *</label>
+            <div class="relative flex items-center">
+              <span class="absolute left-3 text-slate-500 font-bold text-sm">R$</span>
+              <input type="text" id="modal-input-valor" placeholder="0,00" required oninput="formatarMoedaInput(this)" class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-base font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-secondary"/>
+            </div>
+          </div>
 
-  // Recalculate Available Limit dynamically
-  inputValorVale.addEventListener('input', (e) => {
-    const val = parseFloat(e.target.value) || 0;
-    const maxDisponivel = 630.00; // teto inicial livre
-    const rest = maxDisponivel - val;
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-bold uppercase text-slate-600">Dia que Pegou (Data) *</label>
+            <input type="date" id="modal-input-data" onchange="atualizarInfoColabModal()" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-secondary"/>
+          </div>
+        </div>
 
-    if (rest >= 0) {
-      lblSaldoRestante.textContent = `R$ ${rest.toFixed(2)}`;
-      lblSaldoRestante.classList.remove('text-error');
-      lblSaldoRestante.classList.add('text-secondary');
-      
-      const pct = Math.min(100, ((350 + val) / 980) * 100);
-      progressBarSaldo.style.width = `${pct}%`;
-      progressBarSaldo.classList.remove('bg-error');
-      progressBarSaldo.classList.add('bg-secondary');
-    } else {
-      lblSaldoRestante.textContent = `Excedeu R$ ${Math.abs(rest).toFixed(2)}`;
-      lblSaldoRestante.classList.add('text-error');
-      lblSaldoRestante.classList.remove('text-secondary');
-      progressBarSaldo.style.width = `100%`;
-      progressBarSaldo.classList.add('bg-error');
-      progressBarSaldo.classList.remove('bg-secondary');
+        <!-- Modal Actions -->
+        <div class="pt-3 border-t border-slate-200 flex items-center justify-end gap-3 mt-2">
+          <button type="button" onclick="fecharModalVale()" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2 text-sm font-bold text-white bg-secondary hover:bg-blue-700 rounded-xl shadow transition-colors flex items-center gap-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-lg">check</span>
+            <span id="modal-btn-salvar-label">Confirmar Vale</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST FEEDBACK -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transition-all duration-300 transform translate-y-24 opacity-0 pointer-events-none">
+    <span class="material-symbols-outlined text-emerald-400 text-xl" id="toast-icon">check_circle</span>
+    <span class="text-sm font-bold" id="toast-msg">Operação realizada com sucesso!</span>
+  </div>
+
+  <!-- SCRIPT DE OPERAÇÃO DO MÓDULO -->
+  <script>
+    // Gerenciamento da gaveta lateral (Sidebar)
+    function openSidebar() {
+      const drawer = document.getElementById('sidebar-drawer');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (drawer && backdrop) {
+        drawer.classList.remove('-translate-x-full');
+        drawer.classList.add('translate-x-0');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+          PostoStore.lockBodyScroll();
+        } else {
+          document.body.style.overflow = 'hidden';
+        }
+      }
     }
-  });
 
-  // Submit and show Toast
-  modalSubmitBtn.addEventListener('click', () => {
-    closeModal();
-    toastSuccess.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-    setTimeout(() => {
-      toastSuccess.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
-    }, 4500);
-  });
+    function closeSidebar() {
+      const drawer = document.getElementById('sidebar-drawer');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (drawer && backdrop) {
+        drawer.classList.remove('translate-x-0');
+        drawer.classList.add('-translate-x-full');
+        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+          PostoStore.unlockBodyScroll();
+        } else {
+          document.body.style.overflow = '';
+        }
+      }
+    }
 
-  // Cross-System Synchronization for Vales
-  function syncFinanceiroVales() {
-    if (typeof PostoStore === 'undefined') return;
-    const colabs = PostoStore.getColaboradores().filter(c => c.status === 'Ativo');
-    
-    const select = document.getElementById('filter-collab');
-    if (select) {
-      select.innerHTML = `<option value="todos">Todos os Colaboradores do Quadro (${colabs.length})</option>`;
+    function toggleSidebar() {
+      const drawer = document.getElementById('sidebar-drawer');
+      if (drawer && drawer.classList.contains('translate-x-0')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSidebar();
+        fecharModalVale();
+      }
+    });
+
+    // Formatação de Moeda
+    function formatarMoedaInput(input) {
+      let v = input.value.replace(/\D/g, '');
+      if (!v) { input.value = ''; return; }
+      v = (parseInt(v, 10) / 100).toFixed(2);
+      input.value = v.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function formatMoedaBR(num) {
+      return (Number(num) || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function parseMoedaBR(str) {
+      if (typeof str === 'number') return str;
+      if (!str) return 0;
+      const clean = str.replace(/[^\d,-]/g, '').replace(',', '.');
+      return parseFloat(clean) || 0;
+    }
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      const toastIcon = document.getElementById('toast-icon');
+      if (!toast) return;
+
+      toastMsg.textContent = msg;
+      toastIcon.textContent = isError ? 'error' : 'check_circle';
+      toastIcon.className = `material-symbols-outlined text-xl ${isError ? 'text-rose-400' : 'text-emerald-400'}`;
+
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    // Modal Vale Lançar / Editar
+    function popularSelectColaboradores(selectedId = '') {
+      const select = document.getElementById('modal-select-colab');
+      if (!select || typeof PostoStore === 'undefined') return;
+
+      const colabs = PostoStore.getColaboradores().filter(c => c.status === 'Ativo');
+      const dataInput = document.getElementById('modal-input-data').value || '2024-10-24';
+      const anoMes = dataInput.slice(0, 7);
+      const editingValeId = document.getElementById('modal-vale-id').value;
+
+      select.innerHTML = '<option value="">Selecione um colaborador do quadro...</option>';
       colabs.forEach(c => {
         const opt = document.createElement('option');
         opt.value = c.id;
-        opt.textContent = `${c.nome} (${c.cargoLabel} - ${c.postoLabel})`;
+        const postoNome = c.postoLabel || PostoStore.getStationName(c.posto);
+        let valesNoMes = PostoStore.getValesDoColaboradorNoMes(c.id, anoMes);
+        if (editingValeId) {
+          valesNoMes = valesNoMes.filter(v => v.id !== editingValeId);
+        }
+
+        if (valesNoMes.length > 0) {
+          const totalJaRetirado = valesNoMes.reduce((acc, v) => acc + (v.valorNum || 0), 0);
+          opt.textContent = `${c.nome} (${postoNome}) — ⚠️ Já possui ${valesNoMes.length} vale${valesNoMes.length > 1 ? 's' : ''} no mês (${formatMoedaBR(totalJaRetirado)})`;
+        } else {
+          opt.textContent = `${c.nome} (${postoNome}) — 1º vale no mês`;
+        }
+        if (c.id === selectedId) opt.selected = true;
         select.appendChild(opt);
       });
     }
 
-    const kpiColabs = document.getElementById('kpi-vales-colabs');
-    if (kpiColabs) {
-      kpiColabs.textContent = `${colabs.length} Colaborador${colabs.length === 1 ? '' : 'es'}`;
+    function atualizarInfoColabModal() {
+      const colabId = document.getElementById('modal-select-colab').value;
+      const prevPosto = document.getElementById('modal-preview-posto');
+      const prevTurno = document.getElementById('modal-preview-turno');
+      const prevCpf = document.getElementById('modal-preview-cpf');
+      const prevMatricula = document.getElementById('modal-preview-matricula');
+      const badgeStatus = document.getElementById('modal-badge-vales-status');
+      const alertaBox = document.getElementById('modal-alerta-vales-mes');
+
+      if (!colabId || typeof PostoStore === 'undefined') {
+        prevPosto.textContent = '—';
+        prevTurno.textContent = '—';
+        prevCpf.textContent = '—';
+        prevMatricula.textContent = '—';
+        if (badgeStatus) {
+          badgeStatus.textContent = 'Selecione uma pessoa';
+          badgeStatus.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700';
+        }
+        if (alertaBox) {
+          alertaBox.classList.add('hidden');
+          alertaBox.innerHTML = '';
+        }
+        return;
+      }
+
+      const colab = PostoStore.getColaboradores().find(c => c.id === colabId);
+      if (colab) {
+        prevPosto.textContent = colab.postoLabel || PostoStore.getStationName(colab.posto);
+        prevTurno.textContent = `${colab.turno || 'Turno Manhã'} (${obterHorarioAtuacao(colab)})`;
+        prevCpf.textContent = colab.cpf || '—';
+        prevMatricula.textContent = colab.matricula || '—';
+      }
+
+      // Verificação se este colaborador já retirou vales no mês
+      const dataInput = document.getElementById('modal-input-data').value || '2024-10-24';
+      const anoMes = dataInput.slice(0, 7);
+      const editingValeId = document.getElementById('modal-vale-id').value;
+
+      let valesNoMes = PostoStore.getValesDoColaboradorNoMes(colabId, anoMes);
+      if (editingValeId) {
+        valesNoMes = valesNoMes.filter(v => v.id !== editingValeId);
+      }
+
+      if (alertaBox && badgeStatus) {
+        alertaBox.classList.remove('hidden');
+
+        if (valesNoMes.length === 0) {
+          badgeStatus.textContent = '1º Vale no Mês';
+          badgeStatus.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1';
+          alertaBox.innerHTML = `
+            <div class="flex items-center gap-2 p-2.5 bg-emerald-50 text-emerald-900 rounded-xl border border-emerald-200">
+              <span class="material-symbols-outlined text-emerald-600 text-lg shrink-0">verified</span>
+              <div class="text-xs">
+                <span class="font-bold">1º Vale do mês:</span>
+                <span class="text-emerald-800">Este colaborador ainda não possui vales emitidos nesta competência.</span>
+              </div>
+            </div>
+          `;
+        } else {
+          const totalJaRetirado = valesNoMes.reduce((acc, v) => acc + (v.valorNum || 0), 0);
+          badgeStatus.textContent = `Atenção: Já possui ${valesNoMes.length} vale${valesNoMes.length > 1 ? 's' : ''}`;
+          badgeStatus.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1';
+
+          alertaBox.innerHTML = `
+            <div class="p-3 bg-amber-50 rounded-xl border border-amber-300 text-amber-950 flex flex-col gap-1.5 shadow-2xs">
+              <div class="flex items-center gap-2 font-bold text-xs text-amber-900">
+                <span class="material-symbols-outlined text-amber-600 text-lg shrink-0">notification_important</span>
+                <span>Especificação: Colaborador já possui ${valesNoMes.length} vale${valesNoMes.length > 1 ? 's' : ''} no mês (Total já retirado: ${formatMoedaBR(totalJaRetirado)})</span>
+              </div>
+              <div class="text-[11px] text-amber-900 pl-6 flex flex-col gap-0.5 font-medium">
+                ${valesNoMes.map((v, idx) => `<span>• <b>${idx + 1}º Vale:</b> ${v.valor} retirado no dia <b>${PostoStore.formatDateBR(v.dataVale)}</b></span>`).join('')}
+              </div>
+              <div class="mt-1 pt-1.5 border-t border-amber-200/80 text-[11px] text-slate-700 pl-6 font-medium flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm text-blue-600 shrink-0">check_circle</span>
+                <span><b>Liberação:</b> O colaborador <b>pode pegar outro vale normalmente</b>. Esta especificação é informativa para acompanhamento e controle.</span>
+              </div>
+            </div>
+          `;
+        }
+      }
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', syncFinanceiroVales);
-  window.addEventListener('postoRH_sync', syncFinanceiroVales);
-  if (document.readyState !== 'loading') syncFinanceiroVales();
-</script></main></div>
-<script id="drawer-script">
-  function openSidebar() {
-    const drawer = document.getElementById('sidebar-drawer');
-    const backdrop = document.getElementById('sidebar-backdrop');
-    if (drawer && backdrop) {
-      drawer.classList.remove('-translate-x-full');
-      drawer.classList.add('translate-x-0');
-      backdrop.classList.remove('opacity-0', 'pointer-events-none');
-      backdrop.classList.add('opacity-100', 'pointer-events-auto');
-      document.body.style.overflow = 'hidden';
+    function obterHorarioAtuacao(colab) {
+      if (!colab) return '06:00 às 14:20';
+      const turno = colab.turno || '';
+      if (turno.includes('Manhã')) return '06:00 às 14:20';
+      if (turno.includes('Tarde')) return '14:00 às 22:20';
+      if (turno.includes('Noite')) return '22:00 às 06:20';
+      if (turno.includes('Comercial')) return '08:00 às 18:00';
+      return '06:00 às 14:20';
     }
-  }
 
-  function closeSidebar() {
-    const drawer = document.getElementById('sidebar-drawer');
-    const backdrop = document.getElementById('sidebar-backdrop');
-    if (drawer && backdrop) {
-      drawer.classList.remove('translate-x-0');
-      drawer.classList.add('-translate-x-full');
-      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-      backdrop.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
+    function abrirModalNovoVale() {
+      document.getElementById('modal-titulo').textContent = 'Lançar Vale Pego';
+      document.getElementById('modal-btn-salvar-label').textContent = 'Confirmar Vale';
+      document.getElementById('modal-vale-id').value = '';
+      document.getElementById('modal-input-valor').value = '';
+      
+      const filterMes = document.getElementById('filter-mes').value;
+      const baseMes = (filterMes && filterMes !== 'todos') ? filterMes : '2024-10';
+      document.getElementById('modal-input-data').value = `${baseMes}-24`;
+
+      popularSelectColaboradores();
+      document.getElementById('modal-select-colab').disabled = false;
+      atualizarInfoColabModal();
+
+      if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+        PostoStore.lockBodyScroll();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+      document.getElementById('modal-lancar-vale').classList.remove('hidden');
     }
-  }
 
-  function toggleSidebar() {
-    const drawer = document.getElementById('sidebar-drawer');
-    if (drawer && drawer.classList.contains('translate-x-0')) {
-      closeSidebar();
-    } else {
-      openSidebar();
+    function abrirModalEditarVale(valeId) {
+      if (typeof PostoStore === 'undefined') return;
+      const vales = PostoStore.getVales();
+      const v = vales.find(item => item.id === valeId);
+      if (!v) return;
+
+      document.getElementById('modal-titulo').textContent = 'Editar Vale Pego';
+      document.getElementById('modal-btn-salvar-label').textContent = 'Salvar Alteração';
+      document.getElementById('modal-vale-id').value = v.id;
+      
+      // Data do vale existente
+      document.getElementById('modal-input-data').value = v.dataVale || '2024-10-24';
+
+      // Colaborador já fixo
+      popularSelectColaboradores(v.colabId);
+      document.getElementById('modal-select-colab').value = v.colabId;
+      document.getElementById('modal-select-colab').disabled = true;
+      atualizarInfoColabModal();
+
+      const numVal = (v.valorNum || 0).toFixed(2);
+      document.getElementById('modal-input-valor').value = numVal.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+      if (typeof PostoStore !== 'undefined' && PostoStore.lockBodyScroll) {
+        PostoStore.lockBodyScroll();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+      document.getElementById('modal-lancar-vale').classList.remove('hidden');
     }
-  }
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSidebar();
-  });
-</script>
+    function fecharModalVale() {
+      if (typeof PostoStore !== 'undefined' && PostoStore.unlockBodyScroll) {
+        PostoStore.unlockBodyScroll();
+      } else {
+        document.body.style.overflow = '';
+      }
+      document.getElementById('modal-lancar-vale').classList.add('hidden');
+    }
 
-</body></html>
+    function salvarVale(e) {
+      e.preventDefault();
+      if (typeof PostoStore === 'undefined') return;
+
+      const valeId = document.getElementById('modal-vale-id').value;
+      const colabId = document.getElementById('modal-select-colab').value;
+      const valorStr = document.getElementById('modal-input-valor').value;
+      const dataVale = document.getElementById('modal-input-data').value;
+
+      const valorNum = parseMoedaBR(valorStr);
+      if (valorNum <= 0) {
+        showToast('Informe um valor de vale válido maior que zero!', true);
+        return;
+      }
+
+      if (valeId) {
+        // Editar existente
+        PostoStore.updateVale(valeId, { valor: valorNum, dataVale: dataVale });
+        showToast(`Vale ${valeId} atualizado com sucesso!`);
+      } else {
+        // Novo vale
+        if (!colabId) {
+          showToast('Selecione um colaborador!', true);
+          return;
+        }
+        PostoStore.addVale({
+          colabId: colabId,
+          valor: valorStr,
+          dataVale: dataVale
+        });
+        showToast('Vale lançado com sucesso!');
+      }
+
+      fecharModalVale();
+      renderVales();
+    }
+
+    function excluirVale(valeId) {
+      if (typeof PostoStore === 'undefined') return;
+      if (confirm(`Deseja realmente excluir o lançamento do vale ${valeId}?`)) {
+        PostoStore.deleteVale(valeId);
+        showToast(`Vale ${valeId} excluído com sucesso!`);
+        renderVales();
+      }
+    }
+
+    // RENDERIZAÇÃO DA TABELA E KPIS: 100% SOBRE VALES PEGOS
+    function renderVales() {
+      if (typeof PostoStore === 'undefined') return;
+
+      const allVales = PostoStore.getVales();
+      const allColabs = PostoStore.getColaboradores();
+
+      // Filtros
+      const filterPosto = document.getElementById('filter-posto').value;
+      const filterMes = document.getElementById('filter-mes').value;
+      const filterSearch = (document.getElementById('filter-search').value || '').trim().toLowerCase();
+
+      // Filtrar vales estritamente no mês selecionado e pelos critérios
+      let valesFiltrados = allVales.filter(v => {
+        // Filtro por Mês (ex: 2024-10)
+        if (filterMes !== 'todos') {
+          if (!v.dataVale || !v.dataVale.startsWith(filterMes)) {
+            return false;
+          }
+        }
+
+        // Filtro por Posto
+        if (filterPosto !== 'todos') {
+          if (v.posto !== filterPosto) {
+            return false;
+          }
+        }
+
+        // Filtro por Busca Rápida (Nome ou CPF)
+        if (filterSearch) {
+          const nomeMatch = (v.nome || '').toLowerCase().includes(filterSearch);
+          const cpfMatch = (v.cpf || '').replace(/\D/g, '').includes(filterSearch.replace(/\D/g, ''));
+          const matMatch = (v.matricula || '').toLowerCase().includes(filterSearch);
+          if (!nomeMatch && !cpfMatch && !matMatch) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      // Ordenar por data mais recente primeiro
+      valesFiltrados.sort((a, b) => (b.dataVale || '').localeCompare(a.dataVale || ''));
+
+      // KPIS:
+      // 1. Total em R$ dos vales pegos
+      let somaTotal = 0;
+      let maiorVale = 0;
+      const pessoasSet = new Set();
+      const volumePorPosto = {};
+
+      valesFiltrados.forEach(v => {
+        const vNum = v.valorNum || parseMoedaBR(v.valor);
+        somaTotal += vNum;
+        if (vNum > maiorVale) maiorVale = vNum;
+        if (v.colabId || v.nome) pessoasSet.add(v.colabId || v.nome);
+
+        const postoKey = v.postoLabel || PostoStore.getStationName(v.posto);
+        volumePorPosto[postoKey] = (volumePorPosto[postoKey] || 0) + vNum;
+      });
+
+      const totalValesCount = valesFiltrados.length;
+      const totalPessoasComVale = pessoasSet.size;
+      const mediaVale = totalValesCount > 0 ? (somaTotal / totalValesCount) : 0;
+
+      // Total de colaboradores no quadro (para % de aderência)
+      let colabsQuadro = allColabs.filter(c => (c.status || 'Ativo') === 'Ativo');
+      if (filterPosto !== 'todos') {
+        colabsQuadro = colabsQuadro.filter(c => c.posto === filterPosto);
+      }
+      const totalColabsAtivos = colabsQuadro.length;
+      const pctPessoasComVale = totalColabsAtivos > 0 ? Math.round((totalPessoasComVale / totalColabsAtivos) * 100) : 0;
+
+      // Preenchimento dos KPIs
+      document.getElementById('kpi-total-vales').textContent = formatMoedaBR(somaTotal);
+      document.getElementById('kpi-qtd-vales').textContent = `${totalValesCount} vale${totalValesCount === 1 ? '' : 's'}`;
+      document.getElementById('kpi-posto-label').textContent = filterPosto === 'todos' ? 'Todos os Postos' : PostoStore.getStationName(filterPosto);
+
+      document.getElementById('kpi-pessoas-com-vale').textContent = `${totalPessoasComVale} ${totalPessoasComVale === 1 ? 'Pessoa' : 'Pessoas'}`;
+      document.getElementById('kpi-percent-colabs').textContent = `${pctPessoasComVale}% do quadro`;
+      document.getElementById('kpi-total-colabs-quadro').textContent = `${totalColabsAtivos} Ativos`;
+
+      // Card 3: Unidade / Posto com Vales (se todos os postos, exibe "Todos os Postos")
+      const card3Subtitle = document.getElementById('kpi-card3-subtitle');
+      if (filterPosto === 'todos') {
+        document.getElementById('kpi-top-posto-total').textContent = formatMoedaBR(somaTotal);
+        document.getElementById('kpi-top-posto-nome').textContent = 'Todos os Postos';
+        if (card3Subtitle) card3Subtitle.textContent = 'Todos os 4 Postos da Rede';
+      } else {
+        const nomePosto = PostoStore.getStationName(filterPosto);
+        document.getElementById('kpi-top-posto-total').textContent = formatMoedaBR(somaTotal);
+        document.getElementById('kpi-top-posto-nome').textContent = nomePosto;
+        if (card3Subtitle) card3Subtitle.textContent = 'Posto Selecionado';
+      }
+
+      // Badge e rodapé
+      document.getElementById('badge-total-registros').textContent = `${totalPessoasComVale} pessoa${totalPessoasComVale === 1 ? '' : 's'} com vale`;
+      document.getElementById('footer-resumo-texto').textContent = `Mostrando ${totalValesCount} vale${totalValesCount === 1 ? '' : 's'} de ${totalPessoasComVale} colaborador${totalPessoasComVale === 1 ? '' : 'es'} no mês`;
+      document.getElementById('footer-total-soma').textContent = formatMoedaBR(somaTotal);
+
+      // Renderizar linhas da tabela (EXCLUSIVAMENTE QUEM PEGOU VALE)
+      const tbody = document.getElementById('tbody-vales');
+      if (!tbody) return;
+
+      if (valesFiltrados.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-12 px-6 text-center bg-white">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                  <span class="material-symbols-outlined text-2xl">receipt_long</span>
+                </div>
+                <span class="text-sm font-bold text-slate-700">Nenhum colaborador retirou vale neste mês</span>
+                <span class="text-xs text-slate-400 max-w-sm">Apenas pessoas com vales pegos no período selecionado aparecem aqui. Clique em <b>+ Lançar Vale</b> para emitir um adiantamento.</span>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      // Mapear quantos vales cada colaborador tem no mês para indicar 1º ou 2º vale (adicional)
+      const valesPorColabMes = {};
+      valesFiltrados.forEach(v => {
+        const cId = v.colabId || v.nome;
+        if (!valesPorColabMes[cId]) valesPorColabMes[cId] = [];
+        valesPorColabMes[cId].push(v);
+      });
+      Object.keys(valesPorColabMes).forEach(cId => {
+        valesPorColabMes[cId].sort((a, b) => (a.dataVale || '').localeCompare(b.dataVale || ''));
+      });
+
+      let html = '';
+      valesFiltrados.forEach(v => {
+        const dataFormatada = PostoStore.formatDateBR(v.dataVale);
+        const colab = allColabs.find(c => c.id === v.colabId) || {};
+        const turnoTxt = v.turno || colab.turno || 'Turno Manhã';
+        const horarioTxt = v.horario || obterHorarioAtuacao(colab);
+        const postoTxt = v.postoLabel || colab.postoLabel || PostoStore.getStationName(v.posto);
+        const valorExibicao = formatMoedaBR(v.valorNum || parseMoedaBR(v.valor));
+        const initials = v.initials || colab.initials || (v.nome ? v.nome.slice(0, 2).toUpperCase() : 'CO');
+
+        // Ordem do vale deste colaborador no mês
+        const cId = v.colabId || v.nome;
+        const listaDoColab = valesPorColabMes[cId] || [];
+        const indexOrdem = listaDoColab.findIndex(item => item.id === v.id);
+        const ordemNumero = indexOrdem !== -1 ? (indexOrdem + 1) : 1;
+        const totalNoMes = listaDoColab.length;
+
+        let badgeOrdemHtml = '';
+        if (totalNoMes > 1) {
+          if (ordemNumero === 1) {
+            badgeOrdemHtml = `<span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200" title="1º vale deste colaborador neste mês">1º Vale no mês</span>`;
+          } else {
+            badgeOrdemHtml = `<span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 border border-amber-300 shadow-2xs" title="Este colaborador já retirou outro vale neste mês"><span class="material-symbols-outlined text-[12px] text-amber-600">notification_important</span> ${ordemNumero}º Vale no mês (Adicional)</span>`;
+          }
+        }
+
+        html += `
+          <tr class="hover:bg-blue-50/40 transition-colors">
+            <!-- 1. Colaborador (Pessoa que pegou) -->
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs shrink-0 border border-blue-200">
+                  ${initials}
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-bold text-slate-900 truncate">${v.nome}</span>
+                    ${badgeOrdemHtml}
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-500 font-mono mt-0.5">
+                    <span>${v.cpf || '—'}</span>
+                    <span class="text-slate-300">•</span>
+                    <span class="text-slate-400">${v.matricula || ''}</span>
+                  </div>
+                </div>
+              </div>
+            </td>
+
+            <!-- 2. Posto dela -->
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-base text-slate-400">local_gas_station</span>
+                <span class="font-semibold text-slate-800 text-xs sm:text-sm truncate">${postoTxt}</span>
+              </div>
+            </td>
+
+            <!-- 3. Turno dela e Horário de Atuação -->
+            <td class="py-3 px-4">
+              <div class="flex flex-col">
+                <span class="font-bold text-slate-800 text-xs">${turnoTxt}</span>
+                <span class="text-xs text-slate-500 font-medium">${horarioTxt}</span>
+              </div>
+            </td>
+
+            <!-- 4. Dia que ela pegou -->
+            <td class="py-3 px-4 text-center">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold font-mono border border-slate-200">
+                <span class="material-symbols-outlined text-xs text-slate-500">calendar_today</span>
+                ${dataFormatada}
+              </span>
+            </td>
+
+            <!-- 5. Quanto ela pegou & Ações -->
+            <td class="py-3 px-4 text-right">
+              <div class="flex items-center justify-end gap-2">
+                <span class="text-sm font-black text-secondary bg-blue-50/80 px-2.5 py-1 rounded-lg border border-blue-200 font-mono">
+                  ${valorExibicao}
+                </span>
+                <!-- Ações para editar valor e excluir -->
+                <div class="flex items-center gap-1">
+                  <button onclick="abrirModalEditarVale('${v.id}')" title="Mudar valor ou data deste vale" type="button" class="p-1 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer">
+                    <span class="material-symbols-outlined text-base">edit</span>
+                  </button>
+                  <button onclick="excluirVale('${v.id}')" title="Excluir este vale" type="button" class="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer">
+                    <span class="material-symbols-outlined text-base">delete</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    // Inicialização e sincronização
+    document.addEventListener('DOMContentLoaded', () => {
+      renderVales();
+    });
+
+    window.addEventListener('postoRH_vales_sync', () => {
+      renderVales();
+    });
+
+    window.addEventListener('postoRH_sync', () => {
+      renderVales();
+    });
+
+    if (document.readyState !== 'loading') {
+      renderVales();
+    }
+  </script>
+</body>
+</html>
