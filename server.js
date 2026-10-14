@@ -8,6 +8,7 @@ const PUBLIC_DIR = __dirname;
 
 // Explicit static references so @vercel/nft traces and bundles every file into the Lambda package
 const KNOWN_FILES = {
+  '/login.html': { path: path.join(__dirname, 'login.html'), type: 'text/html; charset=utf-8' },
   '/index.html': { path: path.join(__dirname, 'index.html'), type: 'text/html; charset=utf-8' },
   '/colaboradores.html': { path: path.join(__dirname, 'colaboradores.html'), type: 'text/html; charset=utf-8' },
   '/frequencia.html': { path: path.join(__dirname, 'frequencia.html'), type: 'text/html; charset=utf-8' },
@@ -38,6 +39,8 @@ const ROUTE_ALIASES = {
   '/': '/colaboradores.html',
   '/index': '/colaboradores.html',
   '/index.html': '/colaboradores.html',
+  '/login': '/login.html',
+  '/login.html': '/login.html',
   '/dashboard': '/colaboradores.html',
   '/dashboard.html': '/colaboradores.html',
   '/colaboradores': '/colaboradores.html',
