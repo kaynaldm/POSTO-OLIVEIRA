@@ -1169,70 +1169,34 @@
   // ==========================================
   const AUTH_KEY = 'postoRH_auth_session';
 
+  const DEFAULT_USER = {
+    email: 'fernanda@postorh.com.br',
+    name: 'Fernanda',
+    role: 'Gestão Operacional',
+    postoLabel: 'Todos os Postos da Rede'
+  };
+
   window.PostoAuth = {
     getAuth: function() {
       try {
-        const data = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
-        return data ? JSON.parse(data) : null;
-      } catch (e) {
-        return null;
-      }
+        const raw = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
+        if (raw) {
+          const data = JSON.parse(raw);
+          if (data && (!data.name || data.name.includes('Administrador') || data.name.toLowerCase() !== 'fernanda')) {
+            data.name = 'Fernanda';
+            data.email = 'fernanda@postorh.com.br';
+            localStorage.setItem(AUTH_KEY, JSON.stringify(data));
+          }
+          return data;
+        }
+      } catch (e) {}
+      return DEFAULT_USER;
     },
     isAuthenticated: function() {
-      return !!this.getAuth();
+      return true;
     },
     login: function(email, password, rememberMe) {
-      const cleanEmail = (email || '').trim().toLowerCase();
-      const cleanPass = (password || '').trim();
-
-      // Credenciais do Gmail Admin
-      // Aceita admin@gmail.com, gmailadmin@gmail.com, admin, ou qualquer gmail com senhas autorizadas
-      const validAdminEmails = [
-        'admin@gmail.com',
-        'gmailadmin@gmail.com',
-        'admin.postorh@gmail.com',
-        'admin',
-        'gmailadmin',
-        'gerente@gmail.com'
-      ];
-
-      const isEmailValid = validAdminEmails.includes(cleanEmail) || cleanEmail.endsWith('@gmail.com');
-      const isPasswordValid = (cleanPass === 'admin' || cleanPass === 'admin123' || cleanPass === '123456' || cleanPass === 'admin@123');
-
-      if (!cleanEmail) {
-        return { success: false, message: 'Por favor, informe seu e-mail do Gmail.' };
-      }
-      if (!cleanPass) {
-        return { success: false, message: 'Por favor, informe a senha de acesso.' };
-      }
-
-      if (isEmailValid && isPasswordValid) {
-        const fullEmail = cleanEmail.includes('@') ? cleanEmail : `${cleanEmail}@gmail.com`;
-        const displayName = fullEmail.includes('gerente') ? 'Carlos Eduardo Mendes' : 'Administrador Geral';
-        const user = {
-          email: fullEmail,
-          name: displayName,
-          role: 'Super Admin',
-          postoLabel: 'Todos os Postos da Rede',
-          loginAt: new Date().toISOString()
-        };
-
-        const serialized = JSON.stringify(user);
-        if (rememberMe !== false) {
-          localStorage.setItem(AUTH_KEY, serialized);
-        } else {
-          sessionStorage.setItem(AUTH_KEY, serialized);
-          localStorage.setItem(AUTH_KEY, serialized);
-        }
-
-        window.dispatchEvent(new CustomEvent('postoRH_auth_login', { detail: user }));
-        return { success: true, user: user };
-      }
-
-      return {
-        success: false,
-        message: 'E-mail ou senha incorretos. Utilize o Gmail Admin: admin@gmail.com com a senha admin123'
-      };
+      return { success: true, user: DEFAULT_USER };
     },
     logout: function() {
       try {
@@ -1240,12 +1204,10 @@
         sessionStorage.removeItem(AUTH_KEY);
       } catch(e) {}
       window.dispatchEvent(new CustomEvent('postoRH_auth_logout'));
-      window.location.replace('login.html');
+      window.location.reload();
     },
     requireAuth: function() {
-      if (!this.isAuthenticated()) {
-        window.location.replace('login.html');
-      }
+      // Sem restrição de login
     }
   };
 })();
