@@ -14,7 +14,9 @@ const KNOWN_FILES = {
   '/frequencia.html': { path: path.join(__dirname, 'frequencia.html'), type: 'text/html; charset=utf-8' },
   '/financeiro-vales.html': { path: path.join(__dirname, 'financeiro-vales.html'), type: 'text/html; charset=utf-8' },
   '/mapa-unidades.html': { path: path.join(__dirname, 'mapa-unidades.html'), type: 'text/html; charset=utf-8' },
-  '/sync-store.js': { path: path.join(__dirname, 'sync-store.js'), type: 'application/javascript; charset=utf-8' }
+  '/sync-store.js': { path: path.join(__dirname, 'sync-store.js'), type: 'application/javascript; charset=utf-8' },
+  '/Fundo Minimalista de Rede Urbana.png': { path: path.join(__dirname, 'Fundo Minimalista de Rede Urbana.png'), type: 'image/png' },
+  '/bg-login.png': { path: path.join(__dirname, 'Fundo Minimalista de Rede Urbana.png'), type: 'image/png' }
 };
 
 // In-memory cache loaded and pre-compressed with gzip for instant transfers (0ms)
@@ -34,13 +36,13 @@ for (const [route, info] of Object.entries(KNOWN_FILES)) {
   }
 }
 
-// Aliases for clean URLs (o sistema agora inicia direto em Colaboradores)
+// Aliases for clean URLs (o sistema inicia na tela de login)
 const ROUTE_ALIASES = {
-  '/': '/colaboradores.html',
-  '/index': '/colaboradores.html',
-  '/index.html': '/colaboradores.html',
-  '/login': '/colaboradores.html',
-  '/login.html': '/colaboradores.html',
+  '/': '/login.html',
+  '/index': '/login.html',
+  '/index.html': '/login.html',
+  '/login': '/login.html',
+  '/login.html': '/login.html',
   '/dashboard': '/colaboradores.html',
   '/dashboard.html': '/colaboradores.html',
   '/colaboradores': '/colaboradores.html',
@@ -75,11 +77,9 @@ function sendCachedResponse(req, res, fileObj) {
     'Access-Control-Allow-Origin': '*'
   };
 
-  if (fileObj.type.startsWith('text/html')) {
-    headers['Cache-Control'] = 'public, max-age=0, must-revalidate';
-  } else {
-    headers['Cache-Control'] = 'public, max-age=86400, stale-while-revalidate=604800';
-  }
+  headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+  headers['Pragma'] = 'no-cache';
+  headers['Expires'] = '0';
 
   if (acceptEncoding.includes('gzip') && fileObj.gzipContent) {
     headers['Content-Encoding'] = 'gzip';
@@ -99,31 +99,22 @@ const server = http.createServer((req, res) => {
     safePath = ROUTE_ALIASES[safePath];
   }
 
-  // 1. Check in-memory pre-compressed cache first (instant response, 0ms, zero disk I/O)
-  if (CACHED_FILES[safePath]) {
-    sendCachedResponse(req, res, CACHED_FILES[safePath]);
-    return;
-  }
-
-  // 2. Check if appending .html matches in cache
-  if (CACHED_FILES[safePath + '.html']) {
-    sendCachedResponse(req, res, CACHED_FILES[safePath + '.html']);
-    return;
-  }
-
-  // 3. Disk fallback for any dynamic or newly added files
-  const resolvedPath = path.normalize(path.join(PUBLIC_DIR, safePath));
+  // 1. Resolve direct disk file path
+  let targetPath = safePath;
+  let resolvedPath = path.normalize(path.join(PUBLIC_DIR, targetPath));
   if (!resolvedPath.startsWith(PUBLIC_DIR)) {
     res.writeHead(403, { 'Content-Type': 'text/plain' });
     res.end('403 Proibido');
     return;
   }
 
+  // Se não existir o arquivo exato, tenta com .html
+  if (!fs.existsSync(resolvedPath) && fs.existsSync(resolvedPath + '.html')) {
+    resolvedPath = resolvedPath + '.html';
+  }
+
   fs.stat(resolvedPath, (err, stats) => {
     if (err) {
-      if (fs.existsSync(resolvedPath + '.html')) {
-        return serveFile(req, res, resolvedPath + '.html');
-      }
       res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(`<h1>404 Não Encontrado</h1><p>O arquivo ${safePath} não foi localizado.</p><p><a href="/index.html">Voltar ao Início</a></p>`);
       return;
@@ -156,13 +147,11 @@ function serveFile(req, res, filePath) {
     const acceptEncoding = req.headers['accept-encoding'] || '';
     const headers = {
       'Content-Type': contentType,
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
     };
-    if (contentType.startsWith('text/html')) {
-      headers['Cache-Control'] = 'public, max-age=0, must-revalidate';
-    } else {
-      headers['Cache-Control'] = 'public, max-age=86400, stale-while-revalidate=604800';
-    }
 
     if (acceptEncoding.includes('gzip')) {
       zlib.gzip(content, (zErr, gzipped) => {

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/>
+<html lang="pt-BR" class="notranslate" translate="no"><head><meta charset="utf-8"/><meta name="google" content="notranslate"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -11,25 +11,55 @@
 
 
 <style id="custom-rounded-theme">
-  /* THEME: ULTRA PROFISSIONAL, BORDAS ARREDONDADAS E CORES HARMONIOSAS */
+  /* THEME: SAAS MODERNO & REFINADO - FOCO EM HIERARQUIA E CONTRASTE SUTIL */
   :root {
     --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-2xl: 24px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
     --radius-full: 9999px;
   }
 
-  .rounded-sm { border-radius: var(--radius-sm) !important; }
-  .rounded { border-radius: var(--radius-sm) !important; }
-  .rounded-md { border-radius: var(--radius-md) !important; }
-  .rounded-lg { border-radius: var(--radius-lg) !important; }
-  .rounded-xl { border-radius: var(--radius-xl) !important; }
-  .rounded-2xl { border-radius: var(--radius-2xl) !important; }
-  .rounded-full { border-radius: var(--radius-full) !important; }
+  body, html {
+    background-color: #F8FAFC !important;
+    color: #0F172A;
+  }
 
-  /* Elementos arredondados automáticos */
+  /* UNIFORMIZAÇÃO GLOBAL: TODOS OS ÍCONES NO ESTILO OUTLINE (APENAS CONTORNO) COM MESMA ESPESSURA */
+  .material-symbols-outlined,
+  .material-symbols-rounded,
+  .material-symbols-sharp,
+  [class*="material-symbols"] {
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24 !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    direction: ltr !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+  }
+
+  /* Cards e painéis com fundo branco puro, bordas finas sutis (#E2E8F0) e sombra sutil */
+  .bg-surface-container-lowest,
+  .bg-white {
+    background-color: #FFFFFF !important;
+    border-radius: var(--radius-xl) !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04) !important;
+  }
+
+  /* Inputs e controles */
   button:not(.rounded-full) {
     border-radius: var(--radius-md) !important;
   }
@@ -37,75 +67,41 @@
     border-radius: var(--radius-md) !important;
   }
 
-  /* Drawer lateral perfeitamente alinhado às bordas esquerdas */
+  /* Tabelas SaaS: divisores horizontais quase invisíveis (#F1F5F9), sem grades verticais */
+  table {
+    border-collapse: collapse !important;
+    width: 100%;
+    border: none !important;
+  }
+  .tabela-com-divisores {
+    border-collapse: collapse !important;
+    width: 100%;
+    border: none !important;
+  }
+  .tabela-com-divisores th,
+  .tabela-com-divisores td {
+    border: none !important;
+  }
+  thead th {
+    background-color: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 0.85rem 1.25rem !important;
+  }
+  tbody tr {
+    border-bottom: 1px solid #F1F5F9 !important;
+  }
+  tbody tr:last-child {
+    border-bottom: none !important;
+  }
+  tbody td {
+    padding: 1rem 1.25rem !important; /* Espaçamento interno aumentado para mais respiro */
+  }
+
+  /* Drawer lateral */
   #sidebar-drawer {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     border-left: none !important;
-    border-top: none !important;
-    border-bottom: none !important;
-  }
-
-  /* Cards e painéis suaves */
-  .bg-surface-container-lowest,
-  .bg-white {
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(226, 232, 240, 0.9);
-    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
-  }
-
-  /* Tabelas com cantos 100% arredondados */
-  table {
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
-  }
-  .overflow-x-auto {
-    border-radius: var(--radius-xl) !important;
-    overflow: hidden !important;
-  }
-  thead th:first-child {
-    border-top-left-radius: var(--radius-xl) !important;
-  }
-  thead th:last-child {
-    border-top-right-radius: var(--radius-xl) !important;
-  }
-  tbody tr:last-child td:first-child {
-    border-bottom-left-radius: var(--radius-xl) !important;
-  }
-  tbody tr:last-child td:last-child {
-    border-bottom-right-radius: var(--radius-xl) !important;
-  }
-
-  /* Status Pills arredondadas */
-  .status-badge {
-    border-radius: 9999px !important;
-    font-weight: 700 !important;
-    padding: 0.35rem 0.85rem !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0.375rem !important;
-    font-size: 0.75rem !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  }
-
-  /* Linhas nítidas de separação de colunas e linhas da tabela */
-  .tabela-com-divisores {
-    border-collapse: collapse !important;
-    width: 100%;
-    border: 1px solid #cbd5e1 !important; /* borda externa da tabela */
-  }
-  .tabela-com-divisores th,
-  .tabela-com-divisores td {
-    border-right: 1px solid #e2e8f0 !important; /* linha vertical de separação */
-    border-bottom: 1px solid #e2e8f0 !important; /* linha horizontal de separação */
-  }
-  .tabela-com-divisores th:last-child,
-  .tabela-com-divisores td:last-child {
-    border-right: none !important;
-  }
-  .tabela-com-divisores thead tr {
-    background-color: #f8fafc !important;
-    border-bottom: 2px solid #cbd5e1 !important;
   }
 </style>
 
@@ -154,23 +150,35 @@
             <span class="text-xs opacity-70 mt-1 leading-none">Extrato do Mês</span>
           </div>
         </a>
+
+        <!-- Divisor Sutil -->
+        <div class="my-2 border-t border-slate-200/80 mx-1"></div>
+
+        <!-- Botão Sair para Login -->
+        <a href="login.html" onclick="try { sessionStorage.clear(); localStorage.removeItem('postoRH_current_user'); } catch(e){}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-rose-600 hover:bg-rose-50 hover:text-rose-700 transition-colors font-medium cursor-pointer group">
+          <span class="material-symbols-outlined text-xl leading-none text-rose-500 group-hover:text-rose-600">logout</span>
+          <div class="flex flex-col flex-1">
+            <span class="leading-none text-sm font-semibold">Sair do Sistema</span>
+            <span class="text-xs text-rose-400 group-hover:text-rose-500 mt-1 leading-none">Ir para a tela de login</span>
+          </div>
+        </a>
       </nav>
 
     </div>
   </aside>
 
   <div id="main-layout" class="w-full min-h-screen">
-  <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-secondary text-on-secondary shadow-md z-40 flex items-center justify-between px-4 sm:px-gutter-lg">
+  <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-slate-900 text-white border-b border-slate-800 shadow-xs z-40 flex items-center justify-between px-4 sm:px-6 lg:px-8">
     <div class="flex items-center gap-3">
-      <!-- Botão Hambúrguer (3 pauzinhos) -->
-      <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-all flex items-center justify-center cursor-pointer">
+      <!-- Botão Hambúrguer -->
+      <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center cursor-pointer">
         <span class="material-symbols-outlined text-2xl leading-none">menu</span>
       </button>
 
       <!-- Nome PostoRH -->
       <a href="colaboradores.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
         <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
-        <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
+        <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold hidden sm:inline">• Rede Operacional</span>
       </a>
     </div>
 
@@ -178,77 +186,82 @@
     <div class="flex items-center gap-2.5">
       <div class="flex flex-col text-right">
         <span class="text-xs font-bold text-white leading-none" id="header-user-name">Fernanda</span>
-        <span class="text-[10px] text-white/75 mt-0.5 leading-none font-mono" id="header-user-email">fernanda@postorh.com.br</span>
+        <span class="text-[10px] text-slate-400 mt-0.5 leading-none font-mono" id="header-user-email">fernanda@postorh.com.br</span>
       </div>
-      <div class="w-9 h-9 rounded-full bg-white/20 text-white font-bold flex items-center justify-center ring-2 ring-white/40 shadow-sm text-xs" id="header-user-avatar">
+      <div class="w-9 h-9 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center ring-2 ring-slate-700 shadow-xs text-xs" id="header-user-avatar">
         FE
       </div>
     </div>
-  </header><main class="relative pt-14 bg-surface min-h-screen"><div class="flex flex-col w-full">
+  </header><main class="relative pt-14 bg-[#F8FAFC] min-h-screen"><div class="flex flex-col w-full">
 <!-- Content Canvas Area -->
-<div class="p-gutter lg:p-margin-desktop flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full">
+<div class="px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-5 w-full">
 <!-- Control Topbar -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
 <div class="flex flex-col">
-<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Colaboradores da Rede</h1>
+<h1 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight notranslate" translate="no">Colaboradores da Rede</h1>
+<p class="text-xs text-slate-500 mt-0.5">Gestão cadastral, cargos e remunerações da equipe</p>
 </div>
 <!-- Action Buttons -->
-<div class="flex items-center gap-space-sm self-start md:self-auto">
-<button onclick="if(confirm('Recarregar os 20 colaboradores e dados de demonstração completos?')) { PostoStore.resetDemoData(); renderColaboradores(); }" class="flex items-center gap-space-xs px-3 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-300 rounded-xl transition-all font-label-md text-xs font-semibold cursor-pointer" type="button" title="Restaurar dados completos">
-<span class="material-symbols-outlined text-base text-slate-500">replay</span>
+<div class="flex items-center gap-2 self-start md:self-auto">
+<button onclick="if(confirm('Recarregar os 20 colaboradores e dados de demonstração completos?')) { PostoStore.resetDemoData(); renderColaboradores(); }" class="flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-lg transition-all text-xs font-semibold shadow-xs cursor-pointer" type="button" title="Restaurar dados completos">
+<span class="material-symbols-outlined notranslate text-sm text-slate-400" translate="no" data-icon="replay">replay</span>
 <span class="hidden sm:inline">Restaurar Demo</span>
 </button>
-<button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-container-lowest text-on-surface rounded-xl shadow-sm hover:bg-surface-container-low transition-all font-label-lg text-label-lg font-medium cursor-pointer" type="button">
-<span class="material-symbols-outlined text-base">download</span>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-lg transition-all text-xs font-medium shadow-xs cursor-pointer" type="button">
+<span class="material-symbols-outlined notranslate text-sm text-slate-400" translate="no" data-icon="download">download</span>
 <span>Exportar CSV / Folha</span>
 </button>
-<button class="flex items-center gap-space-xs px-space-md py-2 bg-primary text-on-primary rounded-xl shadow-md hover:bg-on-primary-fixed transition-all font-label-lg text-label-lg font-semibold cursor-pointer" onclick="openDrawer('modal-novo')" type="button">
-<span class="material-symbols-outlined text-base">person_add</span>
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-lg shadow-xs transition-all text-xs font-semibold cursor-pointer" onclick="openDrawer('modal-novo')" type="button">
+<span class="material-symbols-outlined notranslate text-base" translate="no" data-icon="person_add">person_add</span>
 <span>+ Novo Colaborador</span>
 </button>
 </div>
 </div>
 <!-- Quick Stats Cards (KPI Strips) -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 <!-- Card 1: Total de Colaboradores -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
-<div class="flex items-center justify-between text-on-surface-variant">
-<span class="font-label-md text-label-md font-semibold">Total de Colaboradores</span>
-<span class="p-2 rounded-xl bg-blue-50 text-secondary material-symbols-outlined text-lg">groups</span>
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total de Colaboradores</span>
+<div class="w-8 h-8 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">groups</span>
 </div>
-<div class="mt-2 flex items-baseline gap-space-sm">
-<span class="font-metric-display text-metric-display text-on-surface" id="kpi-total-ativo">0</span>
-<span class="font-label-sm text-label-sm text-secondary bg-blue-50 px-2.5 py-0.5 rounded-full font-bold" id="kpi-total-sub">0 cadastrados</span>
 </div>
-<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-total-detalhe">Quadro geral da rede</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-3xl font-bold tracking-tight text-[#2563EB]" id="kpi-total-ativo">0</span>
+<span class="text-xs font-medium text-slate-600 bg-slate-100 border border-slate-200/80 px-2.5 py-0.5 rounded-full" id="kpi-total-sub">0 cadastrados</span>
+</div>
+<div class="mt-3 text-xs text-slate-400" id="kpi-total-detalhe">Quadro geral da rede</div>
 </div>
 <!-- Card 2: Total Investido Neles -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
-<div class="flex items-center justify-between text-on-surface-variant">
-<span class="font-label-md text-label-md font-semibold">Total Investido Neles</span>
-<span class="p-2 rounded-xl bg-emerald-50 text-emerald-600 material-symbols-outlined text-lg">payments</span>
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Investido Neles</span>
+<div class="w-8 h-8 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">payments</span>
 </div>
-<div class="mt-2 flex items-baseline gap-space-sm">
-<span class="font-metric-display text-metric-display text-emerald-700 font-bold" id="kpi-total-investido">R$ 0,00</span>
-<span class="font-label-sm text-label-sm text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full font-bold">Folha Mensal</span>
 </div>
-<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="kpi-investido-detalhe">Soma salarial mensal dos colaboradores</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-3xl font-bold tracking-tight text-[#2563EB]" id="kpi-total-investido">R$ 0,00</span>
+<span class="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-full">Folha Mensal</span>
+</div>
+<div class="mt-3 text-xs text-slate-400" id="kpi-investido-detalhe">Soma salarial mensal dos colaboradores</div>
 </div>
 <!-- Card 3: Posto de Gasolina Selecionado -->
-<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border-2 border-secondary/20">
-<div class="flex items-center justify-between text-on-surface-variant">
-<span class="font-label-md text-label-md font-semibold text-secondary flex items-center gap-1.5">
-<span class="material-symbols-outlined text-lg">local_gas_station</span>
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-slate-400">local_gas_station</span>
 Posto de Gasolina
 </span>
-<span class="font-label-sm text-label-sm text-secondary bg-blue-50 px-2.5 py-0.5 rounded-full font-bold" id="kpi-posto-badge">Todos os Postos</span>
+<span class="text-xs font-medium text-slate-600 bg-slate-100 border border-slate-200/80 px-2.5 py-0.5 rounded-full" id="kpi-posto-badge">Todos os Postos</span>
 </div>
-<div class="mt-2">
-<span class="font-headline-sm text-headline-sm text-on-surface block truncate font-bold" id="kpi-posto-nome">Todos os Postos de Parintins</span>
+<div class="mt-3">
+<span class="text-lg font-bold text-slate-800 tracking-tight block truncate" id="kpi-posto-nome">Todos os Postos de Parintins</span>
 </div>
-<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm flex items-center justify-between" id="kpi-posto-detalhe">
+<div class="mt-3 text-xs text-slate-500 flex items-center justify-between" id="kpi-posto-detalhe">
 <span>0 colaboradores neste posto</span>
-<button type="button" onclick="document.getElementById('select-posto').focus()" class="text-xs text-secondary font-bold hover:underline cursor-pointer">Alterar Filtro ↓</button>
+<button type="button" onclick="document.getElementById('select-posto').focus()" class="text-xs text-[#2563EB] font-semibold hover:underline cursor-pointer">Alterar Filtro ↓</button>
 </div>
 </div>
 </div>
@@ -267,6 +280,7 @@ Posto de Gasolina
 <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-municipio" onchange="handleMunicipioChange(this.value)">
 <option value="todos">Todos os Municípios (AM)</option>
 <option selected="" value="parintins">Parintins (AM)</option>
+<option value="barreirinha">Barreirinha (AM)</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
 </div>
@@ -277,11 +291,10 @@ Posto de Gasolina
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
 <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none" id="select-posto" onchange="renderColaboradores()">
-<option selected value="todos">Todos os postos de Parintins (4 Ativos)</option>
+<option selected value="todos">Todos os postos de Parintins (3 Ativos)</option>
 <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
 <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
 <option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
-<option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
 </div>
@@ -298,34 +311,34 @@ Posto de Gasolina
 <!-- Active Filter Pill Tags -->
 <div class="flex flex-wrap items-center gap-space-xs pt-space-xs" id="filter-status-strip">
 <span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-medium mr-1">Filtros aplicados:</span>
-<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg text-on-surface font-label-sm text-label-sm">
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg text-on-surface font-label-sm text-label-sm" id="pill-municipio-ativo">
 <span>Município: <strong>Parintins (AM)</strong></span>
 </span>
 <span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg text-on-surface font-label-sm text-label-sm" id="pill-posto-ativo">
-<span>Posto: <strong>Todas as Unidades</strong></span>
+<span>Posto: <strong>Todos os postos de Parintins (3 Ativos)</strong></span>
 </span>
 </div>
 </div>
-<!-- Main Table Container (shadcn/Tailwind corporate surface) -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Main Table Container (Clean SaaS Table) -->
+<div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col">
 <div class="overflow-x-auto">
-<table class="w-full text-left border-collapse border border-slate-200 tabela-com-divisores">
+<table class="w-full text-left border-collapse">
 <thead>
-<tr class="bg-slate-100 text-slate-700 font-label-sm text-label-sm uppercase tracking-wider border-b-2 border-slate-300">
-<th class="py-3.5 px-4 font-bold border-r border-slate-200">Nome</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">CPF</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Data Nasc.</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Data Início</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 text-center whitespace-nowrap">Sexo</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Cargo</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 text-right whitespace-nowrap">Salário</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Posto</th>
-<th class="py-3.5 px-4 font-bold border-r border-slate-200 whitespace-nowrap">Turno</th>
-<th class="py-3.5 px-4 font-bold text-center whitespace-nowrap">Ações</th>
+<tr class="bg-slate-50/80 text-slate-500 font-semibold text-[11px] uppercase tracking-wider border-b border-slate-200">
+<th class="py-3.5 px-5">Nome</th>
+<th class="py-3.5 px-5 whitespace-nowrap">CPF</th>
+<th class="py-3.5 px-5 whitespace-nowrap">Data Nasc.</th>
+<th class="py-3.5 px-5 whitespace-nowrap">Data Início</th>
+<th class="py-3.5 px-5 text-center whitespace-nowrap">Sexo</th>
+<th class="py-3.5 px-5 whitespace-nowrap">Cargo</th>
+<th class="py-3.5 px-5 text-right whitespace-nowrap">Salário</th>
+<th class="py-3.5 px-5 whitespace-nowrap">Posto</th>
+<th class="py-3.5 px-5 whitespace-nowrap">Turno</th>
+<th class="py-3.5 px-5 text-center whitespace-nowrap">Ações</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-slate-200 font-body-sm text-body-sm text-on-surface" id="tabela-colaboradores-body">
-<!-- As linhas são renderizadas dinamicamente pelo JavaScript com divisores verticais e horizontais -->
+<tbody class="font-body-sm text-body-sm text-on-surface" id="tabela-colaboradores-body">
+<!-- As linhas são renderizadas dinamicamente pelo JavaScript com divisores sutis -->
 </tbody>
 </table>
 </div>
@@ -579,7 +592,7 @@ Posto de Gasolina
         { val: 'posto-equador-sham', label: 'Posto Equador - Conjunto Sham' }
       ],
       'barreirinha': [
-        { val: 'todos', label: 'Todos de Barreirinha (1 Ativo)' },
+        { val: 'todos', label: 'Todos os postos de Barreirinha (1 Ativo)' },
         { val: 'posto-equador-barreirinha', label: 'Posto Equador - Barreirinha' }
       ]
     };
@@ -682,19 +695,32 @@ Posto de Gasolina
     // Dynamic Render & Store Integration
     function renderColaboradores() {
       const all = PostoStore.getColaboradores();
+      const selectMunEl = document.getElementById('select-municipio');
+      const selectMun = selectMunEl ? selectMunEl.value : 'parintins';
       const selectPostoEl = document.getElementById('select-posto');
       const selectPosto = selectPostoEl.value;
       const search = (document.getElementById('input-search').value || '').toLowerCase().trim();
 
-      // Filter list by selected posto and quick search
+      // Filter list by selected municipio, selected posto, and quick search
       let filtered = all.filter(c => {
+        // Municipio filter
+        if (selectMun === 'parintins') {
+          if (c.posto === 'posto-equador-barreirinha' || (c.municipio && !c.municipio.includes('Parintins'))) return false;
+        } else if (selectMun === 'barreirinha') {
+          if (c.posto !== 'posto-equador-barreirinha' && (!c.municipio || !c.municipio.includes('Barreirinha'))) return false;
+        }
+
+        // Posto filter
         if (selectPosto !== 'todos' && c.posto !== selectPosto) return false;
+
+        // Quick search
         if (search) {
           const matchName = (c.nome || '').toLowerCase().includes(search);
           const matchCpf = (c.cpf || '').includes(search);
           const matchCargo = (c.cargoLabel || c.cargo || '').toLowerCase().includes(search);
           const matchPosto = (c.postoLabel || '').toLowerCase().includes(search);
-          if (!matchName && !matchCpf && !matchCargo && !matchPosto) return false;
+          const matchMun = (c.municipio || '').toLowerCase().includes(search);
+          if (!matchName && !matchCpf && !matchCargo && !matchPosto && !matchMun) return false;
         }
         return true;
       });
@@ -703,12 +729,31 @@ Posto de Gasolina
       const totalColabs = filtered.length;
       const totalInvestido = filtered.reduce((acc, c) => acc + PostoStore.parseCurrency(c.salario), 0);
 
+      // Dynamic labels
+      const munOption = selectMunEl ? selectMunEl.options[selectMunEl.selectedIndex] : null;
+      const munNomeText = munOption ? munOption.text : 'Parintins (AM)';
+      const postoOption = selectPostoEl.options[selectPostoEl.selectedIndex];
+      const postoNomeText = postoOption ? postoOption.text : 'Todos os Postos';
+
+      // Detail texts
+      let detalheColab = `Quadro total da rede (${all.length} cadastrados)`;
+      let detalhePosto = `<span>Visualizando todos os 4 postos da rede</span>`;
+
+      if (selectPosto !== 'todos') {
+        detalheColab = `Neste posto selecionado (${all.length} no total da rede)`;
+        detalhePosto = `<span><strong>${totalColabs}</strong> ${totalColabs === 1 ? 'colaborador alocado' : 'colaboradores alocados'} neste posto</span>`;
+      } else if (selectMun === 'parintins') {
+        detalheColab = `Total em Parintins (${totalColabs} de ${all.length} na rede)`;
+        detalhePosto = `<span>Visualizando os 3 postos ativos de Parintins</span>`;
+      } else if (selectMun === 'barreirinha') {
+        detalheColab = `Total em Barreirinha (${totalColabs} de ${all.length} na rede)`;
+        detalhePosto = `<span>Visualizando o posto ativo de Barreirinha</span>`;
+      }
+
       // 1. Update KPI Card: Total de Colaboradores
       document.getElementById('kpi-total-ativo').textContent = totalColabs;
       document.getElementById('kpi-total-sub').textContent = totalColabs === 1 ? '1 Colaborador' : `${totalColabs} Colaboradores`;
-      document.getElementById('kpi-total-detalhe').textContent = selectPosto === 'todos' 
-        ? `Quadro total da rede (${all.length} cadastrados)`
-        : `Neste posto selecionado (${all.length} no total da rede)`;
+      document.getElementById('kpi-total-detalhe').textContent = detalheColab;
 
       // 2. Update KPI Card: Total Investido Neles
       document.getElementById('kpi-total-investido').textContent = `R$ ${totalInvestido.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -717,16 +762,15 @@ Posto de Gasolina
         : 'Soma salarial mensal dos colaboradores';
 
       // 3. Update KPI Card: Posto de Gasolina
-      const postoOption = selectPostoEl.options[selectPostoEl.selectedIndex];
-      const postoNomeText = postoOption ? postoOption.text : 'Todos os Postos';
       document.getElementById('kpi-posto-nome').textContent = postoNomeText;
-      document.getElementById('kpi-posto-badge').textContent = selectPosto === 'todos' ? 'Todos os Postos' : 'Posto Filtrado';
-      document.getElementById('kpi-posto-detalhe').innerHTML = selectPosto === 'todos'
-        ? `<span>Visualizando todos os 4 postos da rede</span>`
-        : `<span><strong>${totalColabs}</strong> ${totalColabs === 1 ? 'colaborador alocado' : 'colaboradores alocados'} neste posto</span>`;
+      document.getElementById('kpi-posto-badge').textContent = selectPosto === 'todos' ? (selectMun === 'todos' ? 'Todos os Postos' : munNomeText) : 'Posto Filtrado';
+      document.getElementById('kpi-posto-detalhe').innerHTML = detalhePosto;
 
-      // Update active filter pill
-      document.getElementById('pill-posto-ativo').innerHTML = `<span>Posto: <strong>${postoNomeText}</strong></span>`;
+      // Update active filter pills
+      const pillMun = document.getElementById('pill-municipio-ativo');
+      if (pillMun) pillMun.innerHTML = `<span>Município: <strong>${munNomeText}</strong></span>`;
+      const pillPosto = document.getElementById('pill-posto-ativo');
+      if (pillPosto) pillPosto.innerHTML = `<span>Posto: <strong>${postoNomeText}</strong></span>`;
 
       // Render Table
       const tbody = document.getElementById('tabela-colaboradores-body');
@@ -767,67 +811,67 @@ Posto de Gasolina
       let rowsHtml = '';
       filtered.forEach(c => {
         const sexoBadge = c.sexo === 'Feminino'
-          ? `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 border border-pink-200">Feminino</span>`
-          : `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">${c.sexo || 'Masculino'}</span>`;
+          ? `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-pink-50 text-pink-700 border border-pink-200/60">Feminino</span>`
+          : `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200/60">${c.sexo || 'Masculino'}</span>`;
 
         rowsHtml += `
-          <tr class="hover:bg-blue-50/40 transition-colors group border-b border-slate-200">
+          <tr class="hover:bg-slate-50/70 transition-colors group border-b border-[#F1F5F9]">
             <!-- 1. Nome -->
-            <td class="py-3.5 px-4 border-r border-slate-200">
+            <td class="py-4 px-5">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-xs">
+                <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 border border-slate-200/80 flex items-center justify-center text-xs font-bold shrink-0">
                   ${c.initials || 'CO'}
                 </div>
                 <div class="flex flex-col min-w-0">
-                  <button class="text-left font-label-lg text-label-lg font-bold text-slate-900 hover:text-blue-600 truncate cursor-pointer" onclick="previewColaborador('${c.id}')" type="button">
+                  <button class="text-left text-sm font-semibold text-slate-900 hover:text-[#2563EB] transition-colors truncate cursor-pointer" onclick="previewColaborador('${c.id}')" type="button">
                     ${c.nome}
                   </button>
-                  <span class="text-slate-500 font-label-sm text-label-sm">${c.matricula}</span>
+                  <span class="text-slate-400 font-mono text-[11px]">${c.matricula}</span>
                 </div>
               </div>
             </td>
             <!-- 2. CPF -->
-            <td class="py-3.5 px-4 font-label-md text-label-md font-mono font-bold text-slate-800 whitespace-nowrap border-r border-slate-200">
+            <td class="py-4 px-5 font-mono text-xs font-medium text-slate-700 whitespace-nowrap">
               ${c.cpf}
             </td>
             <!-- 3. Data de Nascimento -->
-            <td class="py-3.5 px-4 font-label-md text-label-md text-slate-700 font-medium whitespace-nowrap border-r border-slate-200">
+            <td class="py-4 px-5 text-xs text-slate-600 font-normal whitespace-nowrap">
               ${PostoStore.formatDateBR(c.dataNascimento) || '—'}
             </td>
             <!-- 4. Data de Início -->
-            <td class="py-3.5 px-4 font-label-md text-label-md text-slate-700 font-medium whitespace-nowrap border-r border-slate-200">
+            <td class="py-4 px-5 text-xs text-slate-600 font-normal whitespace-nowrap">
               ${PostoStore.formatDateBR(c.dataInicio || c.dataAdmissao) || '—'}
             </td>
             <!-- 5. Sexo -->
-            <td class="py-3.5 px-4 text-center whitespace-nowrap border-r border-slate-200">
+            <td class="py-4 px-5 text-center whitespace-nowrap">
               ${sexoBadge}
             </td>
             <!-- 6. Cargo -->
-            <td class="py-3.5 px-4 font-label-md text-label-md font-semibold text-blue-700 whitespace-nowrap border-r border-slate-200">
+            <td class="py-4 px-5 text-xs font-medium text-slate-700 whitespace-nowrap">
               ${c.cargoLabel || c.cargo}
             </td>
             <!-- 7. Salário -->
-            <td class="py-3.5 px-4 text-right font-label-md text-label-md font-mono font-bold text-emerald-700 whitespace-nowrap border-r border-slate-200">
+            <td class="py-4 px-5 text-right font-mono text-xs font-semibold text-slate-900 whitespace-nowrap">
               ${c.salario || 'R$ 0,00'}
             </td>
             <!-- 8. Posto que ele é -->
-            <td class="py-3.5 px-4 border-r border-slate-200">
+            <td class="py-4 px-5">
               <div class="flex flex-col min-w-[190px]">
-                <span class="font-label-md text-label-md font-semibold text-slate-900">${c.postoLabel}</span>
-                <span class="text-slate-500 text-xs">${c.bairro || 'Parintins (AM)'}</span>
+                <span class="text-xs font-semibold text-slate-800">${c.postoLabel}</span>
+                <span class="text-slate-400 text-[11px]">${c.bairro || 'Parintins (AM)'}</span>
               </div>
             </td>
             <!-- 9. Turno dele -->
-            <td class="py-3.5 px-4 font-label-sm text-label-sm text-slate-600 whitespace-nowrap border-r border-slate-200">
+            <td class="py-4 px-5 text-xs text-slate-600 whitespace-nowrap">
               ${c.turno || 'Turno Manhã'}
             </td>
             <!-- 10. Ações -->
-            <td class="py-3.5 px-4 text-center whitespace-nowrap">
-              <div class="flex items-center justify-center gap-1.5">
-                <button class="p-1.5 rounded-lg hover:bg-blue-50 text-slate-500 hover:text-blue-600 transition-colors cursor-pointer" onclick="previewColaborador('${c.id}')" title="Visualizar Ficha" type="button">
+            <td class="py-4 px-5 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-1">
+                <button class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer" onclick="previewColaborador('${c.id}')" title="Visualizar Ficha" type="button">
                   <span class="material-symbols-outlined text-base">visibility</span>
                 </button>
-                <button class="p-1.5 rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-600 transition-colors cursor-pointer" onclick="removerColaborador('${c.id}', '${c.nome.replace(/'/g, "\\'")}')" title="Excluir Colaborador" type="button">
+                <button class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer" onclick="removerColaborador('${c.id}', '${c.nome.replace(/'/g, "\\'")}')" title="Excluir Colaborador" type="button">
                   <span class="material-symbols-outlined text-base">delete</span>
                 </button>
               </div>

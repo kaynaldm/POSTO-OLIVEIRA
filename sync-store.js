@@ -3,7 +3,7 @@
   const STORAGE_KEY = 'postoRH_colaboradores';
   const FREQ_KEY = 'postoRH_frequencia';
   const VALES_KEY = 'postoRH_vales';
-  const SEED_VERSION_KEY = 'postoRH_seed_v5_oficial_completo';
+  const SEED_VERSION_KEY = 'postoRH_seed_v6_barreirinha_municipio';
 
   // In-memory cache de alto desempenho para leitura instantânea (0ms) sem custo de JSON.parse repetido
   let _cachedColaboradores = null;
@@ -11,13 +11,13 @@
   let _cachedVales = null;
 
   const STATIONS = [
-    { id: 'posto-oliveira-francesa', name: 'Posto Oliveira - Na Francesa', bairro: 'Francesa', address: 'Av. João Meireles, 30-136' },
-    { id: 'posto-oliveira-odovaldo', name: 'Posto Oliveira - Odovaldo Novo', bairro: 'Odovaldo Novo', address: 'Estrada Odovaldo Novo' },
-    { id: 'posto-equador-sham', name: 'Posto Equador - Conjunto Sham', bairro: 'Conjunto Sham', address: 'Rua Souza Filho, 142-282' },
-    { id: 'posto-equador-barreirinha', name: 'Posto Equador - Barreirinha', bairro: 'João Pinheiro', address: 'Rua Barreirinha, 1181-1293' }
+    { id: 'posto-oliveira-francesa', name: 'Posto Oliveira - Na Francesa', bairro: 'Francesa', address: 'Av. João Meireles, 30-136', municipio: 'Parintins (AM)' },
+    { id: 'posto-oliveira-odovaldo', name: 'Posto Oliveira - Odovaldo Novo', bairro: 'Odovaldo Novo', address: 'Estrada Odovaldo Novo', municipio: 'Parintins (AM)' },
+    { id: 'posto-equador-sham', name: 'Posto Equador - Conjunto Sham', bairro: 'Conjunto Sham', address: 'Rua Souza Filho, 142-282', municipio: 'Parintins (AM)' },
+    { id: 'posto-equador-barreirinha', name: 'Posto Equador - Barreirinha', bairro: 'Centro', address: 'Barreirinha - AM', municipio: 'Barreirinha (AM)' }
   ];
 
-  // Base Seed: 20 Colaboradores distribuídos pelas 4 unidades de Parintins
+  // Base Seed: 20 Colaboradores distribuídos pelas 4 unidades da rede (Parintins e Barreirinha)
   const DEMO_COLABORADORES = [
     {
       id: 'COL-001',
@@ -111,10 +111,10 @@
       cargo: 'frentista',
       cargoLabel: 'Frentista de Pista',
       salario: 'R$ 2.200,00',
-      municipio: 'Parintins (AM)',
+      municipio: 'Barreirinha (AM)',
       posto: 'posto-equador-barreirinha',
       postoLabel: 'Posto Equador - Barreirinha',
-      bairro: 'João Pinheiro',
+      bairro: 'Centro',
       turno: 'Turno Noite (22:00 - 06:20)',
       status: 'Ativo',
       initials: 'AF'
@@ -351,10 +351,10 @@
       cargo: 'gerente_posto',
       cargoLabel: 'Gerente de Posto',
       salario: 'R$ 4.500,00',
-      municipio: 'Parintins (AM)',
+      municipio: 'Barreirinha (AM)',
       posto: 'posto-equador-barreirinha',
       postoLabel: 'Posto Equador - Barreirinha',
-      bairro: 'João Pinheiro',
+      bairro: 'Centro',
       turno: 'Comercial (08:00 - 18:00)',
       status: 'Ativo',
       initials: 'DC'
@@ -371,10 +371,10 @@
       cargo: 'operador_caixa',
       cargoLabel: 'Operador(a) de Caixa',
       salario: 'R$ 2.100,00',
-      municipio: 'Parintins (AM)',
+      municipio: 'Barreirinha (AM)',
       posto: 'posto-equador-barreirinha',
       postoLabel: 'Posto Equador - Barreirinha',
-      bairro: 'João Pinheiro',
+      bairro: 'Centro',
       turno: 'Turno Manhã (06:00 - 14:20)',
       status: 'Ativo',
       initials: 'JN'
@@ -391,10 +391,10 @@
       cargo: 'frentista_lider',
       cargoLabel: 'Frentista Líder',
       salario: 'R$ 2.850,00',
-      municipio: 'Parintins (AM)',
+      municipio: 'Barreirinha (AM)',
       posto: 'posto-equador-barreirinha',
       postoLabel: 'Posto Equador - Barreirinha',
-      bairro: 'João Pinheiro',
+      bairro: 'Centro',
       turno: 'Turno Tarde (14:00 - 22:20)',
       status: 'Ativo',
       initials: 'PB'
@@ -411,10 +411,10 @@
       cargo: 'frentista',
       cargoLabel: 'Lubrificador / Serviços Gerais',
       salario: 'R$ 2.300,00',
-      municipio: 'Parintins (AM)',
+      municipio: 'Barreirinha (AM)',
       posto: 'posto-equador-barreirinha',
       postoLabel: 'Posto Equador - Barreirinha',
-      bairro: 'João Pinheiro',
+      bairro: 'Centro',
       turno: 'Turno Manhã (06:00 - 14:20)',
       status: 'Ativo',
       initials: 'ED'
@@ -718,12 +718,12 @@
         } catch(e) {}
       }
       
-      // Se não tem dados, ou a versão de demonstração é antiga (< v5), ou tem menos de 20 colaboradores, atualiza com a equipe completa
-      if (currentVer !== 'v5_completo' || colabsCount < 20) {
+      // Se não tem dados, ou a versão de demonstração é antiga (< v6), ou tem menos de 20 colaboradores, atualiza com a equipe completa
+      if (currentVer !== 'v6_barreirinha_municipio' || colabsCount < 20) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
         localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
         localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
-        localStorage.setItem(SEED_VERSION_KEY, 'v5_completo');
+        localStorage.setItem(SEED_VERSION_KEY, 'v6_barreirinha_municipio');
       }
     } catch(e) {
       console.warn('Erro ao verificar dados de demonstração:', e);
@@ -742,7 +742,11 @@
     },
     getStationBairro: function(id) {
       const s = STATIONS.find(x => x.id === id);
-      return s ? s.bairro : 'Parintins';
+      return s ? s.bairro : 'Centro';
+    },
+    getStationMunicipio: function(id) {
+      const s = STATIONS.find(x => x.id === id);
+      return s ? s.municipio : (id === 'posto-equador-barreirinha' ? 'Barreirinha (AM)' : 'Parintins (AM)');
     },
 
     // Controle robusto e suave de scroll do body (evita travamento de tela)
@@ -774,7 +778,7 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(DEMO_COLABORADORES));
       localStorage.setItem(FREQ_KEY, JSON.stringify(DEMO_FREQUENCIA));
       localStorage.setItem(VALES_KEY, JSON.stringify(DEMO_VALES));
-      localStorage.setItem(SEED_VERSION_KEY, 'v5_completo');
+      localStorage.setItem(SEED_VERSION_KEY, 'v6_barreirinha_municipio');
       window.dispatchEvent(new CustomEvent('postoRH_sync', { detail: DEMO_COLABORADORES }));
       window.dispatchEvent(new CustomEvent('postoRH_frequencia_sync', { detail: DEMO_FREQUENCIA }));
       window.dispatchEvent(new CustomEvent('postoRH_vales_sync', { detail: DEMO_VALES }));
@@ -795,7 +799,8 @@
           if (Array.isArray(parsed) && parsed.length > 0) {
             _cachedColaboradores = parsed.map(c => ({
               ...c,
-              status: c.status || 'Ativo'
+              status: c.status || 'Ativo',
+              municipio: (c.posto === 'posto-equador-barreirinha' ? 'Barreirinha (AM)' : (c.municipio || 'Parintins (AM)'))
             }));
             return _cachedColaboradores;
           }
@@ -839,7 +844,7 @@
         cargo: data.cargo || 'frentista',
         cargoLabel: data.cargoLabel || 'Frentista de Pista',
         salario: data.salario ? this.maskCurrency(data.salario) : 'R$ 2.450,00',
-        municipio: 'Parintins (AM)',
+        municipio: this.getStationMunicipio(data.posto),
         posto: data.posto || 'posto-oliveira-francesa',
         postoLabel: this.getStationName(data.posto),
         bairro: this.getStationBairro(data.posto),
@@ -1165,49 +1170,253 @@
   });
 
   // ==========================================
-  // AUTENTICAÇÃO E SESSÃO DO ADMINISTRADOR
+  // AUTENTICAÇÃO E SESSÃO DO ADMINISTRADOR / CLIENTE
   // ==========================================
   const AUTH_KEY = 'postoRH_auth_session';
 
-  const DEFAULT_USER = {
-    email: 'fernanda@postorh.com.br',
-    name: 'Fernanda',
-    role: 'Gestão Operacional',
-    postoLabel: 'Todos os Postos da Rede'
-  };
+  function deriveNameFromEmail(email) {
+    if (!email) return 'Fernanda';
+    const lower = email.toLowerCase().trim();
+    if (lower.includes('fernanda')) return 'Fernanda';
+    const userPart = lower.split('@')[0];
+    const parts = userPart.split(/[._-]/).filter(Boolean);
+    if (parts.length > 0) {
+      return parts.map(p => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase()).join(' ');
+    }
+    return userPart.charAt(0).toUpperCase() + userPart.slice(1).toLowerCase();
+  }
+
+  function deriveInitials(name) {
+    const parts = (name || 'FE').trim().split(/\s+/);
+    if (parts.length > 1) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return (name || 'FE').slice(0, 2).toUpperCase();
+  }
 
   window.PostoAuth = {
     getAuth: function() {
       try {
-        const raw = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
+        const raw = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY) || localStorage.getItem('postoRH_current_user');
         if (raw) {
           const data = JSON.parse(raw);
-          if (data && (!data.name || data.name.includes('Administrador') || data.name.toLowerCase() !== 'fernanda')) {
-            data.name = 'Fernanda';
-            data.email = 'fernanda@postorh.com.br';
-            localStorage.setItem(AUTH_KEY, JSON.stringify(data));
+          if (data && data.email) {
+            if (!data.name) data.name = deriveNameFromEmail(data.email);
+            if (!data.initials) data.initials = deriveInitials(data.name);
+            return data;
           }
-          return data;
         }
       } catch (e) {}
-      return DEFAULT_USER;
+      return {
+        email: 'fernanda@postorh.com.br',
+        name: 'Fernanda',
+        initials: 'FE',
+        role: 'Gestão Operacional RH',
+        postoLabel: 'Todos os Postos da Rede',
+        authenticated: true
+      };
     },
     isAuthenticated: function() {
-      return true;
+      try {
+        const raw = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY) || localStorage.getItem('postoRH_current_user');
+        if (raw) {
+          const data = JSON.parse(raw);
+          return !!(data && data.authenticated !== false);
+        }
+      } catch (e) {}
+      return false;
     },
     login: function(email, password, rememberMe) {
-      return { success: true, user: DEFAULT_USER };
+      const cleanEmail = (email || '').trim();
+      const name = deriveNameFromEmail(cleanEmail);
+      const initials = deriveInitials(name);
+      const user = {
+        email: cleanEmail,
+        name: name,
+        initials: initials,
+        role: 'Gestão Operacional RH',
+        postoLabel: 'Todos os Postos da Rede',
+        authenticated: true,
+        loggedAt: new Date().toISOString()
+      };
+      try {
+        localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+        localStorage.setItem('postoRH_current_user', JSON.stringify(user));
+        if (rememberMe) {
+          localStorage.setItem('postoRH_remember', 'true');
+        }
+      } catch (e) {}
+      window.dispatchEvent(new CustomEvent('postoRH_auth_login', { detail: user }));
+      return { success: true, user: user };
     },
     logout: function() {
       try {
         localStorage.removeItem(AUTH_KEY);
         sessionStorage.removeItem(AUTH_KEY);
+        localStorage.removeItem('postoRH_current_user');
+        localStorage.removeItem('postoRH_remember');
       } catch(e) {}
       window.dispatchEvent(new CustomEvent('postoRH_auth_logout'));
-      window.location.reload();
+      window.location.href = 'login.html';
     },
     requireAuth: function() {
-      // Sem restrição de login
+      if (!this.isAuthenticated()) {
+        window.location.href = 'login.html';
+      }
     }
   };
+
+  // ==========================================
+  // PROTEÇÃO CONTRA TRADUTOR AUTOMÁTICO DO NAVEGADOR (GOOGLE TRANSLATE)
+  // Impede que os nomes dos ícones (ligatures como 'tune', 'payments', 'edit') sejam traduzidos
+  // como 'MELODIA', 'PAGAMENTOS', 'EDITAR' quebrando o layout da aplicação no F5.
+  // ==========================================
+  (function() {
+    const TRANSLATION_MAP = {
+      'melodia': 'tune',
+      'afinação': 'tune',
+      'afinacao': 'tune',
+      'pessoa_desligada': 'person_off',
+      'desligada': 'person_off',
+      'repetição': 'replay',
+      'repeticao': 'replay',
+      'calendário_hoje': 'calendar_today',
+      'calendario_hoje': 'calendar_today',
+      'mês_do_calendário': 'calendar_month',
+      'mes_do_calendario': 'calendar_month',
+      'mês': 'calendar_month',
+      'mes': 'calendar_month',
+      'pagamentos': 'payments',
+      'pagamento': 'payments',
+      'tarefa_entregue': 'task_alt',
+      'tarefa_concluída': 'task_alt',
+      'ir_mais': 'expand_more',
+      'expandir': 'expand_more',
+      'verificação': 'check_circle',
+      'verificacao': 'check_circle',
+      'ar': 'edit',
+      'editar': 'edit',
+      'fechar': 'close',
+      'pesquisa': 'search',
+      'pesquisar': 'search',
+      'procurar': 'search',
+      'posto': 'local_gas_station',
+      'posto_de_gasolina': 'local_gas_station',
+      'local': 'local_gas_station',
+      'cidade': 'location_city',
+      'município': 'location_city',
+      'municipio': 'location_city',
+      'grupos': 'groups',
+      'grupo': 'group',
+      'pessoa': 'person',
+      'emblema': 'badge',
+      'dinheiro': 'attach_money',
+      'cancelar_pessoa': 'person_cancel',
+      'adicionar_cartão': 'add_card',
+      'adicionar_cartao': 'add_card',
+      'adicionar_pessoa': 'person_add',
+      'download': 'download',
+      'baixar': 'download',
+      'menu': 'menu',
+      'cardápio': 'menu',
+      'cardapio': 'menu',
+      'toque': 'touch_app',
+      'erro': 'error',
+      'editar_nota': 'edit_note',
+      'pós-rh': 'PostoRH'
+    };
+
+    function cleanIconNode(el) {
+      if (!el) return;
+      el.setAttribute('translate', 'no');
+      el.classList.add('notranslate');
+
+      let txt = (el.textContent || '').trim();
+      if (!txt) return;
+
+      // Se já temos o data-icon original salvo, valida se foi corrompido
+      if (el.dataset.icon) {
+        if (txt.toLowerCase() !== el.dataset.icon.toLowerCase()) {
+          el.textContent = el.dataset.icon;
+        }
+        return;
+      }
+
+      const lower = txt.toLowerCase().replace(/\s+/g, '_');
+      if (TRANSLATION_MAP[lower]) {
+        el.dataset.icon = TRANSLATION_MAP[lower];
+        el.textContent = TRANSLATION_MAP[lower];
+      } else {
+        el.dataset.icon = txt;
+      }
+    }
+
+    function protectAllIcons() {
+      try {
+        if (document.documentElement) {
+          document.documentElement.setAttribute('translate', 'no');
+          document.documentElement.classList.add('notranslate');
+        }
+        if (document.body) {
+          document.body.setAttribute('translate', 'no');
+          document.body.classList.add('notranslate');
+        }
+
+        const icons = document.querySelectorAll('.material-symbols-outlined, [class*="material-symbols"]');
+        for (let i = 0; i < icons.length; i++) {
+          cleanIconNode(icons[i]);
+        }
+
+        // Blindar marcas e termos chave
+        const brandEls = document.querySelectorAll('.font-headline-md, .font-headline-sm, h1, h2, h3');
+        for (let j = 0; j < brandEls.length; j++) {
+          brandEls[j].setAttribute('translate', 'no');
+          brandEls[j].classList.add('notranslate');
+        }
+      } catch (e) {}
+    }
+
+    // Executa imediatamente e no DOMContentLoaded
+    protectAllIcons();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', protectAllIcons);
+    }
+    window.addEventListener('load', protectAllIcons);
+
+    // MutationObserver com characterData: detecta traduções do Google Chrome em tempo real e reverte instantaneamente
+    if (typeof MutationObserver !== 'undefined') {
+      const observer = new MutationObserver(function(mutations) {
+        for (let i = 0; i < mutations.length; i++) {
+          const m = mutations[i];
+          if (m.type === 'childList') {
+            for (let j = 0; j < m.addedNodes.length; j++) {
+              const node = m.addedNodes[j];
+              if (node.nodeType === 1) {
+                if (node.classList && (node.classList.contains('material-symbols-outlined') || (typeof node.className === 'string' && node.className.includes('material-symbols')))) {
+                  cleanIconNode(node);
+                }
+                const subIcons = node.querySelectorAll ? node.querySelectorAll('.material-symbols-outlined, [class*="material-symbols"]') : [];
+                for (let k = 0; k < subIcons.length; k++) {
+                  cleanIconNode(subIcons[k]);
+                }
+              }
+            }
+          } else if (m.type === 'characterData') {
+            const parent = m.target.parentElement;
+            if (parent && (parent.classList.contains('material-symbols-outlined') || (parent.className && parent.className.includes('material-symbols')))) {
+              cleanIconNode(parent);
+            }
+          }
+        }
+      });
+
+      try {
+        observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+          characterData: true
+        });
+      } catch(e) {}
+    }
+  })();
 })();

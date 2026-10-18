@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/>
+<html lang="pt-BR" class="notranslate" translate="no"><head><meta charset="utf-8"/><meta name="google" content="notranslate"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -8,23 +8,55 @@
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script src="sync-store.js"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary-fixed-variant":"#653e00","tertiary-fixed":"#ffddb8","on-primary-container":"#7c839b","tertiary-fixed-dim":"#ffb95f","surface-bright":"#f8f9ff","primary-container":"#131b2e","surface-variant":"#d3e4fe","on-tertiary-container":"#b87500","secondary-fixed-dim":"#b4c5ff","secondary-fixed":"#dbe1ff","on-secondary-container":"#fefcff","surface-container-high":"#dce9ff","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","surface-container-lowest":"#ffffff","on-surface":"#0b1c30","on-secondary-fixed":"#00174b","surface-container-low":"#eff4ff","on-tertiary":"#ffffff","outline":"#76777d","on-primary-fixed-variant":"#3f465c","on-surface-variant":"#45464d","primary":"#000000","tertiary":"#000000","secondary":"#0051d5","background":"#f8f9ff","tertiary-container":"#2a1700","on-primary":"#ffffff","error":"#ba1a1a","secondary-container":"#316bf3","surface-dim":"#cbdbf5","on-secondary":"#ffffff","on-error-container":"#93000a","primary-fixed":"#dae2fd","error-container":"#ffdad6","on-primary-fixed":"#131b2e","primary-fixed-dim":"#bec6e0","surface":"#f8f9ff","on-tertiary-fixed":"#2a1700","outline-variant":"#c6c6cd","surface-container-highest":"#d3e4fe","surface-container":"#e5eeff","inverse-primary":"#bec6e0","inverse-surface":"#213145","on-secondary-fixed-variant":"#003ea8","surface-tint":"#565e74"},"borderRadius":{"sm":"0.375rem","DEFAULT":"0.625rem","md":"0.75rem","lg":"1rem","xl":"1.25rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","gutter":"1.5rem","gutter-lg":"2rem","space-lg":"1.5rem","margin":"1.5rem","space-xl":"2rem","margin-desktop":"2rem","margin-mobile":"1rem","space-xs":"0.25rem","gutter-sm":"1rem","space-md":"1rem"},"fontFamily":{"label-md":["Geist"],"headline-sm":["Geist"],"body-lg":["Geist"],"headline-lg":["Geist"],"metric-display":["Geist"],"body-sm":["Geist"],"label-lg":["Geist"],"body-md":["Geist"],"label-sm":["Geist"],"headline-xl":["Geist"],"headline-md":["Geist"]},"fontSize":{"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"metric-display":["28px",{"lineHeight":"32px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"-0.005em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.025em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}]}}}}</script>
 
 <style id="custom-rounded-theme">
+  /* THEME: SAAS MODERNO & REFINADO */
   :root {
     --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-2xl: 24px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
     --radius-full: 9999px;
   }
 
-  .rounded-sm { border-radius: var(--radius-sm) !important; }
-  .rounded { border-radius: var(--radius-sm) !important; }
-  .rounded-md { border-radius: var(--radius-md) !important; }
-  .rounded-lg { border-radius: var(--radius-lg) !important; }
-  .rounded-xl { border-radius: var(--radius-xl) !important; }
-  .rounded-2xl { border-radius: var(--radius-2xl) !important; }
-  .rounded-full { border-radius: var(--radius-full) !important; }
+  body, html {
+    background-color: #F8FAFC !important;
+    color: #0F172A;
+  }
 
+  /* UNIFORMIZAÇÃO GLOBAL: TODOS OS ÍCONES NO ESTILO OUTLINE (APENAS CONTORNO) COM MESMA ESPESSURA */
+  .material-symbols-outlined,
+  .material-symbols-rounded,
+  .material-symbols-sharp,
+  [class*="material-symbols"] {
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24 !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    direction: ltr !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+  }
+
+  /* Cards e painéis com fundo branco puro, bordas finas sutis (#E2E8F0) e sombra sutil */
+  .bg-surface-container-lowest,
+  .bg-white {
+    background-color: #FFFFFF !important;
+    border-radius: var(--radius-xl) !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04) !important;
+  }
+
+  /* Inputs e controles */
   button:not(.rounded-full) {
     border-radius: var(--radius-md) !important;
   }
@@ -32,39 +64,41 @@
     border-radius: var(--radius-md) !important;
   }
 
+  /* Tabelas SaaS: divisores horizontais quase invisíveis (#F1F5F9), sem grades verticais */
+  table {
+    border-collapse: collapse !important;
+    width: 100%;
+    border: none !important;
+  }
+  .tabela-com-divisores {
+    border-collapse: collapse !important;
+    width: 100%;
+    border: none !important;
+  }
+  .tabela-com-divisores th,
+  .tabela-com-divisores td {
+    border: none !important;
+  }
+  thead th {
+    background-color: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 0.85rem 1.25rem !important;
+  }
+  tbody tr {
+    border-bottom: 1px solid #F1F5F9 !important;
+  }
+  tbody tr:last-child {
+    border-bottom: none !important;
+  }
+  tbody td {
+    padding: 1rem 1.25rem !important;
+  }
+
+  /* Drawer lateral */
   #sidebar-drawer {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     border-left: none !important;
-    border-top: none !important;
-    border-bottom: none !important;
-  }
-
-  .bg-surface-container-lowest,
-  .bg-white {
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(226, 232, 240, 0.9);
-    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
-  }
-
-  /* Linhas nítidas de separação de colunas e linhas da tabela */
-  .tabela-com-divisores {
-    border-collapse: collapse !important;
-    width: 100%;
-    border: 1px solid #cbd5e1 !important;
-  }
-  .tabela-com-divisores th,
-  .tabela-com-divisores td {
-    border-right: 1px solid #e2e8f0 !important;
-    border-bottom: 1px solid #e2e8f0 !important;
-  }
-  .tabela-com-divisores th:last-child,
-  .tabela-com-divisores td:last-child {
-    border-right: none !important;
-  }
-  .tabela-com-divisores thead tr {
-    background-color: #f8fafc !important;
-    border-bottom: 2px solid #cbd5e1 !important;
   }
 </style>
 
@@ -113,21 +147,33 @@
             <span class="text-xs opacity-70 mt-1 leading-none">Extrato do Mês</span>
           </div>
         </a>
+
+        <!-- Divisor Sutil -->
+        <div class="my-2 border-t border-slate-200/80 mx-1"></div>
+
+        <!-- Botão Sair para Login -->
+        <a href="login.html" onclick="try { sessionStorage.clear(); localStorage.removeItem('postoRH_current_user'); } catch(e){}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-rose-600 hover:bg-rose-50 hover:text-rose-700 transition-colors font-medium cursor-pointer group">
+          <span class="material-symbols-outlined text-xl leading-none text-rose-500 group-hover:text-rose-600">logout</span>
+          <div class="flex flex-col flex-1">
+            <span class="leading-none text-sm font-semibold">Sair do Sistema</span>
+            <span class="text-xs text-rose-400 group-hover:text-rose-500 mt-1 leading-none">Ir para a tela de login</span>
+          </div>
+        </a>
       </nav>
 
     </div>
   </aside>
 
   <div id="main-layout" class="w-full min-h-screen">
-  <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-secondary text-on-secondary shadow-md z-40 flex items-center justify-between px-4 sm:px-gutter-lg">
+  <header id="top-header" class="fixed top-0 left-0 right-0 h-14 bg-slate-900 text-white border-b border-slate-800 shadow-xs z-40 flex items-center justify-between px-4 sm:px-6 lg:px-8">
     <div class="flex items-center gap-3">
-      <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-white hover:bg-white/15 transition-all flex items-center justify-center cursor-pointer">
+      <button onclick="toggleSidebar()" type="button" title="Abrir Menu de Navegação" class="p-2 -ml-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center cursor-pointer">
         <span class="material-symbols-outlined text-2xl leading-none">menu</span>
       </button>
 
       <a href="colaboradores.html" class="flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
         <span class="font-headline-md text-headline-md tracking-tight font-bold text-white">PostoRH</span>
-        <span class="text-xs uppercase tracking-wider text-white/80 font-semibold hidden sm:inline">• Rede Operacional</span>
+        <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold hidden sm:inline">• Rede Operacional</span>
       </a>
     </div>
 
@@ -135,111 +181,119 @@
     <div class="flex items-center gap-2.5">
       <div class="flex flex-col text-right">
         <span class="text-xs font-bold text-white leading-none" id="header-user-name">Fernanda</span>
-        <span class="text-[10px] text-white/75 mt-0.5 leading-none font-mono" id="header-user-email">fernanda@postorh.com.br</span>
+        <span class="text-[10px] text-slate-400 mt-0.5 leading-none font-mono" id="header-user-email">fernanda@postorh.com.br</span>
       </div>
-      <div class="w-9 h-9 rounded-full bg-white/20 text-white font-bold flex items-center justify-center ring-2 ring-white/40 shadow-sm text-xs" id="header-user-avatar">
+      <div class="w-9 h-9 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center ring-2 ring-slate-700 shadow-xs text-xs" id="header-user-avatar">
         FE
       </div>
     </div>
   </header>
 
-  <main class="relative pt-14 bg-surface min-h-screen">
+  <main class="relative pt-14 bg-[#F8FAFC] min-h-screen">
     <div class="flex flex-col w-full">
-      <div class="p-gutter lg:p-margin-desktop flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full">
+      <div class="px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-5 w-full">
 
         <!-- Top Title Bar & Date Controller -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div class="flex flex-col">
-            <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Frequência de Faltas</h1>
-            <span class="text-xs text-on-surface-variant font-medium mt-0.5">Gestão de faltas com justificativa e sem justificativa (desconto em folha)</span>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight notranslate" translate="no">Frequência de Faltas</h1>
+            <span class="text-xs text-slate-500 font-medium mt-0.5">Gestão de faltas com justificativa e sem justificativa (desconto em folha)</span>
           </div>
 
-          <div class="flex flex-wrap items-center gap-3">
+          <div class="flex flex-wrap items-center gap-2.5">
             <!-- Botão Restaurar Demo -->
-            <button onclick="if(confirm('Recarregar os colaboradores, faltas e dados de demonstração completos?')) { PostoStore.resetDemoData(); renderFrequencia(); }" type="button" title="Restaurar dados completos" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm rounded-xl border border-slate-300 transition-all flex items-center gap-1.5 cursor-pointer">
-              <span class="material-symbols-outlined text-base text-slate-500">replay</span>
+            <button onclick="if(confirm('Recarregar os colaboradores, faltas e dados de demonstração completos?')) { PostoStore.resetDemoData(); renderFrequencia(); }" type="button" title="Restaurar dados completos" class="px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs rounded-lg border border-slate-200 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+              <span class="material-symbols-outlined notranslate text-sm text-slate-400" translate="no" data-icon="replay">replay</span>
               <span class="hidden sm:inline">Restaurar Demo</span>
             </button>
 
             <!-- Botão Apontar Falta -->
-            <button onclick="abrirModalNovaFalta()" type="button" class="px-4 py-2 bg-secondary text-white font-bold text-xs sm:text-sm rounded-xl shadow hover:bg-blue-700 transition-all flex items-center gap-1.5 cursor-pointer">
-              <span class="material-symbols-outlined text-base">person_off</span>
+            <button onclick="abrirModalNovaFalta()" type="button" class="px-3.5 py-1.5 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-xs rounded-lg shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+              <span class="material-symbols-outlined notranslate text-base" translate="no" data-icon="person_off">person_off</span>
               <span>+ Apontar Falta</span>
             </button>
 
             <!-- Date selector with Quick Toggles -->
-            <div class="flex items-center gap-space-sm bg-surface-container-lowest p-1.5 rounded-xl shadow-sm border border-slate-200">
-              <div class="flex items-center bg-surface-container-low rounded-lg p-0.5">
-                <button onclick="selecionarDataRelativa(-1)" id="btn-dia-ontem" class="px-3 py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors cursor-pointer">Ontem</button>
-                <button onclick="selecionarDataRelativa(0)" id="btn-dia-hoje" class="px-3 py-1.5 font-label-sm text-label-sm bg-secondary text-on-secondary rounded-lg font-bold shadow-sm transition-all cursor-pointer">Hoje, 24 Out</button>
-                <button onclick="selecionarDataRelativa(1)" id="btn-dia-amanha" class="px-3 py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors cursor-pointer">Amanhã</button>
+            <div class="flex items-center gap-2 bg-white p-1 rounded-xl shadow-xs border border-slate-200">
+              <div class="flex items-center bg-slate-100 rounded-lg p-0.5">
+                <button onclick="selecionarDataRelativa(-1)" id="btn-dia-ontem" class="px-3 py-1.5 text-xs text-slate-600 hover:text-slate-900 rounded-md transition-colors cursor-pointer font-medium">Ontem</button>
+                <button onclick="selecionarDataRelativa(0)" id="btn-dia-hoje" class="px-3 py-1.5 text-xs bg-white text-slate-900 rounded-md font-semibold shadow-xs transition-all cursor-pointer">Hoje, 24 Out</button>
+                <button onclick="selecionarDataRelativa(1)" id="btn-dia-amanha" class="px-3 py-1.5 text-xs text-slate-600 hover:text-slate-900 rounded-md transition-colors cursor-pointer font-medium">Amanhã</button>
               </div>
-              <div class="h-6 w-px bg-surface-container"></div>
-              <div class="flex items-center gap-1.5 px-3 py-1.5 text-on-surface font-label-md text-label-md">
-                <span class="material-symbols-outlined text-base text-secondary">calendar_today</span>
-                <span class="font-bold" id="label-data-atual">24 de Outubro de 2024</span>
+              <div class="h-5 w-px bg-slate-200"></div>
+              <div class="flex items-center gap-1.5 px-2.5 py-1 text-slate-700 text-xs">
+                <span class="material-symbols-outlined text-base text-slate-400">calendar_today</span>
+                <span class="font-bold text-slate-900" id="label-data-atual">24 de Outubro de 2024</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- KPI Cards: 100% Relacionados a Faltas (Justificadas e Sem Justificativa) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+        <!-- KPI Cards: Faltas e Financeiro com sinalização semântica elegante -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <!-- Card 1: Total de Faltas no Dia -->
-          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border border-slate-200">
-            <div class="flex items-center justify-between text-on-surface-variant">
-              <span class="font-label-md text-label-md font-semibold text-slate-800">Total de Faltas</span>
-              <span class="p-2 rounded-xl bg-slate-100 text-slate-700 material-symbols-outlined text-lg">event_busy</span>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total de Faltas</span>
+              <div class="w-8 h-8 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">event_busy</span>
+              </div>
             </div>
-            <div class="mt-2 flex items-baseline gap-space-xs">
-              <span class="font-metric-display text-metric-display text-slate-900 font-bold" id="kpi-freq-total-faltas">0</span>
-              <span class="font-label-sm text-label-sm text-slate-500 font-medium">ausências no dia</span>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-3xl font-bold tracking-tight text-[#2563EB]" id="kpi-freq-total-faltas">0</span>
+              <span class="text-xs text-slate-500 font-medium">ausências no dia</span>
             </div>
-            <div class="mt-2 text-slate-500 font-body-sm text-body-sm" id="kpi-freq-sub">No posto selecionado</div>
+            <div class="mt-3 text-slate-400 text-xs" id="kpi-freq-sub">No posto selecionado</div>
           </div>
 
-          <!-- Card 2: Faltas Justificadas (Obs Registrada) -->
-          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border border-slate-200">
-            <div class="flex items-center justify-between text-on-surface-variant">
-              <span class="font-label-md text-label-md font-semibold text-blue-900">Faltas Justificadas</span>
-              <span class="p-2 rounded-xl bg-blue-50 text-blue-700 material-symbols-outlined text-lg">assignment_turned_in</span>
+          <!-- Card 2: Faltas Justificadas -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Faltas Justificadas</span>
+              <div class="w-8 h-8 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">assignment_turned_in</span>
+              </div>
             </div>
-            <div class="mt-2 flex items-baseline gap-space-xs">
-              <span class="font-metric-display text-metric-display text-blue-700 font-bold" id="kpi-freq-justificadas">0</span>
-              <span class="font-label-sm text-label-sm text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-bold">Com Obs / Atestado</span>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-3xl font-bold tracking-tight text-[#2563EB]" id="kpi-freq-justificadas">0</span>
+              <span class="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-full">Com Obs / Atestado</span>
             </div>
-            <div class="mt-2 text-blue-600 font-body-sm text-body-sm font-medium">Sem desconto na folha (Abonadas)</div>
+            <div class="mt-3 text-slate-400 text-xs">Sem desconto na folha (Abonadas)</div>
           </div>
 
-          <!-- Card 3: Faltas Não Justificadas (Desconto em Folha) -->
-          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border-2 border-red-200">
-            <div class="flex items-center justify-between text-error">
-              <span class="font-label-md text-label-md font-bold flex items-center gap-1 text-red-700">
-                <span class="material-symbols-outlined text-lg">warning</span>
+          <!-- Card 3: Faltas Não Justificadas (Vermelho suave / Semântica de Erro) -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider flex items-center gap-1 text-rose-700">
+                <span class="material-symbols-outlined text-base">warning</span>
                 Faltas sem Justificativa
               </span>
-              <span class="p-2 rounded-xl bg-red-50 text-red-600 material-symbols-outlined text-lg">person_cancel</span>
+              <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">person_cancel</span>
+              </div>
             </div>
-            <div class="mt-2 flex items-baseline gap-space-xs">
-              <span class="font-metric-display text-metric-display text-red-700 font-bold" id="kpi-freq-injustificadas">0</span>
-              <span class="font-label-sm text-label-sm text-red-700 bg-red-50 px-2 py-0.5 rounded-full font-bold">Gera Desconto</span>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-3xl font-bold tracking-tight text-rose-600" id="kpi-freq-injustificadas">0</span>
+              <span class="text-xs font-medium text-rose-700 bg-rose-50 border border-rose-200/80 px-2.5 py-0.5 rounded-full">Gera Desconto</span>
             </div>
-            <div class="mt-2 text-red-700 font-body-sm text-body-sm font-semibold">Gera desconto no pagamento</div>
+            <div class="mt-3 text-rose-600/90 text-xs font-medium">Gera desconto no pagamento</div>
           </div>
 
-          <!-- Card 4: Total a Descontar em Folha -->
-          <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between border border-red-200 bg-gradient-to-br from-white to-red-50/30">
-            <div class="flex items-center justify-between text-red-800">
-              <span class="font-label-md text-label-md font-bold">Desconto no Pagamento</span>
-              <span class="p-2 rounded-xl bg-red-100 text-red-700 material-symbols-outlined text-lg">payments</span>
+          <!-- Card 4: Total a Descontar em Folha (Âmbar / Laranja suave #F59E0B para Financeiro) -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Desconto no Pagamento</span>
+              <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">payments</span>
+              </div>
             </div>
-            <div class="mt-2 flex items-baseline gap-space-xs">
-              <span class="font-metric-display text-metric-display text-red-700 font-black" id="kpi-freq-desconto-total">R$ 0,00</span>
-              <span class="text-xs font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded-full" id="kpi-freq-desconto-badge">no mês</span>
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-3xl font-bold tracking-tight text-amber-600 font-mono" id="kpi-freq-desconto-total">R$ 0,00</span>
+              <span class="text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200/80 px-2.5 py-0.5 rounded-full" id="kpi-freq-desconto-badge">no mês</span>
             </div>
-            <div class="mt-2 text-slate-600 font-body-sm text-body-sm flex items-center justify-between" id="kpi-freq-desconto-sub">
-              <span>Nesta data: <strong class="text-slate-900" id="kpi-freq-desconto-dia">R$ 0,00</strong></span>
-              <span class="text-xs bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Fechamento Mês</span>
+            <div class="mt-3 text-slate-500 text-xs flex items-center justify-between" id="kpi-freq-desconto-sub">
+              <span>Nesta data: <strong class="text-slate-800" id="kpi-freq-desconto-dia">R$ 0,00</strong></span>
+              <span class="text-[11px] bg-slate-100 text-slate-600 font-medium px-2 py-0.5 rounded">Fechamento Mês</span>
             </div>
           </div>
         </div>
@@ -260,11 +314,15 @@
               <div class="relative flex items-center">
                 <span class="material-symbols-outlined absolute left-3 text-base text-on-surface-variant pointer-events-none">local_gas_station</span>
                 <select onchange="renderFrequencia()" class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-8 py-2.5 rounded-lg outline-none cursor-pointer focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all appearance-none font-semibold" id="select-posto-freq">
-                  <option selected value="todos">Todos os postos de Parintins (4 Ativos)</option>
-                  <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
-                  <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
-                  <option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
-                  <option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
+                  <option selected value="todos">Todos os postos da rede (4 Ativos)</option>
+                  <optgroup label="Parintins (AM)">
+                    <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
+                    <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
+                    <option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
+                  </optgroup>
+                  <optgroup label="Barreirinha (AM)">
+                    <option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
+                  </optgroup>
                 </select>
                 <span class="material-symbols-outlined absolute right-2.5 text-base text-on-surface-variant pointer-events-none">expand_more</span>
               </div>
@@ -312,12 +370,12 @@
         </div>
 
         <!-- Operational Table with Separation Lines -->
-        <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col border border-slate-200">
-          <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div class="bg-white rounded-2xl shadow-xs overflow-hidden flex flex-col border border-slate-200">
+          <div class="px-5 py-3.5 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-red-600 text-xl">event_busy</span>
+              <span class="material-symbols-outlined text-rose-600 text-xl">event_busy</span>
               <span class="text-sm font-bold text-slate-900">Extrato de Pessoas com Falta</span>
-              <span class="text-xs bg-red-100 text-red-800 font-bold px-2.5 py-0.5 rounded-full" id="badge-total-faltas-tabela">0 pessoas com falta</span>
+              <span class="text-xs bg-rose-50 text-rose-700 border border-rose-200/80 font-medium px-2.5 py-0.5 rounded-full" id="badge-total-faltas-tabela">0 pessoas com falta</span>
             </div>
             <span class="text-xs text-slate-500 font-medium">
               * Mostrando exclusivamente colaboradores que faltaram (com justificativa ou sem justificativa)
@@ -325,19 +383,19 @@
           </div>
 
           <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse border border-slate-200 tabela-com-divisores">
+            <table class="w-full text-left border-collapse">
               <thead>
-                <tr class="bg-slate-100 text-slate-700 font-label-sm text-label-sm uppercase tracking-wider border-b-2 border-slate-300">
-                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[24%]">Pessoa que Faltou</th>
-                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[18%]">Cargo & Posto</th>
-                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[12%]">Turno</th>
-                  <th class="py-3 px-4 font-bold border-r border-slate-200 text-center w-[16%]">Tipo de Falta</th>
-                  <th class="py-3 px-4 font-bold border-r border-slate-200 w-[16%]">Justificativa (Obs)</th>
-                  <th class="py-3 px-4 font-bold border-r border-slate-200 text-center w-[14%]">Desconto no Pagamento</th>
-                  <th class="py-3 px-4 font-bold text-center whitespace-nowrap">Histórico</th>
+                <tr class="bg-slate-50/80 text-slate-500 font-semibold text-[11px] uppercase tracking-wider border-b border-slate-200">
+                  <th class="py-3.5 px-5 w-[24%]">Pessoa que Faltou</th>
+                  <th class="py-3.5 px-5 w-[18%]">Cargo & Posto</th>
+                  <th class="py-3.5 px-5 w-[12%]">Turno</th>
+                  <th class="py-3.5 px-5 text-center w-[16%]">Tipo de Falta</th>
+                  <th class="py-3.5 px-5 w-[16%]">Justificativa (Obs)</th>
+                  <th class="py-3.5 px-5 text-center w-[14%]">Desconto no Pagamento</th>
+                  <th class="py-3.5 px-5 text-center whitespace-nowrap">Histórico</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-200 font-body-sm text-body-sm text-on-surface" id="tabela-frequencia-body">
+              <tbody class="font-body-sm text-body-sm text-on-surface" id="tabela-frequencia-body">
                 <!-- Renderizado dinamicamente via JavaScript -->
               </tbody>
             </table>
@@ -542,6 +600,11 @@
         <button type="submit" class="px-5 py-2 rounded-lg text-xs font-bold bg-secondary hover:bg-blue-700 text-white shadow-sm transition-all cursor-pointer">
           Salvar Apontamento
         </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- ========================================== -->
 <!-- MODAL DE APONTAR NOVA FALTA -->
 <!-- ========================================== -->
@@ -567,37 +630,36 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
         <!-- Município -->
         <div class="flex flex-col gap-1">
-          <label class="text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
-            <span class="material-symbols-outlined text-sm text-secondary">location_city</span>
+          <label class="text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1 notranslate" translate="no">
+            <span class="material-symbols-outlined notranslate text-sm text-secondary" translate="no" data-icon="location_city">location_city</span>
             <span>Município</span>
           </label>
           <select id="modal-falta-municipio" onchange="aoMudarMunicipioModalFalta()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary cursor-pointer">
             <option value="todos">Todos os Municípios (AM)</option>
             <option value="parintins" selected>Parintins (AM)</option>
+            <option value="barreirinha">Barreirinha (AM)</option>
           </select>
         </div>
 
         <!-- Posto / Lotação -->
         <div class="flex flex-col gap-1">
-          <label class="text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
-            <span class="material-symbols-outlined text-sm text-secondary">local_gas_station</span>
+          <label class="text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1 notranslate" translate="no">
+            <span class="material-symbols-outlined notranslate text-sm text-secondary" translate="no" data-icon="local_gas_station">local_gas_station</span>
             <span>Posto / Lotação *</span>
           </label>
           <select id="modal-falta-posto" onchange="aoMudarPostoModalFalta()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary cursor-pointer">
-            <option value="">Selecione o Posto...</option>
-            <option value="todos">Todos os Postos (4 Unidades)</option>
-            <option value="posto-oliveira-francesa">Posto Oliveira - Na Francesa</option>
-            <option value="posto-oliveira-odovaldo">Posto Oliveira - Odovaldo Novo</option>
-            <option value="posto-equador-sham">Posto Equador - Conjunto Sham</option>
-            <option value="posto-equador-barreirinha">Posto Equador - Barreirinha</option>
+            <!-- Dinâmico via JavaScript -->
           </select>
         </div>
       </div>
 
       <!-- Colaborador -->
       <div class="flex flex-col gap-1.5">
-        <label class="text-xs font-bold uppercase text-slate-700">Selecione o Colaborador *</label>
-        <select id="modal-falta-colab" onchange="atualizarInfoModalNovaFalta()" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary">
+        <label class="text-xs font-bold uppercase text-slate-700 flex items-center justify-between notranslate" translate="no">
+          <span>Selecione a Pessoa / Colaborador *</span>
+          <span id="modal-falta-colab-count" class="text-[11px] font-semibold text-slate-400 font-normal"></span>
+        </label>
+        <select id="modal-falta-colab" onchange="atualizarInfoModalNovaFalta()" required class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-secondary cursor-pointer">
           <!-- Preenchido via JavaScript -->
         </select>
       </div>
@@ -859,8 +921,8 @@
         }
 
         const trClass = status === 'falta_injustificada' 
-          ? 'bg-red-50/40 hover:bg-red-50/70 transition-colors group border-b border-slate-200'
-          : 'bg-blue-50/30 hover:bg-blue-50/60 transition-colors group border-b border-slate-200';
+          ? 'hover:bg-rose-50/40 transition-colors group border-b border-[#F1F5F9]'
+          : 'hover:bg-slate-50/70 transition-colors group border-b border-[#F1F5F9]';
 
         // Badge Tipo de Falta (se for mais de uma, numera: 1ª, 2ª, 3ª, 4ª...)
         let tipoFaltaBadge = '';
@@ -868,55 +930,55 @@
           const labelJust = `${numJustificadaAteHoje}ª Justificada`;
           tipoFaltaBadge = `
             <div class="flex flex-col items-center justify-center">
-              <button onclick="alterarStatus('${c.id}', 'falta_injustificada')" type="button" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 hover:bg-blue-200 text-blue-900 border border-blue-300 transition-colors cursor-pointer shadow-2xs" title="Clique para alternar para Injustificada">
-                <span class="material-symbols-outlined text-sm text-blue-700">assignment_turned_in</span>
+              <button onclick="alterarStatus('${c.id}', 'falta_injustificada')" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200/80 transition-colors cursor-pointer shadow-2xs" title="Clique para alternar para Injustificada">
+                <span class="material-symbols-outlined text-sm text-blue-600">assignment_turned_in</span>
                 <span>${labelJust}</span>
               </button>
-              ${hist.totalFaltasJustificadas > 1 ? `<span class="text-[10px] text-blue-700 font-bold mt-0.5">${hist.totalFaltasJustificadas} justificadas no mês</span>` : ''}
+              ${hist.totalFaltasJustificadas > 1 ? `<span class="text-[10px] text-blue-600 font-medium mt-0.5">${hist.totalFaltasJustificadas} justificadas no mês</span>` : ''}
             </div>
           `;
         } else {
           const labelInjust = `${numInjustificadaAteHoje}ª Injustificada`;
           tipoFaltaBadge = `
             <div class="flex flex-col items-center justify-center">
-              <button onclick="alterarStatus('${c.id}', 'falta_justificada')" type="button" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-100 hover:bg-red-200 text-red-900 border border-red-300 transition-colors cursor-pointer shadow-2xs" title="Clique para alternar para Justificada">
-                <span class="material-symbols-outlined text-sm text-red-600">warning</span>
+              <button onclick="alterarStatus('${c.id}', 'falta_justificada')" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/80 transition-colors cursor-pointer shadow-2xs" title="Clique para alternar para Justificada">
+                <span class="material-symbols-outlined text-sm text-rose-600">warning</span>
                 <span>${labelInjust}</span>
               </button>
-              ${hist.totalFaltasInjustificadas > 1 ? `<span class="text-[10px] text-red-700 font-bold mt-0.5">${hist.totalFaltasInjustificadas} faltas no mês</span>` : ''}
+              ${hist.totalFaltasInjustificadas > 1 ? `<span class="text-[10px] text-rose-600 font-medium mt-0.5">${hist.totalFaltasInjustificadas} faltas no mês</span>` : ''}
             </div>
           `;
         }
 
-        // Impacto em Folha / Desconto
+        // Impacto em Folha / Desconto (Tom de Âmbar Suave para Financeiro)
         let impactoHtml = '';
         if (status === 'falta_justificada') {
           impactoHtml = `
             <div class="flex flex-col items-center">
-              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">
+              <span class="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full">
                 <span class="material-symbols-outlined text-xs">verified</span> Isento (Abonada)
               </span>
-              <span class="text-[10px] text-blue-600 mt-0.5 font-medium">Sem desconto na folha</span>
+              <span class="text-[10px] text-slate-400 mt-0.5">Sem desconto na folha</span>
             </div>
           `;
         } else {
           impactoHtml = `
             <div class="flex flex-col items-center gap-1">
-              <span class="text-[10px] uppercase font-bold text-red-700 bg-red-100 border border-red-200 px-2 py-0.5 rounded flex items-center gap-1">
-                <span class="material-symbols-outlined text-xs">payments</span> Desconto em Folha
+              <span class="text-[10px] uppercase font-semibold text-amber-700 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs text-amber-600">payments</span> Desconto em Folha
               </span>
               <div class="flex items-center gap-1">
-                <span class="text-xs font-bold text-red-700">- R$</span>
+                <span class="text-xs font-bold text-amber-700">- R$</span>
                 <input type="text" 
                   value="${valorDesconto.toFixed(2).replace('.', ',')}" 
                   onchange="alterarValorDescontoInline('${c.id}', this.value)" 
-                  class="w-20 text-center text-xs font-mono font-bold text-red-800 bg-white border border-red-300 rounded px-1.5 py-0.5 shadow-2xs focus:ring-2 focus:ring-red-400 outline-none cursor-text" 
+                  class="w-20 text-center text-xs font-mono font-bold text-amber-800 bg-white border border-amber-200 rounded px-1.5 py-0.5 shadow-2xs focus:ring-1 focus:ring-amber-400 outline-none cursor-text" 
                   title="Valor do desconto no dia (${diaAtivo}/${mesAtivo})" />
-                <button onclick="abrirModalObs('${c.id}', '${c.nome.replace(/'/g, "\\'")}', '${status}', '${obs.replace(/'/g, "\\'")}', ${valorDesconto})" title="Editar detalhes do desconto" class="p-1 hover:bg-red-100 rounded text-red-700 cursor-pointer">
+                <button onclick="abrirModalObs('${c.id}', '${c.nome.replace(/'/g, "\\'")}', '${status}', '${obs.replace(/'/g, "\\'")}', ${valorDesconto})" title="Editar detalhes do desconto" class="p-1 hover:bg-amber-100 rounded text-amber-700 cursor-pointer">
                   <span class="material-symbols-outlined text-xs">edit</span>
                 </button>
               </div>
-              <div class="text-[11px] font-bold text-red-800 bg-red-100/90 border border-red-200 px-2 py-0.5 rounded mt-0.5 whitespace-nowrap" title="Total que será descontado no fechamento da folha do mês de ${c.nome}">
+              <div class="text-[11px] font-medium text-amber-800 bg-amber-50 border border-amber-200/70 px-2 py-0.5 rounded mt-0.5 whitespace-nowrap" title="Total que será descontado no fechamento da folha do mês de ${c.nome}">
                 Total no Mês: <strong>${PostoStore.formatCurrency(hist.valorDescontoTotal)}</strong> (${hist.totalFaltasInjustificadas} falta${hist.totalFaltasInjustificadas > 1 ? 's' : ''})
               </div>
             </div>
@@ -927,7 +989,7 @@
         let obsHtml = `
           <div class="flex items-center justify-between gap-1.5">
             <span class="text-xs text-slate-700 truncate font-medium" title="${obs || (status === 'falta_justificada' ? 'Atestado / Justificada' : 'Sem justificativa')}">
-              ${obs ? `<strong>Obs:</strong> ${obs}` : (status === 'falta_justificada' ? '<span class="text-blue-700 italic">Comprovante homologado</span>' : '<span class="text-red-500 font-semibold italic">Sem justificativa</span>')}
+              ${obs ? `<strong>Obs:</strong> ${obs}` : (status === 'falta_justificada' ? '<span class="text-blue-700 italic">Comprovante homologado</span>' : '<span class="text-rose-500 font-medium italic">Sem justificativa</span>')}
             </span>
             <button onclick="abrirModalObs('${c.id}', '${c.nome.replace(/'/g, "\\'")}', '${status}', '${obs.replace(/'/g, "\\'")}', ${valorDesconto})" class="p-1 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0" title="Editar Observação / Justificativa">
               <span class="material-symbols-outlined text-base">edit</span>
@@ -938,15 +1000,15 @@
         rowsHtml += `
           <tr class="${trClass}">
             <!-- 1. Pessoa que Faltou -->
-            <td class="py-3 px-4 border-r border-slate-200">
+            <td class="py-4 px-5">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 border border-slate-200/80 flex items-center justify-center font-bold text-xs shrink-0">
                   ${c.initials || 'CO'}
                 </div>
                 <div class="flex flex-col min-w-0">
-                  <button onclick="abrirCalendarioColaborador('${c.id}')" type="button" class="text-left font-bold text-sm text-slate-900 hover:text-secondary hover:underline cursor-pointer truncate flex items-center gap-1.5" title="Abrir Calendário de Faltas">
+                  <button onclick="abrirCalendarioColaborador('${c.id}')" type="button" class="text-left font-semibold text-sm text-slate-900 hover:text-[#2563EB] hover:underline cursor-pointer truncate flex items-center gap-1.5" title="Abrir Calendário de Faltas">
                     <span>${c.nome}</span>
-                    <span class="material-symbols-outlined text-xs text-secondary opacity-70">calendar_month</span>
+                    <span class="material-symbols-outlined text-xs text-slate-400">calendar_month</span>
                   </button>
                   <div class="flex items-center gap-1 text-[11px] text-slate-500 font-medium mt-0.5">
                     <span class="font-mono">${c.cpf}</span>
@@ -1054,94 +1116,172 @@
   // ==========================================
   // MODAL APONTAR NOVA FALTA
   // ==========================================
-  function popularSelectNovaFalta(selectedId = '') {
+  // ==========================================
+  // MODAL APONTAR NOVA FALTA (CASCADING MUNICÍPIO -> POSTO -> PESSOA)
+  // ==========================================
+  function popularPostosModalFalta(municipioSelecionado, selectedPostoId = '') {
+    const postoSelect = document.getElementById('modal-falta-posto');
+    if (!postoSelect) return;
+
+    postoSelect.innerHTML = '';
+
+    if (municipioSelecionado === 'barreirinha') {
+      const opt = document.createElement('option');
+      opt.value = 'posto-equador-barreirinha';
+      opt.textContent = 'Posto Equador - Barreirinha (Única Unidade)';
+      opt.selected = true;
+      postoSelect.appendChild(opt);
+    } else if (municipioSelecionado === 'parintins') {
+      const optTodos = document.createElement('option');
+      optTodos.value = 'todos';
+      optTodos.textContent = 'Todos os Postos de Parintins (3 Unidades)';
+      postoSelect.appendChild(optTodos);
+
+      const parintinsStations = [
+        { id: 'posto-oliveira-francesa', name: 'Posto Oliveira - Na Francesa' },
+        { id: 'posto-oliveira-odovaldo', name: 'Posto Oliveira - Odovaldo Novo' },
+        { id: 'posto-equador-sham', name: 'Posto Equador - Conjunto Sham' }
+      ];
+
+      parintinsStations.forEach(st => {
+        const opt = document.createElement('option');
+        opt.value = st.id;
+        opt.textContent = st.name;
+        if (selectedPostoId === st.id) opt.selected = true;
+        postoSelect.appendChild(opt);
+      });
+    } else {
+      // Todos os Municípios
+      const optTodos = document.createElement('option');
+      optTodos.value = 'todos';
+      optTodos.textContent = 'Todos os Postos da Rede (4 Unidades)';
+      postoSelect.appendChild(optTodos);
+
+      const grpParintins = document.createElement('optgroup');
+      grpParintins.label = 'Parintins (AM)';
+      const p1 = document.createElement('option');
+      p1.value = 'posto-oliveira-francesa';
+      p1.textContent = 'Posto Oliveira - Na Francesa';
+      grpParintins.appendChild(p1);
+      const p2 = document.createElement('option');
+      p2.value = 'posto-oliveira-odovaldo';
+      p2.textContent = 'Posto Oliveira - Odovaldo Novo';
+      grpParintins.appendChild(p2);
+      const p3 = document.createElement('option');
+      p3.value = 'posto-equador-sham';
+      p3.textContent = 'Posto Equador - Conjunto Sham';
+      grpParintins.appendChild(p3);
+      postoSelect.appendChild(grpParintins);
+
+      const grpBarreirinha = document.createElement('optgroup');
+      grpBarreirinha.label = 'Barreirinha (AM)';
+      const b1 = document.createElement('option');
+      b1.value = 'posto-equador-barreirinha';
+      b1.textContent = 'Posto Equador - Barreirinha';
+      grpBarreirinha.appendChild(b1);
+      postoSelect.appendChild(grpBarreirinha);
+
+      if (selectedPostoId) {
+        postoSelect.value = selectedPostoId;
+      }
+    }
+  }
+
+  function popularSelectNovaFalta(selectedColabId = '') {
     const select = document.getElementById('modal-falta-colab');
     if (!select || typeof PostoStore === 'undefined') return;
 
     const munSelect = document.getElementById('modal-falta-municipio');
     const postoSelect = document.getElementById('modal-falta-posto');
     const munFilter = munSelect ? munSelect.value : 'todos';
-    let postoFilter = postoSelect ? postoSelect.value : '';
+    const postoFilter = postoSelect ? postoSelect.value : 'todos';
 
     let allColabs = PostoStore.getColaboradores().filter(c => c.status === 'Ativo');
 
-    if (selectedId) {
-      const targetColab = allColabs.find(c => c.id === selectedId);
-      if (targetColab && postoSelect) {
-        postoSelect.value = targetColab.posto;
-        postoFilter = targetColab.posto;
-      }
+    // Filtro estrito por município (sem bugs)
+    if (munFilter === 'parintins') {
+      allColabs = allColabs.filter(c => (c.municipio || '').toLowerCase().includes('parintins'));
+    } else if (munFilter === 'barreirinha') {
+      allColabs = allColabs.filter(c => (c.municipio || '').toLowerCase().includes('barreirinha'));
     }
 
-    if (munFilter && munFilter !== 'todos') {
-      allColabs = allColabs.filter(c => {
-        const mun = (c.municipio || '').toLowerCase();
-        return mun.includes('parintins') || mun.includes(munFilter.toLowerCase());
-      });
+    // Filtro estrito por posto
+    if (postoFilter && postoFilter !== 'todos') {
+      allColabs = allColabs.filter(c => c.posto === postoFilter);
     }
 
-    let filteredColabs = allColabs;
-    const isSpecificPosto = postoFilter && postoFilter !== 'todos';
-    if (isSpecificPosto) {
-      filteredColabs = allColabs.filter(c => c.posto === postoFilter);
+    const countBadge = document.getElementById('modal-falta-colab-count');
+    if (countBadge) {
+      countBadge.textContent = `${allColabs.length} pessoas disponíveis`;
     }
 
     select.innerHTML = '';
 
-    if (!postoFilter) {
-      select.innerHTML = '<option value="">← Escolha o Posto acima primeiro para listar a equipe</option>';
-      return;
-    }
-
-    if (filteredColabs.length === 0) {
-      select.innerHTML = '<option value="">Nenhum colaborador encontrado para este posto</option>';
+    if (allColabs.length === 0) {
+      select.innerHTML = '<option value="">Nenhum colaborador encontrado para este filtro</option>';
+      atualizarInfoModalNovaFalta();
       return;
     }
 
     const defaultOpt = document.createElement('option');
     defaultOpt.value = '';
-    defaultOpt.textContent = isSpecificPosto 
-      ? `Selecione um colaborador (${filteredColabs.length} na unidade)...` 
-      : `Selecione um colaborador (${filteredColabs.length} no quadro)...`;
+    defaultOpt.textContent = `Selecione um colaborador (${allColabs.length} disponíveis)...`;
     select.appendChild(defaultOpt);
 
-    filteredColabs.forEach(c => {
+    allColabs.forEach(c => {
       const opt = document.createElement('option');
       opt.value = c.id;
-      // Não repete o nome do posto quando filtrado!
-      const sufixoPosto = isSpecificPosto ? '' : ` (${c.postoLabel || PostoStore.getStationName(c.posto)})`;
-      opt.textContent = `${c.nome}${sufixoPosto} • ${c.matricula || ''}`;
-      if (c.id === selectedId) opt.selected = true;
+      const postoNome = c.postoLabel || PostoStore.getStationName(c.posto);
+      opt.textContent = `${c.nome} • ${c.cargoLabel || c.cargo} (${postoNome})`;
+      if (c.id === selectedColabId) opt.selected = true;
       select.appendChild(opt);
     });
+
+    if (selectedColabId) {
+      select.value = selectedColabId;
+    } else if (allColabs.length === 1) {
+      select.value = allColabs[0].id;
+    }
+
+    atualizarInfoModalNovaFalta();
   }
 
   function aoMudarMunicipioModalFalta() {
+    const mun = document.getElementById('modal-falta-municipio').value;
+    popularPostosModalFalta(mun);
     popularSelectNovaFalta();
-    atualizarInfoModalNovaFalta();
   }
 
   function aoMudarPostoModalFalta() {
     popularSelectNovaFalta();
-    atualizarInfoModalNovaFalta();
   }
 
-  function abrirModalNovaFalta() {
-    const pagePosto = document.getElementById('select-posto-freq') ? document.getElementById('select-posto-freq').value : '';
-    const postoSelect = document.getElementById('modal-falta-posto');
-    if (postoSelect) {
-      if (pagePosto && pagePosto !== 'todos') {
-        postoSelect.value = pagePosto;
-      } else {
-        postoSelect.value = 'posto-oliveira-francesa';
-      }
-    }
-
+  function abrirModalNovaFalta(preSelectedColabId = '') {
     const munSelect = document.getElementById('modal-falta-municipio');
-    if (munSelect) munSelect.value = 'parintins';
+    const pagePosto = document.getElementById('select-posto-freq') ? document.getElementById('select-posto-freq').value : 'todos';
 
-    popularSelectNovaFalta();
-    atualizarInfoModalNovaFalta();
+    if (preSelectedColabId) {
+      const colab = PostoStore.getColaboradores().find(c => c.id === preSelectedColabId);
+      if (colab) {
+        const isBarreirinha = (colab.municipio || '').toLowerCase().includes('barreirinha');
+        const mun = isBarreirinha ? 'barreirinha' : 'parintins';
+        if (munSelect) munSelect.value = mun;
+        popularPostosModalFalta(mun, colab.posto);
+        popularSelectNovaFalta(colab.id);
+      }
+    } else {
+      if (pagePosto === 'posto-equador-barreirinha') {
+        if (munSelect) munSelect.value = 'barreirinha';
+        popularPostosModalFalta('barreirinha', pagePosto);
+      } else if (pagePosto && pagePosto !== 'todos') {
+        if (munSelect) munSelect.value = 'parintins';
+        popularPostosModalFalta('parintins', pagePosto);
+      } else {
+        if (munSelect) munSelect.value = 'todos';
+        popularPostosModalFalta('todos', 'todos');
+      }
+      popularSelectNovaFalta();
+    }
 
     document.getElementById('modal-falta-data').value = dataAtualAtiva;
     document.getElementById('modal-falta-obs').value = '';
@@ -1189,14 +1329,25 @@
   }
 
   function atualizarInfoModalNovaFalta() {
-    const colabId = document.getElementById('modal-falta-colab').value;
-    if (!colabId) return;
+    const select = document.getElementById('modal-falta-colab');
+    const colabId = select ? select.value : '';
+    const descInput = document.getElementById('modal-falta-valor-desconto');
+    const sugestaoEl = document.getElementById('modal-falta-valor-sugestao');
+
+    if (!colabId) {
+      if (descInput) descInput.value = '0,00';
+      if (sugestaoEl) sugestaoEl.textContent = 'Selecione um colaborador acima para ver o valor padrão.';
+      return;
+    }
+
     const colab = PostoStore.getColaboradores().find(c => c.id === colabId);
     if (!colab) return;
 
     const valorDia = PostoStore.calcularDescontoDia(colab.salario);
-    document.getElementById('modal-falta-valor-desconto').value = valorDia.toFixed(2).replace('.', ',');
-    document.getElementById('modal-falta-valor-sugestao').textContent = `Valor padrão sugerido: ${PostoStore.formatCurrency(valorDia)} (Salário / 30)`;
+    if (descInput) descInput.value = valorDia.toFixed(2).replace('.', ',');
+    if (sugestaoEl) {
+      sugestaoEl.textContent = `Valor padrão sugerido: ${PostoStore.formatCurrency(valorDia)} (Salário: ${colab.salario} / 30)`;
+    }
   }
 
   function salvarNovaFalta(e) {
@@ -1206,11 +1357,13 @@
     const obs = document.getElementById('modal-falta-obs').value.trim();
 
     if (!colabId) {
-      alert('Selecione um colaborador!');
+      alert('Por favor, selecione um colaborador!');
+      document.getElementById('modal-falta-colab').focus();
       return;
     }
     if (!dataFalta) {
-      alert('Selecione uma data!');
+      alert('Por favor, selecione uma data para a falta!');
+      document.getElementById('modal-falta-data').focus();
       return;
     }
 
